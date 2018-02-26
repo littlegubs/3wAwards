@@ -1,27 +1,36 @@
-# ThreeWAwards
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# English
+ 
+### Description
+ 
+3wAwards is a web app which allow companies, websites owners, and web agency to submit their website to the public.
+Anonyme visitors and logged in members can vote, give likes and visit websites' rewiew card and visit them.
+In addition, an award through many categories is given to the best websites.
+ 
+This allow visitors to find the best websites of the moment, localized, filtered by many categories.
+ 
+The data retrieved from the API [3wAwards-API](https://github.com/MWAlexisL/3wAwards-API/).
+ 
+ 
+### Installation
+ 
+* Clone the project :
+`git clone git@github.com/MWAlexisL/3wAwards`
+ 
+* Clone the project :
+`git clone git@github.com/MWAlexisL/3wAwards-API`
+ 
+* Then install the package :
+`npm install`
+ 
+* And run the server :
+`ng serve`
+ 
+* With any browser type this url :
+`http://localhost:4200/`
+ 
+### Contributors
+ 
+* [LEROY Alexis](https://github.com/Gouaky)
+* [ROBERT Florian](https://github.com/florob95)
+* [DECOURTY William](https://github.com/ZPredou)
+* [BOURGEOIS Lucas](https://github.com/LucasBourgeois)
