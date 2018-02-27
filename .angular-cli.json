@@ -23,7 +23,8 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/bootstrap/scss/bootstrap.scss"
+        "../node_modules/bootstrap/scss/bootstrap.scss",
+        "../node_modules/@nebular/theme/styles/prebuilt/default.css"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

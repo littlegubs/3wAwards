@@ -23,6 +23,8 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "@nebular/auth": "^2.0.0-rc.6",
+    "@nebular/theme": "^2.0.0-rc.6",
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^2.0.1",
     "bootstrap": "^4.0.0",
