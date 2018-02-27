@@ -8,6 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { SearchComponent } from './search/search.component';
 import { HomeComponent } from './home/home.component';
 import { WebsiteComponent } from './website/website.component';
+import { SliderComponent } from './slider/slider.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { WebsiteComponent } from './website/website.component';
     MenuComponent,
     SearchComponent,
     HomeComponent,
-    WebsiteComponent
+    WebsiteComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
