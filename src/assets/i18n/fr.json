@@ -1,5 +1,16 @@
 {
-  "HOME": {
-      "HELLO": "la frite"
+  "FRONT": {
+      "HEADER": {
+        "MENU": "MENU",
+        "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
+        "SWITCH_NAME": "FILTRES",
+        "SIGN_IN": "CONNEXION",
+        "SIGN_UP": "INSCRIPTION",
+        "WEBSITE_SUBMIT": "SOUMETTRE UN SITE",
+        "FILTER": {
+
+        }
+      }
+
   }
 }

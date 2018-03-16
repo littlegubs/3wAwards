@@ -17,7 +17,10 @@ import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { SiteCardComponent } from './front/site-card/site-card.component';
 import { FooterComponent } from './front/footer/footer.component';
+import { HeaderComponent } from './front/header/header.component';
 
+/* MATERIEL IMPORT */
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -32,13 +35,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     WebsiteComponent,
     SliderComponent,
     SiteCardComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BootstrapModule,
     MatButtonModule,
+    MatSlideToggleModule,
     BrowserAnimationsModule,
     HttpClientModule,
     TranslateModule.forRoot({
