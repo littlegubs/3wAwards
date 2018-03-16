@@ -15,6 +15,8 @@ import { SliderComponent } from './slider/slider.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { SiteCardComponent } from './site-card/site-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,7 +30,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SearchComponent,
     HomeComponent,
     WebsiteComponent,
-    SliderComponent
+    SliderComponent,
+    SiteCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

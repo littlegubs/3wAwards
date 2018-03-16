@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'app';
   param = {value: 'world'};
 
-  constructor(translate: TranslateService)
+  constructor(translate: TranslateService){
     translate.setDefaultLang('en');
 
     translate.use('fr');
