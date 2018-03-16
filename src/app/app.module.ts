@@ -7,7 +7,8 @@ import * as $ from 'jquery';
 import {BootstrapModule} from './bootstrap.module';
 import {
   MatButtonModule,
-  MatDialogModule
+  MatDialogModule,
+  MatSlideToggleModule,
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
@@ -24,6 +25,8 @@ import {FooterComponent} from './front/footer/footer.component';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
 import {AuthService} from './auth.service';
 import {AuthInterceptor} from './auth.interceptor';
+import { HeaderComponent } from './front/header/header.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -40,8 +43,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SliderComponent,
     SiteCardComponent,
     FooterComponent,
-    Head
     ConnectionDialogComponent,
+    ConnectionDialogComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     BootstrapModule,
     MatButtonModule,
+    MatSlideToggleModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,

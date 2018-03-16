@@ -13,20 +13,21 @@
       "DESC": "Nous sommes une platforme communautaire libre et indépendante composée d'experts du digital et de l'UX/UI qui évalue et valorise les meilleurs sites web dans différentes catégories, soumis par les propriétaires eux-mêmes ou par les professionels qui les ont crées",
       "RIGHTS": "©3W awards tous droits réservés",
       "LINKS": {
-        "HOME":"Home",
-        "NOMINATE":"Nominés",
-        "AWARDS":"Awards",
-        "ANNUAIRE":"Annuaire",
-        "BLOG":"Blog",
-        "OFFERS":"Offres",
-        "SHOP":"Boutique",
-        "ABOUT":"A propos",
-        "CONTACT":"Contact"
+        "HOME": "Home",
+        "NOMINATE": "Nominés",
+        "AWARDS": "Awards",
+        "ANNUAIRE": "Annuaire",
+        "BLOG": "Blog",
+        "OFFERS": "Offres",
+        "SHOP": "Boutique",
+        "ABOUT": "A propos",
+        "CONTACT": "Contact"
       }
-  },
+    },
     "DIALOG": {
       "MAIL": "e-mail",
       "PASSWORD": "mot de passe",
       "TO_LOG_IN": "se connecter"
     }
+  }
 }
