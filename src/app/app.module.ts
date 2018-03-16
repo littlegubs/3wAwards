@@ -7,16 +7,16 @@ import { BootstrapModule } from './bootstrap.module';
 import { MatButtonModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
-import { SearchComponent } from './search/search.component';
-import { HomeComponent } from './home/home.component';
-import { WebsiteComponent } from './website/website.component';
-import { SliderComponent } from './slider/slider.component';
+import { MenuComponent } from './front/menu/menu.component';
+import { SearchComponent } from './front/search/search.component';
+import { HomeComponent } from './front/home/home.component';
+import { WebsiteComponent } from './front/website/website.component';
+import { SliderComponent } from './front/slider/slider.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { SiteCardComponent } from './site-card/site-card.component';
-import { FooterComponent } from './footer/footer.component';
+import { SiteCardComponent } from './front/site-card/site-card.component';
+import { FooterComponent } from './front/footer/footer.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
