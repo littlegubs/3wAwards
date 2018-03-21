@@ -11,7 +11,18 @@
     "FOOTER": {
       "TITLE": "A propos de 3W AWARDS",
       "DESC": "Nous sommes une platforme communautaire libre et indépendante composée d'experts du digital et de l'UX/UI qui évalue et valorise les meilleurs sites web dans différentes catégories, soumis par les propriétaires eux-mêmes ou par les professionels qui les ont crées",
-      "RIGHTS": "3W awards tous droits réservés"
+      "RIGHTS": "©3W awards tous droits réservés",
+      "LINKS": {
+        "HOME":"Home",
+        "NOMINATE":"Nominés",
+        "AWARDS":"Awards",
+        "ANNUAIRE":"Annuaire",
+        "BLOG":"Blog",
+        "OFFERS":"Offres d'emploi",
+        "SHOP":"Boutique",
+        "ABOUT":"A propos",
+        "CONTACT":"Contact"
+      }
     }
   }
 }

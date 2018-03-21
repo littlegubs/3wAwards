@@ -14,13 +14,45 @@ footer {
     }
     .footer-desc{
       font-size:14px;
-      text-align: justify;
       line-height:18px;
-      color:grey;
+      color:lightgray;
+      display:inline-block;
     }
     .footer-rights{
       font-size:13px;
+      color:grey;
+    }
+    .footer-greyText{
+      font-size:13px;
+      color:grey;
+      line-height:18px;
+      display:inline-block
+    }
+    .recentSite{
+      line-height: 18px;
+    }
+    .sites{
+      line-height: 18px;
+    }
+    .footer-siteName{
+      font-size:14px;
+      line-height:18px;
       color:lightgray;
+      font-weight: bold;
+      text-decoration: underline;
+      display:inline-block
+    }
+    .vertical-menu{
+      margin-left:5vh;
+      margin-right:5vh;
+      margin-top:15px;
+      font-size:14px;
+      width:60px;
+      line-height:18px;
+      a{
+        color:grey;
+        text-decoration: underline;
+      }
     }
   }
 }
