@@ -1,11 +1,15 @@
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust:     100%;
+  min-height: 100vh;
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
+  position: relative;
   font-family: 'Lato', sans-serif;
+  padding-bottom:300px;
+  background-color:#e2e2e2;
 }
 
 

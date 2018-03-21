@@ -1,0 +1,26 @@
+footer {
+  position:absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 300px;
+  line-height: 60px;
+  background-color:#39393a;
+  .container{
+    .footer-title{
+      color:white;
+      font-size:17px;
+      text-transform:uppercase;
+    }
+    .footer-desc{
+      font-size:14px;
+      text-align: justify;
+      line-height:18px;
+      color:grey;
+    }
+    .footer-rights{
+      font-size:13px;
+      color:lightgray;
+    }
+  }
+}
