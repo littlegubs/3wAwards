@@ -2,4 +2,19 @@ app-search{
     mat-slide-toggle {
         padding: 0.5rem 1rem;
     }
+    input{
+        border: none;
+        background: lightgray;
+        border-radius: 25px;
+        color: black;
+        padding: 10px;
+    }
+    i{
+        padding: 10px;
+        position: absolute;
+        right: 0;
+    }
+    .input-group{
+        margin: 0 !important;
+    }
 }

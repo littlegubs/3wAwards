@@ -1,8 +1,14 @@
 .btn{
-    &-main-trans{
+    &-main-red{
         background: transparent;
         border: 2px solid red;
         border-radius: 30px;
         color: red;
+    }
+    &-main-gray {
+        background: transparent;
+        border: none;
+        border-radius: 30px;
+        color: gray;
     }
 }

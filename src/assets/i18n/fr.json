@@ -1,13 +1,5 @@
 {
   "FRONT": {
-    "HEADER": {
-      "MENU": "MENU",
-      "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
-      "SWITCH_NAME": "FILTRES",
-      "SIGN_IN": "CONNEXION",
-      "SIGN_UP": "INSCRIPTION",
-      "WEBSITE_SUBMIT": "SOUMETTRE UN SITE"
-    },
     "FOOTER": {
       "TITLE": "A propos de 3W AWARDS",
       "DESC": "Nous sommes une platforme communautaire libre et indépendante composée d'experts du digital et de l'UX/UI qui évalue et valorise les meilleurs sites web dans différentes catégories, soumis par les propriétaires eux-mêmes ou par les professionels qui les ont crées",
@@ -22,6 +14,24 @@
         "SHOP": "Boutique",
         "ABOUT": "A propos",
         "CONTACT": "Contact"
+      },
+      "HEADER": {
+        "MENU": "MENU",
+        "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
+        "SWITCH_NAME": "FILTRES",
+        "SIGN_IN": "CONNEXION",
+        "SIGN_UP": "INSCRIPTION",
+        "WEBSITE_SUBMIT": "SOUMETTRE UN SITE",
+        "FILTER": {
+        },
+        "DIALOG": {
+          "MAIL": "e-mail",
+          "PASSWORD": "mot de passe",
+          "TO_LOG_IN": "se connecter"
+        }
+      },
+      "COMMON": {
+        "SEARCH": "Rechercher"
       }
     },
     "DIALOG": {
