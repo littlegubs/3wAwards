@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{ 'FRONT.HEADER.SIGN_IN' | translate }}</h1>
+<div mat-dialog-content>
+  <form  (submit)="onSubmit()" [formGroup]="loginForm">
+    <div class="margin-top">
+      <label>{{"FRONT.DIALOG.MAIL" | translate}}:</label>
+      <input name="email" formControlName="mail">
+    </div>
+    <div class="margin-top">
+      <label>{{"FRONT.DIALOG.PASSWORD" | translate}}:</label>
+      <input name="password" formControlName="password">
+    </div>
+    <button type="submit" class="btn">{{"FRONT.DIALOG.TO_LOG_IN" | translate}}</button>
+  </form>
+</div>
+
+
