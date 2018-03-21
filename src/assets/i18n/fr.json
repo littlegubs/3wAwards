@@ -23,6 +23,10 @@
         "ABOUT":"A propos",
         "CONTACT":"Contact"
       }
+  },
+    "DIALOG": {
+      "MAIL": "E-mail",
+      "PASSWORD": "Mot de passe",
+      "TO_LOG_IN": "Se connecter"
     }
-  }
 }

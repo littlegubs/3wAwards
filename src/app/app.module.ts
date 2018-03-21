@@ -1,22 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import {AppRoutingModule} from './app-routing.module';
 import * as $ from 'jquery';
-import { BootstrapModule } from './bootstrap.module';
-import { MatButtonModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from './app.component';
-import { MenuComponent } from './front/menu/menu.component';
-import { SearchComponent } from './front/search/search.component';
-import { HomeComponent } from './front/home/home.component';
-import { WebsiteComponent } from './front/website/website.component';
-import { SliderComponent } from './front/slider/slider.component';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { SiteCardComponent } from './front/site-card/site-card.component';
-import { FooterComponent } from './front/footer/footer.component';
+import {BootstrapModule} from './bootstrap.module';
+import {
+  MatButtonModule,
+  MatDialogModule
+} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppComponent} from './app.component';
+import {MenuComponent} from './front/menu/menu.component';
+import {SearchComponent} from './front/search/search.component';
+import {HomeComponent} from './front/home/home.component';
+import {WebsiteComponent} from './front/website/website.component';
+import {SliderComponent} from './front/slider/slider.component';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {SiteCardComponent} from './front/site-card/site-card.component';
+import {FooterComponent} from './front/footer/footer.component';
+import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
+import {AuthService} from './auth.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -32,15 +38,20 @@ export function HttpLoaderFactory(http: HttpClient) {
     WebsiteComponent,
     SliderComponent,
     SiteCardComponent,
-    FooterComponent
+    FooterComponent,
+    Head
+    ConnectionDialogComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BootstrapModule,
     MatButtonModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatDialogModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -49,7 +60,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  entryComponents: [ConnectionDialogComponent],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
