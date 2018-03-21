@@ -10,6 +10,9 @@
         "FILTER": {
 
         }
+      },
+      "COMMON": {
+        "SEARCH": "Rechercher"
       }
 
   }
