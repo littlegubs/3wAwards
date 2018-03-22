@@ -18,11 +18,12 @@ import {WebsiteComponent} from './front/website/website.component';
 import {SliderComponent} from './front/slider/slider.component';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {SiteCardComponent} from './front/site-card/site-card.component';
 import {FooterComponent} from './front/footer/footer.component';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
 import {AuthService} from './auth.service';
+import {AuthInterceptor} from './auth.interceptor';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -61,7 +62,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   entryComponents: [ConnectionDialogComponent],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
