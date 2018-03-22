@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {ConnectionDialogComponent} from '../connection-dialog/connection-dialog.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  fileNameDialogRef: MatDialogRef<ConnectionDialogComponent>;
 
-  ngOnInit() {
+  constructor(private dialog: MatDialog) {
+
   }
+
+  openDialog() {
+    this.fileNameDialogRef = this.dialog.open(ConnectionDialogComponent);
+  }
+
 
 }

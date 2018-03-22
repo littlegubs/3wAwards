@@ -23,13 +23,13 @@
         "SIGN_UP": "INSCRIPTION",
         "WEBSITE_SUBMIT": "SOUMETTRE UN SITE",
         "FILTER": {
-        },
-        "DIALOG": {
-          "MAIL": "e-mail",
-          "PASSWORD": "mot de passe",
-          "TO_LOG_IN": "se connecter"
         }
       },
+    "DIALOG": {
+      "MAIL": "e-mail",
+      "PASSWORD": "mot de passe",
+      "TO_LOG_IN": "se connecter"
+    },
       "COMMON": {
         "SEARCH": "Rechercher"
       }

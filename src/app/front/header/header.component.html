@@ -12,7 +12,7 @@
           <app-search></app-search>
         </li>
         <li class="nav-item">
-          <span class="btn btn-main-gray"><i class="fas fa-user"></i> {{'FRONT.HEADER.SIGN_IN' | translate}}</span>
+          <span (click)="openDialog()" class="btn btn-main-gray"><i class="far fa-user"></i> {{'FRONT.HEADER.SIGN_IN' | translate}}</span>
           <span class="pipe-separator"> | </span>
           <span class="btn btn-main-gray">{{'FRONT.HEADER.SIGN_UP' | translate}}</span>
         </li>

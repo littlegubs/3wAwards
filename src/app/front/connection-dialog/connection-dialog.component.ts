@@ -26,9 +26,4 @@ export class ConnectionDialogComponent {
       this.authService.login(val.mail, val.password);
     }
   }
-
-  testinterceptor() {
-    this.authService.getMembers();
-  }
-
 }

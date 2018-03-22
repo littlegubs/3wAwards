@@ -51,18 +51,6 @@ export class AuthService {
     const expiresAt = JSON.parse(expiration);
     return moment(expiresAt);
   }
-
-  // Test for interceprot
-  getMembers() {
-    this.http.get(this.localUrl + 'api/member/49').subscribe(
-      res => {
-        console.log(res);
-      },
-      err => {
-      }
-    );
-  }
-
 }
 
 
