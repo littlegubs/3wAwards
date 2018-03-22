@@ -1,7 +1,8 @@
 /* Font Family */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Open+Sans:300,400,700');
-$mainfont: 'Monserrat, sans serif';
-$secondaryfont: 'Monserrat, sans serif';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,900');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+$mainfont: 'Montserrat', sans-serif;
+$secondaryfont: 'Open Sans', sans-serif;
 
 
 /* Font Size | 1rem = 16px (100%) */

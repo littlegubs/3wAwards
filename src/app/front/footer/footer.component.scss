@@ -6,11 +6,13 @@ footer {
   height: 300px;
   line-height: 60px;
   background-color:#39393a;
+
   .container{
     .footer-title{
-      color:white;
+      color:#afafaf;
       font-size:17px;
       text-transform:uppercase;
+      font-family: 'Open Sans', sans-serif;
     }
     .footer-desc{
       font-size:14px;
@@ -28,9 +30,6 @@ footer {
       line-height:18px;
       display:inline-block
     }
-    .recentSite{
-      line-height: 18px;
-    }
     .sites{
       line-height: 18px;
     }
@@ -47,11 +46,12 @@ footer {
       margin-right:5vh;
       margin-top:15px;
       font-size:14px;
-      width:60px;
+      width:70px;
       line-height:18px;
-      a{
-        color:grey;
-        text-decoration: underline;
+    }
+    .network-icons{
+      i{
+        margin-right:5px;
       }
     }
   }

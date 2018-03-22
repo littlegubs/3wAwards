@@ -7,9 +7,16 @@ html {
 body {
   margin: 0 auto;
   position: relative;
-  font-family: 'Lato', sans-serif;
+  font-family: $mainfont;
   padding-bottom:300px;
   background-color:#e2e2e2;
+  a {
+    color: grey;
+    text-decoration: underline;
+  }
+  a:hover {
+    color:#ec1c24;
+  }
 }
 
 
