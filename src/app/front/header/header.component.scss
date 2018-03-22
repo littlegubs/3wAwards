@@ -12,6 +12,11 @@ app-header{
             @include justify-content(space-around);
             @include align-items(center)
         }
+        .nav-item{
+            img{
+                width: 190px;
+            }
+        }
 
         app-search {
             @include flex();
