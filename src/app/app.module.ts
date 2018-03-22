@@ -19,8 +19,9 @@ import { SiteCardComponent } from './front/site-card/site-card.component';
 import { FooterComponent } from './front/footer/footer.component';
 import { HeaderComponent } from './front/header/header.component';
 
-/* MATERIEL IMPORT */
+/* MATERIAL IMPORT */
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -46,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSlideToggleModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatCardModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

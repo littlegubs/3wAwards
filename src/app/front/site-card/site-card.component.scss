@@ -1,0 +1,21 @@
+app-site-card{
+    mat-card{
+        margin-left: auto;
+        margin-right: auto;
+        width: 420px;
+        margin-bottom: 50px;
+    }
+    .mat-card{
+        &-image {
+            width: 420px;
+            height: 300px;
+            background-size: cover;
+        }
+        &-actions {
+            position: absolute;
+            right: 40px;
+            bottom: 10px;
+        }
+    }
+
+}
