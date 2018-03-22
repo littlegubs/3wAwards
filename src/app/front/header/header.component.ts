@@ -8,6 +8,7 @@ import {RegistrationDialogComponent} from '../registration-dialog/registration-d
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
 export class HeaderComponent {
 
   fileLoginDialogRef: MatDialogRef<ConnectionDialogComponent>;
@@ -33,5 +34,4 @@ export class HeaderComponent {
       console.log('SOUMETTRE UN SITE');
     }
   }
-
 }
