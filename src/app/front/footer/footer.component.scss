@@ -6,26 +6,23 @@ footer {
   height: 300px;
   line-height: 60px;
   background-color:#39393a;
-
+  font-size: 12px;
   .container{
     .footer-title{
       color:#afafaf;
-      font-size:17px;
       text-transform:uppercase;
       font-family: 'Open Sans', sans-serif;
+      font-weight:bold;
     }
     .footer-desc{
-      font-size:14px;
       line-height:18px;
       color:lightgray;
       display:inline-block;
     }
     .footer-rights{
-      font-size:13px;
       color:grey;
     }
     .footer-greyText{
-      font-size:13px;
       color:grey;
       line-height:18px;
       display:inline-block
@@ -34,24 +31,24 @@ footer {
       line-height: 18px;
     }
     .footer-siteName{
-      font-size:14px;
       line-height:18px;
       color:lightgray;
       font-weight: bold;
       text-decoration: underline;
-      display:inline-block
+      display:inline-block;
     }
     .vertical-menu{
+      font-size:13px;
       margin-left:5vh;
       margin-right:5vh;
       margin-top:15px;
-      font-size:14px;
       width:70px;
       line-height:18px;
     }
     .network-icons{
       i{
         margin-right:5px;
+        font-size:15px;
       }
     }
   }
