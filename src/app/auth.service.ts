@@ -6,7 +6,7 @@ import * as moment from 'moment';
 export class AuthService {
 
   // temporary variable for the dev
-  loginUrl = 'http://127.0.0.1:8000/';
+  localUrl = 'http://127.0.0.1:8000/';
 
   constructor(private http: HttpClient) {
   }
@@ -16,8 +16,9 @@ export class AuthService {
     body.append('_username', _username);
     body.append('_password', _password);
 
-    this.http.post(this.loginUrl + 'api/login_check', body).subscribe(
+    this.http.post(this.localUrl + 'api/login_check', body).subscribe(
       res => {
+        console.log(res);
         this.setTokenInLocalStorage(res);
       },
       err => {
@@ -53,7 +54,7 @@ export class AuthService {
 
   // Test for interceprot
   getMembers() {
-    this.http.get(this.loginUrl + 'api/member/49').subscribe(
+    this.http.get(this.localUrl + 'api/member/49').subscribe(
       res => {
         console.log(res);
       },
