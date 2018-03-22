@@ -9,9 +9,9 @@
       "WEBSITE_SUBMIT": "SOUMETTRE UN SITE"
     },
     "DIALOG": {
-      "MAIL": "E-mail",
-      "PASSWORD": "Mot de passe",
-      "TO_LOG_IN": "Se connecter"
+      "MAIL": "e-mail",
+      "PASSWORD": "mot de passe",
+      "TO_LOG_IN": "se connecter"
     }
   }
 }

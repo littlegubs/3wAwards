@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import * as moment from 'moment';
 
 @Injectable()
 export class AuthService {
@@ -17,13 +18,50 @@ export class AuthService {
 
     this.http.post(this.loginUrl + 'api/login_check', body).subscribe(
       res => {
+        this.setTokenInLocalStorage(res);
+      },
+      err => {
+      }
+    );
+  }
+
+  private setTokenInLocalStorage(authResult) {
+    const expireAR = moment().add(authResult.expiresIn, 'second');
+    const Usertoken = JSON.parse(JSON.stringify(authResult));
+    localStorage.setItem('user_token', Usertoken.token );
+    localStorage.setItem('expires_at', JSON.stringify(expireAR.valueOf()));
+  }
+
+  logout() {
+    localStorage.removeItem('user_token');
+    localStorage.removeItem('expires_at');
+  }
+
+  isLoggedIn() {
+    return moment().isBefore(this.getExpiration());
+  }
+
+  isLoggedOut() {
+    return !this.isLoggedIn();
+  }
+
+  getExpiration() {
+    const expiration = localStorage.getItem('expires_at');
+    const expiresAt = JSON.parse(expiration);
+    return moment(expiresAt);
+  }
+
+  // Test for interceprot
+  getMembers() {
+    this.http.get(this.loginUrl + 'api/member/49').subscribe(
+      res => {
         console.log(res);
       },
       err => {
-        console.log(body);
-        console.log('Error occured');
       }
     );
   }
 
 }
+
+

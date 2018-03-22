@@ -12,8 +12,7 @@ export class ConnectionDialogComponent {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService,
-              private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       mail: ['', Validators.required],
       password: ['', Validators.required]
@@ -24,9 +23,12 @@ export class ConnectionDialogComponent {
     const val = this.loginForm.value;
 
     if (val.mail && val.password) {
-      console.log('submit is send');
       this.authService.login(val.mail, val.password);
     }
+  }
+
+  testinterceptor() {
+    this.authService.getMembers();
   }
 
 }
