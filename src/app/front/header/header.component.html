@@ -1,7 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
     <app-menu></app-menu>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item active">
@@ -12,12 +11,12 @@
           <app-search></app-search>
         </li>
         <li class="nav-item">
-          <span (click)="openDialog()" class="btn btn-main-gray"><i class="far fa-user"></i> {{'FRONT.HEADER.SIGN_IN' | translate}}</span>
+          <span (click)="openLoginDialog()" class="btn btn-main-gray"><i class="far fa-user"></i> {{'FRONT.HEADER.SIGN_IN' | translate}}</span>
           <span class="pipe-separator"> | </span>
-          <span class="btn btn-main-gray">{{'FRONT.HEADER.SIGN_UP' | translate}}</span>
+          <span (click)="openRegistrationDialog()"  class="btn btn-main-gray">{{'FRONT.HEADER.SIGN_UP' | translate}}</span>
         </li>
         <li class="nav-item">
-          <button type="button" class="btn btn-main-red">{{'FRONT.HEADER.WEBSITE_SUBMIT' | translate}}</button>
+          <button (click)="submitWebsite()" type="button" class="btn btn-main-red">{{'FRONT.HEADER.WEBSITE_SUBMIT' | translate}}</button>
         </li>
         <li class="nav-item">
           <div class="dropdown">
@@ -35,3 +34,4 @@
     </div>
   </nav>
 </header>
+

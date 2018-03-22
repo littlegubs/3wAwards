@@ -26,6 +26,7 @@ import {ConnectionDialogComponent} from './front/connection-dialog/connection-di
 import {AuthService} from './auth.service';
 import {AuthInterceptor} from './auth.interceptor';
 import { HeaderComponent } from './front/header/header.component';
+import { RegistrationDialogComponent } from './front/registration-dialog/registration-dialog.component';
 
 
 
@@ -46,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConnectionDialogComponent,
     ConnectionDialogComponent,
     HeaderComponent,
+    RegistrationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  entryComponents: [ConnectionDialogComponent],
+  entryComponents: [
+    ConnectionDialogComponent,
+    RegistrationDialogComponent
+  ],
   providers: [
     AuthService,
     {
