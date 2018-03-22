@@ -33,6 +33,9 @@
     },
     "COMMON": {
       "SEARCH": "Rechercher"
+    },
+    "SLIDER": {
+      "SITE_OF_THE_DAY": "Site du jour |"
     }
   }
 }
