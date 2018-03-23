@@ -29,7 +29,13 @@
     "DIALOG": {
       "MAIL": "e-mail",
       "PASSWORD": "mot de passe",
-      "TO_LOG_IN": "se connecter"
+      "TO_LOG_IN": "se connecter",
+      "FIRST_NAME": "prénom",
+      "NAME": "Nom ou pseudo",
+      "TO_LOG_UP": "Créer mon compte",
+      "Already_Registered": "Déjà membre ?",
+      "LOG_IN": "Connectez-vous"
+
     },
     "COMMON": {
       "SEARCH": "Rechercher"
