@@ -555,7 +555,7 @@ var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
         // temporary variable for the dev
-        this.localUrl = 'http://127.0.0.1:8000/';
+        this.localUrl = 'http://3wa-awfl.lycee-stvincent.net/';
     }
     AuthService.prototype.login = function (_username, _password) {
         var _this = this;
