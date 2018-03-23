@@ -1,0 +1,31 @@
+.margin-top {
+  margin-top: 15px;
+}
+
+.mat-dialog{
+  &-title {
+    text-align: center;
+    font-weight: bold;
+  }
+  &-content {
+    label {
+      display: block;
+      width: 120px;
+      float: left;
+      text-align: right;
+      margin-right: 10px;
+    }
+    .btn {
+      margin-top: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      display: block;
+
+    }
+    input {
+      border-radius: 30px;
+      height: 35px;
+      border: 2px solid #E2E2E2;
+    }
+  }
+}

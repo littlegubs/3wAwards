@@ -6,9 +6,11 @@
 
 /* === COMPONENTS === */
 @import "../app/app.component";
-@import "../app/home/home.component";
-@import "../app/menu/menu.component";
-@import "../app/search/search.component";
-@import "../app/slider/slider.component";
-@import "../app/website/website.component";
-
+@import "../app/front/home/home.component";
+@import "../app/front/header/header.component";
+@import "../app/front/menu/menu.component";
+@import "../app/front/site-card/site-card.component";
+@import "../app/front/search/search.component";
+@import "../app/front/slider/slider.component";
+@import "../app/front/website/website.component";
+@import "../app/front/footer/footer.component";

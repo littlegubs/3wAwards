@@ -1,0 +1,55 @@
+footer {
+  position:absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 300px;
+  line-height: 60px;
+  background-color:#39393a;
+  font-size: 12px;
+  .container{
+    .footer-title{
+      color:#afafaf;
+      text-transform:uppercase;
+      font-family: 'Open Sans', sans-serif;
+      font-weight:bold;
+    }
+    .footer-desc{
+      line-height:18px;
+      color:lightgray;
+      display:inline-block;
+    }
+    .footer-rights{
+      color:grey;
+    }
+    .footer-greyText{
+      color:grey;
+      line-height:18px;
+      display:inline-block
+    }
+    .sites{
+      line-height: 18px;
+    }
+    .footer-siteName{
+      line-height:18px;
+      color:lightgray;
+      font-weight: bold;
+      text-decoration: underline;
+      display:inline-block;
+    }
+    .vertical-menu{
+      font-size:13px;
+      margin-left:5vh;
+      margin-right:5vh;
+      margin-top:15px;
+      width:70px;
+      line-height:18px;
+    }
+    .network-icons{
+      i{
+        margin-right:5px;
+        font-size:15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import "../../../sass/commons/mixins";
+
+app-header{
+    header{
+        &,nav{
+            min-width: 100%;
+            min-height: 90px;
+            background-color: #FFFFFF;
+        }
+        .navbar-nav{
+            width: 100%;
+            @include justify-content(space-around);
+            @include align-items(center)
+        }
+        .nav-item{
+            img{
+                width: 190px;
+            }
+        }
+
+        app-search {
+            @include flex();
+        }
+    }
+
+}
