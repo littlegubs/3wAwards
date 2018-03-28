@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ThreewawardsApiService} from '../../threewawards-api.service';
 
 @Component({
   selector: 'app-site-card',
@@ -6,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteCardComponent implements OnInit {
 
-  constructor() { }
+  projectName: string;
+
+  constructor(private threewawardsApiService: ThreewawardsApiService) {
+  }
 
   ngOnInit() {
+    this.threewawardsApiService.get('project/twelve-last-projects').subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+      }
+    );
   }
 
 }
