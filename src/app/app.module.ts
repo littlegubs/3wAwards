@@ -28,6 +28,7 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 import { SiteCardComponent } from './front/site-card/site-card.component';
 import { FooterComponent } from './front/footer/footer.component';
 import { HeaderComponent } from './front/header/header.component';
+import {ThreewawardsApiService} from './threewawards-api.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -75,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     AuthService,
+    ThreewawardsApiService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
