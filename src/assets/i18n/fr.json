@@ -10,7 +10,7 @@
         "AWARDS": "Awards",
         "ANNUAIRE": "Annuaire",
         "BLOG": "Blog",
-        "OFFERS": "Offres",
+        "OFFERS": "Offres d'emploi",
         "SHOP": "Boutique",
         "ABOUT": "A propos",
         "CONTACT": "Contact"
@@ -27,10 +27,10 @@
       }
     },
     "DIALOG": {
-      "MAIL": "e-mail",
-      "PASSWORD": "mot de passe",
+      "MAIL": "E-mail",
+      "PASSWORD": "Mot de passe",
       "TO_LOG_IN": "se connecter",
-      "FIRST_NAME": "prénom",
+      "FIRST_NAME": "Prénom",
       "NAME": "Nom ou pseudo",
       "TO_LOG_UP": "Créer mon compte",
       "Already_Registered": "Déjà membre ?",

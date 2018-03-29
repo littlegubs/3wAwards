@@ -1,13 +1,19 @@
+@import "../../../../src/sass/commons/_structure.scss";
+
 footer {
   position:absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 300px;
+  min-height: 300px;
   line-height: 60px;
   background-color:#39393a;
   font-size: 12px;
-  .container{
+  margin-bottom: -28vh;
+  .container-fluid{
+    .footer-about{
+      margin-left:10vh;
+    }
     .footer-title{
       color:#afafaf;
       text-transform:uppercase;
@@ -44,11 +50,70 @@ footer {
       margin-top:15px;
       width:70px;
       line-height:18px;
+      white-space: pre;
     }
     .network-icons{
       i{
         margin-right:5px;
         font-size:15px;
+      }
+      text-align: right;
+    }
+  }
+  @media #{$mobile}{
+    .container-fluid {
+      .footer-about {
+        margin: 0;
+      }
+      .vertical-menu {
+        white-space: normal;
+        width:auto;
+        margin: auto;
+      }
+      .network-icons {
+        i {
+          margin-right: 5px;
+          font-size: 15px;
+        }
+        text-align: left;
+      }
+    }
+  }
+  @media #{$tablet-l}{
+    .container-fluid {
+      .footer-about {
+        margin: 0;
+      }
+      .vertical-menu {
+        white-space: normal;
+        width: auto;
+        margin: auto;
+      }
+      .network-icons {
+        i {
+          margin-right: 5px;
+          font-size: 15px;
+        }
+        text-align: left;
+      }
+    }
+  }
+  @media #{$smaller-screen}{
+    .container-fluid {
+      .footer-about {
+        margin: 0;
+      }
+      .vertical-menu {
+        white-space: normal;
+        width: auto;
+        margin: auto;
+      }
+      .network-icons {
+        i {
+          margin-right: 5px;
+          font-size: 15px;
+        }
+        text-align: left;
       }
     }
   }
