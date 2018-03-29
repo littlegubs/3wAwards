@@ -8,7 +8,12 @@ app-search{
         border-radius: 25px;
         color: black;
         padding: 10px;
-        width: 350px;
+        width:40px;
+        transition: width 0.7s;
+        &:focus{
+            width: 350px;
+        }
+
     }
     i{
         padding: 10px;
@@ -17,5 +22,9 @@ app-search{
     }
     .input-group{
         margin: 0 !important;
+        &:before {
+            content: "\f002";
+            display: block;
+        }
     }
 }
