@@ -4,17 +4,28 @@
         border: 2px solid red;
         border-radius: 30px;
         color: red;
+        transition: all 0.4s;
+        &:hover {
+            background-color: red;
+            color: white;
+        }
     }
     &-main-gray {
         background: transparent;
         border: none;
         border-radius: 30px;
         color: gray;
+
     }
     &-main-red-full{
-      background: red;
-      border: 2px solid red;
-      border-radius: 30px;
-      color: white;
+        background: red;
+        border: 2px solid red;
+        border-radius: 30px;
+        color: white;
+        transition: all 0.4s;
+        &:hover{
+            background-color: white;
+            color: red;
+        }
   }
 }

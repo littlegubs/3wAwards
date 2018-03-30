@@ -12,10 +12,10 @@ app-site-card{
         margin-bottom: 50px;
         color: lightgray;
         font-family: $mainfont !important;
+        transition: all 0.6s;
         &:hover {
             filter: alpha(opacity=30);
             opacity: 0.7;
-            transition: opacity 0.6s;
             cursor: pointer;
         }
         &-content{
