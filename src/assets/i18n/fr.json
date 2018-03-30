@@ -17,7 +17,17 @@
       }
     },
     "HEADER": {
-      "MENU": "MENU",
+      "MENU": {
+        "MENU": "MENU",
+        "FIRST": "Home",
+        "SECOND": "Nominés",
+        "THIRD": "Awards",
+        "FOURTH": "Agences",
+        "FIFTH": "Jury",
+        "SIXTH": "Blog",
+        "SEVENTH": "Jobs",
+        "EIGHTH": "Shop"
+      },
       "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
       "SWITCH_NAME": "FILTRES",
       "SIGN_IN": "CONNEXION",

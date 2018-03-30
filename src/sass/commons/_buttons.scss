@@ -1,4 +1,5 @@
 .btn{
+    outline: none;
     &-main-red{
         background: transparent;
         border: 2px solid red;
@@ -15,7 +16,6 @@
         border: none;
         border-radius: 30px;
         color: gray;
-
     }
     &-main-red-full{
         background: red;
