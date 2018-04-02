@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import * as moment from 'moment';
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Injectable()
 export class AuthService {
@@ -26,8 +27,18 @@ export class AuthService {
     );
   }
 
-  signUp() {
+  signUp(form: FormGroup) {
+    console.log(form.value);
+
+    const filterKeys = Object.keys(form.value);
     const body = new FormData();
+    for (let i = 0; i < filterKeys.length; i++) {
+      console.log(form.value[filterKeys[i]]);
+      body.append(filterKeys[i], form.value[filterKeys[i]]);
+    }
+    this.http.post(this.localUrl + 'register', body).subscribe( res => {
+      console.log(res);
+    });
   }
 
   private setTokenInLocalStorage(authResult) {
