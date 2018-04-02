@@ -14,6 +14,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
   }
+
   private subject = new Subject<any>();
   isConnected = new EventEmitter<boolean>();
 
@@ -21,14 +22,16 @@ export class AuthService {
     this.subject.next(isConnected);
     this.isConnected.emit(isConnected);
   }
+
   getIsConnected(): Observable<any> {
     return this.subject.asObservable();
   }
+
   login(_username: string, _password: string) {
     const body = new FormData();
     body.append('_username', _username);
     body.append('_password', _password);
-
+    console.log(body);
     this.http.post(this.localUrl + 'login_check', body).subscribe(
       res => {
         console.log(res);
@@ -41,17 +44,18 @@ export class AuthService {
   }
 
   signUp(form: FormGroup) {
-    console.log(form.value);
 
     const filterKeys = Object.keys(form.value);
     const body = new FormData();
     for (let i = 0; i < filterKeys.length; i++) {
-      console.log(form.value[filterKeys[i]]);
       body.append(filterKeys[i], form.value[filterKeys[i]]);
     }
-    this.http.post(this.localUrl + 'register', body).subscribe( res => {
-      console.log(res);
-    });
+    console.log(this.http.post(this.localUrl + 'register', body).subscribe(res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }));
   }
 
   private setTokenInLocalStorage(authResult) {
