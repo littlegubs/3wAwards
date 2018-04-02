@@ -10,10 +10,13 @@
         <li class="nav-item">
           <app-search></app-search>
         </li>
-        <li class="nav-item">
-          <span (click)="openLoginDialog()" class="btn btn-main-gray"><i class="far fa-user"></i> {{'FRONT.HEADER.SIGN_IN' | translate}}</span>
+        <li *ngIf="isConnected === false" class="nav-item">
+          <span (click)="openDialog('login')" class="btn btn-main-gray"><i class="far fa-user"></i> {{'FRONT.HEADER.SIGN_IN' | translate}}</span>
           <span class="pipe-separator"> | </span>
-          <span (click)="openRegistrationDialog()"  class="btn btn-main-gray">{{'FRONT.HEADER.SIGN_UP' | translate}}</span>
+          <span (click)="openDialog('registration')"  class="btn btn-main-gray">{{'FRONT.HEADER.SIGN_UP' | translate}}</span>
+        </li>
+        <li *ngIf="isConnected === true" class="nav-item">
+          <span>test</span>
         </li>
         <li class="nav-item">
           <button (click)="submitWebsite()" type="button" class="btn btn-main-red">{{'FRONT.HEADER.WEBSITE_SUBMIT' | translate}}</button>
