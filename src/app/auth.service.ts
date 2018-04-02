@@ -26,10 +26,14 @@ export class AuthService {
     );
   }
 
+  signUp() {
+    const body = new FormData();
+  }
+
   private setTokenInLocalStorage(authResult) {
     const expireAR = moment().add(authResult.expiresIn, 'second');
     const Usertoken = JSON.parse(JSON.stringify(authResult));
-    localStorage.setItem('user_token', Usertoken.token );
+    localStorage.setItem('user_token', Usertoken.token);
     localStorage.setItem('expires_at', JSON.stringify(expireAR.valueOf()));
   }
 
