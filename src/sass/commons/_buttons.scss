@@ -1,9 +1,15 @@
 .btn{
+    outline: none;
     &-main-red{
         background: transparent;
         border: 2px solid red;
         border-radius: 30px;
-        color: red;
+        color: #ec1c24;
+        transition: all 0.4s;
+        &:hover {
+            background-color: red;
+            color: white;
+        }
     }
     &-main-gray {
         background: transparent;
@@ -12,9 +18,14 @@
         color: gray;
     }
     &-main-red-full{
-      background: red;
-      border: 2px solid red;
-      border-radius: 30px;
-      color: white;
+        background: red;
+        border: 2px solid red;
+        border-radius: 30px;
+        color: white;
+        transition: all 0.4s;
+        &:hover{
+            background-color: white;
+            color: red;
+        }
   }
 }

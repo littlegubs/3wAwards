@@ -1,6 +1,7 @@
-<mat-slide-toggle>{{'FRONT.HEADER.SWITCH_NAME' | translate}}</mat-slide-toggle>
+<mat-slide-toggle [ngClass]="{'active': isActive }" >{{'FRONT.HEADER.SWITCH_NAME' | translate}}</mat-slide-toggle>
 <div class="input-group mb-3">
-  <input type="text" placeholder="{{'FRONT.COMMON.SEARCH' | translate}}">
+  <input type="text" placeholder="{{'FRONT.COMMON.SEARCH' | translate}}" [ngClass]="{'active': isActive }">
+  <i class="fas fa-search" (click)="isActive = !isActive;"></i>
 </div>
 
 
