@@ -14,28 +14,37 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
   }
-
-  private subject = new Subject<any>();
+  private subjectConnected = new Subject<any>();
+  private subjectToken = new Subject<any>();
   isConnected = new EventEmitter<boolean>();
+  token = new EventEmitter<string>();
 
   sendIsConnected(isConnected: boolean) {
-    this.subject.next(isConnected);
+    this.subjectConnected.next(isConnected);
     this.isConnected.emit(isConnected);
   }
 
   getIsConnected(): Observable<any> {
-    return this.subject.asObservable();
+    return this.subjectConnected.asObservable();
+  }
+  sendToken(token: string) {
+    this.subjectToken.next(token);
+    this.token.emit(token);
+  }
+  gettoken(): Observable<any>  {
+    return this.subjectToken.asObservable();
   }
 
   login(_username: string, _password: string) {
     const body = new FormData();
     body.append('_username', _username);
     body.append('_password', _password);
-    console.log(body);
+
     this.http.post(this.localUrl + 'login_check', body).subscribe(
       res => {
-        console.log(res);
+        const userToken = JSON.parse(JSON.stringify(res));
         this.setTokenInLocalStorage(res);
+        this.sendToken(userToken.token);
         this.sendIsConnected(true);
       },
       err => {
@@ -60,8 +69,8 @@ export class AuthService {
 
   private setTokenInLocalStorage(authResult) {
     const expireAR = moment().add(authResult.expiresIn, 'second');
-    const Usertoken = JSON.parse(JSON.stringify(authResult));
-    localStorage.setItem('user_token', Usertoken.token);
+    const userToken = JSON.parse(JSON.stringify(authResult));
+    localStorage.setItem('user_token', userToken.token);
     localStorage.setItem('expires_at', JSON.stringify(expireAR.valueOf()));
   }
 
@@ -78,9 +87,7 @@ export class AuthService {
   }
 
   getUserInfo(token: string) {
-    const decoded = jwtdecode(token);
-    console.log(decoded);
-    return decoded;
+    return jwtdecode(token);
   }
 }
 

@@ -15,7 +15,6 @@ export class SiteCardComponent implements OnInit {
   ngOnInit() {
     this.threewawardsApiService.get('project/twelve-last-projects').subscribe(
       res => {
-        console.log(res);
       },
       err => {
       }

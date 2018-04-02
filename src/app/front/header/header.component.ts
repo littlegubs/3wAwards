@@ -13,19 +13,26 @@ import {Subscription} from 'rxjs/Subscription';
 
 export class HeaderComponent {
 
-  token = localStorage.getItem('user_token');
+  token: string;
+  tokenStorage = localStorage.getItem('user_token');
   isConnected = false;
-  subscription: Subscription;
+  subscriptionConneted: Subscription;
+  subscriptionToken: Subscription;
   fileLoginDialogRef: MatDialogRef<ConnectionDialogComponent>;
   fileRegistrationDialogRef: MatDialogRef<RegistrationDialogComponent>;
   userInfo: JSON;
 
   constructor(private dialog: MatDialog, private authService: AuthService) {
-    if (typeof this.token === 'string') {
+    if (typeof this.tokenStorage === 'string') {
+      this.userInfo = this.authService.getUserInfo(this.tokenStorage);
       this.isConnected = true;
     }
-    this.subscription = authService.getIsConnected().subscribe(res => {
+    this.subscriptionConneted = authService.getIsConnected().subscribe(res => {
       this.isConnected = res;
+    });
+    this.subscriptionToken = authService.gettoken().subscribe(res => {
+      this.token = res;
+      this.userInfo = this.authService.getUserInfo(res);
     });
   }
   closeDialog(dialogName: string) {
@@ -43,14 +50,10 @@ export class HeaderComponent {
     }
   }
   submitWebsite() {
-    if (typeof this.token !== 'string') {
+    if (typeof this.tokenStorage !== 'string') {
       this.fileLoginDialogRef = this.dialog.open(ConnectionDialogComponent);
     } else {
       console.log('SOUMETTRE UN SITE');
     }
-  }
-  getUserInfo() {
-    this.userInfo = this.authService.getUserInfo(this.token);
-    console.log(this.userInfo);
   }
 }

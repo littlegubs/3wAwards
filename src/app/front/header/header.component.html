@@ -16,7 +16,16 @@
           <span (click)="openDialog('registration')"  class="btn btn-main-gray">{{'FRONT.HEADER.SIGN_UP' | translate}}</span>
         </li>
         <li *ngIf="isConnected === true" class="nav-item">
-          <span>test</span>
+          <div class="dropdown">
+            <button class="btn btn-main-gray" type="button" id="memberDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{userInfo.firstName}} {{userInfo.lastName}} <i class="fas fa-angle-down"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="memberDropdown">
+              <a class="dropdown-item" href="#">test1</a>
+              <a class="dropdown-item" href="#">tes2</a>
+              <a class="dropdown-item" href="#">test3</a>
+            </div>
+          </div>
         </li>
         <li class="nav-item">
           <button (click)="submitWebsite()" type="button" class="btn btn-main-red">{{'FRONT.HEADER.WEBSITE_SUBMIT' | translate}}</button>
