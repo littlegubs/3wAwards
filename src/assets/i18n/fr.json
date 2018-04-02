@@ -10,14 +10,24 @@
         "AWARDS": "Awards",
         "ANNUAIRE": "Annuaire",
         "BLOG": "Blog",
-        "OFFERS": "Offres",
+        "OFFERS": "Offres d'emploi",
         "SHOP": "Boutique",
         "ABOUT": "A propos",
         "CONTACT": "Contact"
       }
     },
     "HEADER": {
-      "MENU": "MENU",
+      "MENU": {
+        "MENU": "MENU",
+        "FIRST": "Home",
+        "SECOND": "Nominés",
+        "THIRD": "Awards",
+        "FOURTH": "Agences",
+        "FIFTH": "Jury",
+        "SIXTH": "Blog",
+        "SEVENTH": "Jobs",
+        "EIGHTH": "Shop"
+      },
       "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
       "SWITCH_NAME": "FILTRES",
       "SIGN_IN": "CONNEXION",
@@ -27,10 +37,11 @@
       }
     },
     "DIALOG": {
-      "MAIL": "e-mail",
-      "PASSWORD": "mot de passe",
-      "FIRST_NAME": "prénom",
+      "MAIL": "E-mail",
+      "PASSWORD": "Mot de passe",
+      "FIRST_NAME": "Prénom",
       "NAME": "Nom ou pseudo",
+      "TO_LOG_UP": "Créer mon compte",
       "Already_Registered": "Déjà membre ?",
       "LOG_IN": "Connectez-vous",
       "BUTTONS": {

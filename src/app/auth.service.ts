@@ -16,7 +16,7 @@ export class AuthService {
     body.append('_username', _username);
     body.append('_password', _password);
 
-    this.http.post(this.localUrl + 'api/login_check', body).subscribe(
+    this.http.post(this.localUrl + 'login_check', body).subscribe(
       res => {
         console.log(res);
         this.setTokenInLocalStorage(res);
