@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import * as moment from 'moment';
+import {FormGroup} from '@angular/forms';
 import * as jwtdecode from 'jwt-decode';
 
 @Injectable()
@@ -39,9 +40,9 @@ export class AuthService {
 
     this.http.post(this.localUrl + 'login_check', body).subscribe(
       res => {
-        const usertoken = JSON.parse(JSON.stringify(res));
+        const userToken = JSON.parse(JSON.stringify(res));
         this.setTokenInLocalStorage(res);
-        this.sendToken(usertoken.token);
+        this.sendToken(userToken.token);
         this.sendIsConnected(true);
       },
       err => {
@@ -49,14 +50,24 @@ export class AuthService {
     );
   }
 
-  signUp() {
+  signUp(form: FormGroup) {
+    console.log(form.value);
+
+    const filterKeys = Object.keys(form.value);
     const body = new FormData();
+    for (let i = 0; i < filterKeys.length; i++) {
+      console.log(form.value[filterKeys[i]]);
+      body.append(filterKeys[i], form.value[filterKeys[i]]);
+    }
+    this.http.post(this.localUrl + 'register', body).subscribe( res => {
+      console.log(res);
+    });
   }
 
   private setTokenInLocalStorage(authResult) {
     const expireAR = moment().add(authResult.expiresIn, 'second');
-    const usertoken = JSON.parse(JSON.stringify(authResult));
-    localStorage.setItem('user_token', usertoken.token);
+    const userToken = JSON.parse(JSON.stringify(authResult));
+    localStorage.setItem('user_token', userToken.token);
     localStorage.setItem('expires_at', JSON.stringify(expireAR.valueOf()));
   }
 
