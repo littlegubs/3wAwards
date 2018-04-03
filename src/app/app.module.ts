@@ -29,6 +29,7 @@ import { SiteCardComponent } from './front/site-card/site-card.component';
 import { FooterComponent } from './front/footer/footer.component';
 import { HeaderComponent } from './front/header/header.component';
 import {ThreewawardsApiService} from './threewawards-api.service';
+import { AgencyProfileComponent } from './front/agency-profile/agency-profile.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,7 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConnectionDialogComponent,
     HeaderComponent,
     RegistrationDialogComponent,
-    HeaderComponent
+    HeaderComponent,
+    AgencyProfileComponent
   ],
   imports: [
     BrowserModule,

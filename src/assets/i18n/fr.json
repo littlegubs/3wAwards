@@ -16,6 +16,16 @@
         "CONTACT": "Contact"
       }
     },
+    "AGENCY_PROFILE":{
+      "COUNTRY":"Pays",
+      "CATEG":"Catégorie",
+      "STATUS":"Statut",
+      "CREATEDATE":"Date de création",
+      "REVENU":"Chiffres d'affaires",
+      "EFFEC":"Effectifs",
+      "AUTHORS":"Auteurs",
+      "GLOBAL_RANKING":"Note globale"
+    },
     "HEADER": {
       "MENU": "MENU",
       "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
