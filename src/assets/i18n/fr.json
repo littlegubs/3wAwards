@@ -28,6 +28,9 @@
         "SEVENTH": "Jobs",
         "EIGHTH": "Shop"
       },
+      "MEMBER_MENU": {
+        "DISCONNECTION": "Déconnexion"
+      },
       "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
       "SWITCH_NAME": "FILTRES",
       "SIGN_IN": "CONNEXION",

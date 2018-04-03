@@ -31,6 +31,7 @@ export class HeaderComponent {
       this.isConnected = res;
     });
     this.subscriptionToken = authService.gettoken().subscribe(res => {
+      this.dialog.closeAll();
       this.token = res;
       this.userInfo = this.authService.getUserInfo(res);
     });
@@ -51,9 +52,12 @@ export class HeaderComponent {
   }
   submitWebsite() {
     if (typeof this.tokenStorage !== 'string') {
-      this.fileLoginDialogRef = this.dialog.open(ConnectionDialogComponent);
+      this.fileRegistrationDialogRef = this.dialog.open(RegistrationDialogComponent);
     } else {
       console.log('SOUMETTRE UN SITE');
     }
+  }
+  Disconnection() {
+    this.authService.logout();
   }
 }
