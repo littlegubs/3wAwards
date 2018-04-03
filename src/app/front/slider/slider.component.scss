@@ -1,55 +1,72 @@
-#carouselExampleIndicators{
-  margin:0px 75px 0px 75px;
-}
-
-.carousel-indicators li {
-  border-radius: 10px;
-  margin: 1px 3px;
-  height: 10px;
-  max-width: 10px;
-  border: 1px solid #FFF;
-  background-color: transparent;
-}
-.carousel-indicators .active {
-  background-color: #fff;
-  max-width: 12px;
-  margin: 0 3px;
-  height: 12px;
-}
-.carousel{
-  img {
-    filter: brightness(10%);
+app-slider{
+  #carouselExampleIndicators{
+    margin:0 75px 0 75px;
+    top: -75px;
   }
-  position: relative;
-  .shareMenu{
-    position:absolute;
-    top:15px;
-    right:15px;
-    padding:10px;
-    border:1px solid gray;
-    border-radius: 50%;
-    color:gray;
+  
+  .carousel-indicators li {
+    border-radius: 10px;
+    margin: 1px 3px;
+    height: 10px;
+    max-width: 10px;
+    border: 1px solid #FFF;
+    background-color: transparent;
   }
-  .button-slider{
-    width:auto;
-    position:absolute;
-    background-color:transparent;
-    border:1px solid white;
-    border-radius:30px;
-    margin:0;
-    color:white;
+  .carousel-indicators .active {
+    background-color: #fff;
+    max-width: 12px;
+    margin: 0 3px;
+    height: 12px;
   }
-  .title-site-slider{
-
-  }
-  .daily-site{
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-weight:500;
-    color:white;
-    .date-slider{
+  .carousel{
+    img {
+      filter: brightness(10%);
+    }
+    position: relative;
+    .shareMenu{
+      position:absolute;
+      top:15px;
+      right:15px;
+      padding:10px;
+      border:1px solid gray;
+      border-radius: 50%;
       color:gray;
+    }
+    .button-slider{
+      width:auto;
+      position:absolute;
+      background-color:transparent;
+      border:1px solid white;
+      border-radius:30px;
+      margin:0;
+      color:white;
+    }
+    .title-site-slider{
+  
+    }
+    .daily-site{
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-weight:500;
+      color:white;
+      .date-slider{
+        color:gray;
+      }
+    }
+  }
+  @media #{$mobile}{
+    .carousel{
+      &.slide{
+        height: 75vh;
+        margin: 0 !important;
+      }
+      .container-carousel, &-inner, &-item, .img-fluid{
+        height: 75vh;
+      }
+      .img-fluid{
+        object-fit: cover;
+      }
     }
   }
 }

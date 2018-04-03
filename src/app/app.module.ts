@@ -46,7 +46,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     SiteCardComponent,
     FooterComponent,
     ConnectionDialogComponent,
-    ConnectionDialogComponent,
     HeaderComponent,
     RegistrationDialogComponent,
     HeaderComponent,

@@ -3,7 +3,7 @@
   <form  (submit)="onSubmit()" [formGroup]="registrationForm">
     <div class="margin-top">
       <label>{{"FRONT.DIALOG.FIRST_NAME" | translate}}:</label>
-      <input name="fisrtName" formControlName="fisrtName">
+      <input name="firstName" formControlName="firstName">
     </div>
     <div class="margin-top">
       <label>{{"FRONT.DIALOG.NAME" | translate}}:</label>
@@ -11,13 +11,13 @@
     </div>
     <div class="margin-top">
       <label>{{"FRONT.DIALOG.MAIL" | translate}}:</label>
-      <input name="mail" formControlName="mail">
+      <input name="email" formControlName="email">
     </div>
     <div class="margin-top">
       <label>{{"FRONT.DIALOG.PASSWORD" | translate}}:</label>
       <input name="password" formControlName="password">
     </div>
-    <button type="submit" class="btn btn-main-red-full">{{"FRONT.DIALOG.TO_LOG_IN" | translate}}</button>
+    <button type="submit" class="btn btn-main-red-full">{{"FRONT.DIALOG.BUTTONS.SIGN_UP" | translate}}</button>
   </form>
   <span>{{"FRONT.DIALOG.Already_Registered" | translate}}<a href="#">{{"FRONT.DIALOG.LOG_IN" | translate}}</a></span>
 </div>
