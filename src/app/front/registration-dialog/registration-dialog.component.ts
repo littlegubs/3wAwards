@@ -14,9 +14,9 @@ export class RegistrationDialogComponent {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private dialog: MatDialog) {
     this.registrationForm = this.fb.group({
-      fisrtName: ['', Validators],
+      firstName: ['', Validators],
       name: ['', Validators.required],
-      mail: ['', [
+      email: ['', [
         Validators.required,
         EmailValidator
       ]],

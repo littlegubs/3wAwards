@@ -23,6 +23,7 @@ export class AuthService {
     this.subjectConnected.next(isConnected);
     this.isConnected.emit(isConnected);
   }
+
   getIsConnected(): Observable<any> {
     return this.subjectConnected.asObservable();
   }
@@ -33,6 +34,7 @@ export class AuthService {
   gettoken(): Observable<any>  {
     return this.subjectToken.asObservable();
   }
+
   login(_username: string, _password: string) {
     const body = new FormData();
     body.append('_username', _username);
@@ -51,17 +53,18 @@ export class AuthService {
   }
 
   signUp(form: FormGroup) {
-    console.log(form.value);
 
     const filterKeys = Object.keys(form.value);
     const body = new FormData();
     for (let i = 0; i < filterKeys.length; i++) {
-      console.log(form.value[filterKeys[i]]);
       body.append(filterKeys[i], form.value[filterKeys[i]]);
     }
-    this.http.post(this.localUrl + 'register', body).subscribe( res => {
-      console.log(res);
-    });
+    console.log(this.http.post(this.localUrl + 'register', body).subscribe(res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }));
   }
 
   private setTokenInLocalStorage(authResult) {
