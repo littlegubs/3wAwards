@@ -11,6 +11,19 @@ export class AgencyBase {
   public static readonly _resource: string = 'agencies';
   get _resource(): string { return AgencyBase._resource; };
 
+  name: string;
+  address: string;
+  addressComplement: string;
+  zipcode: string;
+  phone: string;
+  fax: string;
+  city: string;
+  description: string;
+  internalNotice: string;
+  creationDate: Date;
+  websiteUrl: string;
+  tva: string;
+  duns: string;
   typeAgency: TypeAgency;
   member: Member;
   projects: Project;

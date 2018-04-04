@@ -10,6 +10,19 @@ export class ClientBase {
   public static readonly _resource: string = 'clients';
   get _resource(): string { return ClientBase._resource; };
 
+  name: string;
+  address: string;
+  addressComplement: string;
+  zipcode: string;
+  phone: string;
+  fax: string;
+  city: string;
+  description: string;
+  internalNotice: string;
+  creationDate: Date;
+  websiteUrl: string;
+  tva: string;
+  duns: string;
   tags: Tag;
   member: Member;
   image: Image;
