@@ -30,9 +30,15 @@ import { FooterComponent } from './front/footer/footer.component';
 import { HeaderComponent } from './front/header/header.component';
 import {ThreewawardsApiService} from './threewawards-api.service';
 import { AgencyProfileComponent } from './front/agency-profile/agency-profile.component';
+import { RestangularModule } from 'ngx-restangular';
+import { RestangularConfigFactory } from '../backend/services/RestangularConfigFactory';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function createRestangularConfigFactory(RestangularProvider) {
+  return RestangularConfigFactory(RestangularProvider, { baseUrl: 'http://127.0.0.1:8000' });
 }
 
 @NgModule({
@@ -63,6 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     MatDialogModule,
     MatCardModule,
+    RestangularModule.forRoot([], createRestangularConfigFactory),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
