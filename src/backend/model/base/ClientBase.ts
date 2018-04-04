@@ -1,0 +1,46 @@
+// This file should not be modified, as it can be overwritten by the generator.
+// The 'Client' class is here for customizations and will not be touched.
+
+import { Tag } from '../Tag';
+import { Member } from '../Member';
+import { Image } from '../Image';
+import { Project } from '../Project';
+
+export class ClientBase {
+  public static readonly _resource: string = 'clients';
+  get _resource(): string { return ClientBase._resource; };
+
+  tags: Tag;
+  member: Member;
+  image: Image;
+  projects: Project;
+
+  setTags(id: number): ClientBase {
+    this.tags = new Tag();
+    this.tags.id = id;
+    this.tags['@id'] = '/tags/' + id;
+    return this;
+  }
+
+  setMember(id: number): ClientBase {
+    this.member = new Member();
+    this.member.id = id;
+    this.member['@id'] = '/members/' + id;
+    return this;
+  }
+
+  setImage(id: number): ClientBase {
+    this.image = new Image();
+    this.image.id = id;
+    this.image['@id'] = '/images/' + id;
+    return this;
+  }
+
+  setProjects(id: number): ClientBase {
+    this.projects = new Project();
+    this.projects.id = id;
+    this.projects['@id'] = '/projects/' + id;
+    return this;
+  }
+
+}
