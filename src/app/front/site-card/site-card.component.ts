@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ThreewawardsApiService} from '../../threewawards-api.service';
+import {Project} from '../../../backend/model/Project';
 
 @Component({
   selector: 'app-site-card',
@@ -7,14 +8,15 @@ import {ThreewawardsApiService} from '../../threewawards-api.service';
 })
 export class SiteCardComponent implements OnInit {
 
-  projectName: string;
+  projects: Project[] = [];
 
   constructor(private threewawardsApiService: ThreewawardsApiService) {
   }
 
   ngOnInit() {
-    this.threewawardsApiService.get('project/twelve-last-projects').subscribe(
+    this.threewawardsApiService.get('projects?status=accepted&order%5BpublicationDate%5D=DESC&page=1').subscribe(
       res => {
+        console.log(res);
       },
       err => {
       }
