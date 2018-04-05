@@ -2,10 +2,19 @@
   <div class="row">
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let project of projects">
       <mat-card class="example-card">
-        <div mat-card-image style="background-image: url(assets/imgs/victor.jpeg)"></div>
+        <div mat-card-image style="background-image: url('{{'uploads/test.png' | liip:'profile_pic'}}')"></div>
         <mat-card-content>
           <mat-card-title>{{project.projectName}}</mat-card-title>
-          <p>par <span class="mat-card-creator">Lucas</span>  | <span class="mat-card-country">France</span></p>
+          <p *ngIf="project.agency === null">par
+            <span  class="mat-card-creator">{{project.client.name}}</span>
+            |
+            <span class="mat-card-country">{{project.client.country}}</span>
+          </p>
+          <p *ngIf="project.client === null">par
+            <span  class="mat-card-creator">{{project.agency.name}}</span>
+            |
+            <span class="mat-card-country">{{project.agency.country}}</span>
+          </p>
           <p class="mat-card-date">{{project.publicationDate | date}}</p>
           <div class="mat-card-actions">
             <i class="fas fa-eye"></i> 22

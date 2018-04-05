@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ThreewawardsApiService} from '../../threewawards-api.service';
 import {Project} from '../../../backend/model/Project';
 import {ProjectsService} from '../../../backend/services';
 
@@ -15,7 +14,7 @@ export class SiteCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.projectsService.getAllByFilter('project.status', 'accepted', 1).subscribe(
+    this.projectsService.getAllByFilter('status', 'accepted', 1).subscribe(
       res => {
         this.projects = res;
         console.log(this.projects);
