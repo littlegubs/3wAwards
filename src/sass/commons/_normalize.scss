@@ -142,11 +142,21 @@ textarea {
   color: inherit;
   font: inherit;
   margin: 0;
-  outline: none;
 }
 
 button {
   overflow: visible;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea,
+.btn {
+  &:focus, &:active{
+    outline: none;
+  }
 }
 
 button,
