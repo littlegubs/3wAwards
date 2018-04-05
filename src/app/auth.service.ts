@@ -60,7 +60,7 @@ export class AuthService {
       body.append(filterKeys[i], form.value[filterKeys[i]]);
     }
     console.log(this.http.post(this.localUrl + 'register', body).subscribe(res => {
-        console.log(res);
+        this.login(form.value['email'], form.value['password']);
       },
       err => {
         console.log(err);
