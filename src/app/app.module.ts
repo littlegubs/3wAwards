@@ -10,6 +10,7 @@ import {
   MatDialogModule,
   MatSlideToggleModule,
   MatCardModule,
+  MatTabsModule
 } from '@angular/material';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
 import {AuthService} from './auth.service';
@@ -47,6 +48,7 @@ import {
   TypeTagsService,
 } from '../backend/services';
 import { ClientProfileComponent } from './front/client-profile/client-profile.component';
+import { MemberProfileComponent } from './front/member-profile/member-profile.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -71,7 +73,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     RegistrationDialogComponent,
     HeaderComponent,
     AgencyProfileComponent,
-    ClientProfileComponent
+    ClientProfileComponent,
+    MemberProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +84,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     BootstrapModule,
     MatButtonModule,
     MatSlideToggleModule,
+    MatTabsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
