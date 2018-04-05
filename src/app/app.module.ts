@@ -75,7 +75,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     HeaderComponent,
     AgencyProfileComponent,
     ClientProfileComponent,
-    MemberProfileComponent
+    MemberProfileComponent,
     LiipPipe
   ],
   imports: [
