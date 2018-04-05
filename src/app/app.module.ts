@@ -46,6 +46,7 @@ import {
   TypeAgenciesService,
   TypeTagsService,
 } from '../backend/services';
+import { ClientProfileComponent } from './front/client-profile/client-profile.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -69,7 +70,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     HeaderComponent,
     RegistrationDialogComponent,
     HeaderComponent,
-    AgencyProfileComponent
+    AgencyProfileComponent,
+    ClientProfileComponent
   ],
   imports: [
     BrowserModule,
