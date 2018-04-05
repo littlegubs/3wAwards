@@ -28,7 +28,6 @@ import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/h
 import {SiteCardComponent} from './front/site-card/site-card.component';
 import {FooterComponent} from './front/footer/footer.component';
 import {HeaderComponent} from './front/header/header.component';
-import {ThreewawardsApiService} from './threewawards-api.service';
 import {AgencyProfileComponent} from './front/agency-profile/agency-profile.component';
 import {RestangularModule} from 'ngx-restangular';
 import {RestangularConfigFactory} from '../backend/services/RestangularConfigFactory';
@@ -46,6 +45,8 @@ import {
   TypeAgenciesService,
   TypeTagsService,
 } from '../backend/services';
+import {LiipPipe} from './liip.pipe';
+import {GlobalsService} from './globals.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -69,7 +70,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     HeaderComponent,
     RegistrationDialogComponent,
     HeaderComponent,
-    AgencyProfileComponent
+    AgencyProfileComponent,
+    LiipPipe
   ],
   imports: [
     BrowserModule,
@@ -110,7 +112,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     TypeAgenciesService,
     TypeTagsService,
     AuthService,
-    ThreewawardsApiService,
+    GlobalsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

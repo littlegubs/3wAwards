@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ThreewawardsApiService} from '../../threewawards-api.service';
 import {Project} from '../../../backend/model/Project';
 import {ProjectsService} from '../../../backend/services';
 
