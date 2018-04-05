@@ -47,6 +47,7 @@ import {
 } from '../backend/services';
 import {LiipPipe} from './liip.pipe';
 import {GlobalsService} from './globals.service';
+import { ClientProfileComponent } from './front/client-profile/client-profile.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -71,6 +72,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     RegistrationDialogComponent,
     HeaderComponent,
     AgencyProfileComponent,
+    ClientProfileComponent,
     LiipPipe
   ],
   imports: [

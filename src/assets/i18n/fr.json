@@ -26,6 +26,16 @@
       "AUTHORS":"Auteurs",
       "GLOBAL_RANKING":"Note globale"
     },
+    "CLIENT_PROFILE": {
+      "COUNTRY": "Pays",
+      "CATEG": "Catégorie",
+      "ACTIVITY_SECTOR": "Secteur d'activité",
+      "CREATEDATE": "Date de création",
+      "REVENU": "Chiffres d'affaires",
+      "EFFEC": "Effectifs",
+      "AUTHORS": "Auteurs",
+      "GLOBAL_RANKING": "Note globale"
+    },
     "HEADER": {
       "MENU": {
         "MENU": "MENU",
