@@ -1,40 +1,33 @@
 <div class="container-fluid">
-  <img src="assets/imgs/victor.jpeg" class="rounded-circle agency-profile-image">
-  <h1 class="agency-profile-name">Gueudet</h1>
-  <div class="agency-profile-text">
-    <span class="agency-profile-categ">Grande entreprise</span> | Automobile | France
+  <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
+  <h1 class="profile-name">Olivier SALESSE</h1>
+  <div class="profile-text">
+    <span class="profile-categ">Membre</span> | UX/UI designer | France
   </div>
-  <div class="agency-profile-data">
-    <i class="fas fa-eye"></i> 22
-    <i class="fas fa-heart"></i> 40
-    <i class="fas fa-star"></i> 40
-    <i class="fas fa-arrow-circle-up"></i>{{'FRONT.CLIENT_PROFILE.GLOBAL_RANKING' | translate}}: 8.7
+  <div class="profile-buttons">
+    <button type="button" class="btn btn-profile-external">Site web</button>
+    <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
   </div>
-  <div class="agency-profile-buttons">
-    <button type="button" class="btn agency-profile-button">Site web</button>
-    <button type="button" class="btn agency-profile-button"><i class="fas fa-share-alt"></i></button>
+  <div class="profile-desc">
+    <p>Co-fondateur et directeur de création de l'agence digitale Mentalworks, DA UX/UI, expert en stratégies digitales et en conception d'architectures web/mobile.</p>
   </div>
-  <div class="agency-profile-desc">
-    <p>Le groupe Gueudet est le 2e distributeur automobile en France avec un CA de 1,1M€, 9 marques et 158 concessions
-      situées principalement dans le nord de la France.</p>
-  </div>
-  <div class="agency-profile-tags">
-    <button type="button" class="btn agency-profile-button-tags">Primary</button>
-    <button type="button" class="btn agency-profile-button-tags">Primary</button>
-    <button type="button" class="btn agency-profile-button-tags">Primary</button>
-    <button type="button" class="btn agency-profile-button-tags">Primary</button>
-    <button type="button" class="btn agency-profile-button-tags">Primary</button>
-    <button type="button" class="btn agency-profile-button-tags">Primary</button>
-    <button type="button" class="btn agency-profile-button-tags">Primary</button>
-    <button type="button" class="btn agency-profile-button-tags">Primary</button>
-    <button type="button" class="btn agency-profile-button-tags">Primary</button>
+  <div class="profile-tags">
+    <button type="button" class="btn btn-tags">Primary</button>
+    <button type="button" class="btn btn-tags">Primary</button>
+    <button type="button" class="btn btn-tags">Primary</button>
+    <button type="button" class="btn btn-tags">Primary</button>
+    <button type="button" class="btn btn-tags">Primary</button>
+    <button type="button" class="btn btn-tags">Primary</button>
+    <button type="button" class="btn btn-tags">Primary</button>
+    <button type="button" class="btn btn-tags">Primary</button>
+    <button type="button" class="btn btn-tags">Primary</button>
   </div>
   <mat-tab-group>
-    <mat-tab label="Tab 1">Content 1</mat-tab>
-    <mat-tab label="Tab 2">Content 2</mat-tab>
-    <mat-tab label="Tab 2">Content 3</mat-tab>
-    <mat-tab label="Tab 2">Content 4</mat-tab>
-    <mat-tab label="Tab 2">Content 5</mat-tab>
-    <mat-tab label="Tab 2">Content 6</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.PROFILE' | translate">Content 1</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.LIKED_PROJECT' | translate">Content 2</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.MARKED_PROJECT' | translate">Content 3</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.ADMINED_CLIENT' | translate">Content 4</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.ADMINED_AGENCY' | translate">Content 5</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.AWARD' | translate">Content 6</mat-tab>
   </mat-tab-group>
 </div>
