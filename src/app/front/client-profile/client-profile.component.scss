@@ -1,0 +1,104 @@
+.container-fluid {
+  text-align: center;
+  height: auto;
+  margin-left: 0;
+  margin-right: 0;
+  .rounded-circle {
+    padding-top: 30px;
+    max-height: 30vh;
+  }
+  .agency-profile-name {
+    font-weight: 700;
+  }
+  .agency-profile-categ {
+    font-weight: bold;
+    color: black;
+  }
+  .agency-profile-text {
+    color: grey;
+    padding-bottom: 3vh;
+  }
+  .agency-profile-data {
+    color: grey;
+    padding-bottom: 3vh;
+    i {
+      margin-right: 10px;
+      margin-left: 10px;
+      color: black;
+    }
+  }
+  .agency-profile-share {
+    padding-bottom: 3vh;
+    padding: 1px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    color: gray;
+    width: 30px;
+    text-align: center;
+  }
+  .agency-profile-buttons {
+    padding-bottom: 3vh;
+    .agency-profile-button {
+      border-radius: 100px;
+      border: 1px solid gray;
+      background-color: #e2e2e2;
+      color: grey;
+      text-transform: uppercase;
+      font-size: 15px;
+      &:hover {
+        background-color: grey;
+        color: #e2e2e2;
+        transition: all 0.4s;
+      }
+    }
+  }
+  .agency-profile-desc {
+    padding-bottom: 3vh;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    p {
+      font-weight: 600;
+    }
+  }
+  .agency-profile-tags {
+    padding-bottom: 3vh;
+    .agency-profile-button-tags {
+      border-radius: 100px;
+      background-color: #cdcdcd;
+      color: #666666;
+      text-transform: uppercase;
+      font-size: 15px;
+      &:hover {
+        background-color: white;
+        transition: all 0.4s;
+      }
+    }
+  }
+  .agency-profile-detail {
+    padding-bottom: 3vh;
+    background-color: white;
+    min-width: 100%;
+    .agency-profile-detail-title {
+      font-weight: 700;
+      padding-top: 2vh;
+    }
+    .agency-profile-detail-content {
+      color: #666666;
+      padding-top: 2vh;
+      .agency-profile-button {
+        border-radius: 100px;
+        border: 1px solid gray;
+        background-color: #e2e2e2;
+        color: grey;
+        text-transform: uppercase;
+        font-size: 15px;
+        &:hover {
+          background-color: grey;
+          color: #e2e2e2;
+          transition: all 0.4s;
+        }
+      }
+    }
+  }
+}
