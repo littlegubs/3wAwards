@@ -12,6 +12,7 @@ export class AgencyBase {
   get _resource(): string { return AgencyBase._resource; };
 
   name: string;
+  country: string;
   address: string;
   addressComplement: string;
   zipcode: string;
