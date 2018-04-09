@@ -1,5 +1,5 @@
 .btn{
-    outline: none;
+    outline: none !important;
     &-main-red{
         background: transparent;
         border: 2px solid red;
@@ -14,7 +14,7 @@
     &-main-gray {
         background: transparent;
         border: none;
-        border-radius: 30px;
+        border-radius: 0;
         color: gray;
     }
     &-main-red-full{
@@ -27,5 +27,34 @@
             background-color: white;
             color: red;
         }
-  }
+    }
+    &-tags {
+        border-radius: 100px;
+        background-color: #cdcdcd;
+        color: #666666;
+        text-transform: uppercase;
+        font-size: 15px;
+        margin-bottom: 10px;
+        margin-right: 5px;
+        &:hover {
+            background-color: white;
+            transition: all 0.4s;
+        }
+    }
+    &-profile-external{
+        border-radius: 100px;
+        border: 1px solid gray;
+        background-color: #e2e2e2;
+        color: grey;
+        text-transform: uppercase;
+        font-size: 15px;
+        &:hover {
+            background-color: grey;
+            color: #e2e2e2;
+            transition: all 0.4s;
+        }
+    }
+    &:focus, &:hover:focus{
+        outline: none !important;
+    }
 }

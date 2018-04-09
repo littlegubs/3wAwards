@@ -1,0 +1,93 @@
+app-member-profile{
+    .container-fluid {
+        text-align: center;
+        height: auto;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        .rounded-circle {
+            padding-top: 30px;
+            max-height: 30vh;
+        }
+        .profile{
+            &-name {
+                font-weight: 700;
+            }
+            &-categ {
+                font-weight: bold;
+                color: black;
+            }
+            &-text {
+                color: grey;
+                padding-bottom: 3vh;
+            }
+            &-data {
+                color: grey;
+                padding-bottom: 3vh;
+                i {
+                    margin-right: 10px;
+                    margin-left: 10px;
+                    color: black;
+                }
+            }
+            &-share {
+                padding-bottom: 3vh;
+                border: 1px solid gray;
+                border-radius: 50%;
+                color: gray;
+                width: 30px;
+                text-align: center;
+            }
+            &-buttons {
+                padding-bottom: 3vh;
+            }
+            &-desc {
+                padding-bottom: 3vh;
+                max-width: 800px;
+                margin: auto;
+                text-align: center;
+                p {
+                    font-weight: 600;
+                }
+            }
+            &-tags {
+                padding-bottom: 3vh;
+                max-width: 800px;
+                margin: auto;
+            }
+        }
+    }
+    .mat {
+        &-ink-bar {
+            background-color: red !important;
+            height: 5px;
+        }
+        &-tab {
+            &-header {
+                &:after {
+                    content: '';
+                    height: 5px;
+                    width: 100%;
+                    position: absolute;
+                    border-bottom: 5px solid white;
+                    bottom: 0;
+                }
+                border: none;
+            }
+            &-body{
+                margin-top: 40px;
+            }
+            &-labels {
+                justify-content: center;
+            }
+            &-label-content {
+                text-transform: uppercase;
+            }
+            &-header-pagination {
+                box-shadow: none !important;
+            }
+        }
+    }
+}
+
+
