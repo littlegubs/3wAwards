@@ -9,7 +9,7 @@ import {
   MatButtonModule,
   MatDialogModule,
   MatSlideToggleModule,
-  MatCardModule,
+  MatCardModule, MatProgressSpinnerModule,
 } from '@angular/material';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
 import {AuthService} from './auth.service';
@@ -83,6 +83,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     BootstrapModule,
     MatButtonModule,
     MatSlideToggleModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
