@@ -608,7 +608,7 @@ var AuthService = /** @class */ (function () {
     function AuthService(http) {
         this.http = http;
         // temporary variable for the dev
-        this.localUrl = 'http://127.0.0.1:8000/';
+        this.localUrl = 'http://api-3wa-awfl.lycee-stvincent.net/';
         this.subjectConnected = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
         this.subjectToken = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
         this.isConnected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
@@ -1412,7 +1412,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var GlobalsService = /** @class */ (function () {
     function GlobalsService() {
-        this.url = 'http://127.0.0.1:8000/';
+        this.url = 'http://api-3wa-awfl.lycee-stvincent.net/';
     }
     GlobalsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])()
