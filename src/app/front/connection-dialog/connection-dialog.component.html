@@ -3,13 +3,13 @@
   <form  (submit)="onSubmit()" [formGroup]="loginForm">
     <div class="margin-top">
       <label>{{"FRONT.DIALOG.MAIL" | translate}}:</label>
-      <input name="email" formControlName="mail">
+      <input name="email" type="email"  formControlName="mail">
     </div>
     <div class="margin-top">
       <label>{{"FRONT.DIALOG.PASSWORD" | translate}}:</label>
-      <input name="password" formControlName="password">
+      <input name="password" type="password" formControlName="password">
     </div>
-    <button type="submit" class="btn btn-main-red-full">{{"FRONT.DIALOG.TO_LOG_IN" | translate}}</button>
+    <button type="submit" class="btn btn-main-red-full">{{"FRONT.DIALOG.BUTTONS.LOG_IN" | translate}}</button>
   </form>
 </div>
 

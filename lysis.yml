@@ -1,0 +1,10 @@
+apis:
+  http://127.0.0.1:8000:
+    basePath: 'src/backend'
+    hydraPrefix: 'hydra:'
+    generators:
+      lysis-typescript-classes-generator:
+        dir: 'model'
+      lysis-restangular-services-generator:
+        dir: 'services'
+        classPath: '../model'

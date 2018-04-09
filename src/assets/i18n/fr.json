@@ -10,14 +10,59 @@
         "AWARDS": "Awards",
         "ANNUAIRE": "Annuaire",
         "BLOG": "Blog",
-        "OFFERS": "Offres",
+        "OFFERS": "Offres d'emploi",
         "SHOP": "Boutique",
         "ABOUT": "A propos",
         "CONTACT": "Contact"
       }
     },
+    "AGENCY_PROFILE":{
+      "COUNTRY":"Pays",
+      "CATEG":"Catégorie",
+      "STATUS":"Statut",
+      "CREATEDATE":"Date de création",
+      "REVENU":"Chiffres d'affaires",
+      "EFFEC":"Effectifs",
+      "AUTHORS":"Auteurs",
+      "GLOBAL_RANKING":"Note globale"
+    },
+    "CLIENT_PROFILE": {
+      "COUNTRY": "Pays",
+      "CATEG": "Catégorie",
+      "ACTIVITY_SECTOR": "Secteur d'activité",
+      "CREATEDATE": "Date de création",
+      "REVENU": "Chiffres d'affaires",
+      "EFFEC": "Effectifs",
+      "AUTHORS": "Auteurs",
+      "GLOBAL_RANKING": "Note globale"
+    },
+    "MEMBER_PROFILE": {
+      "TABS": {
+        "PROFILE": "Mon profil",
+        "LIKED_PROJECT": "Projets que j'aime",
+        "MARKED_PROJECT": "Projets notés",
+        "ADMINED_CLIENT": "Clients administrés",
+        "ADMINED_AGENCY": "Agences administrées",
+        "AWARD": "Awards obtenus"
+      }
+    },
     "HEADER": {
-      "MENU": "MENU",
+      "MENU": {
+        "MENU": "MENU",
+        "LINKS": {
+          "HOME": "Home",
+          "NOMINATE": "Nominés",
+          "AWARDS": "Awards",
+          "AGENCY": "Agences",
+          "JURY": "Jury",
+          "BLOG": "Blog",
+          "OFFERS": "Jobs",
+          "SHOP": "Boutique"
+        }
+      },
+      "MEMBER_MENU": {
+        "DISCONNECTION": "Déconnexion"
+      },
       "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
       "SWITCH_NAME": "FILTRES",
       "SIGN_IN": "CONNEXION",
@@ -27,15 +72,17 @@
       }
     },
     "DIALOG": {
-      "MAIL": "e-mail",
-      "PASSWORD": "mot de passe",
-      "TO_LOG_IN": "se connecter",
-      "FIRST_NAME": "prénom",
+      "MAIL": "E-mail",
+      "PASSWORD": "Mot de passe",
+      "FIRST_NAME": "Prénom",
       "NAME": "Nom ou pseudo",
       "TO_LOG_UP": "Créer mon compte",
       "Already_Registered": "Déjà membre ?",
-      "LOG_IN": "Connectez-vous"
-
+      "LOG_IN": "Connectez-vous",
+      "BUTTONS": {
+        "SIGN_UP": "Créer mon compte",
+        "LOG_IN": "Se connecter"
+      }
     },
     "COMMON": {
       "SEARCH": "Rechercher"

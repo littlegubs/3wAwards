@@ -1,12 +1,34 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11]">
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let project of projects">
       <mat-card class="example-card">
-        <div mat-card-image style="background-image: url(assets/imgs/victor.jpeg)"></div>
+        <div *ngIf="project.images[0]; else noThumbail">
+          <div mat-card-image
+               *ngIf="(project.images[0].path |liip:'card_thumbnail' | async) as cardImage; else thumbnailLoading;"
+               [style.background-image]="'url('+cardImage+')'"></div>
+        </div>
+        <ng-template #noThumbail>
+          <div mat-card-image
+               [style.background-image]="'url(http://via.placeholder.com/415x300)'"></div>
+        </ng-template>
+        <ng-template #thumbnailLoading>
+          <div mat-card-image>
+            <mat-spinner></mat-spinner>
+          </div>
+        </ng-template>
         <mat-card-content>
-          <mat-card-title>Victor FishEye</mat-card-title>
-          <p>par <span class="mat-card-creator">Lucas</span> | <span class="mat-card-country">France</span></p>
-          <p class="mat-card-date">22 mars 2018</p>
+          <mat-card-title>{{project.projectName}}</mat-card-title>
+          <p *ngIf="project.agency === null">par
+            <span class="mat-card-creator">{{project.client.name}}</span>
+            |
+            <span class="mat-card-country">{{project.client.country}}</span>
+          </p>
+          <p *ngIf="project.client === null">par
+            <span class="mat-card-creator">{{project.agency.name}}</span>
+            |
+            <span class="mat-card-country">{{project.agency.country}}</span>
+          </p>
+          <p class="mat-card-date">{{project.publicationDate | date}}</p>
           <div class="mat-card-actions">
             <i class="fas fa-eye"></i> 22
             <i class="fas fa-heart"></i> 40

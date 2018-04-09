@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Project} from '../../../backend/model/Project';
+import {ProjectsService} from '../../../backend/services';
 
 @Component({
   selector: 'app-site-card',
@@ -6,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteCardComponent implements OnInit {
 
-  constructor() { }
+  projects: Project[] = [];
 
-  ngOnInit() {
+  constructor(private projectsService: ProjectsService) {
   }
 
+  ngOnInit() {
+    this.projectsService.getAllByFilter('status', 'accepted', 1).subscribe(
+      res => {
+        this.projects = res;
+        console.log(this.projects);
+      },
+      err => {
+      }
+    );
+  }
 }

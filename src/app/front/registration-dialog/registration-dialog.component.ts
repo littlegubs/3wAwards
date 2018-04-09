@@ -1,8 +1,7 @@
 import { Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {EmailValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../auth.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
-import {ConnectionDialogComponent} from '../connection-dialog/connection-dialog.component';
 
 @Component({
   selector: 'app-registration-dialog',
@@ -15,14 +14,17 @@ export class RegistrationDialogComponent {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private dialog: MatDialog) {
     this.registrationForm = this.fb.group({
-      fisrtName: ['', Validators],
+      firstName: ['', Validators],
       name: ['', Validators.required],
-      mail: ['', Validators.required],
+      email: ['', [
+        Validators.required,
+        EmailValidator
+      ]],
       password: ['', Validators.required]
     });
   }
 
   onSubmit() {
-    const val = this.registrationForm.value;
+    this.authService.signUp(this.registrationForm);
   }
 }

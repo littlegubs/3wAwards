@@ -149,6 +149,17 @@ button {
 }
 
 button,
+input,
+optgroup,
+select,
+textarea,
+.btn {
+  &:focus, &:active{
+    outline: none;
+  }
+}
+
+button,
 select {
   text-transform: none;
 }
