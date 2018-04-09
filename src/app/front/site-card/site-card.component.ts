@@ -17,7 +17,6 @@ export class SiteCardComponent implements OnInit {
     this.projectsService.getAllByFilter('status', 'accepted', 1).subscribe(
       res => {
         this.projects = res;
-        console.log(this.projects);
       },
       err => {
       }

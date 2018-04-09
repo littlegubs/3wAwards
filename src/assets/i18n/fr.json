@@ -61,7 +61,8 @@
         }
       },
       "MEMBER_MENU": {
-        "DISCONNECTION": "Déconnexion"
+        "DISCONNECTION": "Déconnexion",
+        "PROFILE": "Mon Profil"
       },
       "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
       "SWITCH_NAME": "FILTRES",

@@ -15,7 +15,7 @@ export class LiipPipe implements PipeTransform {
 
     let newPath: SafeResourceUrl;
     this.http.get(this.globals.url + 'liip?path=' + path + '&filter=' + filter).subscribe(res => {
-      newPath = this.sanitizer.bypassSecurityTrustResourceUrl(res);
+      // newPath = this.sanitizer.bypassSecurityTrustResourceUrl(res);
     });
     return newPath;
   }

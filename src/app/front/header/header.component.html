@@ -21,7 +21,7 @@
               {{userInfo.firstName}} {{userInfo.lastName}} <i class="fas fa-angle-down"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="memberDropdown">
-              <a class="dropdown-item" href="#">test1</a>
+              <a class="dropdown-item" [routerLink]="['/member/', userInfo.id]">{{'FRONT.HEADER.MEMBER_MENU.PROFILE' | translate}}</a>
               <a class="dropdown-item" href="#">tes2</a>
               <a (click)="Disconnection()" class="dropdown-item" href="#">{{'FRONT.HEADER.MEMBER_MENU.DISCONNECTION' | translate}}</a>
             </div>
