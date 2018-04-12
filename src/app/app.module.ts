@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
-import * as $ from 'jquery';
 import {BootstrapModule} from './bootstrap.module';
 import {
   MatButtonModule,

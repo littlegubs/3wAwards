@@ -7,8 +7,8 @@ import {MemberProfileComponent} from './front/member-profile/member-profile.comp
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'agency', component: AgencyProfileComponent},
-    {path: 'client', component: ClientProfileComponent},
+    {path: 'agency/:id', component: AgencyProfileComponent},
+    {path: 'client/:id', component: ClientProfileComponent},
     {path: 'profile', component: MemberProfileComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'},
 ];

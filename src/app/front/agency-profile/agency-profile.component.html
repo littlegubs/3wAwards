@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid"  *ngIf="agency; else loading">
     <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
-    <h1 class="profile-name">MentalWorks</h1>
+    <h1 class="profile-name">{{agency.name}}</h1>
     <div class="profile-text">
         <span class="profile-categ">Agence digitale</span> | Indépendante | France
     </div>
@@ -60,3 +60,4 @@
         </div>
     </div>
 </div>
+<ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>
