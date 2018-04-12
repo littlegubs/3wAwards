@@ -3,7 +3,7 @@ app-slider{
     margin:0 75px 0 75px;
     top: -75px;
   }
-  
+
   .carousel-indicators li {
     border-radius: 10px;
     margin: 1px 3px;
@@ -20,7 +20,7 @@ app-slider{
   }
   .carousel{
     img {
-      filter: brightness(10%);
+      filter: brightness(30%);
     }
     position: relative;
     .shareMenu{
@@ -42,9 +42,9 @@ app-slider{
       color:white;
     }
     .title-site-slider{
-  
+
     }
-    .daily-site{
+    .daily-date{
       position: absolute;
       top: 15px;
       left: 15px;
@@ -53,6 +53,25 @@ app-slider{
       .date-slider{
         color:gray;
       }
+    }
+  }
+  .daily-site {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    color: gray;
+    text-align: center;
+    font-size: 11px;
+    max-width: 300px;
+    margin-top: 27px;
+    .bold {
+      color: white;
+      font-weight: bold;
+    }
+    .daily-site-name {
+      color: white;
+      font-weight: bold;
+      font-size: 26px;
     }
   }
   @media #{$mobile}{

@@ -1,8 +1,19 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <div class="container-carousel">
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item" *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11]" [ngClass]="{'active': number == 0}">
-                <img class="d-block img-fluid" src="http://via.placeholder.com/1780x700" alt="First slide">
+            <div class="carousel-item" *ngFor="let award of awards; let i = index" [ngClass]="{'active': i == 0 }">
+                <img class="d-block img-fluid" [src]="award.project.images[0].path |liip:'slider_thumbnail' | async" alt="First slide">
+                <div class="daily-date">
+                  <i class="far fa-star"></i>
+                  <span>{{'FRONT.SLIDER.SITE_OF_THE_DAY' | translate}}</span>
+                  <span class="date-slider">{{award.date | date}} </span>
+                </div>
+              <div class="daily-site">
+                <span class="daily-site-name">{{award.project.projectName}}</span>
+                <br>
+                <span *ngIf="award.project.agency === null">par <span class="bold">{{award.project.client.name}}</span> | {{award.project.client.country}} </span>
+                <span *ngIf="award.project.client === null">par <span class="bold">{{award.project.agency.name}}</span> | {{award.project.agency.country}}  </span>
+              </div>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -14,10 +25,5 @@
             <span class="sr-only">Next</span>
         </a>
         <i class="shareMenu fas fa-share-alt"></i>
-        <div class="daily-site">
-            <i class="far fa-star"></i>
-            <span>{{'FRONT.SLIDER.SITE_OF_THE_DAY' | translate}}</span>
-            <span class="date-slider">22 Mars 2018</span>
-        </div>
     </div>
 </div>

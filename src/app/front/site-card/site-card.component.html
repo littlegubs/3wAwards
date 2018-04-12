@@ -5,15 +5,15 @@
         <div *ngIf="project.images[0]; else noThumbail">
           <div mat-card-image
                *ngIf="(project.images[0].path |liip:'card_thumbnail' | async) as cardImage; else thumbnailLoading;"
-               [style.background-image]="'url('+cardImage+')'"></div>
+               [style.background-image]="'url('+cardImage+')'">
+          </div>
         </div>
         <ng-template #noThumbail>
-          <div mat-card-image
-               [style.background-image]="'url(http://via.placeholder.com/415x300)'"></div>
+          <div mat-card-image [style.background-image]="'url(http://via.placeholder.com/415x300)'"></div>
         </ng-template>
         <ng-template #thumbnailLoading>
           <div mat-card-image>
-            <mat-spinner></mat-spinner>
+            <mat-spinner color="warn"></mat-spinner>
           </div>
         </ng-template>
         <mat-card-content>
