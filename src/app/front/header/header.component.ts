@@ -4,6 +4,7 @@ import {ConnectionDialogComponent} from '../connection-dialog/connection-dialog.
 import {RegistrationDialogComponent} from '../registration-dialog/registration-dialog.component';
 import {AuthService} from '../../auth.service';
 import {Subscription} from 'rxjs/Subscription';
+import {TokenInterface} from '../../tokenInterface';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent {
   subscriptionToken: Subscription;
   fileLoginDialogRef: MatDialogRef<ConnectionDialogComponent>;
   fileRegistrationDialogRef: MatDialogRef<RegistrationDialogComponent>;
-  userInfo: JSON;
+  userInfo: TokenInterface;
 
   constructor(private dialog: MatDialog, private authService: AuthService) {
     if (typeof this.tokenStorage === 'string') {
