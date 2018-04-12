@@ -11,6 +11,7 @@ export class ClientBase {
   get _resource(): string { return ClientBase._resource; };
 
   name: string;
+  country: string;
   address: string;
   addressComplement: string;
   zipcode: string;

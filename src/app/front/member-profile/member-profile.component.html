@@ -1,8 +1,8 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="member; else loading">
   <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
-  <h1 class="profile-name">Olivier SALESSE</h1>
+  <h1 class="profile-name">{{member.firstName}} {{member.lastName}}</h1>
   <div class="profile-text">
-    <span class="profile-categ">Membre</span> | UX/UI designer | France
+    <span class="profile-categ">Membre</span> | UX/UI designer | {{member.country}}
   </div>
   <div class="profile-buttons">
     <button type="button" class="btn btn-profile-external">Site web</button>
@@ -31,3 +31,4 @@
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.AWARD' | translate">Content 6</mat-tab>
   </mat-tab-group>
 </div>
+<ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>

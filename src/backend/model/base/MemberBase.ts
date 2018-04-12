@@ -14,6 +14,7 @@ export class MemberBase {
   firstName: string;
   lastName: string;
   birthday: Date;
+  country: string;
   presentation: string;
   websiteUrl: string;
   newsletter: boolean;
