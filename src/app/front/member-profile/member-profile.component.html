@@ -5,22 +5,14 @@
     <span class="profile-categ">Membre</span> | UX/UI designer | {{member.country}}
   </div>
   <div class="profile-buttons">
-    <button type="button" class="btn btn-profile-external">Site web</button>
+    <button type="button" class="btn btn-profile-external">{{'FRONT.MEMBER_PROFILE.MAIN.MYSITE_BUTTON'    | translate}}</button>
     <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
   </div>
   <div class="profile-desc">
-    <p>Co-fondateur et directeur de création de l'agence digitale Mentalworks, DA UX/UI, expert en stratégies digitales et en conception d'architectures web/mobile.</p>
+    <p>{{member.presentation}}</p>
   </div>
   <div class="profile-tags">
-    <button type="button" class="btn btn-tags">Primary</button>
-    <button type="button" class="btn btn-tags">Primary</button>
-    <button type="button" class="btn btn-tags">Primary</button>
-    <button type="button" class="btn btn-tags">Primary</button>
-    <button type="button" class="btn btn-tags">Primary</button>
-    <button type="button" class="btn btn-tags">Primary</button>
-    <button type="button" class="btn btn-tags">Primary</button>
-    <button type="button" class="btn btn-tags">Primary</button>
-    <button type="button" class="btn btn-tags">Primary</button>
+    <button *ngFor="let tag of member.tags" type="button" class="btn btn-tags">{{tag.libelle}}</button>
   </div>
   <mat-tab-group>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.PROFILE' | translate">Content 1</mat-tab>

@@ -1,6 +1,7 @@
 // This file should not be modified, as it can be overwritten by the generator.
 // The 'Member' class is here for customizations and will not be touched.
 
+import { Tag } from '../Tag';
 import { ProjectRatingMember } from '../ProjectRatingMember';
 import { Client } from '../Client';
 import { Agency } from '../Agency';
@@ -15,6 +16,7 @@ export class MemberBase {
   lastName: string;
   birthday: Date;
   country: string;
+  tags: Tag;
   presentation: string;
   websiteUrl: string;
   newsletter: boolean;
@@ -24,6 +26,13 @@ export class MemberBase {
   agencies: Agency;
   profilePicture: Image;
   isJudge: boolean;
+
+  setTags(id: number): MemberBase {
+    this.tags = new Tag();
+    this.tags.id = id;
+    this.tags['@id'] = '/tags/' + id;
+    return this;
+  }
 
   setProjectRatingMember(id: number): MemberBase {
     this.projectRatingMember = new ProjectRatingMember();

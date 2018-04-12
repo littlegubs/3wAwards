@@ -26,6 +26,7 @@ export class MemberProfileComponent implements OnInit {
         err => {
         }
       );
+      console.log(this.member);
   }
 
 }

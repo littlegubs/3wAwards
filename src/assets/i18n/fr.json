@@ -37,6 +37,9 @@
       "GLOBAL_RANKING": "Note globale"
     },
     "MEMBER_PROFILE": {
+      "MAIN":{
+        "MYSITE_BUTTON":"Site Web"
+      },
       "TABS": {
         "PROFILE": "Mon profil",
         "LIKED_PROJECT": "Projets que j'aime",
