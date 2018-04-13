@@ -13,6 +13,7 @@ import {
   MatProgressSpinnerModule,
   MatTabsModule
 } from '@angular/material';
+import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
 import {AuthService} from './auth.service';
 import {AuthInterceptor} from './auth.interceptor';
@@ -93,6 +94,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     HttpClientModule,
     MatDialogModule,
     MatCardModule,
+    NgCircleProgressModule.forRoot({}),
     RestangularModule.forRoot([], createRestangularConfigFactory),
     TranslateModule.forRoot({
       loader: {

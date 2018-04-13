@@ -16,6 +16,17 @@
         border: none;
         border-radius: 0;
         color: gray;
+        &-border{
+            border: 2px solid gray;
+            border-radius: 30px;
+            background-color: transparent;
+            color: gray;
+            transition: all 0.4s;
+            &:hover{
+                background-color: white;
+                border-color: white;
+            }
+        }
     }
     &-main-red-full{
         background: red;
