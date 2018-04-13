@@ -14,9 +14,7 @@ export class LiipPipe implements PipeTransform {
 
   transform(path: string, filter?: string) {
     const url = this.globals.url + 'media/cache/resolve/' + filter + '/' + path;
-    this.http.get(this.globals.url + 'media/cache/resolve/' + filter + '/' + path);
 
     return url;
-
   }
 }
