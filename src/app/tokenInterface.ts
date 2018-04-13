@@ -5,5 +5,5 @@ export interface TokenInterface {
   firstName: string;
   lastName: string;
   iat: number;
-
+  icon: string;
 }

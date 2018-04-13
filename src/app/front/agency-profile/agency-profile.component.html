@@ -2,7 +2,7 @@
     <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
     <h1 class="profile-name">{{agency.name}}</h1>
     <div class="profile-text">
-        <span class="profile-categ">Agence digitale</span> | Indépendante | France
+        <span class="profile-categ">Agence digitale</span> | Indépendante | {{agency.country}}
     </div>
     <div class="profile-data">
         <i class="fas fa-eye"></i> 22
@@ -11,28 +11,19 @@
         <i class="fas fa-arrow-circle-up"></i>{{'FRONT.AGENCY_PROFILE.GLOBAL_RANKING' | translate}}: 8.7
     </div>
     <div class="profile-buttons">
-        <button type="button" class="btn btn-profile-external">Site web</button>
+        <button type="button" class="btn btn-profile-external" ><a [href]="agency.websiteUrl">Site web</a></button>
         <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
     </div>
     <div class="profile-desc">
-        <p>Mentalworks est une agence digitale technologique indépendante de taille humaine
-            spécialisée dans la création de sites web et d’applications métiers/mobiles à forte valeur ajoutée.</p>
+        <p>{{agency.description}}</p>
     </div>
     <div class="profile-tags">
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
+        <button *ngFor="let tag of agency.tags" type="button" class="btn btn-tags">{{tag.libelle}}</button>
     </div>
     <div class="row profile-detail">
         <div class="col-sm">
             <div class="profile-detail-title">{{'FRONT.AGENCY_PROFILE.COUNTRY' | translate}}</div>
-            <div class="profile-detail-content"><img src="assets/imgs/flags/fr-flag.png">| France</div>
+            <div class="profile-detail-content"><img src="assets/imgs/flags/fr-flag.png">| {{agency.country}}</div>
         </div>
         <div class="col-sm">
             <div class="profile-detail-title">{{'FRONT.AGENCY_PROFILE.CATEG' | translate}}</div>

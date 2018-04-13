@@ -14,9 +14,15 @@ export class AgencyProfileComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      if (params.id) {
-        this.agenciesService.get(params.id).subscribe(res => this.agency = res);
-      }
+      this.agenciesService.get(params.id).subscribe(
+          res => {
+              this.agency = res;
+              console.log(this.agency);
+          },
+          err => {
+          }
+      );
+
     });
   }
 
