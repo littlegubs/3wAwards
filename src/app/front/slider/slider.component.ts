@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {AwardsService} from '../../../backend/services';
-import {Award} from '../../../backend/model';
+import {Component, HostListener, OnInit} from '@angular/core';
+import { AwardsService } from '../../../backend/services';
+import { Award } from '../../../backend/model';
 
 @Component({
   selector: 'app-slider',
@@ -8,7 +8,6 @@ import {Award} from '../../../backend/model';
 })
 export class SliderComponent implements OnInit {
   awards: Award[] = [];
-
   constructor(private awardsService: AwardsService) { }
 
   ngOnInit() {
