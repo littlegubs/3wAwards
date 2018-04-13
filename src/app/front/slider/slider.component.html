@@ -2,7 +2,7 @@
     <div class="container-carousel">
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item" *ngFor="let award of awards; let i = index" [ngClass]="{'active': i == 0 }">
-                <img class="d-block img-fluid" [src]="award.project.images[0].path |liip:'slider_thumbnail' | async" alt="First slide">
+                <img class="d-block img-fluid" [src]="award.project.images[0].path |liip:'slider_thumbnail'" alt="First slide">
                 <div class="daily-date">
                   <i class="far fa-star"></i>
                   <span>{{'FRONT.SLIDER.SITE_OF_THE_DAY' | translate}}</span>

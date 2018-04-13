@@ -4,7 +4,7 @@
       <mat-card class="example-card">
         <div *ngIf="project.images[0]; else noThumbail">
           <div mat-card-image
-               *ngIf="(project.images[0].path |liip:'card_thumbnail' | async) as cardImage; else thumbnailLoading;"
+               *ngIf="(project.images[0].path |liip:'card_thumbnail') as cardImage; else thumbnailLoading;"
                [style.background-image]="'url('+cardImage+')'">
           </div>
         </div>
