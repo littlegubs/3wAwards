@@ -18,7 +18,8 @@
         <li *ngIf="isConnected === true" class="nav-item">
           <div class="dropdown">
             <button class="btn btn-main-gray" type="button" id="memberDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{userInfo.firstName}} {{userInfo.lastName}} <i class="fas fa-angle-down"></i>
+              <img class="radius" [src]="userInfo.icon">{{userInfo.firstName}} {{userInfo.lastName}} <i class="fas fa-angle-down"></i>
+
             </button>
             <div class="dropdown-menu" aria-labelledby="memberDropdown">
               <a class="dropdown-item" href="#">test1</a>
