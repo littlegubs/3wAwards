@@ -1,0 +1,57 @@
+app-member-form-profile{
+    form{
+        .form-group{
+            &>div{
+                text-align: left;
+            }
+        }
+        mat-radio-group {
+            .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+                border-color: red;
+            }
+            .mat-radio-button.mat-accent .mat-radio-inner-circle{
+                background-color: red;
+            }
+        }
+        mat-form-field{
+            width: 100% !important;
+            .mat-input-flex{
+                background-color: white;
+            }
+            .mat-form-field-infix{
+                border-top: none;
+                input{
+                    padding: 0 10px;
+                    &:-webkit-autofill {
+                        -webkit-box-shadow: 0 0 0 30px white inset;
+                    }
+                }
+            }
+            .mat-form-field-underline {
+                background-color: transparent;
+            }
+            .mat-form-field-ripple{
+                background-color: red;
+            }
+            &.ng-valid{
+                .mat-form-field-underline {
+                    background-color: green;
+                }
+            }
+            &.pseudo, &.email, &.password{
+                .mat-form-field-infix {
+                    &:before {
+                        content: '';
+                        display: block;
+                        border-left: 2px solid red;
+                        top: 0;
+                        position: absolute;
+                        left: -20px;
+                        width: 2px;
+                        height: 32px;
+                    }
+                }
+            }
+        }
+    }
+}
