@@ -6,12 +6,14 @@ import {AppRoutingModule} from './app-routing.module';
 import * as $ from 'jquery';
 import {BootstrapModule} from './bootstrap.module';
 import {
-  MatButtonModule,
-  MatDialogModule,
-  MatSlideToggleModule,
-  MatCardModule,
-  MatProgressSpinnerModule,
-  MatTabsModule
+    MatButtonModule,
+    MatDialogModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatRadioModule,
+    MatInputModule, MatDatepickerModule, MatNativeDateModule,
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -52,6 +54,7 @@ import {LiipPipe} from './liip.pipe';
 import {GlobalsService} from './globals.service';
 import { ClientProfileComponent } from './front/client-profile/client-profile.component';
 import { MemberProfileComponent } from './front/member-profile/member-profile.component';
+import { MemberFormProfileComponent } from './front/member-form-profile/member-form-profile.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -78,7 +81,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AgencyProfileComponent,
     ClientProfileComponent,
     MemberProfileComponent,
-    LiipPipe
+    LiipPipe,
+    MemberFormProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -90,10 +94,14 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MatSlideToggleModule,
     MatProgressSpinnerModule,
     MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
     MatCardModule,
+    MatInputModule,
     NgCircleProgressModule.forRoot({}),
     RestangularModule.forRoot([], createRestangularConfigFactory),
     TranslateModule.forRoot({
@@ -123,6 +131,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     TypeTagsService,
     AuthService,
     GlobalsService,
+    MatNativeDateModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
