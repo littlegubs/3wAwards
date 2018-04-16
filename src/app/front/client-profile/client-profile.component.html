@@ -1,5 +1,8 @@
 <div class="container-fluid" *ngIf="client; else loading">
-  <img src="http://127.0.0.1:8000/media/cache/profile_pic_header/images/project-thumbnail-1.jpg" class="rounded-circle profile-image">
+  <img *ngIf="client.image; else noProfilePic" [src]="client.image.path |liip:'profile_pic'" class="rounded-circle profile-image">
+  <ng-template #noProfilePic>
+    <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
+  </ng-template>
   <h1 class="profile-name">{{client.name}}</h1>
   <div class="profile-text">
     <span class="profile-categ">Grande entreprise</span> | Automobile | {{client.country}}
@@ -51,4 +54,5 @@
     </div>
   </div>
 </div>
+<app-site-card [nameClient]="client.name"></app-site-card>
 <ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>

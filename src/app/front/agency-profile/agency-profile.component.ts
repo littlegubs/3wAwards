@@ -17,7 +17,6 @@ export class AgencyProfileComponent implements OnInit {
       this.agenciesService.get(params.id).subscribe(
           res => {
               this.agency = res;
-              console.log(this.agency);
           },
           err => {
           }

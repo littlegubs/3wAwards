@@ -1,5 +1,8 @@
 <div class="container-fluid"  *ngIf="agency; else loading">
+  <img *ngIf="agency.image; else noProfilePic" [src]="agency.image.path |liip:'profile_pic'" class="rounded-circle profile-image">
+  <ng-template #noProfilePic>
     <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
+  </ng-template>
     <h1 class="profile-name">{{agency.name}}</h1>
     <div class="profile-text">
         <span class="profile-categ">Agence digitale</span> | Indépendante | {{agency.country}}
@@ -51,4 +54,5 @@
         </div>
     </div>
 </div>
+<app-site-card [nameAgency]="agency.name"></app-site-card>
 <ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>

@@ -18,7 +18,6 @@ export class ClientProfileComponent implements OnInit {
         this.clientsService.get(params.id).subscribe(
           res => {
             this.client = res;
-            console.log(this.client);
           },
           err => {
           }
