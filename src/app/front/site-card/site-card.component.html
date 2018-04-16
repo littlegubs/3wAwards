@@ -11,11 +11,6 @@
         <ng-template #noThumbail>
           <div mat-card-image [style.background-image]="'url(http://via.placeholder.com/415x300)'"></div>
         </ng-template>
-        <ng-template #thumbnailLoading>
-          <div mat-card-image>
-            <mat-spinner color="warn"></mat-spinner>
-          </div>
-        </ng-template>
         <mat-card-content>
           <mat-card-title>{{project.projectName}}</mat-card-title>
           <p *ngIf="project.agency === null">par
