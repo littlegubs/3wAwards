@@ -15,7 +15,14 @@ export class ClientProfileComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params.id) {
-        this.clientsService.get(params.id).subscribe(res => this.client = res);
+        this.clientsService.get(params.id).subscribe(
+          res => {
+            this.client = res;
+            console.log(this.client);
+          },
+          err => {
+          }
+        );
       }
     });
   }
