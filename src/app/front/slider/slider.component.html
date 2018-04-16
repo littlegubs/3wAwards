@@ -1,8 +1,97 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <div class="container-carousel">
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item" *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10,11]" [ngClass]="{'active': number == 0}">
-                <img class="d-block img-fluid" src="http://via.placeholder.com/1780x700" alt="First slide">
+            <div class="carousel-item" *ngFor="let award of awards; let i = index" [ngClass]="{'active': i == 0 }">
+                <img class="d-block img-fluid" [src]="award.project.images[0].path |liip:'slider_thumbnail'" alt="First slide">
+                <div class="daily-date">
+                  <i class="far fa-star"></i>
+                  <span>{{'FRONT.SLIDER.SITE_OF_THE_DAY' | translate}}</span>
+                  <span class="date-slider">{{award.date | date}} </span>
+                </div>
+                <div class="daily">
+                    <div class="daily-site">
+                      <span class="daily-site-name">{{award.project.projectName}}</span>
+                      <br>
+                      <span class="daily-site-info" *ngIf="award.project.agency === null">par <span class="bold">{{award.project.client.name}}</span> | {{award.project.client.country}} </span>
+                      <span class="daily-site-info" *ngIf="award.project.client === null">par <span class="bold">{{award.project.agency.name}}</span> | {{award.project.agency.country}}  </span>
+                    </div>
+                    <div class="daily-marks">
+                        <div class="daily-marks-circle">
+                            <circle-progress
+                                    [backgroundStrokeWidth]="0"
+                                    [backgroundPadding]="7"
+                                    [radius]="40"
+                                    [space]="-4"
+                                    [toFixed]="1"
+                                    [maxPercent]="100"
+                                    [outerStrokeWidth]="4"
+                                    [outerStrokeColor]="'#ffa800'"
+                                    [innerStrokeColor]="'rgba(255, 168, 0, 0.4)'"
+                                    [innerStrokeWidth]="4"
+                                    [title]="''"
+                                    [subtitle]="''"
+                                    [animationDuration]="4000"
+                                    [showUnits]="false"
+                                    [percent]="55"
+                                    [renderOnClick]="false"
+                            ></circle-progress>
+                            <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.JURY' | translate}}</span>
+                            <span class="daily-marks-circle-mark"><b>5</b>,5</span>
+                        </div>
+                        <div class="daily-marks-circle">
+                            <circle-progress
+                                    [backgroundStrokeWidth]="0"
+                                    [backgroundPadding]="7"
+                                    [radius]="40"
+                                    [space]="-4"
+                                    [toFixed]="1"
+                                    [maxPercent]="100"
+                                    [outerStrokeWidth]="4"
+                                    [outerStrokeColor]="'#b41adb'"
+                                    [innerStrokeColor]="'rgba(180, 26, 219, 0.4)'"
+                                    [innerStrokeWidth]="4"
+                                    [title]="''"
+                                    [subtitle]="''"
+                                    [animationDuration]="4000"
+                                    [showUnits]="false"
+                                    [percent]="90"
+                                    [renderOnClick]="false"
+                            ></circle-progress>
+                            <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.MEMBER' | translate}}</span>
+                            <span class="daily-marks-circle-mark"><b>9</b>,0</span>
+                        </div>
+                        <div class="daily-marks-circle">
+                            <circle-progress
+                                    [backgroundStrokeWidth]="0"
+                                    [backgroundPadding]="7"
+                                    [radius]="40"
+                                    [space]="-4"
+                                    [toFixed]="1"
+                                    [maxPercent]="100"
+                                    [outerStrokeWidth]="4"
+                                    [outerStrokeColor]="'#ec1c24'"
+                                    [innerStrokeColor]="'rgba(236, 28, 36, 0.4)'"
+                                    [innerStrokeWidth]="4"
+                                    [title]="''"
+                                    [subtitle]="''"
+                                    [animationDuration]="4000"
+                                    [showUnits]="false"
+                                    [percent]="85.5"
+                                    [renderOnClick]="false"
+                            ></circle-progress>
+                            <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.FINAL' | translate}}</span>
+                            <span class="daily-marks-circle-mark"><b>8</b>,5</span>
+                        </div>
+                    </div>
+                    <div class="daily-actions">
+                        <button type="button" class="btn btn-main-gray-border">
+                            {{'FRONT.SLIDER.VISIT_ACTION' | translate}}
+                        </button>
+                        <button  type="button" class="btn btn-main-gray-border">
+                            {{'FRONT.SLIDER.SHOW_INFO_ACTION' | translate}}
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -14,10 +103,5 @@
             <span class="sr-only">Next</span>
         </a>
         <i class="shareMenu fas fa-share-alt"></i>
-        <div class="daily-site">
-            <i class="far fa-star"></i>
-            <span>{{'FRONT.SLIDER.SITE_OF_THE_DAY' | translate}}</span>
-            <span class="date-slider">22 Mars 2018</span>
-        </div>
     </div>
 </div>

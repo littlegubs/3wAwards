@@ -89,10 +89,18 @@
       }
     },
     "COMMON": {
-      "SEARCH": "Rechercher"
+      "SEARCH": "Rechercher",
+      "LATEST_SUBMITED": "Derniers sites soumis aux votes"
     },
     "SLIDER": {
-      "SITE_OF_THE_DAY": "Site du jour |"
+      "SITE_OF_THE_DAY": "Site du jour |",
+      "VISIT_ACTION": "Visiter le site",
+      "SHOW_INFO_ACTION": "Voir la fiche",
+      "MARK_TYPE": {
+        "JURY": "Jury",
+        "MEMBER": "Membres",
+        "FINAL": "Note finale"
+      }
     }
   }
 }

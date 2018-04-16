@@ -10,8 +10,10 @@ import {
   MatSlideToggleModule,
   MatCardModule,
   MatTabsModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
+import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
 import {AuthService} from './auth.service';
 import {AuthInterceptor} from './auth.interceptor';
@@ -86,12 +88,14 @@ export function createRestangularConfigFactory(RestangularProvider) {
     BootstrapModule,
     MatButtonModule,
     MatSlideToggleModule,
+    MatProgressSpinnerModule,
     MatTabsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
     MatCardModule,
     MatProgressBarModule,
+    NgCircleProgressModule.forRoot({}),
     RestangularModule.forRoot([], createRestangularConfigFactory),
     TranslateModule.forRoot({
       loader: {
