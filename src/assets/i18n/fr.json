@@ -16,6 +16,10 @@
         "CONTACT": "Contact"
       }
     },
+    "PROFILE":{
+      "NOMINATED_SITES": "sites nominés",
+      "EARNED_AWARD":" awards gagnés"
+    },
     "AGENCY_PROFILE":{
       "COUNTRY":"Pays",
       "CATEG":"Catégorie",

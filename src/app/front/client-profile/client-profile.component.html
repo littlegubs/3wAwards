@@ -16,6 +16,7 @@
   <div class="profile-buttons">
     <button type="button" class="btn btn-profile-external"><a [href]="client.websiteUrl" target="_blank">Site web</a></button>
     <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
+    <button (click)="deleteClient(client)" type="button" class="btn btn-profile-external">Delete</button>
   </div>
   <div class="profile-desc">
     <p>{{client.description}}</p>
@@ -54,5 +55,6 @@
     </div>
   </div>
 </div>
+<P> {{nominatedSites}} {{'FRONT.PROFILE.NOMINATED_SITES' | translate}} | {{earnedAward}} {{'FRONT.PROFILE.EARNED_AWARD' | translate}}</P>
 <app-site-card [nameClient]="client.name"></app-site-card>
 <ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>

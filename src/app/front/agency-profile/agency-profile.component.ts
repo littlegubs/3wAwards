@@ -9,6 +9,8 @@ import {AgenciesService} from '../../../backend/services';
 })
 export class AgencyProfileComponent implements OnInit {
   agency: Agency;
+  nominatedSites = 0;
+  earnedAward = 0;
 
   constructor(private route: ActivatedRoute, private agenciesService: AgenciesService) { }
 
@@ -17,6 +19,10 @@ export class AgencyProfileComponent implements OnInit {
       this.agenciesService.get(params.id).subscribe(
           res => {
               this.agency = res;
+            this.nominatedSites = Object.keys(this.agency.projects).length;
+            for (let i = 0; i < this.nominatedSites; i++) {
+              this.earnedAward = this.earnedAward + Object.keys(this.agency.projects[i].awards).length;
+            }
           },
           err => {
           }
