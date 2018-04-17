@@ -39,6 +39,18 @@
             color: red;
         }
     }
+    &-main-white-full {
+        background: white;
+        border: 2px solid white;
+        border-radius: 30px;
+        color: red;
+        transition: all 0.4s;
+        &:hover {
+            background-color: gray;
+            border: 2px solid gray;
+            color: white
+        }
+    }
     &-tags {
         border-radius: 100px;
         background-color: #cdcdcd;

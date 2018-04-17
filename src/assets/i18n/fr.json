@@ -51,6 +51,48 @@
         "ADMINED_CLIENT": "Clients administrés",
         "ADMINED_AGENCY": "Agences administrées",
         "AWARD": "Awards obtenus"
+      },
+      "FORM": {
+        "LABEL": {
+          "IDENTITY": "Identité",
+          "CONNECTION": "Connexion",
+          "PROFIL": "Profil",
+          "WEB_LINK": "Liens web"
+        },
+        "COMPONENTS": {
+          "GENDER": "Civilité",
+          "GENDER_MALE": "Monsieur",
+          "GENDER_FEMALE": "Madame",
+          "PSEUDO": "Nom ou pseudo",
+          "FIRSTNAME": "Prénom",
+          "EMAIL": "E-mail",
+          "PASSWORD": "Mot de passe",
+          "BIRTHDAY": "Date de naissance",
+          "COUNTRY": "Pays",
+          "JOB": "Métier/professsion",
+          "SUMMARY": "Présentation/bio",
+          "SKILLS": "Compétences clés",
+          "INTEREST": "Centres d'intérêts",
+          "PERSONNAL_WEBSITE": "Site web personnel",
+          "FACEBOOK": "Facebook",
+          "TWITTER": "Twitter",
+          "LINKEDIN": "LinkedIn",
+          "INSTAGRAM": "Instagram",
+          "BEHANCE": "Behance",
+          "DRIBBLE": "Dribbble",
+          "ERRORS": {
+            "REQUIRED": "Ce champ est obligatoire",
+            "MAIL_FORMAT": "Veuillez saisir un format d'email correct"
+          },
+          "LEGALS": {
+            "NEW_WEBSITE_MAIL": "Etre informé par e-mails des nouveaux sites publiés.",
+            "NEWSLETTER" : "J'accepte de recevoir la newsletter et des informations de la part de 3wAwards."
+          },
+          "ACTIONS": {
+            "REVERT": "ANNULER",
+            "SUBMIT": "SAUVEGARDER"
+          }
+        }
       }
     },
     "HEADER": {

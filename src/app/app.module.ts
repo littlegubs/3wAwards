@@ -12,8 +12,11 @@ import {
     MatProgressSpinnerModule,
     MatTabsModule,
     MatRadioModule,
-    MatInputModule, MatDatepickerModule, MatNativeDateModule,
-  MatProgressBarModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatCheckboxModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -82,7 +85,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     ClientProfileComponent,
     MemberProfileComponent,
     LiipPipe,
-    MemberFormProfileComponent
+    MemberFormProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +105,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MatDialogModule,
     MatCardModule,
     MatInputModule,
+    MatCheckboxModule,
     MatProgressBarModule,
     NgCircleProgressModule.forRoot({}),
     RestangularModule.forRoot([], createRestangularConfigFactory),

@@ -1,8 +1,39 @@
 app-member-form-profile{
+    color: #777777 !important;
+    .col-form-profile{
+        text-align: left;
+    }
+    .form-categ{
+        font-size: 24px;
+    }
+    label{
+        font-size:14px;
+    }
+    button {
+        &.revert, &.submit {
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 28px;
+            text-transform: uppercase;
+            padding: 0 15px;
+            width: 130px;
+        }
+        &.revert{
+            margin-right: 5px;
+        }
+    }
     form{
         .form-group{
             &>div{
                 text-align: left;
+            }
+        }
+        .radio-group{
+            @include flex();
+            @include justify-content(space-between);
+            p{
+                color: red;
+                font-size: 12px;
             }
         }
         mat-radio-group {
@@ -12,6 +43,14 @@ app-member-form-profile{
             .mat-radio-button.mat-accent .mat-radio-inner-circle{
                 background-color: red;
             }
+        }
+        mat-checkbox{
+            .mat-checkbox-label{
+                white-space: pre-line;
+            }
+        }
+        .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+            background-color: gray !important;
         }
         mat-form-field{
             width: 100% !important;
