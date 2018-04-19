@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ClientsService} from '../../../backend/services';
 import {Client} from '../../../backend/model';
+
 
 @Component({
   selector: 'app-client-profile',
@@ -12,7 +13,7 @@ export class ClientProfileComponent implements OnInit {
   nominatedSites = 0;
   earnedAward = 0;
 
-  constructor( private route: ActivatedRoute, private clientsService: ClientsService) { }
+  constructor( private route: ActivatedRoute, private clientsService: ClientsService, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -36,6 +37,7 @@ export class ClientProfileComponent implements OnInit {
     this.clientsService.remove(client).subscribe(
       res => {
         console.log('Sucess');
+        this.router.navigate(['profile']);
       },
       err => {
         console.log('error');

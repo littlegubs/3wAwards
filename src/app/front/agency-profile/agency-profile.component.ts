@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Agency, Client} from '../../../backend/model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AgenciesService} from '../../../backend/services';
 
 @Component({
@@ -12,7 +12,7 @@ export class AgencyProfileComponent implements OnInit {
   nominatedSites = 0;
   earnedAward = 0;
 
-  constructor(private route: ActivatedRoute, private agenciesService: AgenciesService) { }
+  constructor(private route: ActivatedRoute, private agenciesService: AgenciesService, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -35,6 +35,7 @@ export class AgencyProfileComponent implements OnInit {
         this.agenciesService.remove(agency).subscribe(
             res => {
                 console.log('Sucess');
+                this.router.navigate(['profile']);
             },
             err => {
                 console.log('error');
