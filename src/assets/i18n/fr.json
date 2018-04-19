@@ -80,6 +80,7 @@
           "INSTAGRAM": "Instagram",
           "BEHANCE": "Behance",
           "DRIBBLE": "Dribbble",
+          "AVATAR": "Photo / avatar",
           "ERRORS": {
             "REQUIRED": "Ce champ est obligatoire",
             "MAIL_FORMAT": "Veuillez saisir un format d'email correct"
