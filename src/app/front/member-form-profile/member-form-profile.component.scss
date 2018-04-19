@@ -17,15 +17,30 @@ app-member-form-profile{
             text-transform: uppercase;
             padding: 0 15px;
             width: 130px;
+            text-align: center;
         }
         &.revert{
             margin-right: 5px;
         }
     }
     form{
+        margin-bottom: 50px;
+        @media screen and (max-width: 1200px) {
+            .row{
+                & > div:first-child{
+                    order: 2;
+                }
+                & > div:last-child{
+                    order: 1;
+                }
+            }
+        }
         .form-group{
             &>div{
                 text-align: left;
+                &.form-actions {
+                    text-align: center;
+                }
             }
         }
         .radio-group{
@@ -36,6 +51,60 @@ app-member-form-profile{
                 font-size: 12px;
             }
         }
+        .email-group, .password-group{
+            i{
+                position: absolute;
+                top: 7px;
+                right: -5px;
+                &.fa-check{
+                    color: green;
+                }
+            }
+        }
+        .upload-profile-pic{
+            margin-top: 40px;
+            flex-direction: column;
+            width: 130px;
+            margin-left: calc(100% - 150px);
+            .profile-pic {
+                width: 130px;
+                height: 130px;
+                object-fit: cover;
+            }
+            i{
+                &.fa-trash-alt{
+                    position: absolute;
+                    top: 185px;
+                    right: 45px;
+                    cursor: pointer;
+                    color: white;
+                    @media screen and (max-width: 1200px) {
+                        right: calc(50% - 57px);
+                    }
+                }
+                &.fa-info-circle{
+                    position: absolute;
+                    top: 228px;
+                    right: 12px;
+                    @media screen and (max-width: 1200px) {
+                        right: calc(50% - 90px);
+                    }
+                }
+            }
+            .btn-profile-external{
+                margin-top: 10px;
+                border-color: white;
+                background-color: white;
+                &:hover{
+                    background-color: gray;
+                    color: white;
+                }
+            }
+            @media screen and (max-width: 1200px) {
+                margin: 40px auto;
+            }
+        }
+
         mat-radio-group {
             .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
                 border-color: red;
@@ -85,7 +154,7 @@ app-member-form-profile{
                         border-left: 2px solid red;
                         top: 0;
                         position: absolute;
-                        left: -20px;
+                        left: -10px;
                         width: 2px;
                         height: 32px;
                     }
