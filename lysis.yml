@@ -8,3 +8,6 @@ apis:
       lysis-restangular-services-generator:
         dir: 'services'
         classPath: '../model'
+      lysis-angular-form-validators-generator:
+        dir: 'forms'
+        classPath: '../model'

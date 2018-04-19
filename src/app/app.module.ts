@@ -58,6 +58,7 @@ import {GlobalsService} from './globals.service';
 import { ClientProfileComponent } from './front/client-profile/client-profile.component';
 import { MemberProfileComponent } from './front/member-profile/member-profile.component';
 import { MemberFormProfileComponent } from './front/member-form-profile/member-form-profile.component';
+import {FormService} from '../backend/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -93,6 +94,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     ReactiveFormsModule,
     AppRoutingModule,
     BootstrapModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatSlideToggleModule,
     MatProgressSpinnerModule,
@@ -128,6 +130,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     ClientsService,
     ImagesService,
     MembersService,
+    FormService,
     ProjectRatingMembersService,
     ProjectsService,
     RatingsService,
