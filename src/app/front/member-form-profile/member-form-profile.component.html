@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-form-profile">
       <form>
         <div class="row">
-          <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+          <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
             <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.IDENTITY' | translate}}</p>
             <div class="form-group row">
               <!-- CIVILITE -->
@@ -13,7 +13,7 @@
                   <mat-radio-button value="M">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.GENDER_MALE' | translate}}</mat-radio-button>
                   <mat-radio-button value="F">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.GENDER_FEMALE' | translate}}</mat-radio-button>
                 </mat-radio-group>
-                <p>Champs obligatoires</p>
+                <p>{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.REQUIRED' | translate}}</p>
               </div>
               <!-- PSEUDO -->
               <label for="pseudo" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PSEUDO' | translate}} :</label>
@@ -38,7 +38,7 @@
             <div class="form-group row">
               <!-- EMAIL -->
               <label for="email" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.EMAIL' | translate}} :</label>
-              <div class="col-sm-8">
+              <div class="col-sm-8 email-group">
                 <mat-form-field class="full-width email">
                   <input matInput type="email" id="email" [formControl]="emailFormControl">
                   <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -48,16 +48,19 @@
                     {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.REQUIRED' | translate}}
                   </mat-error>
                 </mat-form-field>
+                <!-- @todo NGIF validation mail -->
+                <i class="fas fa-check"></i>
               </div>
               <!-- PASSWORD -->
               <label for="password" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PASSWORD' | translate}} :</label>
-              <div class="col-sm-8">
+              <div class="col-sm-8 password-group">
                 <mat-form-field class="full-width password">
                   <input matInput type="password" id="password" [formControl]="passwordFormControl">
                   <mat-error *ngIf="passwordFormControl.hasError('required')">
                     {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.REQUIRED' | translate}}
                   </mat-error>
                 </mat-form-field>
+                <i class="fas fa-info-circle"></i>
               </div>
             </div>
             <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.PROFIL' | translate}}</p>
@@ -166,26 +169,30 @@
                   <mat-checkbox> {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.LEGALS.NEWSLETTER' | translate}}</mat-checkbox>
               </div>
             </div>
-            <div class="form-group row">
-              <label class="col-sm-4 col-form-label"></label>
-              <div class="col-sm-8">
-                <button type="reset" class="btn btn-main-white-full revert">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.REVERT' | translate}}</button>
-                <button type="submit" class="btn btn-main-red-full submit">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.SUBMIT' | translate}}</button>
-              </div>
+          </div>
+          <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group row upload-profile-pic">
+              <p class="col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.AVATAR' | translate}}</p>
+              <img class="profile-pic" src="../../../assets/imgs/victor.jpg">
+              <i class="far fa-trash-alt"></i>
+              <button class="btn btn-profile-external">
+                {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.UPLOAD' | translate}}
+              </button>
+              <i class="fas fa-info-circle"></i>
             </div>
           </div>
-          <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12">
-            <div class="form-group row upload-profile-pic">
-              <label class="col-sm-12 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.AVATAR' | translate}}</label>
-              <div class="col-sm-12">
-                <img class="profile-pic" src="../../../assets/imgs/victor.jpg">
-              </div>
-              <div class="col-sm-12">
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group row">
+              <div class="col-sm-12 form-actions">
                 <button type="reset" class="btn btn-main-white-full revert">
                   {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.REVERT' | translate}}
                 </button>
+                <button type="submit" class="btn btn-main-red-full submit">
+                  {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.SUBMIT' | translate}}
+                </button>
               </div>
-
             </div>
           </div>
         </div>

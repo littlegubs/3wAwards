@@ -81,6 +81,7 @@
           "BEHANCE": "Behance",
           "DRIBBLE": "Dribbble",
           "AVATAR": "Photo / avatar",
+          "REQUIRED": "Champs obligatoires",
           "ERRORS": {
             "REQUIRED": "Ce champ est obligatoire",
             "MAIL_FORMAT": "Veuillez saisir un format d'email correct"
@@ -90,6 +91,7 @@
             "NEWSLETTER" : "J'accepte de recevoir la newsletter et des informations de la part de 3wAwards."
           },
           "ACTIONS": {
+            "UPLOAD": "UPLOAD",
             "REVERT": "ANNULER",
             "SUBMIT": "SAUVEGARDER"
           }
