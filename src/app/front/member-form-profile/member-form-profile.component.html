@@ -1,33 +1,34 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-form-profile" >
-      <form>
+
+      <form [formGroup]="form.group">
         <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.IDENTITY' | translate}}</p>
         <div class="form-group row">
           <!-- CIVILITE -->
           <label class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.GENDER' | translate}} :</label>
           <div class="col-sm-8 radio-group">
-            <mat-radio-group>
+            <mat-radio-group formControlName="gender">
               <mat-radio-button value="M">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.GENDER_MALE' | translate}}</mat-radio-button>
               <mat-radio-button value="F">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.GENDER_FEMALE' | translate}}</mat-radio-button>
             </mat-radio-group>
             <p>Champs obligatoires</p>
           </div>
           <!-- PSEUDO -->
-          <label for="pseudo" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PSEUDO' | translate}} :</label>
+          <label for="username" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PSEUDO' | translate}} :</label>
           <div class="col-sm-8">
             <mat-form-field class="full-width pseudo">
-              <input matInput type="text" id="pseudo" [formControl]="pseudoFormControl" [ngClass]="{'active': pseudoFormControl.hasError('required') == false }">
-              <mat-error *ngIf="pseudoFormControl.hasError('required')">
+              <input matInput type="text" id="username" formControlName="username">
+              <mat-error>
                 {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.REQUIRED' | translate}}
               </mat-error>
             </mat-form-field>
           </div>
           <!-- FIRSTNAME -->
-          <label for="firstname" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.FIRSTNAME' | translate}} :</label>
+          <label for="firstName" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.FIRSTNAME' | translate}} :</label>
           <div class="col-sm-8">
             <mat-form-field class="full-width">
-              <input matInput type="text" id="firstname">
+              <input matInput type="text" id="firstName" formControlName="firstName">
             </mat-form-field>
           </div>
         </div>
@@ -38,11 +39,11 @@
           <label for="email" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.EMAIL' | translate}} :</label>
           <div class="col-sm-8">
             <mat-form-field class="full-width email">
-              <input matInput type="email" id="email" [formControl]="emailFormControl">
-              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              <input matInput type="email" id="email">
+              <mat-error>
                 {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.MAIL_FORMAT' | translate}}
               </mat-error>
-              <mat-error *ngIf="emailFormControl.hasError('required')">
+              <mat-error>
                 {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.REQUIRED' | translate}}
               </mat-error>
             </mat-form-field>
@@ -51,8 +52,8 @@
           <label for="password" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PASSWORD' | translate}} :</label>
           <div class="col-sm-8">
             <mat-form-field class="full-width password">
-              <input matInput type="password" id="password" [formControl]="passwordFormControl">
-              <mat-error *ngIf="passwordFormControl.hasError('required')">
+              <input matInput type="password" id="password">
+              <mat-error>
                 {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.REQUIRED' | translate}}
               </mat-error>
             </mat-form-field>

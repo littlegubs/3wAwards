@@ -1,27 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {Member} from '../../../backend/model';
+import {Form} from '../../../backend/forms';
+import {FormService} from '../../../backend/forms';
+import {MembersService} from '../../../backend/services';
 
 @Component({
   selector: 'app-member-form-profile',
   templateUrl: './member-form-profile.component.html',
 })
 export class MemberFormProfileComponent implements OnInit {
+  @Input() member: Member;
+  form: Form<Member>;
 
-  emailFormControl: any;
-  passwordFormControl: any;
-  pseudoFormControl: any;
-  constructor() { }
+  constructor(private formService: FormService, private memberService: MembersService) {
+  }
 
   ngOnInit() {
-      this.emailFormControl = new FormControl('', [
-          Validators.required,
-          Validators.email,
-      ]);
-      this.passwordFormControl = new FormControl('', [
-          Validators.required,
-      ]);
-      this.pseudoFormControl = new FormControl('', [
-          Validators.required,
-      ]);
+    this.form = this.formService.makeForm<Member>(this.member);
   }
 }
