@@ -9,6 +9,16 @@ app-agency-profile{
       max-height: 30vh;
     }
     .profile{
+      &-nominated {
+        text-transform: uppercase;
+        text-align: center;
+        &-bold {
+          font-weight: bold;
+        }
+        &-standard {
+          font-weight: normal;
+        }
+      }
       &-name {
         font-weight: 700;
       }

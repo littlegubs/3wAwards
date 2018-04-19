@@ -8,7 +8,23 @@ app-client-profile{
       margin-top: 30px;
       max-height: 30vh;
     }
+    .mat-card{
+      margin:auto;
+      &-content{
+        text-align: left;
+      }
+    }
     .profile{
+      &-nominated {
+        text-transform: uppercase;
+        text-align:center;
+        &-bold {
+          font-weight: bold;
+        }
+        &-standard{
+          font-weight: normal;
+        }
+      }
       &-name {
         font-weight: 700;
       }

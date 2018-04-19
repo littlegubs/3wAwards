@@ -17,8 +17,10 @@
       }
     },
     "PROFILE":{
-      "NOMINATED_SITES": "sites nominés",
-      "EARNED_AWARD":" awards gagnés"
+      "NOMINATED_SITES": "nominés",
+      "SITES":"sites",
+      "AWARDS":"awards",
+      "EARNED_AWARD":"gagnés"
     },
     "AGENCY_PROFILE":{
       "COUNTRY":"Pays",

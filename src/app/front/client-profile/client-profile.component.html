@@ -54,7 +54,14 @@
       <div class="profile-detail-content">5</div>
     </div>
   </div>
+  <h1 class="profile-nominated"><span class="profile-nominated-bold">{{nominatedSites}}  {{'FRONT.PROFILE.SITES' | translate}}</span> <span
+          class="profile-nominated-standard">{{'FRONT.PROFILE.NOMINATED_SITES' | translate}}</span> |
+    <span class="profile-nominated-bold">{{earnedAward}}  {{'FRONT.PROFILE.AWARDS' | translate}}</span> <span
+            class="profile-nominated-standard">{{'FRONT.PROFILE.EARNED_AWARD' | translate}}</span>
+  </h1>
+  <app-site-card [nameClient]="client.name"></app-site-card>
+  <ng-template #loading>
+    <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+  </ng-template>
 </div>
-<P> {{nominatedSites}} {{'FRONT.PROFILE.NOMINATED_SITES' | translate}} | {{earnedAward}} {{'FRONT.PROFILE.EARNED_AWARD' | translate}}</P>
-<app-site-card [nameClient]="client.name"></app-site-card>
-<ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>
+
