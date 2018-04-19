@@ -7,6 +7,7 @@
   <div class="profile-buttons">
     <button type="button" class="btn btn-profile-external">{{'FRONT.MEMBER_PROFILE.MAIN.MYSITE_BUTTON'    | translate}}</button>
     <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
+    <button (click)="deleteMember(member)" type="button" class="btn btn-profile-external">Delete</button>
   </div>
   <div class="profile-desc">
     <p>{{member.presentation}}</p>

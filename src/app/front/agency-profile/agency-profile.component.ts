@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Agency} from '../../../backend/model';
+import {Agency, Client} from '../../../backend/model';
 import {ActivatedRoute} from '@angular/router';
 import {AgenciesService} from '../../../backend/services';
 
@@ -30,5 +30,16 @@ export class AgencyProfileComponent implements OnInit {
 
     });
   }
+
+    deleteAgency(agency: Agency) {
+        this.agenciesService.remove(agency).subscribe(
+            res => {
+                console.log('Sucess');
+            },
+            err => {
+                console.log('error');
+            }
+        );
+    }
 
 }

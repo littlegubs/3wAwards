@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MembersService} from '../../../backend/services';
-import {Member} from '../../../backend/model';
+import {Agency, Member} from '../../../backend/model';
 import {AuthService} from '../../auth.service';
 import {TokenInterface} from '../../tokenInterface';
 
@@ -27,5 +27,16 @@ export class MemberProfileComponent implements OnInit {
         }
       );
   }
+
+  deleteMember(member: Member) {
+       this.membersService.remove(member).subscribe(
+           res => {
+               console.log('Sucess');
+           },
+           err => {
+               console.log('error');
+           }
+        );
+    }
 
 }

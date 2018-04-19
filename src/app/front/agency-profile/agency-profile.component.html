@@ -16,6 +16,7 @@
     <div class="profile-buttons">
         <button type="button" class="btn btn-profile-external" ><a [href]="agency.websiteUrl">Site web</a></button>
         <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
+        <button (click)="deleteAgency(agency)" type="button" class="btn btn-profile-external">Delete</button>
     </div>
     <div class="profile-desc">
         <p>{{agency.description}}</p>
@@ -60,7 +61,7 @@
                 class="profile-nominated-standard">{{'FRONT.PROFILE.EARNED_AWARD' | translate}}</span>
     </h1>
     <app-site-card [nameAgency]="agency.name"></app-site-card>
-    <ng-template #loading>
-        <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
-    </ng-template>
 </div>
+<ng-template #loading>
+    <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
