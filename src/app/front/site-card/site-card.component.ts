@@ -25,14 +25,23 @@ export class SiteCardComponent implements OnInit {
         err => {
         }
       );
-    } else {
-      let filterType = 'client.name';
-      let name = this.nameClient;
+    }
+    if (this.nameClient) {
+      const filterType = 'client.name';
+      const name = this.nameClient;
 
-      if (this.nameClient === undefined) {
-        filterType = 'agency.name';
-        name = this.nameAgency;
-      }
+      this.projectsService.getAllByFilter(filterType, name, 1).subscribe(
+        res => {
+          this.projects = res;
+        },
+        err => {
+        }
+      );
+    }
+    if (this.nameAgency) {
+      const filterType = 'client.name';
+      const name = this.nameClient;
+
       this.projectsService.getAllByFilter(filterType, name, 1).subscribe(
         res => {
           this.projects = res;
