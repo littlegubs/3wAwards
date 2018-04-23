@@ -9,6 +9,11 @@ app-member-profile{
             padding-top: 30px;
             max-height: 30vh;
         }
+        app-site-card{
+            .container-fluid{
+                margin: 0 auto;
+            }
+        }
         .profile{
             &-name {
                 font-weight: 700;
