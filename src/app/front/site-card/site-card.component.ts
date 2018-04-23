@@ -12,6 +12,7 @@ export class SiteCardComponent implements OnInit {
   projects: Project[];
   @Input() nameClient: string;
   @Input() nameAgency: string;
+  @Input() idMember: string;
 
   constructor(private projectsService: ProjectsService, private router: Router) {
   }
@@ -50,5 +51,17 @@ export class SiteCardComponent implements OnInit {
         }
       );
     }
+      if (this.idMember) {
+          const filterType = 'project.project_favorite_member';
+          const id = this.idMember;
+
+          this.projectsService.getAllByFilter(filterType, id, 1).subscribe(
+              res => {
+                  this.projects = res;
+              },
+              err => {
+              }
+          );
+      }
   }
 }

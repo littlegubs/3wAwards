@@ -17,9 +17,7 @@
   <mat-tab-group>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.PROFILE' | translate"><app-member-form-profile></app-member-form-profile></mat-tab>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.LIKED_PROJECT' | translate">
-      <div *ngFor=" let favoriteProject of member.favoriteProjects">
-        <a [routerLink]="['/project/', favoriteProject.id]">{{favoriteProject.projectName}}</a>
-      </div>
+      <app-site-card [idMember]="member.id"></app-site-card>
     </mat-tab>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.MARKED_PROJECT' | translate">Content 3</mat-tab>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.ADMINED_CLIENT' | translate">
