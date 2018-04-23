@@ -24,9 +24,6 @@ export class MemberProfileComponent implements OnInit {
       res => {
         this.member = res;
         this.projectsGotAward = this.awardsByAgency().concat(this.awardsByClient());
-        console.log(this.projectsGotAward);
-        console.log(this.projectsGotAward[0]);
-        console.log(this.projectsGotAward[1][0].category.libelle);
       },
       err => {
       }
