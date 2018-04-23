@@ -28,7 +28,20 @@
         <a [routerLink]="['/agency/', agency.id]">{{agency.name}}</a>
       </div>
     </mat-tab>
-    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.AWARD' | translate">Content 6</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.AWARD' | translate">
+      <div *ngFor="let project of projectsGotAward, let i = index">
+        <span *ngIf="i % 2 === 0; else award">
+          {{project}}
+        </span>
+        <ng-template #award>
+          <ul *ngFor="let award of project">
+            <li>{{award.date | date}}</li>
+            <li>{{award.type}}</li>
+            <li>{{award.category.libelle}}</li>
+          </ul>
+        </ng-template>
+      </div>
+    </mat-tab>
   </mat-tab-group>
 </div>
 <ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>
