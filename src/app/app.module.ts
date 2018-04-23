@@ -64,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 export function createRestangularConfigFactory(RestangularProvider) {
+  RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer ' + localStorage.getItem('user_token')});
   return RestangularConfigFactory(RestangularProvider, {baseUrl: 'http://127.0.0.1:8000'});
 }
 
