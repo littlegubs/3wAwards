@@ -13,6 +13,7 @@ export class MemberProfileComponent implements OnInit {
   member: Member;
   tokenStorage = localStorage.getItem('user_token');
   userInfo: TokenInterface;
+  projectsGotAward;
 
   constructor(private route: ActivatedRoute, private membersService: MembersService, private authService: AuthService) {
   }
@@ -20,12 +21,69 @@ export class MemberProfileComponent implements OnInit {
   ngOnInit() {
     this.userInfo = this.authService.getUserInfo(this.tokenStorage);
     this.membersService.get(this.userInfo.id).subscribe(
-        res => {
-          this.member = res;
-        },
-        err => {
+      res => {
+        this.member = res;
+        this.projectsGotAward = this.awardsByAgency().concat(this.awardsByClient());
+        console.log(this.projectsGotAward);
+        console.log(this.projectsGotAward[0]);
+        console.log(this.projectsGotAward[1][0].category.libelle);
+      },
+      err => {
+      }
+    );
+  }
+
+  awardsByAgency() {
+    let awardsByAgencies;
+    const projectsGotAwardByAgency  = [];
+    for (let i = 0; i < this.countAgencies(); i++) {
+      for (let j = 0; j < this.countProjectsByAgency(); j++) {
+        if (this.member.agencies[i].projects[j] !== undefined) {
+          awardsByAgencies = this.member.agencies[i].projects[j].awards;
+          projectsGotAwardByAgency.push(this.member.agencies[i].projects[j].projectName, awardsByAgencies);
         }
-      );
+      }
+    }
+    return projectsGotAwardByAgency;
+  }
+
+  awardsByClient() {
+    let awardsByClients;
+    const projectsGotAwardByClient  = [];
+    for (let i = 0; i < this.countClients(); i++) {
+      for (let j = 0; j < this.countProjectsByClient(); j++) {
+        if (this.member.clients[i].projects[j] !== undefined) {
+          awardsByClients = this.member.clients[i].projects[j].awards;
+          projectsGotAwardByClient.push(this.member.clients[i].projects[j].projectName, awardsByClients);
+        }
+      }
+    }
+    return projectsGotAwardByClient;
+  }
+
+  countAgencies() {
+    return Object.keys(this.member.agencies).length;
+  }
+
+  countClients() {
+    return Object.keys(this.member.clients).length;
+  }
+
+  countProjectsByAgency() {
+    let numberProjectsByAgency = 0;
+    for (let i = 0; i < this.countAgencies(); i++) {
+      numberProjectsByAgency = numberProjectsByAgency + Object.keys(this.member.agencies[i].projects).length;
+    }
+    return numberProjectsByAgency;
+  }
+
+  countProjectsByClient() {
+    let numberProjectsByClient = 0;
+    for (let i = 0; i < this.countClients(); i++) {
+      numberProjectsByClient = numberProjectsByClient + Object.keys(this.member.clients[i].projects).length;
+    }
+    return numberProjectsByClient;
+
   }
 
   deleteMember(member: Member) {
