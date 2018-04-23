@@ -7,7 +7,6 @@
   <div class="profile-buttons">
     <button type="button" class="btn btn-profile-external">{{'FRONT.MEMBER_PROFILE.MAIN.MYSITE_BUTTON'    | translate}}</button>
     <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
-    <button (click)="deleteMember(member)" type="button" class="btn btn-profile-external">Delete</button>
   </div>
   <div class="profile-desc">
     <p>{{member.presentation}}</p>
@@ -16,8 +15,10 @@
     <button *ngFor="let tag of member.tags" type="button" class="btn btn-tags">{{tag.libelle}}</button>
   </div>
   <mat-tab-group>
-    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.PROFILE' | translate"><app-member-form-profile [member]="member"></app-member-form-profile></mat-tab>
-    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.LIKED_PROJECT' | translate">Content 2</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.PROFILE' | translate"><app-member-form-profile></app-member-form-profile></mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.LIKED_PROJECT' | translate">
+      <app-site-card [idMember]="member.id"></app-site-card>
+    </mat-tab>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.MARKED_PROJECT' | translate">
       <app-site-card [projectRatingMemberId]="member.id"></app-site-card>
     </mat-tab>

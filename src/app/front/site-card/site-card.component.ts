@@ -13,6 +13,7 @@ export class SiteCardComponent implements OnInit {
   @Input() nameClient: string;
   @Input() nameAgency: string;
   @Input() projectRatingMemberId: number;
+  @Input() idMember: number;
 
   constructor(private projectsService: ProjectsService, private router: Router) {
   }
@@ -29,13 +30,13 @@ export class SiteCardComponent implements OnInit {
     }
     if (this.nameClient) {
       const filterType = 'client.name';
-      this.projectsService.getAllByFilter(filterType, this.nameClient, 1).subscribe(
-        res => {
-          this.projects = res;
-        },
-        err => {
-        }
-      );
+        this.projectsService.getAllByFilter(filterType, this.nameClient, 1).subscribe(
+          res => {
+            this.projects = res;
+          },
+          err => {
+          }
+        );
     }
     if (this.nameAgency) {
       const filterType = 'client.name';
@@ -49,7 +50,19 @@ export class SiteCardComponent implements OnInit {
     }
     if (this.projectRatingMemberId) {
       const filterType = 'projectRatingMember.member.id';
-      this.projectsService.getAllByFilter(filterType, this.projectRatingMemberId , 1).subscribe(
+
+      this.projectsService.getAllByFilter(filterType, this.projectRatingMemberId, 1).subscribe(
+        res => {
+          this.projects = res;
+        },
+        err => {
+        }
+      );
+    }
+    if (this.idMember) {
+      const filterType = 'members.id';
+
+      this.projectsService.getAllByFilter(filterType, this.idMember, 1).subscribe(
         res => {
           this.projects = res;
         },
