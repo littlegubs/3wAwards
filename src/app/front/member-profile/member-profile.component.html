@@ -5,7 +5,7 @@
     <span class="profile-categ">Membre</span> | UX/UI designer | {{member.country}}
   </div>
   <div class="profile-buttons">
-    <button type="button" class="btn btn-profile-external">{{'FRONT.MEMBER_PROFILE.MAIN.MYSITE_BUTTON'    | translate}}</button>
+    <button type="button" class="btn btn-profile-external"><a [href]="member.websiteUrl" target="_blank">{{'FRONT.MEMBER_PROFILE.MAIN.MYSITE_BUTTON'    | translate}}</a></button>
     <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
   </div>
   <div class="profile-desc">
