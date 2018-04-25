@@ -10,7 +10,6 @@ import {Project} from '../../../backend/model/Project';
 export class ProjectProfileComponent implements OnInit {
 
     project: Project;
-    businessSectorTags = [];
 
     constructor(private route: ActivatedRoute, private projectsService: ProjectsService) {
     }
@@ -20,14 +19,6 @@ export class ProjectProfileComponent implements OnInit {
             this.projectsService.get(params.id).subscribe(
                 res => {
                     this.project = res;
-                    for (const tag of this.project.tags) {
-                        console.log(tag.type.libelle);
-                        /* @todo Put this in a function, mutualise this ? infinite if for each tagsType ??? */
-                        if (tag.type.libelle === 'business_sector') {
-                            this.businessSectorTags.push(tag);
-                        }
-                    }
-                    console.log(this.businessSectorTags);
                 },
                 err => {
                 }
