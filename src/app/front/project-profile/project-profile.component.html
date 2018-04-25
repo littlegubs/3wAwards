@@ -1,3 +1,13 @@
-<p>
-  {{project.projectName}}
-</p>
+<div class="container-fluid" *ngIf="project; else loading">
+  <img class="d-block img-fluid" [src]="project.images[0].path |liip:'slider_thumbnail'">
+  <div>
+    <p>{{project.projectDescription}}</p>
+  </div>
+  <button *ngFor="let tag of project.tags" type="button" class="btn btn-tags">{{tag.libelle}}</button>
+  <div *ngFor="let image of project.images; let i = index">
+    <img *ngIf="i !== 0" class="d-block img-fluid" [src]="image.path |liip:'slider_thumbnail'">
+  </div>
+</div>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
