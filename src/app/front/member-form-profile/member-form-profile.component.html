@@ -100,14 +100,36 @@
               <label for="skills" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.SKILLS' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <input matInput id="skills">
+                  <mat-chip-list #chipListSkills>
+                    <mat-chip *ngFor="let skill of skills" [selectable]="selectable"
+                              [removable]="removable" (remove)="removeSkill(skill)">
+                      {{skill.name}}
+                      <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
+                    </mat-chip>
+                    <input id="skills"
+                           [matChipInputFor]="chipListSkills"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addSkill($event)"/>
+                  </mat-chip-list>
                 </mat-form-field>
               </div>
               <!-- INTEREST -->
               <label for="interest" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.INTEREST' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <input matInput id="interest">
+                  <mat-chip-list #chipListInterest>
+                    <mat-chip *ngFor="let interest of interests" [selectable]="selectable"
+                              [removable]="removable" (remove)="removeInterest(interest)">
+                      {{interest.name}}
+                      <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
+                    </mat-chip>
+                    <input id="interest"
+                           [matChipInputFor]="chipListInterest"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addInterest($event)"/>
+                  </mat-chip-list>
                 </mat-form-field>
               </div>
             </div>

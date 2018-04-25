@@ -13,6 +13,7 @@ export class MemberValidatorsBase extends FormGroupValidators {
     birthday = [CustomValidators.date];
     country = null;
     tags = [AppValidators.item];
+    favoriteProjects = [AppValidators.item];
     presentation = null;
     websiteUrl = null;
     newsletter = [AppValidators.boolean];

@@ -16,7 +16,9 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatChipsModule,
+    MatIconModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -59,6 +61,7 @@ import { ClientProfileComponent } from './front/client-profile/client-profile.co
 import { MemberProfileComponent } from './front/member-profile/member-profile.component';
 import { MemberFormProfileComponent } from './front/member-form-profile/member-form-profile.component';
 import {FormService} from '../backend/forms';
+import { ProjectProfileComponent } from './front/project-profile/project-profile.component';
 import { AddAgencyComponent } from './front/add-agency/add-agency.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -66,6 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 export function createRestangularConfigFactory(RestangularProvider) {
+  RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer ' + localStorage.getItem('user_token')});
   return RestangularConfigFactory(RestangularProvider, {baseUrl: 'http://127.0.0.1:8000'});
 }
 
@@ -88,6 +92,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MemberProfileComponent,
     LiipPipe,
     MemberFormProfileComponent,
+    ProjectProfileComponent
     AddAgencyComponent,
   ],
   imports: [
@@ -111,6 +116,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MatInputModule,
     MatCheckboxModule,
     MatProgressBarModule,
+    MatChipsModule,
+    MatIconModule,
     NgCircleProgressModule.forRoot({}),
     RestangularModule.forRoot([], createRestangularConfigFactory),
     TranslateModule.forRoot({
