@@ -2,6 +2,7 @@
 // The 'Member' class is here for customizations and will not be touched.
 
 import { Tag } from '../Tag';
+import { Project } from '../Project';
 import { ProjectRatingMember } from '../ProjectRatingMember';
 import { Client } from '../Client';
 import { Agency } from '../Agency';
@@ -17,6 +18,7 @@ export class MemberBase {
   birthday: Date;
   country: string;
   tags: Tag;
+  favoriteProjects: Project;
   presentation: string;
   websiteUrl: string;
   newsletter: boolean;
@@ -25,12 +27,21 @@ export class MemberBase {
   clients: Client;
   agencies: Agency;
   profilePicture: Image;
+  username: string;
+  email: string;
   isJudge: boolean;
 
   setTags(id: number): MemberBase {
     this.tags = new Tag();
     this.tags.id = id;
     this.tags['@id'] = '/tags/' + id;
+    return this;
+  }
+
+  setFavoriteProjects(id: number): MemberBase {
+    this.favoriteProjects = new Project();
+    this.favoriteProjects.id = id;
+    this.favoriteProjects['@id'] = '/projects/' + id;
     return this;
   }
 

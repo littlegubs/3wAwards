@@ -7,13 +7,13 @@ import { AppValidators } from '../app-validators';
 import { FormGroupValidators } from '../tools/FormGroupValidators';
 
 export class MemberValidatorsBase extends FormGroupValidators {
-    username = null;
     gender = null;
-    firstName = [Validators.required];
+    firstName = null;
     lastName = null;
     birthday = [CustomValidators.date];
     country = null;
     tags = [AppValidators.item];
+    favoriteProjects = [AppValidators.item];
     presentation = null;
     websiteUrl = null;
     newsletter = [AppValidators.boolean];
@@ -22,5 +22,7 @@ export class MemberValidatorsBase extends FormGroupValidators {
     clients = [AppValidators.item];
     agencies = [AppValidators.item];
     profilePicture = [AppValidators.item];
+    username = null;
+    email = null;
     isJudge = [AppValidators.boolean];
 }

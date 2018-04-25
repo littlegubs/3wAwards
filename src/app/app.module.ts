@@ -61,6 +61,7 @@ import { ClientProfileComponent } from './front/client-profile/client-profile.co
 import { MemberProfileComponent } from './front/member-profile/member-profile.component';
 import { MemberFormProfileComponent } from './front/member-form-profile/member-form-profile.component';
 import {FormService} from '../backend/forms';
+import {TagsFilterPipe} from './tags-filter.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -88,6 +89,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     ClientProfileComponent,
     MemberProfileComponent,
     LiipPipe,
+    TagsFilterPipe,
     MemberFormProfileComponent,
   ],
   imports: [
