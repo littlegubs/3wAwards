@@ -100,6 +100,28 @@
         }
       }
     },
+    "PROJECT_PROFILE": {
+      "TAGS": {
+        "TYPE": {
+          "SITE_TYPE": "Type de site",
+          "PURPOSE": "Objet",
+          "BUSINESS_SECTOR": "Secteur d\'activité",
+          "TARGET": "Cible",
+          "LANGUAGE": "Langues",
+          "BUDGET_FORK": "Budget",
+          "COLOR": "Couleurs dominantes",
+          "STYLE": "Style",
+          "BEHAVIOR": "Comportement",
+          "ACCESSIBILITY": "Accessibilité",
+          "AGENCY_MISSION": "Missions confiées à l'agence",
+          "FONCTIONNALITY": "Fonctionnalités clés",
+          "FRONT_TECH": "Front",
+          "BACK_TECH": "Back",
+          "CMS": "CMS",
+          "CHALLENGE": "Challenge technique"
+        }
+      }
+    },
     "HEADER": {
       "MENU": {
         "MENU": "MENU",
