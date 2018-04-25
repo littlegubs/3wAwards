@@ -7,7 +7,6 @@
   <div class="profile-buttons">
     <button type="button" class="btn btn-profile-external">{{'FRONT.MEMBER_PROFILE.MAIN.MYSITE_BUTTON'    | translate}}</button>
     <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
-    <button (click)="deleteMember(member)" type="button" class="btn btn-profile-external">Delete</button>
   </div>
   <div class="profile-desc">
     <p>{{member.presentation}}</p>
@@ -16,9 +15,13 @@
     <button *ngFor="let tag of member.tags" type="button" class="btn btn-tags">{{tag.libelle}}</button>
   </div>
   <mat-tab-group>
-    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.PROFILE' | translate"><app-member-form-profile [member]="member"></app-member-form-profile></mat-tab>
-    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.LIKED_PROJECT' | translate">Content 2</mat-tab>
-    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.MARKED_PROJECT' | translate">Content 3</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.PROFILE' | translate"><app-member-form-profile></app-member-form-profile></mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.LIKED_PROJECT' | translate">
+      <app-site-card [idMember]="member.id"></app-site-card>
+    </mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.MARKED_PROJECT' | translate">
+      <app-site-card [projectRatingMemberId]="member.id"></app-site-card>
+    </mat-tab>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.ADMINED_CLIENT' | translate">
       <div *ngFor=" let client of member.clients">
         <a [routerLink]="['/client/', client.id]">{{client.name}}</a>
@@ -29,7 +32,20 @@
         <a [routerLink]="['/agency/', agency.id]">{{agency.name}}</a>
       </div>
     </mat-tab>
-    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.AWARD' | translate">Content 6</mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.AWARD' | translate">
+      <div *ngFor="let project of projectsGotAward, let i = index">
+        <span *ngIf="i % 2 === 0; else award">
+          {{project}}
+        </span>
+        <ng-template #award>
+          <ul *ngFor="let award of project">
+            <li>{{award.date | date}}</li>
+            <li>{{award.type}}</li>
+            <li>{{award.category.libelle}}</li>
+          </ul>
+        </ng-template>
+      </div>
+    </mat-tab>
   </mat-tab-group>
 </div>
 <ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>

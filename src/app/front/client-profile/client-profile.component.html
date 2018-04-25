@@ -17,6 +17,7 @@
     <button type="button" class="btn btn-profile-external"><a [href]="client.websiteUrl" target="_blank">Site web</a></button>
     <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
     <button (click)="deleteClient(client)" type="button" class="btn btn-profile-external">Delete</button>
+    <button (click)="addClient(client)" type="button" class="btn btn-profile-external">Add</button>
   </div>
   <div class="profile-desc">
     <p>{{client.description}}</p>

@@ -18,7 +18,11 @@ export class MemberFormProfileComponent implements OnInit {
   // EVENTS_KEYBORDS
   separatorKeysCodes = [ENTER, COMMA];
 
+  // SKILLS
+  skills = [];
 
+  // INTERRESTS
+  interests = [];
 
   constructor(private formService: FormService, private memberService: MembersService) {
   }

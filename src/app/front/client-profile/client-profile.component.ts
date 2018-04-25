@@ -45,4 +45,15 @@ export class ClientProfileComponent implements OnInit {
     );
   }
 
+  addClient(client: Client) {
+      this.clientsService.add(client).subscribe(
+          res => {
+              console.log('success');
+          },
+          err => {
+              console.log('error');
+          }
+      );
+  }
+
 }

@@ -17,6 +17,7 @@
         <button type="button" class="btn btn-profile-external" ><a [href]="agency.websiteUrl">Site web</a></button>
         <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
         <button (click)="deleteAgency(agency)" type="button" class="btn btn-profile-external">Delete</button>
+        <button (click)="addAgency(agency)" type="button" class="btn btn-profile-external">Add</button>
     </div>
     <div class="profile-desc">
         <p>{{agency.description}}</p>

@@ -62,12 +62,15 @@ import { MemberProfileComponent } from './front/member-profile/member-profile.co
 import { MemberFormProfileComponent } from './front/member-form-profile/member-form-profile.component';
 import {FormService} from '../backend/forms';
 import {TagsFilterPipe} from './tags-filter.pipe';
+import { ProjectProfileComponent } from './front/project-profile/project-profile.component';
+import { AddAgencyComponent } from './front/add-agency/add-agency.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 export function createRestangularConfigFactory(RestangularProvider) {
+  RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer ' + localStorage.getItem('user_token')});
   return RestangularConfigFactory(RestangularProvider, {baseUrl: 'http://127.0.0.1:8000'});
 }
 
@@ -91,6 +94,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     LiipPipe,
     TagsFilterPipe,
     MemberFormProfileComponent,
+    ProjectProfileComponent,
+    AddAgencyComponent,
   ],
   imports: [
     BrowserModule,

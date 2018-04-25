@@ -1,0 +1,115 @@
+<form [formGroup]="form.group" (submit)="commitAgency()">
+    <div class="row">
+        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
+            <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.IDENTITY' | translate}}</p>
+            <div class="form-group row">
+                <!-- NAME -->
+                <label for="name" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.FIRSTNAME' |
+                    translate}} :</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" id="name" formControlName="name">
+                    </mat-form-field>
+                </div>
+                <!-- COUNTRY -->
+                <label for="country" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.COUNTRY'
+                    | translate}} :</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="country">
+                    </mat-form-field>
+                </div>
+                <!-- ADDRESS -->
+                <label for="address" class="col-sm-4 col-form-label">ADDRESS</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="address">
+                    </mat-form-field>
+                </div>
+                <!-- ADDRESS COMPLEMENT -->
+                <label for="addressComplement" class="col-sm-4 col-form-label">ADDRESS COMPLEMENT</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="addressComplement">
+                    </mat-form-field>
+                </div>
+                <!-- ZIPCODE -->
+                <label for="zipCode" class="col-sm-4 col-form-label">Code postal</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="zipCode">
+                    </mat-form-field>
+                </div>
+                <!-- PHONE -->
+                <label for="phone" class="col-sm-4 col-form-label">phone</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="phone">
+                    </mat-form-field>
+                </div>
+                <!-- FAX -->
+                <label for="fax" class="col-sm-4 col-form-label">fax</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="fax">
+                    </mat-form-field>
+                </div>
+                <!-- CITY -->
+                <label for="city" class="col-sm-4 col-form-label">ville</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="city">
+                    </mat-form-field>
+                </div>
+                <!-- PRESENTATION -->
+                <label for="description" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.SUMMARY' | translate}} :</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <textarea matInput matTextareaAutosize matAutosizeMinRows="2" id="description"></textarea>
+                    </mat-form-field>
+                </div>
+                <!-- INTERNAL NOTICE -->
+                <label for="internalNotice" class="col-sm-4 col-form-label">internal notice</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <textarea matInput matTextareaAutosize matAutosizeMinRows="2" id="internalNotice"></textarea>
+                    </mat-form-field>
+                </div>
+                <!-- DATE CREATION -->
+                <label for="dateCrea" class="col-sm-4 col-form-label">Date création</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="dateCrea" [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <!-- WEBSITE URL -->
+                <label for="websiteUrl" class="col-sm-4 col-form-label">url</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="websiteUrl">
+                    </mat-form-field>
+                </div>
+                <!-- TVA -->
+                <label for="tva" class="col-sm-4 col-form-label">tva</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="tva">
+                    </mat-form-field>
+                </div>
+                <!-- duns -->
+                <label for="duns" class="col-sm-4 col-form-label">duns</label>
+                <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                        <input matInput id="duns">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="text" placeholder="Title" formControlName="title">
+    <textarea placeholder="Description" formControlName="description"></textarea>
+    <input type="date" placeholder="Publication date" formControlName="publicationDate">
+    <button>Apply</button>
+</form>
