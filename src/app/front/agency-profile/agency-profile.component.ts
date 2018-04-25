@@ -43,4 +43,14 @@ export class AgencyProfileComponent implements OnInit {
         );
     }
 
+    addAgency(agency: Agency) {
+        this.agenciesService.add(agency).subscribe(
+            res => {
+                console.log('success');
+            },
+            err => {
+                console.log('error');
+            }
+        );
+    }
 }
