@@ -1,0 +1,8 @@
+<form [formGroup]="form.group" (submit)="commitProject()">
+  <input type="text" placeholder="Nom du projet" formControlName="projectName">
+  <textarea placeholder="Description" formControlName="projectDescription"></textarea>
+  <input type="date" placeholder="Publication date" formControlName="publicationDate">
+  <textarea placeholder="Description notable" formControlName="noticableDescription"></textarea>
+  <input type="number" formControlName="averageRating">
+  <button>Soumettre le site</button>
+</form>
