@@ -8,22 +8,22 @@
     <img *ngIf="i !== 0" class="d-block img-fluid" [src]="image.path |liip:'slider_thumbnail'">
   </div>
 </div>
-<p *ngIf="project.tags |filter:'site_type'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.SITE_TYPE' | translate}}<span *ngFor="let tag of project.tags |filter:'site_type'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'purpose'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PURPOSE' | translate}}<span *ngFor="let tag of project.tags |filter:'purpose'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'business_sector'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}<span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'target'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}<span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'language'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.LANGUAGE' | translate}}<span *ngFor="let tag of project.tags |filter:'language'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'budget_fork'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUDGET_FORK' | translate}}<span *ngFor="let tag of project.tags |filter:'budget_fork'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'color'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}<span *ngFor="let tag of project.tags |filter:'color'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'style'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.STYLE' | translate}}<span *ngFor="let tag of project.tags |filter:'style'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'behavior'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BEHAVIOR' | translate}}<span *ngFor="let tag of project.tags |filter:'behavior'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'accessibility'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.ACCESSIBILITY' | translate}}<span *ngFor="let tag of project.tags |filter:'accessibility'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'agency_mission'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.AGENCY_MISSION' | translate}}<span *ngFor="let tag of project.tags |filter:'agency_mission'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'main_fonctionnality'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FONCTIONNALITY' | translate}}<span *ngFor="let tag of project.tags |filter:'main_fonctionnality'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'front_tech'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FRONT_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'front_tech'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'back_tech'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BACK_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'back_tech'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'cms'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CMS' | translate}}<span *ngFor="let tag of project.tags |filter:'cms'"> {{tag.libelle}} </span></p>
-<p *ngIf="project.tags |filter:'challenge'">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CHALLENGE' | translate}}<span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.SITE_TYPE' | translate}}<span *ngFor="let tag of project.tags |filter:'site_type'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PURPOSE' | translate}}<span *ngFor="let tag of project.tags |filter:'purpose'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}<span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}<span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.LANGUAGE' | translate}}<span *ngFor="let tag of project.tags |filter:'language'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUDGET_FORK' | translate}}<span *ngFor="let tag of project.tags |filter:'budget_fork'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}<span *ngFor="let tag of project.tags |filter:'color'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.STYLE' | translate}}<span *ngFor="let tag of project.tags |filter:'style'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BEHAVIOR' | translate}}<span *ngFor="let tag of project.tags |filter:'behavior'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.ACCESSIBILITY' | translate}}<span *ngFor="let tag of project.tags |filter:'accessibility'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.AGENCY_MISSION' | translate}}<span *ngFor="let tag of project.tags |filter:'agency_mission'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FONCTIONNALITY' | translate}}<span *ngFor="let tag of project.tags |filter:'main_fonctionnality'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FRONT_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'front_tech'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BACK_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'back_tech'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CMS' | translate}}<span *ngFor="let tag of project.tags |filter:'cms'"> {{tag.libelle}} </span></p>
+<p *ngIf="project.tags">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CHALLENGE' | translate}}<span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}} </span></p>
 <ng-template #loading>
   <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
 </ng-template>
