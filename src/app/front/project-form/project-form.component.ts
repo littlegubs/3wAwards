@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormService, Form} from '../../../backend/forms';
-import {Project} from '../../../backend/model';
-import {ProjectsService} from "../../../backend/services";
+import {Member, Project} from '../../../backend/model';
+import {MembersService, ProjectsService} from '../../../backend/services';
+import {TokenInterface} from '../../tokenInterface';
+import {AuthService} from '../../auth.service';
+import {log} from "util";
 
 @Component({
   selector: 'app-project-form',
@@ -10,11 +13,22 @@ import {ProjectsService} from "../../../backend/services";
 })
 export class ProjectFormComponent implements OnInit {
   form: Form<Project>;
+  tokenStorage = localStorage.getItem('user_token');
+  userInfo: TokenInterface;
+  member: Member;
 
-  constructor(private projectService: ProjectsService, private formService: FormService) {
+  constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService, private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.userInfo = this.authService.getUserInfo(this.tokenStorage);
+    this.membersService.get(this.userInfo.id).subscribe(
+      res => {
+        this.member = res;
+      },
+      err => {
+      }
+    );
     this.createNewProject();
   }
 
@@ -25,14 +39,17 @@ export class ProjectFormComponent implements OnInit {
   commitProject(): void {
     if (this.form.group.dirty && this.form.group.valid) {
       const newProject = this.form.get();
+      newProject.setProjectRatingMemberAtNull();
+      newProject.status = 'pending';
+      console.log(newProject);
       if (newProject.id) {
-        this.projectService.update(newProject).subscribe(res => console.log('yeah!'));
+        this.projectsService.update(newProject).subscribe(res => console.log('update'));
       } else {
-        this.projectService.add(newProject).subscribe(res => console.log('yeah!'));
+        newProject.averageRating = null;
+        this.projectsService.add(newProject).subscribe(res => console.log('add'));
       }
     } else {
       this.form.displayErrors();
     }
   }
-
 }
