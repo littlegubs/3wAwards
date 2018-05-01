@@ -2,16 +2,14 @@
   <div class="row project-image slide">
     <img class="d-block img-fluid" [src]="project.images[0].path |liip:'slider_thumbnail'" alt="First slide">
     <div class="daily-date">
-      <span class="date-slider"> 21 septembre 2015 </span>
+      <span class="date-slider"> {{project.publicationDate | date}} </span>
     </div>
     <div class="daily">
       <div class="daily-site">
         <span class="daily-site-name">{{project.projectName}}</span>
         <br>
-        <div *ngIf="project.agency !== null && project.client !== null">
-          <span class="daily-site-info" *ngIf="project.agency === null">par <span class="bold">{{project.client.name}}</span> | {{project.client.country}} </span>
-          <span class="daily-site-info" *ngIf="project.client === null">par <span class="bold">{{project.agency.name}}</span> | {{project.agency.country}}  </span>
-        </div>
+        <span class="daily-site-info" *ngIf="project.agency === null">par <span class="bold">{{project.client.name}}</span> | {{project.client.country}}</span>
+        <span class="daily-site-info" *ngIf="project.client === null">par <span class="bold">{{project.agency.name}}</span> | {{project.agency.country}}  </span>
       </div>
       <div class="daily-marks">
         <div class="daily-marks-circle">
@@ -103,30 +101,63 @@
     <!-- GENERAL TAGS -->
     <div class="row project-general-tags">
         <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class *ngIf="project.tags">
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.SITE_TYPE' | translate}}<span *ngFor="let tag of project.tags |filter:'site_type'"> {{tag.libelle}} </span></p>
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}<span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}} </span></p>
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}<span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}} </span></p>
+          <div class="common-tags" *ngIf="project.tags">
+            <div class="common-tags-details">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.SITE_TYPE' | translate}}</p>
+              <span *ngFor="let tag of project.tags |filter:'site_type'"> {{tag.libelle}}</span>
+            </div>
+            <div class="common-tags-details">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}</p>
+              <span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}}</span>
+            </div>
+            <div class="common-tags-details">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}</p>
+              <span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}}</span>
+            </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class *ngIf="project.tags">
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PURPOSE' | translate}}<span *ngFor="let tag of project.tags |filter:'purpose'"> {{tag.libelle}} </span></p>
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.LANGUAGE' | translate}}<span *ngFor="let tag of project.tags |filter:'language'"> {{tag.libelle}} </span></p>
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUDGET_FORK' | translate}}<span *ngFor="let tag of project.tags |filter:'budget_fork'"> {{tag.libelle}} </span></p>
+          <div class="common-tags" *ngIf="project.tags">
+            <div class="common-tags-details">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PURPOSE' | translate}}</p>
+              <span *ngFor="let tag of project.tags |filter:'purpose'"> {{tag.libelle}}</span>
+            </div>
+            <div class="common-tags-details language">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.LANGUAGE' | translate}}</p>
+              <span *ngFor="let tag of project.tags |filter:'language'"> {{tag.libelle}}</span>
+            </div>
+            <div class="common-tags-details budget-fork">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUDGET_FORK' | translate}}</p>
+              <span *ngFor="let tag of project.tags |filter:'budget_fork'"> {{tag.libelle}}</span>
+            </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class *ngIf="project.tags">
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.REALISED_BY' | translate}}<span><i>flag </i> MentalWorks </span></p>
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_NAME' | translate}}<span><i>flag </i> Gueudet</span></p>
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_SIZE' | translate}}<span>Grande Entreprise </span></p>
+          <div class="common-tags" *ngIf="project.tags">
+            <div class="common-tags-details">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.REALISED_BY' | translate}}</p>
+              <span><i>flag </i> MentalWorks </span>
+            </div>
+            <div class="common-tags-details">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_NAME' | translate}}</p>
+              <span><i>flag </i> Gueudet</span>
+            </div>
+            <div class="common-tags-details">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_SIZE' | translate}}</p>
+              <span>Grande Entreprise </span>
+            </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class *ngIf="project.tags">
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PUBLISHED_DATE' | translate}}<span> 20 Mai 2010 </span></p>
-            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CREDITS' | translate}}<span>Olivier SALESSE (fonction)</span></p>
+          <div class="common-tags" *ngIf="project.tags">
+            <div class="common-tags-details">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PUBLISHED_DATE' | translate}}</p>
+              <span>{{project.publicationDate | date}}</span>
+            </div>
+            <div class="common-tags-details credits">
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CREDITS' | translate}}</p>
+              <span>Olivier SALESSE <span class="internal-notice">(fonction)</span></span>
+            </div>
           </div>
         </div>
     </div>
@@ -134,23 +165,35 @@
     <!-- SPECIFIC TAGS -->
     <div class="row project-specific-tags">
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div *ngIf="project.tags">
-          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}<span *ngFor="let tag of project.tags |filter:'color'"> {{tag.libelle}} </span></p>
+        <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags-details">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}</p>
+            <span *ngFor="let tag of project.tags |filter:'color'"> {{tag.libelle}}</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div *ngIf="project.tags">
-          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.STYLE' | translate}}<span *ngFor="let tag of project.tags |filter:'style'"> {{tag.libelle}} </span></p>
+        <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags-details">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.STYLE' | translate}}</p>
+            <span *ngFor="let tag of project.tags |filter:'style'"> {{tag.libelle}}</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div *ngIf="project.tags">
-          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BEHAVIOR' | translate}}<span *ngFor="let tag of project.tags |filter:'behavior'"> {{tag.libelle}} </span></p>
+        <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags-details">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BEHAVIOR' | translate}}</p>
+            <span *ngFor="let tag of project.tags |filter:'behavior'"> {{tag.libelle}}</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div *ngIf="project.tags">
-          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.ACCESSIBILITY' | translate}}<span *ngFor="let tag of project.tags |filter:'accessibility'"> {{tag.libelle}} </span></p>
+        <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags-details">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.ACCESSIBILITY' | translate}}</p>
+            <span *ngFor="let tag of project.tags |filter:'accessibility'"> {{tag.libelle}}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -158,7 +201,7 @@
     <!-- AGENCY MISSIONS TAGS -->
     <div class="row project-agency-missions-tags">
       <div class="col-sm-12">
-        <div class="">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.AGENCY_MISSION' | translate}}</div>
+        <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.AGENCY_MISSION' | translate}}</div>
       </div>
       <div class="col-sm-12">
         <div *ngFor="let tag of project.tags |filter:'agency_mission'" class="btn btn-tags">{{tag.libelle}}</div>
@@ -168,7 +211,7 @@
     <!-- MAIN FONCTIONNALITIES TAGS -->
     <div class="row project-main-fonctionnalities-tags">
       <div class="col-sm-12">
-        <div class="">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FONCTIONNALITY' | translate}}</div>
+        <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FONCTIONNALITY' | translate}}</div>
       </div>
       <div class="col-sm-12">
         <div *ngFor="let tag of project.tags |filter:'main_fonctionnality'" class="btn btn-tags">{{tag.libelle}}</div>
@@ -178,38 +221,423 @@
     <!-- DEV TECH TAGS -->
     <div class="row project-dev-tech-tags">
       <div class="col-sm-12">
-        <div class="">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.DEV_TECH' | translate}}</div>
+        <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.DEV_TECH' | translate}}</div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div *ngIf="project.tags">
-          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FRONT_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'front_tech'"> {{tag.libelle}} </span></p>
+        <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags-details">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FRONT_TECH' | translate}}</p>
+            <span *ngFor="let tag of project.tags |filter:'front_tech'"> {{tag.libelle}}</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div *ngIf="project.tags">
-          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BACK_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'back_tech'"> {{tag.libelle}} </span></p>
+        <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags-details">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BACK_TECH' | translate}}</p>
+            <span *ngFor="let tag of project.tags |filter:'back_tech'"> {{tag.libelle}}</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div *ngIf="project.tags">
-          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CMS' | translate}}<span *ngFor="let tag of project.tags |filter:'cms'"> {{tag.libelle}} </span></p>
+        <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags-details">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CMS' | translate}}</p>
+            <span *ngFor="let tag of project.tags |filter:'cms'"> {{tag.libelle}}</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div *ngIf="project.tags">
-          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CHALLENGE' | translate}}<span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}} </span></p>
+        <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags-details">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CHALLENGE' | translate}}</p>
+            <span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}}</span>
+          </div>
         </div>
       </div>
       <div class="col-sm-12">
-
-        <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.NOTABLE_NOTES' | translate}} <!-- <span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}} </span>--> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequatur illo minima quidem repellendus? Ad alias aperiam beatae consequuntur, corporis eligendi, minus molestias necessitatibus provident quidem repudiandae similique voluptatum! Ratione?</p>
+        <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags-details notable-notes">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.NOTABLE_NOTES' | translate}}</p>
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus in itaque rem voluptatem voluptates! Aperiam doloremque iusto nesciunt perferendis perspiciatis rem repellat soluta, vel. Amet ducimus exercitationem voluptas. Tempora, tempore!</span>
+          </div>
+        </div>
       </div>
     </div>
-
+    <div class="row project-jury-marks">
+      <div class="col-sm-10 all-marks">
+        <div class="project-marks">
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#ec1c24'"
+                    [innerStrokeColor]="'rgba(236, 28, 36, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.ORIGINALITY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#ffa800'"
+                    [innerStrokeColor]="'rgba(255, 168, 0, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.GRAPHISM' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#99cc33'"
+                    [innerStrokeColor]="'rgba(153, 204, 51, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.ERGONOMY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#ff0099'"
+                    [innerStrokeColor]="'rgba(255, 0, 153, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.INTERACTIVITY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#993399'"
+                    [innerStrokeColor]="'rgba(153, 51, 153, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.QUALITY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#6699cc'"
+                    [innerStrokeColor]="'rgba(102, 153, 204, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.FONCTIONNALITY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#009999'"
+                    [innerStrokeColor]="'rgba(0, 153, 153, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.REACTIVITY' | translate}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2 average-marks">
+        <div class="project-marks">
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#ffffff'"
+                    [innerStrokeColor]="'rgba(255, 255, 255, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.AVERAGE' | translate}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row project-members-marks">
+      <div class="col-sm-10 all-marks">
+        <div class="project-marks">
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#ec1c24'"
+                    [innerStrokeColor]="'rgba(236, 28, 36, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.ORIGINALITY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#ffa800'"
+                    [innerStrokeColor]="'rgba(255, 168, 0, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.GRAPHISM' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#99cc33'"
+                    [innerStrokeColor]="'rgba(153, 204, 51, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.ERGONOMY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#ff0099'"
+                    [innerStrokeColor]="'rgba(255, 0, 153, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.INTERACTIVITY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#993399'"
+                    [innerStrokeColor]="'rgba(153, 51, 153, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.QUALITY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#6699cc'"
+                    [innerStrokeColor]="'rgba(102, 153, 204, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.FONCTIONNALITY' | translate}}</span>
+          </div>
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#009999'"
+                    [innerStrokeColor]="'rgba(0, 153, 153, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.REACTIVITY' | translate}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2 average-marks">
+        <div class="project-marks">
+          <div class="project-marks-circle">
+            <circle-progress
+                    [backgroundStrokeWidth]="0"
+                    [backgroundPadding]="7"
+                    [radius]="40"
+                    [space]="-4"
+                    [toFixed]="1"
+                    [maxPercent]="100"
+                    [outerStrokeWidth]="4"
+                    [outerStrokeColor]="'#ffffff'"
+                    [innerStrokeColor]="'rgba(255, 255, 255, 0.4)'"
+                    [innerStrokeWidth]="4"
+                    [title]="''"
+                    [subtitle]="''"
+                    [animationDuration]="1500"
+                    [showUnits]="false"
+                    [percent]="55"
+                    [renderOnClick]="false"
+            ></circle-progress>
+            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.AVERAGE' | translate}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="row">
 
-  </div>
   <div class="row">
 
   </div>

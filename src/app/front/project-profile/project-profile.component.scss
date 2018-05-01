@@ -146,6 +146,9 @@ app-project-profile{
                 p{
                     width: 100%;
                     text-align: center;
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #333333;
                 }
             }
             &-informations{
@@ -178,6 +181,128 @@ app-project-profile{
             &-general-tags, &-specific-tags, &-agency-missions-tags, &-main-fonctionnalities-tags, &-dev-tech-tags {
                 padding: 25px;
                 margin-bottom: 10px;
+                .common-tags{
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    &-details{
+                        & >p {
+                            margin: 0;
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: #000000;
+                        }
+                        span{
+                            color: #999999;
+                            font-size: 14px;
+                            font-weight: bold;
+                            &:not(:last-child) {
+                                &:after {
+                                    content: ', '
+                                }
+                            }
+                        }
+                        &.language, &.budget-fork{
+                            text-transform: uppercase;
+                        }
+                        &.credits{
+                            span.internal-notice{
+                                font-weight: normal;
+                                color: #999999;
+                            }
+                        }
+                    }
+                }
+                .project-tags-title {
+                    color: #999999;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    text-align: center;
+                    margin-bottom: 10px;
+                }
+            }
+            &-agency-missions-tags{
+                .btn-tags{
+                    background-color: white;
+                    color: #666666;
+                }
+            }
+            &-main-fonctionnalities-tags{
+                .btn-tags {
+                    background-color: #999999;
+                    color: white;
+                }
+            }
+            &-dev-tech-tags{
+                .common-tags {
+                    &-details {
+                        & > p {
+                            color: #cccccc;
+                        }
+                        &.notable-notes{
+                            margin-top: 10px;
+                            span {
+                                font-size: 13px;
+                                font-weight: normal;
+                            }
+                        }
+                    }
+                }
+            }
+            &-jury-marks, &-members-marks{
+                min-height: 200px;
+                margin-top: 30px;
+                .all-marks {
+                    background-color: white;
+                    .project-marks{
+                        &-circle{
+                            &-type{
+                                color: #999999;
+                            }
+                            &-mark{
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+                .average-marks {
+                    background-color: #ec1c24;
+                    .project-marks {
+                        &-circle {
+                            &-type {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+                .project-marks {
+                    flex-direction: row;
+                    display: flex;
+                    justify-content: space-around;
+                    flex: 1 0 auto;
+                    padding-top: 50px;
+                    text-align: center;
+                    &-circle {
+                        display: flex;
+                        flex-direction: column;
+                        &-type {
+                            color: gray;
+                            font-size: 14px;
+                            font-weight: bold;
+                            position: relative;
+                            top: -35px;
+                            text-transform: capitalize;
+                        }
+                        &-mark {
+                            position: relative;
+                            top: -75px;
+                            color: white;
+                            font-size: 24px;
+                        }
+                    }
+                }
             }
         }
     }

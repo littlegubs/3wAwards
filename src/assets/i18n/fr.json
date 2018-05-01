@@ -127,6 +127,16 @@
           "PUBLISHED_DATE": "Date de publication",
           "CREDITS": "Crédits"
         }
+      },
+      "MARKS": {
+        "ORIGINALITY": "Originalité, créativité",
+        "GRAPHISM": "Graphisme, Lisibilité",
+        "ERGONOMY": "Navigation, ergonomie",
+        "INTERACTIVITY": "Intéractivité",
+        "QUALITY": "Qualité des contenus",
+        "FONCTIONNALITY": "Richesse fonctionnelle",
+        "REACTIVITY": "Réactivité, vitesse",
+        "AVERAGE": "Moyenne"
       }
     },
     "HEADER": {
