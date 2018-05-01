@@ -1,31 +1,228 @@
 <div class="container-fluid" *ngIf="project; else loading">
-  <img class="d-block img-fluid" [src]="project.images[0].path |liip:'slider_thumbnail'">
-  <div>
-    <p>{{project.projectDescription}}</p>
+  <div class="row project-image slide">
+    <img class="d-block img-fluid" [src]="project.images[0].path |liip:'slider_thumbnail'" alt="First slide">
+    <div class="daily-date">
+      <span class="date-slider"> 21 septembre 2015 </span>
+    </div>
+    <div class="daily">
+      <div class="daily-site">
+        <span class="daily-site-name">{{project.projectName}}</span>
+        <br>
+        <div *ngIf="project.agency !== null && project.client !== null">
+          <span class="daily-site-info" *ngIf="project.agency === null">par <span class="bold">{{project.client.name}}</span> | {{project.client.country}} </span>
+          <span class="daily-site-info" *ngIf="project.client === null">par <span class="bold">{{project.agency.name}}</span> | {{project.agency.country}}  </span>
+        </div>
+      </div>
+      <div class="daily-marks">
+        <div class="daily-marks-circle">
+          <circle-progress
+                  [backgroundStrokeWidth]="0"
+                  [backgroundPadding]="7"
+                  [radius]="40"
+                  [space]="-4"
+                  [toFixed]="1"
+                  [maxPercent]="100"
+                  [outerStrokeWidth]="4"
+                  [outerStrokeColor]="'#ffa800'"
+                  [innerStrokeColor]="'rgba(255, 168, 0, 0.4)'"
+                  [innerStrokeWidth]="4"
+                  [title]="''"
+                  [subtitle]="''"
+                  [animationDuration]="1500"
+                  [showUnits]="false"
+                  [percent]="55"
+                  [renderOnClick]="false"
+          ></circle-progress>
+          <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.JURY' | translate}}</span>
+          <span class="daily-marks-circle-mark"><b>5</b>,5</span>
+        </div>
+        <div class="daily-marks-circle">
+          <circle-progress
+                  [backgroundStrokeWidth]="0"
+                  [backgroundPadding]="7"
+                  [radius]="40"
+                  [space]="-4"
+                  [toFixed]="1"
+                  [maxPercent]="100"
+                  [outerStrokeWidth]="4"
+                  [outerStrokeColor]="'#b41adb'"
+                  [innerStrokeColor]="'rgba(180, 26, 219, 0.4)'"
+                  [innerStrokeWidth]="4"
+                  [title]="''"
+                  [subtitle]="''"
+                  [animationDuration]="2500"
+                  [showUnits]="false"
+                  [percent]="90"
+                  [renderOnClick]="false"
+          ></circle-progress>
+          <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.MEMBER' | translate}}</span>
+          <span class="daily-marks-circle-mark"><b>9</b>,0</span>
+        </div>
+        <div class="daily-marks-circle">
+          <circle-progress
+                  [backgroundStrokeWidth]="0"
+                  [backgroundPadding]="7"
+                  [radius]="40"
+                  [space]="-4"
+                  [toFixed]="1"
+                  [maxPercent]="100"
+                  [outerStrokeWidth]="4"
+                  [outerStrokeColor]="'#ec1c24'"
+                  [innerStrokeColor]="'rgba(236, 28, 36, 0.4)'"
+                  [innerStrokeWidth]="4"
+                  [title]="''"
+                  [subtitle]="''"
+                  [animationDuration]="3500"
+                  [showUnits]="false"
+                  [percent]="85.5"
+                  [renderOnClick]="false"
+          ></circle-progress>
+          <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.FINAL' | translate}}</span>
+          <span class="daily-marks-circle-mark"><b>8</b>,5</span>
+        </div>
+      </div>
+      <div class="daily-actions">
+        <button type="button" class="btn btn-main-gray-border">
+          {{'FRONT.SLIDER.VISIT_ACTION' | translate}}
+        </button>
+      </div>
+    </div>
+    <i class="shareMenu fas fa-share-alt"></i>
   </div>
-  <button *ngFor="let tag of project.tags |filter:'custom'" type="button" class="btn btn-tags">{{tag.libelle}}</button>
+  <div class="project-informations">
+    <!-- PROJECT DESCRIPTION -->
+    <div class="row project-description">
+        <p>{{project.projectDescription}}</p>
+    </div>
+
+    <!-- CUSTOM TAGS -->
+    <div class="row project-custom-tags">
+      <div *ngFor="let tag of project.tags |filter:'custom'" class="btn btn-tags">{{tag.libelle}}</div>
+    </div>
+
+    <!-- GENERAL TAGS -->
+    <div class="row project-general-tags">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class *ngIf="project.tags">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.SITE_TYPE' | translate}}<span *ngFor="let tag of project.tags |filter:'site_type'"> {{tag.libelle}} </span></p>
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}<span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}} </span></p>
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}<span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}} </span></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class *ngIf="project.tags">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PURPOSE' | translate}}<span *ngFor="let tag of project.tags |filter:'purpose'"> {{tag.libelle}} </span></p>
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.LANGUAGE' | translate}}<span *ngFor="let tag of project.tags |filter:'language'"> {{tag.libelle}} </span></p>
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUDGET_FORK' | translate}}<span *ngFor="let tag of project.tags |filter:'budget_fork'"> {{tag.libelle}} </span></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class *ngIf="project.tags">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.REALISED_BY' | translate}}<span><i>flag </i> MentalWorks </span></p>
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_NAME' | translate}}<span><i>flag </i> Gueudet</span></p>
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_SIZE' | translate}}<span>Grande Entreprise </span></p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class *ngIf="project.tags">
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PUBLISHED_DATE' | translate}}<span> 20 Mai 2010 </span></p>
+            <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CREDITS' | translate}}<span>Olivier SALESSE (fonction)</span></p>
+          </div>
+        </div>
+    </div>
+
+    <!-- SPECIFIC TAGS -->
+    <div class="row project-specific-tags">
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div *ngIf="project.tags">
+          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}<span *ngFor="let tag of project.tags |filter:'color'"> {{tag.libelle}} </span></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div *ngIf="project.tags">
+          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.STYLE' | translate}}<span *ngFor="let tag of project.tags |filter:'style'"> {{tag.libelle}} </span></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div *ngIf="project.tags">
+          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BEHAVIOR' | translate}}<span *ngFor="let tag of project.tags |filter:'behavior'"> {{tag.libelle}} </span></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div *ngIf="project.tags">
+          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.ACCESSIBILITY' | translate}}<span *ngFor="let tag of project.tags |filter:'accessibility'"> {{tag.libelle}} </span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGENCY MISSIONS TAGS -->
+    <div class="row project-agency-missions-tags">
+      <div class="col-sm-12">
+        <div class="">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.AGENCY_MISSION' | translate}}</div>
+      </div>
+      <div class="col-sm-12">
+        <div *ngFor="let tag of project.tags |filter:'agency_mission'" class="btn btn-tags">{{tag.libelle}}</div>
+      </div>
+    </div>
+
+    <!-- MAIN FONCTIONNALITIES TAGS -->
+    <div class="row project-main-fonctionnalities-tags">
+      <div class="col-sm-12">
+        <div class="">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FONCTIONNALITY' | translate}}</div>
+      </div>
+      <div class="col-sm-12">
+        <div *ngFor="let tag of project.tags |filter:'main_fonctionnality'" class="btn btn-tags">{{tag.libelle}}</div>
+      </div>
+    </div>
+
+    <!-- DEV TECH TAGS -->
+    <div class="row project-dev-tech-tags">
+      <div class="col-sm-12">
+        <div class="">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.DEV_TECH' | translate}}</div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div *ngIf="project.tags">
+          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FRONT_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'front_tech'"> {{tag.libelle}} </span></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div *ngIf="project.tags">
+          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BACK_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'back_tech'"> {{tag.libelle}} </span></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div *ngIf="project.tags">
+          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CMS' | translate}}<span *ngFor="let tag of project.tags |filter:'cms'"> {{tag.libelle}} </span></p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div *ngIf="project.tags">
+          <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CHALLENGE' | translate}}<span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}} </span></p>
+        </div>
+      </div>
+      <div class="col-sm-12">
+
+        <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.NOTABLE_NOTES' | translate}} <!-- <span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}} </span>--> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequatur illo minima quidem repellendus? Ad alias aperiam beatae consequuntur, corporis eligendi, minus molestias necessitatibus provident quidem repudiandae similique voluptatum! Ratione?</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+
+  </div>
+  <div class="row">
+
+  </div>
+  <div class="row">
+
+  </div>
+  <!-- img du projet -->
   <div *ngFor="let image of project.images; let i = index">
     <img *ngIf="i !== 0" class="d-block img-fluid" [src]="image.path |liip:'slider_thumbnail'">
   </div>
-  <div *ngIf="project.tags">
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.SITE_TYPE' | translate}}<span *ngFor="let tag of project.tags |filter:'site_type'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PURPOSE' | translate}}<span *ngFor="let tag of project.tags |filter:'purpose'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}<span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}<span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.LANGUAGE' | translate}}<span *ngFor="let tag of project.tags |filter:'language'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUDGET_FORK' | translate}}<span *ngFor="let tag of project.tags |filter:'budget_fork'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}<span *ngFor="let tag of project.tags |filter:'color'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.STYLE' | translate}}<span *ngFor="let tag of project.tags |filter:'style'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BEHAVIOR' | translate}}<span *ngFor="let tag of project.tags |filter:'behavior'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.ACCESSIBILITY' | translate}}<span *ngFor="let tag of project.tags |filter:'accessibility'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.AGENCY_MISSION' | translate}}<span *ngFor="let tag of project.tags |filter:'agency_mission'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FONCTIONNALITY' | translate}}<span *ngFor="let tag of project.tags |filter:'main_fonctionnality'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FRONT_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'front_tech'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BACK_TECH' | translate}}<span *ngFor="let tag of project.tags |filter:'back_tech'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CMS' | translate}}<span *ngFor="let tag of project.tags |filter:'cms'"> {{tag.libelle}} </span></p>
-    <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CHALLENGE' | translate}}<span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}} </span></p>
-  </div>
 </div>
+
+
 
 <ng-template #loading>
   <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>

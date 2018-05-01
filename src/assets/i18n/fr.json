@@ -115,10 +115,17 @@
           "ACCESSIBILITY": "Accessibilité",
           "AGENCY_MISSION": "Missions confiées à l'agence",
           "FONCTIONNALITY": "Fonctionnalités clés",
+          "DEV_TECH": "Développement technique",
+          "NOTABLE_NOTES": "Points remarquables",
           "FRONT_TECH": "Front",
           "BACK_TECH": "Back",
           "CMS": "CMS",
-          "CHALLENGE": "Challenge technique"
+          "CHALLENGE": "Challenge technique",
+          "REALISED_BY": "Réalisé par",
+          "CLIENT_NAME": "Nom du client",
+          "CLIENT_SIZE": "Taille du client",
+          "PUBLISHED_DATE": "Date de publication",
+          "CREDITS": "Crédits"
         }
       }
     },
