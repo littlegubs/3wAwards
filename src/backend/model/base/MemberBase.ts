@@ -27,6 +27,8 @@ export class MemberBase {
   clients: Client;
   agencies: Agency;
   profilePicture: Image;
+  username: string;
+  email: string;
   isJudge: boolean;
 
   setTags(id: number): MemberBase {

@@ -19,7 +19,6 @@ export class ProjectProfileComponent implements OnInit {
             this.projectsService.get(params.id).subscribe(
                 res => {
                     this.project = res;
-                    console.log(this.project);
                 },
                 err => {
                 }
