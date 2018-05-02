@@ -4,7 +4,6 @@ import {Member, Project} from '../../../backend/model';
 import {MembersService, ProjectsService} from '../../../backend/services';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
-import {log} from "util";
 
 @Component({
   selector: 'app-project-form',
@@ -16,6 +15,8 @@ export class ProjectFormComponent implements OnInit {
   tokenStorage = localStorage.getItem('user_token');
   userInfo: TokenInterface;
   member: Member;
+  idAgency: number;
+  idClient: number;
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService, private authService: AuthService) {
   }
@@ -41,15 +42,36 @@ export class ProjectFormComponent implements OnInit {
       const newProject = this.form.get();
       newProject.setProjectRatingMemberAtNull();
       newProject.status = 'pending';
-      console.log(newProject);
       if (newProject.id) {
         this.projectsService.update(newProject).subscribe(res => console.log('update'));
       } else {
+        this.idAgency = this.member.agencies[0].id;
+
+        if (this.idClient !== undefined) {
+          newProject.setAgencyAtNull();
+          newProject.setClient(this.idClient);
+        } else {
+          newProject.setClientAtNull();
+          newProject.setAgency(this.idAgency);
+        }
+
         newProject.averageRating = null;
+        console.log(newProject);
         this.projectsService.add(newProject).subscribe(res => console.log('add'));
       }
     } else {
       this.form.displayErrors();
+    }
+  }
+
+  getTheSelectedValue(value): void {
+    const array = value.split(',');
+    if (array[0] === 'agency') {
+      this.idAgency = array[1];
+      this.idClient = undefined;
+    } else {
+      this.idClient = array[1];
+      this.idAgency = undefined;
     }
   }
 }

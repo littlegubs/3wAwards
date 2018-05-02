@@ -1,7 +1,7 @@
 <form [formGroup]="form.group" (submit)="commitProject()">
-  <select *ngIf="member" class="form-control">
-    <option *ngFor="let agency of member.agencies">{{agency.name}}</option>
-    <option *ngFor="let client of member.clients">{{client.name}}</option>
+  <select *ngIf="member" class="form-control" #agencyClientSelect (change)="getTheSelectedValue(agencyClientSelect.value)">
+    <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}</option>
+    <option *ngFor="let client of member.clients" [value]="['client', client.id]">{{client.name}}</option>
   </select>
   <input type="text" placeholder="Nom du projet" formControlName="projectName">
   <textarea placeholder="Description" formControlName="projectDescription"></textarea>
