@@ -252,10 +252,10 @@ app-project-profile{
                 }
             }
             &-jury-marks, &-members-marks{
-                height: 200px;
                 margin-top: 30px;
                 .all-marks {
                     background-color: white;
+                    padding: 0;
                     .project-marks{
                         &-circle{
                             &-type{
@@ -283,12 +283,18 @@ app-project-profile{
                     justify-content: space-around;
                     flex: 1 0 auto;
                     text-align: center;
-                    max-height: 200px;
                     height: 100%;
                     &-circle {
                         display: flex;
                         flex-direction: column;
-                        width: 135px;
+                        max-height: 200px;
+                        @media (min-width: 600px) and (max-width: 1200px) {
+                            max-width: 25%;
+                        }
+                        @media (min-width: 1200px) {
+                            max-width: 135px;
+
+                        }
                         circle-progress{
                             padding-top: 25px;
                         }
@@ -310,11 +316,17 @@ app-project-profile{
                 }
             }
             &-actions {
-                margin: 25px 0;
+                margin: 25px auto;
+                width: 200px;
+                text-align: center;
+                height: 40px;
             }
 
             &-images {
                 margin-top: 25px;
+                img:not(first-child){
+                    margin-top: 20px;
+                }
             }
         }
     }

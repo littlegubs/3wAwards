@@ -77,6 +77,23 @@
             transition: all 0.4s;
         }
     }
+    &-project-like{
+        background: white;
+        border-radius: 40px;
+        padding: 10px 11.1px;
+        font-size: 14px;
+        color: #7f1d98;
+
+    }
+    &-project-vote{
+        width: 120px;
+        background-color: #7f1d98;
+        color: white;
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 25px;
+        margin-left: 10px;
+    }
     &:focus, &:hover:focus{
         outline: none !important;
     }
