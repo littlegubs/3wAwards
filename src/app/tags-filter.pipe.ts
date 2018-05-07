@@ -11,6 +11,10 @@ export class TagsFilterPipe implements PipeTransform {
   }
 
   transform(tags: Tag[], filter: string) {
-    return tags.filter(tag => tag.type.libelle === filter);
+      if (tags.filter(tag => tag.type.libelle === filter).length === 0) {
+          return null;
+      } else {
+          return tags.filter(tag => tag.type.libelle === filter);
+      }
   }
 }
