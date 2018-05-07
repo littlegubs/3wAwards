@@ -101,7 +101,7 @@
     <!-- GENERAL TAGS -->
     <div class="row project-general-tags">
         <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags">
             <div class="common-tags-details">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.SITE_TYPE' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'site_type'"> {{tag.libelle}}</span>
@@ -110,14 +110,14 @@
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}}</span>
             </div>
-            <div class="common-tags-details">
+            <div class="common-tags-details" *ngIf="project.tags |filter:'target'">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}}</span>
             </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags">
             <div class="common-tags-details">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PURPOSE' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'purpose'"> {{tag.libelle}}</span>
@@ -133,7 +133,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags">
             <div class="common-tags-details">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.REALISED_BY' | translate}}</p>
               <span><img src="assets/imgs/flags/fr-flag.png"> MentalWorks </span>
@@ -149,7 +149,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="common-tags" *ngIf="project.tags">
+          <div class="common-tags">
             <div class="common-tags-details">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PUBLISHED_DATE' | translate}}</p>
               <span>{{project.publicationDate | date}}</span>
@@ -165,7 +165,7 @@
     <!-- SPECIFIC TAGS -->
     <div class="row project-specific-tags">
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags" *ngIf="project.tags">
+        <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'color'"> {{tag.libelle}}</span>
@@ -173,7 +173,7 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags" *ngIf="project.tags">
+        <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.STYLE' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'style'"> {{tag.libelle}}</span>
@@ -181,7 +181,7 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags" *ngIf="project.tags">
+        <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BEHAVIOR' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'behavior'"> {{tag.libelle}}</span>
@@ -189,7 +189,7 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags" *ngIf="project.tags">
+        <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.ACCESSIBILITY' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'accessibility'"> {{tag.libelle}}</span>
@@ -224,7 +224,7 @@
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.DEV_TECH' | translate}}</div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags" *ngIf="project.tags">
+        <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FRONT_TECH' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'front_tech'"> {{tag.libelle}}</span>
@@ -232,7 +232,7 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags" *ngIf="project.tags">
+        <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BACK_TECH' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'back_tech'"> {{tag.libelle}}</span>
@@ -240,7 +240,7 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags" *ngIf="project.tags">
+        <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CMS' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'cms'"> {{tag.libelle}}</span>
@@ -248,7 +248,7 @@
         </div>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags" *ngIf="project.tags">
+        <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CHALLENGE' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}}</span>
@@ -256,7 +256,7 @@
         </div>
       </div>
       <div class="col-sm-12">
-        <div class="common-tags" *ngIf="project.tags">
+        <div class="common-tags">
           <div class="common-tags-details notable-notes">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.NOTABLE_NOTES' | translate}}</p>
             <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus in itaque rem voluptatem voluptates! Aperiam doloremque iusto nesciunt perferendis perspiciatis rem repellat soluta, vel. Amet ducimus exercitationem voluptas. Tempora, tempore!</span>
