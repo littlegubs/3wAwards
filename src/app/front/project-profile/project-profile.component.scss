@@ -169,14 +169,32 @@ app-project-profile{
                 background: #EEEEEE;
                 @include justify-content(center);
                 text-align: center;
+                .fa-chevron-down {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: #999999;
+                }
             }
             &-main-fonctionnalities-tags {
                 background: #EEEEEE;
                 @include justify-content(center);
                 text-align: center;
+                .fa-chevron-down {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: #999999;
+                }
             }
             &-dev-tech-tags {
                 background: #4D4D4D;
+                .fa-chevron-down {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: #999999;
+                }
             }
             &-general-tags, &-specific-tags, &-agency-missions-tags, &-main-fonctionnalities-tags, &-dev-tech-tags {
                 padding: 25px;

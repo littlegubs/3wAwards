@@ -94,7 +94,7 @@
     </div>
 
     <!-- CUSTOM TAGS -->
-    <div class="row project-custom-tags">
+    <div class="row project-custom-tags" >
       <div *ngFor="let tag of project.tags |filter:'custom'" class="btn btn-tags">{{tag.libelle}}</div>
     </div>
 
@@ -110,7 +110,7 @@
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}}</span>
             </div>
-            <div class="common-tags-details" *ngIf="project.tags |filter:'target'">
+            <div class="common-tags-details">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}}</span>
             </div>
@@ -134,13 +134,13 @@
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12">
           <div class="common-tags">
-            <div class="common-tags-details">
+            <div class="common-tags-details" *ngIf="project.agency">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.REALISED_BY' | translate}}</p>
-              <span><img src="assets/imgs/flags/fr-flag.png"> MentalWorks </span>
+              <span><img src="assets/imgs/flags/fr-flag.png"> {{project.agency.name}} </span>
             </div>
-            <div class="common-tags-details">
+            <div class="common-tags-details" *ngIf="project.client">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_NAME' | translate}}</p>
-              <span><img src="assets/imgs/flags/fr-flag.png"> Gueudet</span>
+              <span><img src="assets/imgs/flags/fr-flag.png"> {{project.client.name}}</span>
             </div>
             <div class="common-tags-details">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_SIZE' | translate}}</p>
@@ -202,6 +202,7 @@
     <div class="row project-agency-missions-tags">
       <div class="col-sm-12">
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.AGENCY_MISSION' | translate}}</div>
+        <i class="fas fa-chevron-down"></i>
       </div>
       <div class="col-sm-12">
         <div *ngFor="let tag of project.tags |filter:'agency_mission'" class="btn btn-tags">{{tag.libelle}}</div>
@@ -212,6 +213,7 @@
     <div class="row project-main-fonctionnalities-tags">
       <div class="col-sm-12">
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FONCTIONNALITY' | translate}}</div>
+        <i class="fas fa-chevron-down"></i>
       </div>
       <div class="col-sm-12">
         <div *ngFor="let tag of project.tags |filter:'main_fonctionnality'" class="btn btn-tags">{{tag.libelle}}</div>
@@ -222,8 +224,9 @@
     <div class="row project-dev-tech-tags">
       <div class="col-sm-12">
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.DEV_TECH' | translate}}</div>
+        <i class="fas fa-chevron-down"></i>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="project.tags |filter:'front_tech'">
         <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FRONT_TECH' | translate}}</p>
@@ -231,7 +234,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="project.tags |filter:'back_tech'">
         <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BACK_TECH' | translate}}</p>
@@ -239,7 +242,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="project.tags |filter:'cms'">
         <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CMS' | translate}}</p>
