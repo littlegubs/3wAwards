@@ -199,10 +199,10 @@
     </div>
 
     <!-- AGENCY MISSIONS TAGS -->
-    <div class="row project-agency-missions-tags">
+    <div class="row project-agency-missions-tags" [ngClass]="{'show' : toggleAgency }">
       <div class="col-sm-12">
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.AGENCY_MISSION' | translate}}</div>
-        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-down" (click)="toggleAgency = !toggleAgency"></i>
       </div>
       <div class="col-sm-12">
         <div *ngFor="let tag of project.tags |filter:'agency_mission'" class="btn btn-tags">{{tag.libelle}}</div>
@@ -210,10 +210,10 @@
     </div>
 
     <!-- MAIN FONCTIONNALITIES TAGS -->
-    <div class="row project-main-fonctionnalities-tags">
+    <div class="row project-main-fonctionnalities-tags" [ngClass]="{'show' : toggleMain }">
       <div class="col-sm-12">
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FONCTIONNALITY' | translate}}</div>
-        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-down" (click)="toggleMain = !toggleMain"></i>
       </div>
       <div class="col-sm-12">
         <div *ngFor="let tag of project.tags |filter:'main_fonctionnality'" class="btn btn-tags">{{tag.libelle}}</div>
@@ -221,10 +221,10 @@
     </div>
 
     <!-- DEV TECH TAGS -->
-    <div class="row project-dev-tech-tags">
+    <div class="row project-dev-tech-tags" [ngClass]="{'show' : toggleDev }">
       <div class="col-sm-12">
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.DEV_TECH' | translate}}</div>
-        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-down" (click)="toggleDev = !toggleDev"></i>
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="project.tags |filter:'front_tech'">
         <div class="common-tags">

@@ -10,6 +10,9 @@ import {Project} from '../../../backend/model/Project';
 export class ProjectProfileComponent implements OnInit {
 
     project: Project;
+    toggleAgency = false;
+    toggleMain = false;
+    toggleDev = false;
 
     constructor(private route: ActivatedRoute, private projectsService: ProjectsService) {
     }
