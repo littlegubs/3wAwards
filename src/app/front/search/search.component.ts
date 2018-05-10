@@ -6,11 +6,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   isActive = false;
+  isFilterActive = false;
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  showFilter() {
+    this.isFilterActive = !this.isFilterActive;
   }
 
 }
