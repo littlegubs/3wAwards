@@ -1,5 +1,6 @@
 <div class="container-fluid" *ngIf="member; else loading">
   <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
+  <!--<img [src]="member.profilePicture |liip:'profile_pic'" class="rounded-circle profile-image">-->
   <h1 class="profile-name">{{member.firstName}} {{member.lastName}}</h1>
   <div class="profile-text">
     <span class="profile-categ">Membre</span> | UX/UI designer | {{member.country}}
@@ -15,7 +16,7 @@
     <button *ngFor="let tag of member.tags" type="button" class="btn btn-tags">{{tag.libelle}}</button>
   </div>
   <mat-tab-group>
-    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.PROFILE' | translate"><app-member-form-profile></app-member-form-profile></mat-tab>
+    <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.PROFILE' | translate"><app-member-form-profile [member]="member"></app-member-form-profile></mat-tab>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.LIKED_PROJECT' | translate">
       <app-site-card [idMember]="member.id"></app-site-card>
     </mat-tab>
