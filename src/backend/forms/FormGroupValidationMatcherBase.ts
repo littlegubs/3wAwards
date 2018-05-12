@@ -11,6 +11,8 @@ import { Category } from '../model/Category';
 import { CategoryValidators } from './CategoryValidators';
 import { Client } from '../model/Client';
 import { ClientValidators } from './ClientValidators';
+import { Credit } from '../model/Credit';
+import { CreditValidators } from './CreditValidators';
 import { Image } from '../model/Image';
 import { ImageValidators } from './ImageValidators';
 import { Member } from '../model/Member';
@@ -44,6 +46,7 @@ export class FormGroupValidationMatcherBase {
     this.items[Award._resource] = {itemClass: Award, validator: AwardValidators};
     this.items[Category._resource] = {itemClass: Category, validator: CategoryValidators};
     this.items[Client._resource] = {itemClass: Client, validator: ClientValidators};
+    this.items[Credit._resource] = {itemClass: Credit, validator: CreditValidators};
     this.items[Image._resource] = {itemClass: Image, validator: ImageValidators};
     this.items[Member._resource] = {itemClass: Member, validator: MemberValidators};
     this.items[ProjectRatingMember._resource] = {itemClass: ProjectRatingMember, validator: ProjectRatingMemberValidators};

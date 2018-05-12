@@ -136,15 +136,15 @@
           <div class="common-tags">
             <div class="common-tags-details" *ngIf="project.agency">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.REALISED_BY' | translate}}</p>
-              <span><img src="assets/imgs/flags/fr-flag.png"> {{project.agency.name}} </span>
+              <span>{{project.agency.name}} </span>
             </div>
             <div class="common-tags-details" *ngIf="project.client">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_NAME' | translate}}</p>
-              <span><img src="assets/imgs/flags/fr-flag.png"> {{project.client.name}}</span>
+              <span>{{project.client.name}}</span>
             </div>
-            <div class="common-tags-details">
+            <div class="common-tags-details" *ngIf="project.client">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_SIZE' | translate}}</p>
-              <span>Grande Entreprise</span>
+              <span *ngFor="let tag of project.tags |filter:'client_size'">{{tag.libelle}}</span>
             </div>
           </div>
         </div>
@@ -156,7 +156,7 @@
             </div>
             <div class="common-tags-details credits">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CREDITS' | translate}}</p>
-              <span>Olivier SALESSE <span class="internal-notice">(fonction)</span></span>
+              <p *ngFor="let credit of project.credits" class="credits-details">{{credit.firstname}} {{credit.lastname}} <span class="internal-notice">({{credit.function}})</span></p>
             </div>
           </div>
         </div>

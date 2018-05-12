@@ -232,6 +232,11 @@ app-project-profile{
                             text-transform: uppercase;
                         }
                         &.credits{
+                            p.credits-details{
+                                color: #999999;
+                                font-size: 14px;
+                                font-weight: bold;
+                            }
                             span.internal-notice{
                                 font-weight: normal;
                                 color: #999999;

@@ -9,6 +9,7 @@ import { AgencyValidators } from './AgencyValidators';
 import { AwardValidators } from './AwardValidators';
 import { CategoryValidators } from './CategoryValidators';
 import { ClientValidators } from './ClientValidators';
+import { CreditValidators } from './CreditValidators';
 import { ImageValidators } from './ImageValidators';
 import { MemberValidators } from './MemberValidators';
 import { ProjectRatingMemberValidators } from './ProjectRatingMemberValidators';
@@ -29,6 +30,7 @@ export {
   AwardValidators,
   CategoryValidators,
   ClientValidators,
+  CreditValidators,
   ImageValidators,
   MemberValidators,
   ProjectRatingMemberValidators,
