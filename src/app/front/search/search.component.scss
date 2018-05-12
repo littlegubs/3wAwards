@@ -18,8 +18,11 @@ app-search{
         outline: none;
         &.active{
             opacity: 1;
-            width: 350px;
+            width: 300px;
             padding: 10px;
+            @media #{$small-screen} {
+                width: 150px;
+            }
         }
     }
     i{

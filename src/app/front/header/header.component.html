@@ -1,19 +1,22 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
     <app-menu></app-menu>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#"><img src="assets/imgs/logo.svg" alt="Logo"/> <span class="pipe-separator"> | </span>
-            {{'FRONT.HEADER.BRANDING' | translate}} </a>
+          <a class="nav-link branding " href="#"><img src="assets/imgs/logo.svg" alt="Logo"/> <span class="branding-pipe-separator"> | </span>
+            <span class="branding">{{'FRONT.HEADER.BRANDING' | translate}}</span></a>
         </li>
         <li class="nav-item">
           <app-search></app-search>
         </li>
-        <li *ngIf="isConnected === false" class="nav-item">
-          <span (click)="openDialog('login')" class="btn btn-main-gray"><i class="far fa-user"></i> {{'FRONT.HEADER.SIGN_IN' | translate}}</span>
-          <span class="pipe-separator"> | </span>
-          <span (click)="openDialog('registration')"  class="btn btn-main-gray">{{'FRONT.HEADER.SIGN_UP' | translate}}</span>
+        <li *ngIf="isConnected === false" class="nav-item user-actions">
+          <i (click)="isClicked = !isClicked" class="far fa-user user-actions"></i>
+          <div class="user-actions">
+            <span (click)="openDialog('login')" [ngClass]="{'clicked': isClicked }" class="btn btn-main-gray connect"> {{'FRONT.HEADER.SIGN_IN' | translate}}</span>
+            <span class="pipe-separator"> | </span>
+            <span (click)="openDialog('registration')" [ngClass]="{'clicked': isClicked }"  class="btn btn-main-gray register">{{'FRONT.HEADER.SIGN_UP' | translate}}</span>
+          </div>
         </li>
         <li *ngIf="isConnected === true" class="nav-item">
           <div class="dropdown">
@@ -31,7 +34,7 @@
         <li class="nav-item">
           <button (click)="submitWebsite()" type="button" class="btn btn-main-red">{{'FRONT.HEADER.WEBSITE_SUBMIT' | translate}}</button>
         </li>
-        <li class="nav-item">
+        <li class="nav-item lang-resp">
           <div class="dropdown">
             <button class="btn btn-main-gray" type="button" id="langDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               FR <i class="fas fa-angle-down"></i>

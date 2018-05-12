@@ -15,13 +15,64 @@ app-header{
         }
         .nav-item{
             img{
-                width: 190px;
+              width: 190px;
+                @media #{$smallest-screen} {
+                    width: 130px;
+                }
             }
-          .radius{
-            border-radius: 50px;
-            width: auto;
-            margin-right: 10px;
-          }
+
+            .radius{
+              border-radius: 50px;
+              width: auto;
+              margin-right: 10px;
+            }
+
+            .branding{
+                text-decoration: none;
+            }
+            i.user-actions{
+                padding: 8px 0;
+            }
+            &.user-actions{
+                @include flex();
+            }
+            @media (min-width: 992px) and (max-width: 1300px) {
+                &.user-actions {
+                    @include flex(column);
+                    text-align: center;
+                    .register, .connect {
+                        display: none;
+                        &.clicked {
+                            display: block;
+                        }
+                    }
+                    i.user-actions{
+                        width: 131px;
+                    }
+                }
+                .pipe-separator{
+                    display: none;
+                }
+                div.user-actions{
+                    position: absolute;
+                    top: 55px;
+                }
+            }
+
+            @media #{$less-large-screen} {
+                .branding, .branding-pipe-separator {
+                    display: none;
+                }
+            }
+            @media screen and (max-width: 991px) {
+                padding: 10px 0;
+                &.lang-resp {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    padding: 0 5px;
+                }
+            }
         }
 
         app-search {
