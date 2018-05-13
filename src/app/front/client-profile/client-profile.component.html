@@ -1,7 +1,7 @@
 <div class="container-fluid" *ngIf="client; else loading">
   <img *ngIf="client.image; else noProfilePic" [src]="client.image.path |liip:'profile_pic'" class="rounded-circle profile-image">
   <ng-template #noProfilePic>
-    <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
+    <img src="assets/imgs/user_placeholder.png" class="rounded-circle profile-image">
   </ng-template>
   <h1 class="profile-name">{{client.name}}</h1>
   <div class="profile-text">

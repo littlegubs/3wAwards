@@ -1,6 +1,9 @@
 <div class="container-fluid" *ngIf="member; else loading">
-  <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
-  <!--<img [src]="member.profilePicture |liip:'profile_pic'" class="rounded-circle profile-image">-->
+  <img *ngIf="member.profilePicture; else noProfilePic" [src]="member.profilePicture.path |liip:'profile_pic'"
+       class="rounded-circle profile-image">
+  <ng-template #noProfilePic>
+    <img src="assets/imgs/user_placeholder.png" class="rounded-circle profile-image">
+  </ng-template>
   <h1 class="profile-name">{{member.firstName}} {{member.lastName}}</h1>
   <div class="profile-text">
     <span class="profile-categ">{{'FRONT.MEMBER_PROFILE.MEMBER' | translate}}</span> | {{member.function}} | {{member.country}}
