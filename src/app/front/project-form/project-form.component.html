@@ -7,5 +7,6 @@
   <textarea placeholder="Description" formControlName="projectDescription"></textarea>
   <input type="date" placeholder="Publication date" formControlName="publicationDate">
   <textarea placeholder="Description notable" formControlName="noticableDescription"></textarea>
+  <input type="text" placeholder="Secteur d'activité" #business_sector (change)="addTag(business_sector.value, 'business_sector')">
   <button>Soumettre le site</button>
 </form>

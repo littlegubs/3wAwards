@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormService, Form} from '../../../backend/forms';
-import {Member, Project} from '../../../backend/model';
-import {MembersService, ProjectsService} from '../../../backend/services';
+import {Member, Project, Tag, TypeTag} from '../../../backend/model';
+import {MembersService, ProjectsService, TypeTagsService} from '../../../backend/services';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 
@@ -17,8 +17,11 @@ export class ProjectFormComponent implements OnInit {
   member: Member;
   idAgency: number;
   idClient: number;
+  typeTags: TypeTag[] = [];
+  projectTags: Tag[] = [];
 
-  constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService, private authService: AuthService) {
+  constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
+              private authService: AuthService, private typeTagsService: TypeTagsService) {
   }
 
   ngOnInit() {
@@ -30,6 +33,7 @@ export class ProjectFormComponent implements OnInit {
       err => {
       }
     );
+    this.getAllTypeTag();
     this.createNewProject();
   }
 
@@ -56,6 +60,10 @@ export class ProjectFormComponent implements OnInit {
         }
 
         newProject.averageRating = null;
+        newProject.SetMultipletTags(this.projectTags);
+        newProject.setMembersatNull();
+        newProject.setImagesAtNull();
+        newProject.setAwardsAtNull();
         console.log(newProject);
         this.projectsService.add(newProject).subscribe(res => console.log('add'));
       }
@@ -73,5 +81,26 @@ export class ProjectFormComponent implements OnInit {
       this.idClient = array[1];
       this.idAgency = undefined;
     }
+  }
+
+  addTag(value: string, type: string): void {
+    const tag = new Tag();
+    for (let typeTag of this.typeTags) {
+      if (typeTag.libelle === type) {
+        tag.setType(typeTag.id);
+      }
+    }
+    tag.libelle = value;
+    this.projectTags.push(tag);
+  }
+
+  getAllTypeTag() {
+    this.typeTagsService.getAll().subscribe(
+      res => {
+        this.typeTags = res;
+      },
+      err => {
+      }
+    );
   }
 }
