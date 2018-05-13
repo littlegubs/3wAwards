@@ -43,6 +43,7 @@
       "GLOBAL_RANKING": "Note globale"
     },
     "MEMBER_PROFILE": {
+      "MEMBER": "Membre",
       "MAIN":{
         "MYSITE_BUTTON":"Site Web"
       },

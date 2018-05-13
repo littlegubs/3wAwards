@@ -1,5 +1,197 @@
 {
-  "HOME": {
-      "HELLO": "jacky"
+  "FRONT": {
+    "FOOTER": {
+      "TITLE": "About 3W AWARDS",
+      "DESC": "We are a free and independent community platform made up of digital and UX / UI experts who evaluate and value the best websites in different categories, submitted by the owners themselves or by the professionals who created them.",
+      "RIGHTS": "©3W awards all rights reserved",
+      "LINKS": {
+        "HOME": "Home",
+        "NOMINATE": "Nominates",
+        "AWARDS": "Awards",
+        "ANNUAIRE": "Directory",
+        "BLOG": "Blog",
+        "OFFERS": "Jobs offers",
+        "SHOP": "Shop",
+        "ABOUT": "About",
+        "CONTACT": "Contact"
+      }
+    },
+    "PROFILE": {
+      "NOMINATED_SITES": "Nominates",
+      "SITES": "Websites",
+      "AWARDS": "awards",
+      "EARNED_AWARD": "won"
+    },
+    "AGENCY_PROFILE": {
+      "COUNTRY": "Country",
+      "CATEG": "Categories",
+      "STATUS": "Status",
+      "CREATEDATE": "Creation date",
+      "REVENU": "Sales figures",
+      "EFFEC": "Effectives",
+      "AUTHORS": "Authors",
+      "GLOBAL_RANKING": "Global notation"
+    },
+    "CLIENT_PROFILE": {
+      "COUNTRY": "Country",
+      "CATEG": "Categories",
+      "ACTIVITY_SECTOR": "Business sector",
+      "CREATEDATE": "Creation date",
+      "REVENU": "Sales figures",
+      "EFFEC": "Effectives",
+      "AUTHORS": "Authors",
+      "GLOBAL_RANKING": "Global notation"
+    },
+    "MEMBER_PROFILE": {
+      "MEMBER": "Member",
+      "MAIN": {
+        "MYSITE_BUTTON": "Website"
+      },
+      "TABS": {
+        "PROFILE": "My profile",
+        "LIKED_PROJECT": "Projects liked",
+        "MARKED_PROJECT": "Projects marked",
+        "ADMINED_CLIENT": "Administrated clients",
+        "ADMINED_AGENCY": "Administrated agencies",
+        "AWARD": "Awards won"
+      },
+      "FORM": {
+        "LABEL": {
+          "IDENTITY": "Identity",
+          "CONNECTION": "Connection",
+          "PROFIL": "Profile",
+          "WEB_LINK": "Web links"
+        },
+        "COMPONENTS": {
+          "GENDER": "Genger",
+          "GENDER_MALE": "Mr",
+          "GENDER_FEMALE": "Mme",
+          "PSEUDO": "Lastname or alias",
+          "FIRSTNAME": "Firstname",
+          "EMAIL": "Email",
+          "PASSWORD": "Password",
+          "BIRTHDAY": "Birthdate",
+          "COUNTRY": "Country",
+          "JOB": "Job",
+          "SUMMARY": "Summary",
+          "SKILLS": "Skills",
+          "INTEREST": "Interests",
+          "PERSONNAL_WEBSITE": "Personnal website",
+          "FACEBOOK": "Facebook",
+          "TWITTER": "Twitter",
+          "LINKEDIN": "LinkedIn",
+          "INSTAGRAM": "Instagram",
+          "BEHANCE": "Behance",
+          "DRIBBLE": "Dribbble",
+          "AVATAR": "Avatar",
+          "REQUIRED": "Required fields",
+          "ERRORS": {
+            "REQUIRED": "This field is required",
+            "MAIL_FORMAT": "Please insert a correct email format"
+          },
+          "LEGALS": {
+            "NEW_WEBSITE_MAIL": "Be informed by emails about new published websites.",
+            "NEWSLETTER": "I agree to receive the newsletter and updates form 3wAwards."
+          },
+          "ACTIONS": {
+            "UPLOAD": "UPLOAD",
+            "REVERT": "REVERT",
+            "SUBMIT": "SAVE"
+          }
+        }
+      }
+    },
+    "PROJECT_PROFILE": {
+      "TAGS": {
+        "TYPE": {
+          "SITE_TYPE": "Website type",
+          "PURPOSE": "Object",
+          "BUSINESS_SECTOR": "Business sector",
+          "TARGET": "Target",
+          "LANGUAGE": "Langage",
+          "BUDGET_FORK": "Budget fork",
+          "COLOR": "Main color",
+          "STYLE": "Style",
+          "BEHAVIOR": "Behavior",
+          "ACCESSIBILITY": "Accessibility",
+          "AGENCY_MISSION": "Agency missions",
+          "FONCTIONNALITY": "Main fonctionnalities",
+          "DEV_TECH": "Technical developement",
+          "NOTABLE_NOTES": "Notable points",
+          "FRONT_TECH": "Front",
+          "BACK_TECH": "Back",
+          "CMS": "CMS",
+          "CHALLENGE": "Technical challenge",
+          "REALISED_BY": "Realised by",
+          "CLIENT_NAME": "Client name",
+          "CLIENT_SIZE": "Client size",
+          "PUBLISHED_DATE": "Pushished date",
+          "CREDITS": "Credits"
+        }
+      },
+      "MARKS": {
+        "ORIGINALITY": "Originality, creativity",
+        "GRAPHISM": "Graphism, Readability",
+        "ERGONOMY": "Navigation, ergonomy",
+        "INTERACTIVITY": "Interactivity",
+        "QUALITY": "Content quality",
+        "FONCTIONNALITY": "Fonctionnal quality",
+        "REACTIVITY": "Reactivity, speed",
+        "AVERAGE": "Average"
+      }
+    },
+    "HEADER": {
+      "MENU": {
+        "MENU": "MENU",
+        "LINKS": {
+          "HOME": "Home",
+          "NOMINATE": "Nominates",
+          "AWARDS": "Awards",
+          "AGENCY": "Agency",
+          "JURY": "Jury",
+          "BLOG": "Blog",
+          "OFFERS": "Jobs",
+          "SHOP": "Shop"
+        }
+      },
+      "MEMBER_MENU": {
+        "DISCONNECTION": "Disconnect",
+        "PROFILE": "My profile"
+      },
+      "BRANDING": "THE BEST WEBSITES IN EVERY CATEGORIES",
+      "SWITCH_NAME": "FILTERS",
+      "SIGN_IN": "SIGN IN",
+      "SIGN_UP": "SIGN UP",
+      "WEBSITE_SUBMIT": "SUBMIT A WEBSITE",
+      "FILTER": {
+      }
+    },
+    "DIALOG": {
+      "MAIL": "Email",
+      "PASSWORD": "Password",
+      "FIRST_NAME": "Firstname",
+      "NAME": "Lastname or alias",
+      "TO_LOG_UP": "Create my account",
+      "Already_Registered": "Already member",
+      "LOG_IN": "Log in",
+      "BUTTONS": {
+        "SIGN_UP": "SIGN UP",
+        "LOG_IN": "LOG IN"
+      }
+    },
+    "COMMON": {
+      "SEARCH": "Search",
+      "LATEST_SUBMITED": "Last websites marked"
+    },
+    "SLIDER": {
+      "SITE_OF_THE_DAY": "Website of the day |",
+      "VISIT_ACTION": "Visite the website",
+      "SHOW_INFO_ACTION": "See more",
+      "MARK_TYPE": {
+        "JURY": "Jury",
+        "MEMBER": "Members",
+        "FINAL": "Final mark"
+      }
+    }
   }
 }
