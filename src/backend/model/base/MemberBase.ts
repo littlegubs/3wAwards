@@ -17,7 +17,7 @@ export class MemberBase {
   lastName: string;
   birthday: Date;
   country: string;
-  tags: Tag;
+  tags: Tag[];
   favoriteProjects: Project;
   presentation: string;
   websiteUrl: string;
@@ -32,9 +32,10 @@ export class MemberBase {
   isJudge: boolean;
 
   setTags(id: number): MemberBase {
-    this.tags = new Tag();
-    this.tags.id = id;
-    this.tags['@id'] = '/tags/' + id;
+    const tag = new Tag();
+    tag.id = id;
+    tag['@id'] = '/tags/' + id;
+    this.tags.push(tag);
     return this;
   }
 

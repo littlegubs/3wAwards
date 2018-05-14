@@ -114,7 +114,7 @@
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
                   <mat-chip-list #chipListSkills>
-                    <mat-chip *ngFor="let skill of member.tags |filter:'skills'"
+                    <mat-chip *ngFor="let skill of skills"
                               [removable]="true" (remove)="removeSkill(skill)">
                       {{skill.libelle}}
                       <mat-icon matChipRemove>x</mat-icon>
@@ -218,11 +218,10 @@
           <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
             <div class="form-group row upload-profile-pic">
               <p class="col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.AVATAR' | translate}}</p>
-              <img class="profile-pic" src="../../../assets/imgs/victor.jpg">
+              <img class="profile-pic" [src]="(url || member.profilePicture) ? (url ? url : member.profilePicture) : '../../../assets/imgs/victor.jpg'">
               <i class="far fa-trash-alt"></i>
-              <button class="btn btn-profile-external">
+              <input class="btn btn-profile-external" type="file" (change)="fileUpload($event)">
                 {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.UPLOAD' | translate}}
-              </button>
               <i class="fas fa-info-circle"></i>
             </div>
           </div>
@@ -234,7 +233,7 @@
                 <button type="reset" class="btn btn-main-white-full revert">
                   {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.REVERT' | translate}}
                 </button>
-                <button type="submit" class="btn btn-main-red-full submit">
+                <button type="submit" class="btn btn-main-red-full submit" (click)="submitForm()">
                   {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.SUBMIT' | translate}}
                 </button>
               </div>
