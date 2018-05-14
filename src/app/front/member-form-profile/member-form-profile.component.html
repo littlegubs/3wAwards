@@ -220,8 +220,8 @@
               <p class="col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.AVATAR' | translate}}</p>
               <img class="profile-pic" [src]="(url || member.profilePicture) ? (url ? url : member.profilePicture) : '../../../assets/imgs/victor.jpg'">
               <i class="far fa-trash-alt"></i>
-              <input class="btn btn-profile-external" type="file" (change)="fileUpload($event)">
-                {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.UPLOAD' | translate}}
+              <input type="file" name="file" id="file" class="inputfile" (change)="fileUpload($event)"/>
+              <label for="file">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.UPLOAD' | translate}}</label>
               <i class="fas fa-info-circle"></i>
             </div>
           </div>
