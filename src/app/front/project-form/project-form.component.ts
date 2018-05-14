@@ -84,14 +84,34 @@ export class ProjectFormComponent implements OnInit {
   }
 
   addTag(value: string, type: string): void {
-    const tag = new Tag();
-    for (let typeTag of this.typeTags) {
-      if (typeTag.libelle === type) {
-        tag.setType(typeTag.id);
+    if (value === '') {
+      for (let i = 0; i < this.projectTags.length; i++) {
+        if (this.projectTags[i].type.libelle === type) {
+          this.projectTags.splice(i, 1);
+        }
       }
     }
-    tag.libelle = value;
-    this.projectTags.push(tag);
+    if (value !== '') {
+      let find = false;
+      for (let i = 0; i < this.projectTags.length; i++) {
+        if (this.projectTags[i].type.libelle === type) {
+          this.projectTags[i].libelle = value;
+          find = true;
+        }
+      }
+      if (find === false) {
+        const tag = new Tag();
+        for (let typeTag of this.typeTags) {
+          if (typeTag.libelle === type) {
+            tag.setType(typeTag.id);
+            tag.type.libelle = type;
+          }
+        }
+        tag.libelle = value;
+        this.projectTags.push(tag);
+      }
+    }
+    console.log(this.projectTags);
   }
 
   getAllTypeTag() {
