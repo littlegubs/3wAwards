@@ -152,6 +152,22 @@
         "MEMBER": "Membres",
         "FINAL": "Note finale"
       }
+    },
+    "FORM_PROJECT": {
+      "PROJECT_NAME": "Nom du Projet",
+      "PROJECT_DESCRIPTION": "Description",
+      "AGENCY_OR_CLIENT": "Agence ou Client",
+      "PROJECT_DATE": "Date De Publication",
+      "PROJECT_NOTICABLE_DESCRIPTION": "Point Notable",
+      "BUSINESS_SECTOR": "Secteur D'Activité",
+      "PROJECT_CUSTOM_TAGS": "Tag Libre",
+      "SITE_TYPE": "Type de site",
+      "TARGET": "Cible",
+      "PURPOSE": "Objet",
+      "BUDGET_FORK": "Budget",
+      "LANGUAGE": "Langues",
+      "CREDITS": "Crédits"
+
     }
   }
 }
