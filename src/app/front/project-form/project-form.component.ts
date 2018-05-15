@@ -10,7 +10,6 @@ import {MatChipInputEvent} from '@angular/material';
 @Component({
   selector: 'app-project-form',
   templateUrl: './project-form.component.html',
-  styleUrls: ['./project-form.component.scss']
 })
 export class ProjectFormComponent implements OnInit {
   form: Form<Project>;
@@ -21,6 +20,7 @@ export class ProjectFormComponent implements OnInit {
   idClient: number;
   typeTags: TypeTag[] = [];
   projectTags: Tag[] = [];
+  customTags: Tag[] = [];
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
 
@@ -127,20 +127,39 @@ export class ProjectFormComponent implements OnInit {
       }
     );
   }
-  removeTag(value: any): void {
-    console.log('delete');
+
+  removeTag(value: string): void {
+    for (let i = 0; i < this.projectTags.length; i++) {
+      if (this.projectTags[i].libelle === value) {
+        this.projectTags.splice(i, 1);
+      }
+    }
+    this.refreshTagsArray();
   }
 
   addTags(event: MatChipInputEvent, type: string): void {
-    const tag = new Tag();
-    for (let typeTag of this.typeTags) {
-      if (typeTag.libelle === type) {
-        tag.setType(typeTag.id);
-        tag.type.libelle = type;
+    if ((event.value || '').trim()) {
+      const tag = new Tag();
+      for (let typeTag of this.typeTags) {
+        if (typeTag.libelle === type) {
+          tag.setType(typeTag.id);
+          tag.type.libelle = type;
+        }
       }
+      tag.libelle = event.value;
+      this.projectTags.push(tag);
+      console.log(this.projectTags);
     }
-    tag.libelle = event.value;
-    this.projectTags.push(tag);
-    console.log(this.projectTags);
+    // Reset the input value
+    if (event.input) {
+      event.input.value = '';
+    }
+    this.refreshTagsArray();
   }
+
+  refreshTagsArray () {
+    this.customTags = this.projectTags.filter(tag => tag.type.libelle === 'custom');
+  }
+
+
 }

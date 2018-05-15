@@ -1,27 +1,135 @@
-<form [formGroup]="form.group" (submit)="commitProject()">
-  <select *ngIf="member" class="form-control" #agencyClientSelect (change)="getTheSelectedValue(agencyClientSelect.value)">
-    <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}</option>
-    <option *ngFor="let client of member.clients" [value]="['client', client.id]">{{client.name}}</option>
-  </select>
-  <input type="text" placeholder="Nom du projet" formControlName="projectName">
-  <textarea placeholder="Description" formControlName="projectDescription"></textarea>
-  <input type="date" placeholder="Publication date" formControlName="publicationDate">
-  <textarea placeholder="Description notable" formControlName="noticableDescription"></textarea>
-  <input type="text" placeholder="Secteur d'activité" #business_sector (change)="addTag(business_sector.value, 'business_sector')">
-  <mat-form-field class="full-width">
-    <mat-chip-list #chipListCustomTags>
-      <mat-chip *ngFor="let custom of projectTags |filter:'custom'"
-                [removable]="true" (remove)="removeTag(custom.libelle)">
-        {{custom.libelle}}
-        <mat-icon matChipRemove>x</mat-icon>
-      </mat-chip>
-      <input id="customs"
-             [matChipInputFor]="chipListCustomTags"
-             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-             [matChipInputAddOnBlur]="addOnBlur"
-             (matChipInputTokenEnd)="addTags($event, 'custom')"/>
-    </mat-chip-list>
-  </mat-form-field>
-  <mat-chip style="background-color: red;" *ngFor="let tag of projectTags">{{tag.libelle}}</mat-chip>
-  <button>Soumettre le site</button>
-</form>
+<div class="container" *ngIf="member && typeTags; else loading">
+  <div class="row">
+    <div class="col-sm-12 col-form-project">
+      <form [formGroup]="form.group" (submit)="commitProject()">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
+            <div class="form-group row">
+              <label id="agencyClientLabel" for="agencyClientSelect" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_OR_CLIENT' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <select id="agencyClientSelect" class="form-control" #agencyClientSelect
+                        (change)="getTheSelectedValue(agencyClientSelect.value)">
+                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}
+                  </option>
+                  <option *ngFor="let client of member.clients" [value]="['client', client.id]">{{client.name}}</option>
+                </select>
+              </div>
+              <label class="col-sm-4 col-form-label" for="projectName">{{'FRONT.FORM_PROJECT.PROJECT_NAME' | translate}}
+                :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="text" id="projectName" formControlName="projectName">
+                </mat-form-field>
+              </div>
+              <label for="projectDescription" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_DESCRIPTION'
+                | translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <textarea matInput id="projectDescription" formControlName="projectDescription"></textarea>
+                </mat-form-field>
+              </div>
+              <label for="projectDate" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_DATE' | translate}}
+                :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="projectDate" formControlName="publicationDate" [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <label for="noticableDescription" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_NOTICABLE_DESCRIPTION'
+                | translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <textarea id="noticableDescription" matInput formControlName="noticableDescription"></textarea>
+                </mat-form-field>
+              </div>
+              <label for="siteType" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.SITE_TYPE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="siteType" matInput type="text" #site_type
+                         (change)="addTag(site_type.value, 'site_type')">
+                </mat-form-field>
+              </div>
+              <label for="businessSector" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BUSINESS_SECTOR' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="businessSector" matInput type="text" #business_sector
+                         (change)="addTag(business_sector.value, 'business_sector')">
+                </mat-form-field>
+              </div>
+              <label for="target" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.TARGET' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="target" matInput type="text" #target
+                         (change)="addTag(target.value, 'target')">
+                </mat-form-field>
+              </div>
+              <label for="purpose" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PURPOSE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="purpose" matInput type="text" #purpose
+                         (change)="addTag(purpose.value, 'purpose')">
+                </mat-form-field>
+              </div>
+              <label for="budget_fork" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BUDGET_FORK' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="budget_fork" matInput type="text" #budget_fork
+                         (change)="addTag(budget_fork.value, 'budget_fork')">
+                </mat-form-field>
+              </div>
+              <label for="language" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.LANGUAGE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="language" matInput type="text" #language
+                         (change)="addTag(language.value, 'language')">
+                </mat-form-field>
+              </div>
+              <label for="customTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_CUSTOM_TAGS' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let custom of customTags"
+                              [removable]="true" (remove)="removeTag(custom.libelle)">
+                      {{custom.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="customTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'custom')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group row">
+                    <div class="col-sm-12 form-actions">
+                      <button type="reset" class="btn btn-main-white-full revert">
+                        {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.REVERT' | translate}}
+                      </button>
+                      <button type="submit" class="btn btn-main-red-full submit">
+                        {{'FRONT.HEADER.WEBSITE_SUBMIT' | translate}}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>
