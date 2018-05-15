@@ -137,7 +137,7 @@ app-member-form-profile{
             }
             .mat-form-field-infix{
                 border-top: none;
-                input{
+                input, textarea{
                     padding: 0 10px;
                     &:-webkit-autofill {
                         -webkit-box-shadow: 0 0 0 30px white inset;

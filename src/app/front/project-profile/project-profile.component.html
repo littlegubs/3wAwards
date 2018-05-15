@@ -80,9 +80,11 @@
         </div>
       </div>
       <div class="daily-actions">
-        <button type="button" class="btn btn-main-gray-border">
-          {{'FRONT.SLIDER.VISIT_ACTION' | translate}}
-        </button>
+        <a href="{{project.projectUrl}}" target="_blank">
+          <button type="button" class="btn btn-main-gray-border">
+            {{'FRONT.SLIDER.VISIT_ACTION' | translate}}
+          </button>
+        </a>
       </div>
     </div>
     <i class="shareMenu fas fa-share-alt"></i>
@@ -128,7 +130,7 @@
             </div>
             <div class="common-tags-details budget-fork">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUDGET_FORK' | translate}}</p>
-              <span *ngFor="let tag of project.tags |filter:'budget_fork'"> {{tag.libelle}}</span>
+              <div *ngFor="let tag of project.tags |filter:'budget_fork', first as isFirst"><span *ngIf="isFirst">{{tag.libelle}}</span></div>
             </div>
           </div>
         </div>
@@ -168,7 +170,11 @@
         <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}</p>
-            <span *ngFor="let tag of project.tags |filter:'color'"> {{tag.libelle}}</span>
+            <div class="project-colors">
+              <div *ngFor="let tag of project.tags |filter:'color'">
+                <span class="round-color" [ngStyle]="{'background-color': tag.libelle}"></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -192,7 +198,13 @@
         <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.ACCESSIBILITY' | translate}}</p>
-            <span *ngFor="let tag of project.tags |filter:'accessibility'"> {{tag.libelle}}</span>
+            <div *ngFor="let tag of project.tags |filter:'accessibility', first as isFirst">
+              <div *ngIf="isFirst">
+                <span *ngIf="tag.libelle === '1'"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                <span *ngIf="tag.libelle === '2'"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                <span *ngIf="tag.libelle === '3'"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -254,7 +266,15 @@
         <div class="common-tags">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CHALLENGE' | translate}}</p>
-            <span *ngFor="let tag of project.tags |filter:'challenge'"> {{tag.libelle}}</span>
+            <div *ngFor="let tag of project.tags |filter:'challenge', first as isFirst">
+              <div *ngIf="isFirst">
+                <span *ngIf="tag.libelle === '1'"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                <span *ngIf="tag.libelle === '2'"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                <span *ngIf="tag.libelle === '3'"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                <span *ngIf="tag.libelle === '4'"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fa fa-star"></i><i class="far fa-star"></i></span>
+                <span *ngIf="tag.libelle === '5'"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -28,6 +28,7 @@ export class ProjectBase {
   members: Member;
   images: Image;
   awards: Award;
+  projectUrl: string;
 
   setProjectRatingMember(id: number): ProjectBase {
     this.projectRatingMember = new ProjectRatingMember();
