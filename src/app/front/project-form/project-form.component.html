@@ -8,5 +8,20 @@
   <input type="date" placeholder="Publication date" formControlName="publicationDate">
   <textarea placeholder="Description notable" formControlName="noticableDescription"></textarea>
   <input type="text" placeholder="Secteur d'activité" #business_sector (change)="addTag(business_sector.value, 'business_sector')">
+  <mat-form-field class="full-width">
+    <mat-chip-list #chipListCustomTags>
+      <mat-chip *ngFor="let custom of projectTags |filter:'custom'"
+                [removable]="true" (remove)="removeTag(custom.libelle)">
+        {{custom.libelle}}
+        <mat-icon matChipRemove>x</mat-icon>
+      </mat-chip>
+      <input id="customs"
+             [matChipInputFor]="chipListCustomTags"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="addTags($event, 'custom')"/>
+    </mat-chip-list>
+  </mat-form-field>
+  <mat-chip style="background-color: red;" *ngFor="let tag of projectTags">{{tag.libelle}}</mat-chip>
   <button>Soumettre le site</button>
 </form>

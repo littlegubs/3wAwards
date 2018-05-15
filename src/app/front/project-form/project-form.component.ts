@@ -4,6 +4,8 @@ import {Member, Project, Tag, TypeTag} from '../../../backend/model';
 import {MembersService, ProjectsService, TypeTagsService} from '../../../backend/services';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material';
 
 @Component({
   selector: 'app-project-form',
@@ -19,6 +21,8 @@ export class ProjectFormComponent implements OnInit {
   idClient: number;
   typeTags: TypeTag[] = [];
   projectTags: Tag[] = [];
+  addOnBlur = true;
+  separatorKeysCodes = [ENTER, COMMA];
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService) {
@@ -122,5 +126,21 @@ export class ProjectFormComponent implements OnInit {
       err => {
       }
     );
+  }
+  removeTag(value: any): void {
+    console.log('delete');
+  }
+
+  addTags(event: MatChipInputEvent, type: string): void {
+    const tag = new Tag();
+    for (let typeTag of this.typeTags) {
+      if (typeTag.libelle === type) {
+        tag.setType(typeTag.id);
+        tag.type.libelle = type;
+      }
+    }
+    tag.libelle = event.value;
+    this.projectTags.push(tag);
+    console.log(this.projectTags);
   }
 }
