@@ -102,39 +102,36 @@
 
     <!-- GENERAL TAGS -->
     <div class="row project-general-tags">
-        <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="col-lg-12">
           <div class="common-tags">
-            <div class="common-tags-details">
+            <div class="common-tags-details" *ngIf="project.tags |filter:'site_type'">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.SITE_TYPE' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'site_type'"> {{tag.libelle}}</span>
             </div>
-            <div class="common-tags-details">
+            <div class="common-tags-details" *ngIf="project.tags |filter:'business_sector'">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}}</span>
             </div>
-            <div class="common-tags-details">
+            <div class="common-tags-details" *ngIf="project.tags |filter:'target'">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}}</span>
             </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
           <div class="common-tags">
-            <div class="common-tags-details">
+            <div class="common-tags-details" *ngIf="project.tags |filter:'purpose'">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PURPOSE' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'purpose'"> {{tag.libelle}}</span>
             </div>
-            <div class="common-tags-details language">
+            <div class="common-tags-details language" *ngIf="project.tags |filter:'language'">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.LANGUAGE' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'language'"> {{tag.libelle}}</span>
             </div>
-            <div class="common-tags-details budget-fork">
+            <div class="common-tags-details budget-fork" *ngIf="project.tags |filter:'budget_fork'">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUDGET_FORK' | translate}}</p>
-              <div *ngFor="let tag of project.tags |filter:'budget_fork', first as isFirst"><span *ngIf="isFirst">{{tag.libelle}}</span></div>
+              <div *ngFor="let tag of project.tags |filter:'budget_fork', first as isFirst"><span *ngIf="isFirst">{{tag.libelle}}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
           <div class="common-tags">
             <div class="common-tags-details" *ngIf="project.agency">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.REALISED_BY' | translate}}</p>
@@ -144,21 +141,20 @@
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_NAME' | translate}}</p>
               <span>{{project.client.name}}</span>
             </div>
-            <div class="common-tags-details" *ngIf="project.client">
+            <div class="common-tags-details" *ngIf="project.client && project.tags |filter:'client_size'">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_SIZE' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'client_size'">{{tag.libelle}}</span>
             </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
           <div class="common-tags">
             <div class="common-tags-details">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PUBLISHED_DATE' | translate}}</p>
               <span>{{project.publicationDate | date}}</span>
             </div>
-            <div class="common-tags-details credits">
+            <div class="common-tags-details credits" *ngIf="project.credits">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CREDITS' | translate}}</p>
-              <p *ngFor="let credit of project.credits" class="credits-details">{{credit.firstname}} {{credit.lastname}} <span class="internal-notice">({{credit.function}})</span></p>
+              <p *ngFor="let credit of project.credits" class="credits-details">{{credit.firstname}} {{credit.lastname}}
+                <span class="internal-notice">({{credit.function}})</span></p>
             </div>
           </div>
         </div>
@@ -166,9 +162,9 @@
 
     <!-- SPECIFIC TAGS -->
     <div class="row project-specific-tags">
-      <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="col-lg-12">
         <div class="common-tags">
-          <div class="common-tags-details">
+          <div class="common-tags-details" *ngIf="project.tags |filter:'color'">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}</p>
             <div class="project-colors">
               <div *ngFor="let tag of project.tags |filter:'color'">
@@ -177,25 +173,19 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12">
         <div class="common-tags">
-          <div class="common-tags-details">
+          <div class="common-tags-details" *ngIf="project.tags |filter:'style'">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.STYLE' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'style'"> {{tag.libelle}}</span>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags">
+        <div class="common-tags" *ngIf="project.tags |filter:'behavior'">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BEHAVIOR' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'behavior'"> {{tag.libelle}}</span>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags">
+        <div class="common-tags" *ngIf="project.tags |filter:'accessibility'">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.ACCESSIBILITY' | translate}}</p>
             <div *ngFor="let tag of project.tags |filter:'accessibility', first as isFirst">
@@ -211,7 +201,7 @@
     </div>
 
     <!-- AGENCY MISSIONS TAGS -->
-    <div class="row project-agency-missions-tags" [ngClass]="{'show' : toggleAgency }">
+    <div class="row project-agency-missions-tags" [ngClass]="{'show' : toggleAgency }" *ngIf="project.tags |filter:'agency_mission'">
       <div class="col-sm-12">
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.AGENCY_MISSION' | translate}}</div>
         <i class="fas fa-chevron-down" (click)="toggleAgency = !toggleAgency"></i>
@@ -222,7 +212,7 @@
     </div>
 
     <!-- MAIN FONCTIONNALITIES TAGS -->
-    <div class="row project-main-fonctionnalities-tags" [ngClass]="{'show' : toggleMain }">
+    <div class="row project-main-fonctionnalities-tags" [ngClass]="{'show' : toggleMain }" *ngIf="project.tags |filter:'main_fonctionnality'">
       <div class="col-sm-12">
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FONCTIONNALITY' | translate}}</div>
         <i class="fas fa-chevron-down" (click)="toggleMain = !toggleMain"></i>
@@ -238,32 +228,26 @@
         <div class="project-tags-title">{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.DEV_TECH' | translate}}</div>
         <i class="fas fa-chevron-down" (click)="toggleDev = !toggleDev"></i>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="project.tags |filter:'front_tech'">
-        <div class="common-tags">
+      <div class="col-lg-12">
+        <div class="common-tags" *ngIf="project.tags |filter:'front_tech'">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.FRONT_TECH' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'front_tech'"> {{tag.libelle}}</span>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="project.tags |filter:'back_tech'">
-        <div class="common-tags">
+        <div class="common-tags" *ngIf="project.tags |filter:'back_tech'">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BACK_TECH' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'back_tech'"> {{tag.libelle}}</span>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="project.tags |filter:'cms'">
-        <div class="common-tags">
+        <div class="common-tags" *ngIf="project.tags |filter:'cms'">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CMS' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'cms'"> {{tag.libelle}}</span>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="common-tags">
+        <div class="common-tags" *ngIf="project.tags |filter:'challenge'">
           <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CHALLENGE' | translate}}</p>
             <div *ngFor="let tag of project.tags |filter:'challenge', first as isFirst">
@@ -278,7 +262,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-12">
+      <div class="col-sm-12" *ngIf="project.noticableDescription">
         <div class="common-tags">
           <div class="common-tags-details notable-notes">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.NOTABLE_NOTES' | translate}}</p>

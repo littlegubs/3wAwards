@@ -207,10 +207,8 @@ app-project-profile{
                 padding: 25px;
                 margin-bottom: 10px;
                 .common-tags{
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
+                    @include flex(column);
+                    padding: 0 5px;
                     &-details{
                         & >p {
                             margin: 0;
@@ -248,7 +246,9 @@ app-project-profile{
                             }
                         }
                         &.language, &.budget-fork{
-                            text-transform: uppercase;
+                            > span{
+                                text-transform: uppercase;
+                            }
                         }
                         &.credits{
                             p.credits-details{
@@ -270,6 +270,15 @@ app-project-profile{
                     text-transform: uppercase;
                     text-align: center;
                     margin-bottom: 10px;
+                }
+            }
+            &-general-tags, &-specific-tags, &-dev-tech-tags{
+                > div {
+                    @include flex();
+                    @include justify-content(space-between);
+                    @media #{$mobile} {
+                        @include flex-direction(column)
+                    }
                 }
             }
             &-agency-missions-tags{
