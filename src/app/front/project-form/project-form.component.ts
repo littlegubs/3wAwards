@@ -18,9 +18,18 @@ export class ProjectFormComponent implements OnInit {
   member: Member;
   idAgency: number;
   idClient: number;
+  accessibilityValue: string;
+  challengeValue: string;
   typeTags: TypeTag[] = [];
   projectTags: Tag[] = [];
   customTags: Tag[] = [];
+  styleTags: Tag[] = [];
+  behaviorTags: Tag[] = [];
+  agencyMissionTags: Tag[] = [];
+  mainFonctionnalityTags: Tag[] = [];
+  frontTags: Tag[] = [];
+  backTags: Tag[] = [];
+  cmsTags: Tag[] = [];
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
 
@@ -159,7 +168,12 @@ export class ProjectFormComponent implements OnInit {
 
   refreshTagsArray () {
     this.customTags = this.projectTags.filter(tag => tag.type.libelle === 'custom');
+    this.styleTags = this.projectTags.filter(tag => tag.type.libelle === 'style');
+    this.behaviorTags = this.projectTags.filter(tag => tag.type.libelle === 'behavior');
+    this.agencyMissionTags = this.projectTags.filter(tag => tag.type.libelle === 'agency_mission');
+    this.mainFonctionnalityTags =  this.projectTags.filter(tag => tag.type.libelle === 'main_fonctionnality');
+    this.frontTags = this.projectTags.filter(tag => tag.type.libelle === 'front_tech');
+    this.backTags = this.projectTags.filter(tag => tag.type.libelle === 'back_tech');
+    this.cmsTags = this.projectTags.filter(tag => tag.type.libelle === 'cms');
   }
-
-
 }

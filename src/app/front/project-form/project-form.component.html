@@ -5,7 +5,8 @@
         <div class="row">
           <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
             <div class="form-group row">
-              <label id="agencyClientLabel" for="agencyClientSelect" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_OR_CLIENT' |
+              <label id="agencyClientLabel" for="agencyClientSelect" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_OR_CLIENT'
+                |
                 translate}} :</label>
               <div class="col-sm-8">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
@@ -111,6 +112,153 @@
                   </mat-chip-list>
                 </mat-form-field>
               </div>
+              <label for="styleTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.STYLE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let style of styleTags"
+                              [removable]="true" (remove)="removeTag(style.libelle)">
+                      {{style.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="styleTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'style')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="behaviorTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BEHAVIOR' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let behavior of behaviorTags"
+                              [removable]="true" (remove)="removeTag(behavior.libelle)">
+                      {{behavior.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="behaviorTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'behavior')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="accessibility" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.ACCESSIBILITY' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                  <mat-radio-group id="accessibility" [(ngModel)]="accessibilityValue" [ngModelOptions]="{standalone: true}" (change)="addTag(accessibilityValue, 'accessibility')">
+                    <mat-radio-button class="col-sm-3 col-xs-2" value="1"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                    <mat-radio-button class="col-sm-3 col-xs-2" value="2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                    <mat-radio-button class="col-sm-3 col-xs-2" value="3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></mat-radio-button>
+                  </mat-radio-group>
+              </div>
+              <label for="agencyMission" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_MISSION' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let agencyMission of agencyMissionTags"
+                              [removable]="true" (remove)="removeTag(agencyMission.libelle)">
+                      {{agencyMission.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="agencyMission"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'agency_mission')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="mainFonctionnality" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.MAIN_FONCTIONNALITY'
+                |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let mainFonctionnality of mainFonctionnalityTags"
+                              [removable]="true" (remove)="removeTag(mainFonctionnality.libelle)">
+                      {{mainFonctionnality.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="mainFonctionnality"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'main_fonctionnality')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="frontTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.FRONT' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let front of frontTags"
+                              [removable]="true" (remove)="removeTag(front.libelle)">
+                      {{front.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="frontTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'front_tech')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="backTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BACK' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let back of backTags"
+                              [removable]="true" (remove)="removeTag(back.libelle)">
+                      {{back.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="backTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'back_tech')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="CmsTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.CMS' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let cms of cmsTags"
+                              [removable]="true" (remove)="removeTag(cms.libelle)">
+                      {{cms.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="CmsTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'cms')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="challenge" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.CHALLENGE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-radio-group id="challenge" [(ngModel)]="challengeValue" [ngModelOptions]="{standalone: true}" (change)="addTag(challengeValue, 'challenge')">
+                  <mat-radio-button  value="1"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button  value="2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button  value="3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button  value="4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button  value="5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></mat-radio-button>
+                </mat-radio-group>
+              </div>
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                   <div class="form-group row">
@@ -132,4 +280,6 @@
     </div>
   </div>
 </div>
-<ng-template #loading><mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar></ng-template>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>

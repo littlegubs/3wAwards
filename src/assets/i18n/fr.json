@@ -166,7 +166,17 @@
       "PURPOSE": "Objet",
       "BUDGET_FORK": "Budget",
       "LANGUAGE": "Langues",
-      "CREDITS": "Crédits"
+      "CREDITS": "Crédits",
+      "COLORS": "Couleurs dominantes",
+      "STYLE": "Style",
+      "BEHAVIOR": "Comportement",
+      "AGENCY_MISSION": "Missions Confiées à l'Agence",
+      "MAIN_FONCTIONNALITY": "Fonctionalités Clés",
+      "FRONT": "Front",
+      "BACK": "Back",
+      "CMS": "CMS",
+      "ACCESSIBILITY": "Accessibilité",
+      "CHALLENGE": "Challenge technique "
 
     }
   }
