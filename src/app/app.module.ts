@@ -18,7 +18,8 @@ import {
     MatProgressBarModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -115,6 +116,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,

@@ -30,8 +30,11 @@ export class ProjectFormComponent implements OnInit {
   frontTags: Tag[] = [];
   backTags: Tag[] = [];
   cmsTags: Tag[] = [];
+  colorTags: Tag[] = [];
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
+  colors =  ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
+    '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService) {
@@ -166,6 +169,19 @@ export class ProjectFormComponent implements OnInit {
     this.refreshTagsArray();
   }
 
+  addColors(value: string, type: string): void {
+    const tag = new Tag();
+    for (let typeTag of this.typeTags) {
+      if (typeTag.libelle === type) {
+        tag.setType(typeTag.id);
+        tag.type.libelle = type;
+      }
+    }
+    tag.libelle = value;
+    this.projectTags.push(tag);
+    this.refreshTagsArray();
+  }
+
   refreshTagsArray () {
     this.customTags = this.projectTags.filter(tag => tag.type.libelle === 'custom');
     this.styleTags = this.projectTags.filter(tag => tag.type.libelle === 'style');
@@ -175,5 +191,6 @@ export class ProjectFormComponent implements OnInit {
     this.frontTags = this.projectTags.filter(tag => tag.type.libelle === 'front_tech');
     this.backTags = this.projectTags.filter(tag => tag.type.libelle === 'back_tech');
     this.cmsTags = this.projectTags.filter(tag => tag.type.libelle === 'cms');
+    this.colorTags = this.projectTags.filter(tag => tag.type.libelle === 'color');
   }
 }

@@ -94,6 +94,22 @@
                          (change)="addTag(language.value, 'language')">
                 </mat-form-field>
               </div>
+              <label for="colors" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.COLORS' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                      <mat-chip-list #chipListCustomTags>
+                        <mat-chip *ngFor="let color of colorTags"
+                                  [removable]="true" (remove)="removeTag(color.libelle)">
+                          <span class="round-color"  [ngStyle]="{'background-color': color.libelle}"></span>
+                          <mat-icon matChipRemove>x</mat-icon>
+                        </mat-chip>
+                      </mat-chip-list>
+                      <div *ngFor="let color of colors" class="btn btn-tags" (click)="addColors(color, 'color')">
+                        <span [ngStyle]="{'background-color': color}" class="round-color"></span>
+                      </div>
+                    </mat-form-field>
+              </div>
               <label for="customTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_CUSTOM_TAGS' |
                 translate}} :</label>
               <div class="col-sm-8">
@@ -151,11 +167,16 @@
               <label for="accessibility" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.ACCESSIBILITY' |
                 translate}} :</label>
               <div class="col-sm-8">
-                  <mat-radio-group id="accessibility" [(ngModel)]="accessibilityValue" [ngModelOptions]="{standalone: true}" (change)="addTag(accessibilityValue, 'accessibility')">
-                    <mat-radio-button class="col-sm-3 col-xs-2" value="1"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
-                    <mat-radio-button class="col-sm-3 col-xs-2" value="2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></mat-radio-button>
-                    <mat-radio-button class="col-sm-3 col-xs-2" value="3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></mat-radio-button>
-                  </mat-radio-group>
+                <mat-radio-group id="accessibility" [(ngModel)]="accessibilityValue"
+                                 [ngModelOptions]="{standalone: true}"
+                                 (change)="addTag(accessibilityValue, 'accessibility')">
+                  <mat-radio-button class="col-sm-3 col-xs-2" value="1"><i class="fas fa-star"></i><i
+                    class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button class="col-sm-3 col-xs-2" value="2"><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button class="col-sm-3 col-xs-2" value="3"><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i></mat-radio-button>
+                </mat-radio-group>
               </div>
               <label for="agencyMission" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_MISSION' |
                 translate}} :</label>
@@ -251,12 +272,18 @@
               <label for="challenge" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.CHALLENGE' |
                 translate}} :</label>
               <div class="col-sm-8">
-                <mat-radio-group id="challenge" [(ngModel)]="challengeValue" [ngModelOptions]="{standalone: true}" (change)="addTag(challengeValue, 'challenge')">
-                  <mat-radio-button  value="1"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
-                  <mat-radio-button  value="2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
-                  <mat-radio-button  value="3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
-                  <mat-radio-button  value="4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></mat-radio-button>
-                  <mat-radio-button  value="5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></mat-radio-button>
+                <mat-radio-group id="challenge" [(ngModel)]="challengeValue" [ngModelOptions]="{standalone: true}"
+                                 (change)="addTag(challengeValue, 'challenge')">
+                  <mat-radio-button value="1"><i class="fas fa-star"></i><i class="far fa-star"></i><i
+                    class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button value="2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button value="3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button value="4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button value="5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></mat-radio-button>
                 </mat-radio-group>
               </div>
               <div class="row">
