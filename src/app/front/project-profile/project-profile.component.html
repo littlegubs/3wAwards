@@ -151,7 +151,7 @@
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PUBLISHED_DATE' | translate}}</p>
               <span>{{project.publicationDate | date}}</span>
             </div>
-            <div class="common-tags-details credits" *ngIf="project.credits.length !== 0">
+            <div class="common-tags-details credits" *ngIf="project.credits">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CREDITS' | translate}}</p>
               <p *ngFor="let credit of project.credits" class="credits-details">{{credit.firstname}} {{credit.lastname}}
                 <span class="internal-notice">({{credit.function}})</span></p>
