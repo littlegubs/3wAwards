@@ -5,6 +5,7 @@ import {RegistrationDialogComponent} from '../registration-dialog/registration-d
 import {AuthService} from '../../auth.service';
 import {Subscription} from 'rxjs/Subscription';
 import {TokenInterface} from '../../tokenInterface';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,7 @@ export class HeaderComponent {
   fileRegistrationDialogRef: MatDialogRef<RegistrationDialogComponent>;
   userInfo: TokenInterface;
 
-  constructor(private dialog: MatDialog, private authService: AuthService) {
+  constructor(private dialog: MatDialog, private authService: AuthService, private router: Router) {
     if (typeof this.tokenStorage === 'string') {
       this.userInfo = this.authService.getUserInfo(this.tokenStorage);
       this.isConnected = true;
@@ -52,10 +53,10 @@ export class HeaderComponent {
     }
   }
   submitWebsite() {
-    if (typeof this.tokenStorage !== 'string') {
+    if (localStorage.getItem('user_token') === null) {
       this.fileRegistrationDialogRef = this.dialog.open(RegistrationDialogComponent);
     } else {
-      console.log('SOUMETTRE UN SITE');
+      this.router.navigate(['project']);
     }
   }
   Disconnection() {

@@ -18,7 +18,8 @@ import {
     MatProgressBarModule,
     MatCheckboxModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -64,6 +65,7 @@ import {FormService} from '../backend/forms';
 import {TagsFilterPipe} from './tags-filter.pipe';
 import { ProjectProfileComponent } from './front/project-profile/project-profile.component';
 import { AddAgencyComponent } from './front/add-agency/add-agency.component';
+import { ProjectFormComponent } from './front/project-form/project-form.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -98,6 +100,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MemberFormProfileComponent,
     ProjectProfileComponent,
     AddAgencyComponent,
+    ProjectFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,6 +116,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
