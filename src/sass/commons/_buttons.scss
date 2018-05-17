@@ -39,6 +39,18 @@
             color: red;
         }
     }
+    &-main-white-full {
+        background: white;
+        border: 2px solid white;
+        border-radius: 30px;
+        color: red;
+        transition: all 0.4s;
+        &:hover {
+            background-color: gray;
+            border: 2px solid gray;
+            color: white
+        }
+    }
     &-tags {
         border-radius: 100px;
         background-color: #cdcdcd;
@@ -52,7 +64,7 @@
             transition: all 0.4s;
         }
     }
-    &-profile-external{
+    &-profile-external {
         border-radius: 100px;
         border: 1px solid gray;
         background-color: #e2e2e2;
@@ -65,7 +77,53 @@
             transition: all 0.4s;
         }
     }
+    &-project-like{
+        background: white;
+        border-radius: 40px;
+        padding: 10px 11.1px;
+        font-size: 14px;
+        color: #7f1d98;
+
+    }
+    &-project-vote{
+        width: 120px;
+        background-color: #7f1d98;
+        color: white;
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 25px;
+        margin-left: 10px;
+    }
     &:focus, &:hover:focus{
         outline: none !important;
+    }
+}
+
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    border-radius: 100px;
+    border: 1px solid white;
+    color: grey;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 0;
+    background-color: white;
+    margin-top: 10px;
+    &:hover {
+        background-color: gray;
+        border-color: grey;
+        color: white;
+        transition: all 0.4s;
     }
 }

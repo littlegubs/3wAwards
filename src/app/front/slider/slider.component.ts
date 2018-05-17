@@ -14,7 +14,6 @@ export class SliderComponent implements OnInit {
     this.awardsService.getAllByFilter('type', 'day', 1).subscribe(
       res => {
         this.awards = res;
-        console.log(this.awards);
       },
       err => {
       }

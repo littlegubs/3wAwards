@@ -1,0 +1,245 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-form-profile">
+      <form [formGroup]="form.group">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
+            <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.IDENTITY' | translate}}</p>
+            <div class="form-group row">
+              <!-- CIVILITE -->
+              <label class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.GENDER' | translate}}
+                :</label>
+              <div class="col-sm-8 radio-group">
+                <mat-radio-group formControlName="gender">
+                  <mat-radio-button value="M">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.GENDER_MALE' | translate}}
+                  </mat-radio-button>
+                  <mat-radio-button value="F">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.GENDER_FEMALE' | translate}}
+                  </mat-radio-button>
+                </mat-radio-group>
+                <p>{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.REQUIRED' | translate}}</p>
+              </div>
+              <!-- PSEUDO -->
+              <label for="username" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PSEUDO' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width pseudo">
+                  <input matInput type="text" id="username" formControlName="username">
+                  <mat-error>
+                    {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.REQUIRED' | translate}}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <!-- FIRSTNAME -->
+              <label for="firstName" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.FIRSTNAME'
+                | translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="text" id="firstName" formControlName="firstName">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.CONNECTION' | translate}}</p>
+            <div class="form-group row">
+              <!-- EMAIL -->
+              <label for="email" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.EMAIL' |
+                translate}} :</label>
+              <div class="col-sm-8 email-group">
+                <mat-form-field class="full-width email">
+                  <input matInput formControlName="email" type="email" id="email">
+                  <mat-error>
+                    {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.MAIL_FORMAT' | translate}}
+                  </mat-error>
+                  <mat-error>
+                    {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.REQUIRED' | translate}}
+                  </mat-error>
+                </mat-form-field>
+                <!-- @todo NGIF validation mail -->
+                <i class="fas fa-check"></i>
+              </div>
+              <!-- PASSWORD -->
+              <label for="password" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PASSWORD' |
+                translate}} :</label>
+              <div class="col-sm-8 password-group">
+                <mat-form-field class="full-width password">
+                  <input matInput type="password" id="password">
+                  <mat-error>
+                    {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.REQUIRED' | translate}}
+                  </mat-error>
+                </mat-form-field>
+                <i class="fas fa-info-circle"></i>
+              </div>
+            </div>
+            <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.PROFIL' | translate}}</p>
+            <div class="form-group row">
+              <!-- BIRTHDAY -->
+              <label for="birthday" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.BIRTHDAY' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="birthday" formControlName="birthday" [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <!-- COUNTRY -->
+              <label for="country" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.COUNTRY' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput formControlName="country" id="country">
+                </mat-form-field>
+              </div>
+              <!-- JOB -->
+              <label for="job" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.JOB' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="job">
+                </mat-form-field>
+              </div>
+              <!-- SUMMARY -->
+              <label for="summary" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.SUMMARY' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <textarea matInput formControlName="presentation" matTextareaAutosize matAutosizeMinRows="2"
+                            id="summary"></textarea>
+                </mat-form-field>
+              </div>
+              <!-- SKILLS -->
+              <label for="skills" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.SKILLS' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListSkills>
+                    <mat-chip *ngFor="let skill of skills"
+                              [removable]="true" (remove)="removeSkill(skill)">
+                      {{skill.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="skills"
+                           [matChipInputFor]="chipListSkills"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addSkill($event)"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <!-- INTEREST -->
+              <label for="interest" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.INTEREST' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListInterest>
+                    <mat-chip *ngFor="let interest of member.tags |filter:'interests'"
+                              [removable]="true" (remove)="removeInterest(interest)">
+                      {{interest.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="interest"
+                           [matChipInputFor]="chipListInterest"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addInterest($event)"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+            </div>
+            <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.WEB_LINK' | translate}}</p>
+            <div class="form-group row">
+              <!-- PERSONNAL WEBSITE -->
+              <label for="personnal-website" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PERSONNAL_WEBSITE'
+                | translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="url" id="personnal-website">
+                </mat-form-field>
+              </div>
+              <!-- FACEBOOK -->
+              <label for="facebook" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.FACEBOOK' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="url" id="facebook">
+                </mat-form-field>
+              </div>
+              <!-- TWITTER -->
+              <label for="twitter" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.TWITTER' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="url" id="twitter">
+                </mat-form-field>
+              </div>
+              <!-- LINKEDIN -->
+              <label for="linkedin" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.LINKEDIN' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="url" id="linkedin">
+                </mat-form-field>
+              </div>
+              <!-- INSTAGRAM -->
+              <label for="instagram" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.INSTAGRAM'
+                | translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="url" id="instagram">
+                </mat-form-field>
+              </div>
+              <!-- BEHANCE -->
+              <label for="behance" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.BEHANCE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="url" id="behance">
+                </mat-form-field>
+              </div>
+              <!-- DRIBBLE -->
+              <label for="dribble" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.DRIBBLE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="url" id="dribble">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label"></label>
+              <div class="col-sm-8">
+                <mat-checkbox> {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.LEGALS.NEW_WEBSITE_MAIL' | translate}}
+                </mat-checkbox>
+                <mat-checkbox> {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.LEGALS.NEWSLETTER' | translate}}</mat-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group row upload-profile-pic">
+              <p class="col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.AVATAR' | translate}}</p>
+              <img class="profile-pic" [src]="(url || member.profilePicture) ? (url ? url : member.profilePicture) : '../../../assets/imgs/victor.jpg'">
+              <i class="far fa-trash-alt"></i>
+              <input type="file" name="file" id="file" class="inputfile" (change)="fileUpload($event)"/>
+              <label for="file">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.UPLOAD' | translate}}</label>
+              <i class="fas fa-info-circle"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group row">
+              <div class="col-sm-12 form-actions">
+                <button type="reset" class="btn btn-main-white-full revert">
+                  {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.REVERT' | translate}}
+                </button>
+                <button type="submit" class="btn btn-main-red-full submit" (click)="submitForm()">
+                  {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.SUBMIT' | translate}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

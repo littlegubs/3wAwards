@@ -7,7 +7,13 @@ app-member-profile{
         padding: 0;
         .rounded-circle {
             padding-top: 30px;
-            max-height: 30vh;
+            width: 200px;
+            height: 200px;
+        }
+        app-site-card{
+            .container-fluid{
+                margin: 0 auto;
+            }
         }
         .profile{
             &-name {

@@ -2,6 +2,7 @@ import { Agency } from './Agency';
 import { Award } from './Award';
 import { Category } from './Category';
 import { Client } from './Client';
+import { Credit } from './Credit';
 import { Image } from './Image';
 import { Member } from './Member';
 import { ProjectRatingMember } from './ProjectRatingMember';
@@ -17,6 +18,7 @@ export {
   Award,
   Category,
   Client,
+  Credit,
   Image,
   Member,
   ProjectRatingMember,

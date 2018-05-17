@@ -1,0 +1,312 @@
+<div class="container" *ngIf="member && typeTags; else loading">
+  <div class="row">
+    <div class="col-sm-12 col-form-project">
+      <form [formGroup]="form.group" (submit)="commitProject()">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
+            <div class="form-group row">
+              <label id="agencyClientLabel" for="agencyClientSelect" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_OR_CLIENT'
+                |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <select id="agencyClientSelect" class="form-control" #agencyClientSelect
+                        (change)="getTheSelectedValue(agencyClientSelect.value)">
+                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}
+                  </option>
+                  <option *ngFor="let client of member.clients" [value]="['client', client.id]">{{client.name}}</option>
+                </select>
+              </div>
+              <label class="col-sm-4 col-form-label" for="projectName">{{'FRONT.FORM_PROJECT.PROJECT_NAME' | translate}}
+                :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="text" id="projectName" formControlName="projectName">
+                </mat-form-field>
+              </div>
+              <label for="projectDescription" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_DESCRIPTION'
+                | translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <textarea matInput id="projectDescription" formControlName="projectDescription"></textarea>
+                </mat-form-field>
+              </div>
+              <label for="projectDate" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_DATE' | translate}}
+                :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="projectDate" formControlName="publicationDate" [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <label for="noticableDescription" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_NOTICABLE_DESCRIPTION'
+                | translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <textarea id="noticableDescription" matInput formControlName="noticableDescription"></textarea>
+                </mat-form-field>
+              </div>
+              <label for="siteType" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.SITE_TYPE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="siteType" matInput type="text" #site_type
+                         (change)="addTag(site_type.value, 'site_type')">
+                </mat-form-field>
+              </div>
+              <label for="businessSector" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BUSINESS_SECTOR' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="businessSector" matInput type="text" #business_sector
+                         (change)="addTag(business_sector.value, 'business_sector')">
+                </mat-form-field>
+              </div>
+              <label for="target" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.TARGET' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="target" matInput type="text" #target
+                         (change)="addTag(target.value, 'target')">
+                </mat-form-field>
+              </div>
+              <label for="purpose" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PURPOSE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="purpose" matInput type="text" #purpose
+                         (change)="addTag(purpose.value, 'purpose')">
+                </mat-form-field>
+              </div>
+              <label for="budget_fork" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BUDGET_FORK' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="budget_fork" matInput type="text" #budget_fork
+                         (change)="addTag(budget_fork.value, 'budget_fork')">
+                </mat-form-field>
+              </div>
+              <label for="language" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.LANGUAGE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input id="language" matInput type="text" #language
+                         (change)="addTag(language.value, 'language')">
+                </mat-form-field>
+              </div>
+              <label for="colors" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.COLORS' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                    <mat-form-field class="full-width">
+                      <mat-chip-list #chipListCustomTags>
+                        <mat-chip *ngFor="let color of colorTags"
+                                  [removable]="true" (remove)="removeTag(color.libelle)">
+                          <span class="round-color"  [ngStyle]="{'background-color': color.libelle}"></span>
+                          <mat-icon matChipRemove>x</mat-icon>
+                        </mat-chip>
+                      </mat-chip-list>
+                      <div *ngFor="let color of colors" class="btn btn-tags" (click)="addColors(color, 'color')">
+                        <span [ngStyle]="{'background-color': color}" class="round-color"></span>
+                      </div>
+                    </mat-form-field>
+              </div>
+              <label for="customTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_CUSTOM_TAGS' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let custom of customTags"
+                              [removable]="true" (remove)="removeTag(custom.libelle)">
+                      {{custom.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="customTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'custom')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="styleTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.STYLE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let style of styleTags"
+                              [removable]="true" (remove)="removeTag(style.libelle)">
+                      {{style.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="styleTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'style')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="behaviorTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BEHAVIOR' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let behavior of behaviorTags"
+                              [removable]="true" (remove)="removeTag(behavior.libelle)">
+                      {{behavior.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="behaviorTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'behavior')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="accessibility" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.ACCESSIBILITY' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-radio-group id="accessibility" [(ngModel)]="accessibilityValue"
+                                 [ngModelOptions]="{standalone: true}"
+                                 (change)="addTag(accessibilityValue, 'accessibility')">
+                  <mat-radio-button class="col-sm-3 col-xs-2" value="1"><i class="fas fa-star"></i><i
+                    class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button class="col-sm-3 col-xs-2" value="2"><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button class="col-sm-3 col-xs-2" value="3"><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i></mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <label for="agencyMission" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_MISSION' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let agencyMission of agencyMissionTags"
+                              [removable]="true" (remove)="removeTag(agencyMission.libelle)">
+                      {{agencyMission.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="agencyMission"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'agency_mission')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="mainFonctionnality" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.MAIN_FONCTIONNALITY'
+                |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let mainFonctionnality of mainFonctionnalityTags"
+                              [removable]="true" (remove)="removeTag(mainFonctionnality.libelle)">
+                      {{mainFonctionnality.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="mainFonctionnality"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'main_fonctionnality')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="frontTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.FRONT' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let front of frontTags"
+                              [removable]="true" (remove)="removeTag(front.libelle)">
+                      {{front.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="frontTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'front_tech')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="backTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BACK' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let back of backTags"
+                              [removable]="true" (remove)="removeTag(back.libelle)">
+                      {{back.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="backTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'back_tech')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="CmsTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.CMS' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let cms of cmsTags"
+                              [removable]="true" (remove)="removeTag(cms.libelle)">
+                      {{cms.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="CmsTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'cms')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+              <label for="challenge" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.CHALLENGE' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-radio-group id="challenge" [(ngModel)]="challengeValue" [ngModelOptions]="{standalone: true}"
+                                 (change)="addTag(challengeValue, 'challenge')">
+                  <mat-radio-button value="1"><i class="fas fa-star"></i><i class="far fa-star"></i><i
+                    class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button value="2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button value="3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button value="4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></mat-radio-button>
+                  <mat-radio-button value="5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group row">
+                    <div class="col-sm-12 form-actions">
+                      <button type="reset" class="btn btn-main-white-full revert">
+                        {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.REVERT' | translate}}
+                      </button>
+                      <button type="submit" class="btn btn-main-red-full submit">
+                        {{'FRONT.HEADER.WEBSITE_SUBMIT' | translate}}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>

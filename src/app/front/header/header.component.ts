@@ -4,11 +4,12 @@ import {ConnectionDialogComponent} from '../connection-dialog/connection-dialog.
 import {RegistrationDialogComponent} from '../registration-dialog/registration-dialog.component';
 import {AuthService} from '../../auth.service';
 import {Subscription} from 'rxjs/Subscription';
+import {TokenInterface} from '../../tokenInterface';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
 })
 
 export class HeaderComponent {
@@ -20,9 +21,10 @@ export class HeaderComponent {
   subscriptionToken: Subscription;
   fileLoginDialogRef: MatDialogRef<ConnectionDialogComponent>;
   fileRegistrationDialogRef: MatDialogRef<RegistrationDialogComponent>;
-  userInfo: JSON;
+  userInfo: TokenInterface;
+  isClicked = false;
 
-  constructor(private dialog: MatDialog, private authService: AuthService) {
+  constructor(private dialog: MatDialog, private authService: AuthService, private router: Router) {
     if (typeof this.tokenStorage === 'string') {
       this.userInfo = this.authService.getUserInfo(this.tokenStorage);
       this.isConnected = true;
@@ -51,10 +53,10 @@ export class HeaderComponent {
     }
   }
   submitWebsite() {
-    if (typeof this.tokenStorage !== 'string') {
+    if (localStorage.getItem('user_token') === null) {
       this.fileRegistrationDialogRef = this.dialog.open(RegistrationDialogComponent);
     } else {
-      console.log('SOUMETTRE UN SITE');
+      this.router.navigate(['project']);
     }
   }
   Disconnection() {

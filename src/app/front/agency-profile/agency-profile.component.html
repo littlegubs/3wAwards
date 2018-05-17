@@ -1,8 +1,11 @@
-<div class="container-fluid">
-    <img src="assets/imgs/victor.jpeg" class="rounded-circle profile-image">
-    <h1 class="profile-name">MentalWorks</h1>
+<div class="container-fluid"  *ngIf="agency; else loading">
+  <img *ngIf="agency.image; else noProfilePic" [src]="agency.image.path |liip:'profile_pic'" class="rounded-circle profile-image">
+  <ng-template #noProfilePic>
+    <img src="assets/imgs/user_placeholder.png" class="rounded-circle profile-image">
+  </ng-template>
+    <h1 class="profile-name">{{agency.name}}</h1>
     <div class="profile-text">
-        <span class="profile-categ">Agence digitale</span> | Indépendante | France
+        <span class="profile-categ">Agence digitale</span> | Indépendante | {{agency.country}}
     </div>
     <div class="profile-data">
         <i class="fas fa-eye"></i> 22
@@ -11,28 +14,21 @@
         <i class="fas fa-arrow-circle-up"></i>{{'FRONT.AGENCY_PROFILE.GLOBAL_RANKING' | translate}}: 8.7
     </div>
     <div class="profile-buttons">
-        <button type="button" class="btn btn-profile-external">Site web</button>
+        <button type="button" class="btn btn-profile-external" ><a [href]="agency.websiteUrl">Site web</a></button>
         <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
+        <button (click)="deleteAgency(agency)" type="button" class="btn btn-profile-external">Delete</button>
+        <button (click)="gotoAddAgencyForm()" type="button" class="btn btn-profile-external">Add</button>
     </div>
     <div class="profile-desc">
-        <p>Mentalworks est une agence digitale technologique indépendante de taille humaine
-            spécialisée dans la création de sites web et d’applications métiers/mobiles à forte valeur ajoutée.</p>
+        <p>{{agency.description}}</p>
     </div>
     <div class="profile-tags">
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
-        <button type="button" class="btn btn-tags">Primary</button>
+        <button *ngFor="let tag of agency.tags" type="button" class="btn btn-tags">{{tag.libelle}}</button>
     </div>
     <div class="row profile-detail">
         <div class="col-sm">
             <div class="profile-detail-title">{{'FRONT.AGENCY_PROFILE.COUNTRY' | translate}}</div>
-            <div class="profile-detail-content"><img src="assets/imgs/flags/fr-flag.png">| France</div>
+            <div class="profile-detail-content"><img src="assets/imgs/flags/fr-flag.png">| {{agency.country}}</div>
         </div>
         <div class="col-sm">
             <div class="profile-detail-title">{{'FRONT.AGENCY_PROFILE.CATEG' | translate}}</div>
@@ -59,4 +55,14 @@
             <div class="profile-detail-content">5</div>
         </div>
     </div>
+    <h1 class="profile-nominated"><span class="profile-nominated-bold">{{nominatedSites}}  {{'FRONT.PROFILE.SITES' | translate}}</span>
+        <span
+                class="profile-nominated-standard">{{'FRONT.PROFILE.NOMINATED_SITES' | translate}}</span> |
+        <span class="profile-nominated-bold">{{earnedAward}}  {{'FRONT.PROFILE.AWARDS' | translate}}</span> <span
+                class="profile-nominated-standard">{{'FRONT.PROFILE.EARNED_AWARD' | translate}}</span>
+    </h1>
+    <app-site-card [nameAgency]="agency.name"></app-site-card>
 </div>
+<ng-template #loading>
+    <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>

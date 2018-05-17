@@ -4,6 +4,7 @@
 import { Agency } from '../Agency';
 import { Client } from '../Client';
 import { Project } from '../Project';
+import { Member } from '../Member';
 import { TypeTag } from '../TypeTag';
 
 export class TagBase {
@@ -14,6 +15,7 @@ export class TagBase {
   agencies: Agency;
   clients: Client;
   projects: Project;
+  members: Member;
   type: TypeTag;
 
   setAgencies(id: number): TagBase {
@@ -34,6 +36,13 @@ export class TagBase {
     this.projects = new Project();
     this.projects.id = id;
     this.projects['@id'] = '/projects/' + id;
+    return this;
+  }
+
+  setMembers(id: number): TagBase {
+    this.members = new Member();
+    this.members.id = id;
+    this.members['@id'] = '/members/' + id;
     return this;
   }
 

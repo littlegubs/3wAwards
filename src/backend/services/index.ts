@@ -4,6 +4,7 @@ import { AgenciesService } from './Agencies.service';
 import { AwardsService } from './Awards.service';
 import { CategoriesService } from './Categories.service';
 import { ClientsService } from './Clients.service';
+import { CreditsService } from './Credits.service';
 import { ImagesService } from './Images.service';
 import { MembersService } from './Members.service';
 import { ProjectRatingMembersService } from './ProjectRatingMembers.service';
@@ -19,6 +20,7 @@ export {
   AwardsService,
   CategoriesService,
   ClientsService,
+  CreditsService,
   ImagesService,
   MembersService,
   ProjectRatingMembersService,

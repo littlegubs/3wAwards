@@ -3,15 +3,23 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
-import * as $ from 'jquery';
 import {BootstrapModule} from './bootstrap.module';
 import {
-  MatButtonModule,
-  MatDialogModule,
-  MatSlideToggleModule,
-  MatCardModule,
-  MatProgressSpinnerModule,
-  MatTabsModule
+    MatButtonModule,
+    MatDialogModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatRadioModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatIconModule,
+    MatSelectModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -39,6 +47,7 @@ import {
   AwardsService,
   CategoriesService,
   ClientsService,
+  CreditsService,
   ImagesService,
   MembersService,
   ProjectRatingMembersService,
@@ -52,12 +61,22 @@ import {LiipPipe} from './liip.pipe';
 import {GlobalsService} from './globals.service';
 import { ClientProfileComponent } from './front/client-profile/client-profile.component';
 import { MemberProfileComponent } from './front/member-profile/member-profile.component';
+import { MemberFormProfileComponent } from './front/member-form-profile/member-form-profile.component';
+import {FormService} from '../backend/forms';
+import {TagsFilterPipe} from './tags-filter.pipe';
+import { ProjectProfileComponent } from './front/project-profile/project-profile.component';
+import { AddAgencyComponent } from './front/add-agency/add-agency.component';
+import { ProjectFormComponent } from './front/project-form/project-form.component';
+import { FilterComponent } from './front/filter/filter.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 export function createRestangularConfigFactory(RestangularProvider) {
+  if (localStorage.getItem('user_token') !== null) {
+    RestangularProvider.setDefaultHeaders({'Authorization': 'Bearer ' + localStorage.getItem('user_token')});
+  }
   return RestangularConfigFactory(RestangularProvider, {baseUrl: 'http://127.0.0.1:8000'});
 }
 
@@ -78,7 +97,13 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AgencyProfileComponent,
     ClientProfileComponent,
     MemberProfileComponent,
-    LiipPipe
+    LiipPipe,
+    TagsFilterPipe,
+    MemberFormProfileComponent,
+    ProjectProfileComponent,
+    AddAgencyComponent,
+    ProjectFormComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,14 +111,24 @@ export function createRestangularConfigFactory(RestangularProvider) {
     ReactiveFormsModule,
     AppRoutingModule,
     BootstrapModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatSlideToggleModule,
     MatProgressSpinnerModule,
     MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
     MatCardModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatProgressBarModule,
+    MatChipsModule,
+    MatIconModule,
     NgCircleProgressModule.forRoot({}),
     RestangularModule.forRoot([], createRestangularConfigFactory),
     TranslateModule.forRoot({
@@ -113,8 +148,10 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AwardsService,
     CategoriesService,
     ClientsService,
+    CreditsService,
     ImagesService,
     MembersService,
+    FormService,
     ProjectRatingMembersService,
     ProjectsService,
     RatingsService,
@@ -123,6 +160,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     TypeTagsService,
     AuthService,
     GlobalsService,
+    MatNativeDateModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
