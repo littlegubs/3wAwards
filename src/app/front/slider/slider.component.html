@@ -12,10 +12,8 @@
                     <div class="daily-site">
                       <span class="daily-site-name">{{award.project.projectName}}</span>
                       <br>
-                      <div *ngIf="award.project.agency !== null && award.project.client !== null">
-                        <span class="daily-site-info" *ngIf="award.project.agency === null">par <span class="bold">{{award.project.client.name}}</span> | {{award.project.client.country}} </span>
-                        <span class="daily-site-info" *ngIf="award.project.client === null">par <span class="bold">{{award.project.agency.name}}</span> | {{award.project.agency.country}}  </span>
-                      </div>
+                      <span class="daily-site-info" *ngIf="award.project.agency === null">par <span class="bold">{{award.project.client.name}}</span> | {{award.project.client.country}} </span>
+                      <span class="daily-site-info" *ngIf="award.project.client === null">par <span class="bold">{{award.project.agency.name}}</span> | {{award.project.agency.country}}  </span>
                     </div>
                     <div class="daily-marks">
                         <div class="daily-marks-circle">
@@ -86,9 +84,11 @@
                         </div>
                     </div>
                     <div class="daily-actions">
-                        <button type="button" class="btn btn-main-gray-border">
-                            {{'FRONT.SLIDER.VISIT_ACTION' | translate}}
-                        </button>
+                        <a href="{{award.project.projectUrl}}" target="_blank">
+                            <button type="button" class="btn btn-main-gray-border">
+                                {{'FRONT.SLIDER.VISIT_ACTION' | translate}}
+                            </button>
+                        </a>
                         <button type="button" class="btn btn-main-gray-border" [routerLink]="['/project/', award.project.id]">
                             {{'FRONT.SLIDER.SHOW_INFO_ACTION' | translate}}
                         </button>

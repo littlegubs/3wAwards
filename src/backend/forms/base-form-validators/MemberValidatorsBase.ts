@@ -16,6 +16,7 @@ export class MemberValidatorsBase extends FormGroupValidators {
     favoriteProjects = [AppValidators.item];
     presentation = null;
     websiteUrl = null;
+    function = null;
     newsletter = [AppValidators.boolean];
     optIn = [AppValidators.boolean];
     projectRatingMember = [AppValidators.item];

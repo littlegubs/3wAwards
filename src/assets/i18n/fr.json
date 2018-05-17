@@ -43,6 +43,7 @@
       "GLOBAL_RANKING": "Note globale"
     },
     "MEMBER_PROFILE": {
+      "MEMBER": "Membre",
       "MAIN":{
         "MYSITE_BUTTON":"Site Web"
       },
@@ -98,6 +99,45 @@
             "SUBMIT": "SAUVEGARDER"
           }
         }
+      }
+    },
+    "PROJECT_PROFILE": {
+      "TAGS": {
+        "TYPE": {
+          "SITE_TYPE": "Type de site",
+          "PURPOSE": "Objet",
+          "BUSINESS_SECTOR": "Secteur d'activité",
+          "TARGET": "Cible",
+          "LANGUAGE": "Langues",
+          "BUDGET_FORK": "Budget",
+          "COLOR": "Couleurs dominantes",
+          "STYLE": "Style",
+          "BEHAVIOR": "Comportement",
+          "ACCESSIBILITY": "Accessibilité",
+          "AGENCY_MISSION": "Missions confiées à l'agence",
+          "FONCTIONNALITY": "Fonctionnalités clés",
+          "DEV_TECH": "Développement technique",
+          "NOTABLE_NOTES": "Points remarquables",
+          "FRONT_TECH": "Front",
+          "BACK_TECH": "Back",
+          "CMS": "CMS",
+          "CHALLENGE": "Challenge technique",
+          "REALISED_BY": "Réalisé par",
+          "CLIENT_NAME": "Nom du client",
+          "CLIENT_SIZE": "Taille du client",
+          "PUBLISHED_DATE": "Date de publication",
+          "CREDITS": "Crédits"
+        }
+      },
+      "MARKS": {
+        "ORIGINALITY": "Originalité, créativité",
+        "GRAPHISM": "Graphisme, Lisibilité",
+        "ERGONOMY": "Navigation, ergonomie",
+        "INTERACTIVITY": "Intéractivité",
+        "QUALITY": "Qualité des contenus",
+        "FONCTIONNALITY": "Richesse fonctionnelle",
+        "REACTIVITY": "Réactivité, vitesse",
+        "AVERAGE": "Moyenne"
       }
     },
     "HEADER": {

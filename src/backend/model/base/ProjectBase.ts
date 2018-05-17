@@ -5,6 +5,7 @@ import { ProjectRatingMember } from '../ProjectRatingMember';
 import { Client } from '../Client';
 import { Agency } from '../Agency';
 import { Tag } from '../Tag';
+import { Credit } from '../Credit';
 import { Member } from '../Member';
 import { Image } from '../Image';
 import { Award } from '../Award';
@@ -23,9 +24,11 @@ export class ProjectBase {
   client: Client;
   agency: Agency;
   tags: Tag;
+  credits: Credit;
   members: Member;
   images: Image;
   awards: Award;
+  projectUrl: string;
 
   setProjectRatingMember(id: number): ProjectBase {
     this.projectRatingMember = new ProjectRatingMember();
@@ -52,6 +55,13 @@ export class ProjectBase {
     this.tags = new Tag();
     this.tags.id = id;
     this.tags['@id'] = '/tags/' + id;
+    return this;
+  }
+
+  setCredits(id: number): ProjectBase {
+    this.credits = new Credit();
+    this.credits.id = id;
+    this.credits['@id'] = '/credits/' + id;
     return this;
   }
 

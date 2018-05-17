@@ -21,6 +21,7 @@ export class MemberBase {
   favoriteProjects: Project;
   presentation: string;
   websiteUrl: string;
+  function: string;
   newsletter: boolean;
   optIn: boolean;
   projectRatingMember: ProjectRatingMember;

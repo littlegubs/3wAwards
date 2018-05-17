@@ -47,6 +47,7 @@ import {
   AwardsService,
   CategoriesService,
   ClientsService,
+  CreditsService,
   ImagesService,
   MembersService,
   ProjectRatingMembersService,
@@ -66,6 +67,7 @@ import {TagsFilterPipe} from './tags-filter.pipe';
 import { ProjectProfileComponent } from './front/project-profile/project-profile.component';
 import { AddAgencyComponent } from './front/add-agency/add-agency.component';
 import { ProjectFormComponent } from './front/project-form/project-form.component';
+import { FilterComponent } from './front/filter/filter.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -101,6 +103,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     ProjectProfileComponent,
     AddAgencyComponent,
     ProjectFormComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -145,6 +148,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AwardsService,
     CategoriesService,
     ClientsService,
+    CreditsService,
     ImagesService,
     MembersService,
     FormService,

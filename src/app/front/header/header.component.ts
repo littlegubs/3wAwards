@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
 })
 
 export class HeaderComponent {
@@ -23,6 +22,7 @@ export class HeaderComponent {
   fileLoginDialogRef: MatDialogRef<ConnectionDialogComponent>;
   fileRegistrationDialogRef: MatDialogRef<RegistrationDialogComponent>;
   userInfo: TokenInterface;
+  isClicked = false;
 
   constructor(private dialog: MatDialog, private authService: AuthService, private router: Router) {
     if (typeof this.tokenStorage === 'string') {
