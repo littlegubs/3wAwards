@@ -151,7 +151,7 @@
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.PUBLISHED_DATE' | translate}}</p>
               <span>{{project.publicationDate | date}}</span>
             </div>
-            <div class="common-tags-details credits" *ngIf="project.credits">
+            <div class="common-tags-details credits" *ngIf="project.credits.length !== 0">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CREDITS' | translate}}</p>
               <p *ngFor="let credit of project.credits" class="credits-details">{{credit.firstname}} {{credit.lastname}}
                 <span class="internal-notice">({{credit.function}})</span></p>
@@ -163,8 +163,8 @@
     <!-- SPECIFIC TAGS -->
     <div class="row project-specific-tags">
       <div class="col-lg-12">
-        <div class="common-tags">
-          <div class="common-tags-details" *ngIf="project.tags |filter:'color'">
+        <div class="common-tags" *ngIf="project.tags |filter:'color'">
+          <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.COLOR' | translate}}</p>
             <div class="project-colors">
               <div *ngFor="let tag of project.tags |filter:'color'">
@@ -173,8 +173,8 @@
             </div>
           </div>
         </div>
-        <div class="common-tags">
-          <div class="common-tags-details" *ngIf="project.tags |filter:'style'">
+        <div class="common-tags" *ngIf="project.tags |filter:'style'">
+          <div class="common-tags-details">
             <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.STYLE' | translate}}</p>
             <span *ngFor="let tag of project.tags |filter:'style'"> {{tag.libelle}}</span>
           </div>
