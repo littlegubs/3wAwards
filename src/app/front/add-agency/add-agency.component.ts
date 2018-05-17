@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AgenciesService } from '../../../backend/services';
-import { Agency } from '../../../backend/model';
+import {MembersService, AgenciesService, TypeTagsService } from '../../../backend/services';
+import { Agency, Member, TypeTag, Tag } from '../../../backend/model';
 import { FormService, Form } from '../../../backend/forms';
-import {AgencyProfileComponent} from '../agency-profile/agency-profile.component';
+import {TokenInterface} from '../../tokenInterface';
+import {AuthService} from '../../auth.service';
 
 @Component({
   selector: 'app-add-agency',
@@ -12,22 +13,31 @@ import {AgencyProfileComponent} from '../agency-profile/agency-profile.component
 export class AddAgencyComponent implements OnInit {
     agencies: Array<Agency> = [];
     form: Form<Agency>;
-  constructor( private agenciesService: AgenciesService, private formService: FormService) { }
+    tokenStorage = localStorage.getItem('user_token');
+    userInfo: TokenInterface;
+    member: Member;
+    typeTags: TypeTag[] = [];
+  constructor( private agenciesService: AgenciesService, private formService: FormService, private typeTagService: TypeTagsService, private membersService: MembersService, private authService: AuthService) { }
 
   ngOnInit() {
       this.agenciesService.getAll().subscribe(agencies => {
           this.agencies = agencies;
       });
-      // initialize the form with a whole new book
+      this.userInfo = this.authService.getUserInfo(this.tokenStorage);
+      this.membersService.get(this.userInfo.id).subscribe(
+          res => {
+              this.member = res;
+          },
+          err => {
+          }
+      );
+      this.getAllTypeTag();
+      // initialize the form with a whole new Agency
       this.createNewAgency();
   }
 
     createNewAgency(): void {
         this.form = this.formService.makeForm<Agency>(new Agency());
-    }
-    // used in the template, for example in a data table
-    SelectAgency(agency: Agency): void {
-        this.form = this.formService.makeForm<Agency>(agency);
     }
 
     commitAgency(): void {
@@ -36,11 +46,23 @@ export class AddAgencyComponent implements OnInit {
             if (newAgency.id) {
                 this.agenciesService.update(newAgency).subscribe(agency => console.log('yeah!'));
             } else {
+                newAgency.setProjects(null);
+                newAgency.setTags(null);
+                newAgency.setImage(null);
                 this.agenciesService.add(newAgency).subscribe(agency => console.log('yeah!'));
             }
         } else {
             // force invalid inputs state to display errors
             this.form.displayErrors();
         }
+    }
+    getAllTypeTag() {
+        this.typeTagService.getAll().subscribe(
+            res => {
+                this.typeTags = res;
+            },
+            err => {
+            }
+        );
     }
 }
