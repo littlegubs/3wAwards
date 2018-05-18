@@ -30,14 +30,6 @@ export class MemberBase {
   profilePicture: Image;
   isJudge: boolean;
 
-  setTags(id: number): MemberBase {
-    const tag = new Tag();
-    tag.id = id;
-    tag['@id'] = '/tags/' + id;
-    this.tags.push(tag);
-    return this;
-  }
-
   setFavoriteProjects(id: number): MemberBase {
     this.favoriteProjects = new Project();
     this.favoriteProjects.id = id;

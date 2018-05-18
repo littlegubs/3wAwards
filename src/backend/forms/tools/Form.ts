@@ -8,7 +8,7 @@ import { FormGroupValidationMatcher } from '../FormGroupValidationMatcher';
 import { FormGroupValidationMatcherBase } from '../FormGroupValidationMatcherBase';
 
 export class Form<T> {
-  protected formGroup: FormGroup;
+  public formGroup: FormGroup;
   protected types: ValidationTypes;
   protected validationMatcher: FormGroupValidationMatcherBase;
   protected sourceItem: T;
@@ -106,7 +106,8 @@ export class Form<T> {
   }
 
   protected formatDate(date: Date): string {
-    return (date ? date.toString().split('T')[0] : '');
+    if (typeof(date) === 'string') date = new Date(date);
+    return (date ? date.toISOString().split('T')[0] : '');
   }
 
   protected hasValidator(validatorGroup: Array<any> | any, validator: any): boolean {

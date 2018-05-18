@@ -76,7 +76,7 @@ export class ProjectFormComponent implements OnInit {
         }
 
         newProject.averageRating = null;
-        newProject.SetMultipletTags(this.projectTags);
+        newProject = this.projectTags;
         newProject.setMembersatNull();
         newProject.setImagesAtNull();
         newProject.setAwardsAtNull();

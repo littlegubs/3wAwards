@@ -12,7 +12,7 @@ import { Award } from '../Award';
 
 export class ProjectBase {
   public static readonly _resource: string = 'projects';
-  get _resource(): string { return ProjectBase._resource; };
+  get _resource(): string { return ProjectBase._resource; }
 
   projectName: string;
   projectDescription: string;
@@ -23,8 +23,8 @@ export class ProjectBase {
   projectRatingMember: ProjectRatingMember;
   client: Client;
   agency: Agency;
-  tags: Tag;
-  credits: Credit;
+  tags: Tag[];
+  credits: Credit[];
   members: Member;
   images: Image;
   awards: Award;
@@ -48,20 +48,6 @@ export class ProjectBase {
     this.agency = new Agency();
     this.agency.id = id;
     this.agency['@id'] = '/agencies/' + id;
-    return this;
-  }
-
-  setTags(id: number): ProjectBase {
-    this.tags = new Tag();
-    this.tags.id = id;
-    this.tags['@id'] = '/tags/' + id;
-    return this;
-  }
-
-  setCredits(id: number): ProjectBase {
-    this.credits = new Credit();
-    this.credits.id = id;
-    this.credits['@id'] = '/credits/' + id;
     return this;
   }
 

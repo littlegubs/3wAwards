@@ -34,12 +34,6 @@ export class Project extends ProjectBase {
     return this;
   }
 
-  SetMultipletTags(multipleTags: Tag[]): Project {
-    this.tags = new Tag();
-    this.tags['@id'] = multipleTags;
-    return this;
-  }
-
   setClientAtNull(): Project {
     this.client = new Client();
     this.client = null;
