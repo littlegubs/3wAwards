@@ -68,6 +68,7 @@ import { ProjectProfileComponent } from './front/project-profile/project-profile
 import { AddAgencyComponent } from './front/add-agency/add-agency.component';
 import { ProjectFormComponent } from './front/project-form/project-form.component';
 import { FilterComponent } from './front/filter/filter.component';
+import {StarRatingModule} from 'angular-star-rating';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -137,7 +138,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    StarRatingModule.forRoot()
   ],
   entryComponents: [
     ConnectionDialogComponent,

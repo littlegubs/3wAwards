@@ -22,6 +22,12 @@ export class ProjectFormComponent implements OnInit {
   challengeValue: string;
   typeTags: TypeTag[] = [];
   projectTags: Tag[] = [];
+  siteTypeTags: Tag[] = [];
+  businessTags: Tag[] = [];
+  targetTags: Tag[] = [];
+  purposeTags: Tag[] = [];
+  budgetTags: Tag[] = [];
+  languageTags: Tag[] = [];
   customTags: Tag[] = [];
   styleTags: Tag[] = [];
   behaviorTags: Tag[] = [];
@@ -63,7 +69,7 @@ export class ProjectFormComponent implements OnInit {
       newProject.setProjectRatingMemberAtNull();
       newProject.status = 'pending';
       if (newProject.id) {
-        this.projectsService.update(newProject).subscribe(res => console.log('update'));
+        this.projectsService.update(newProject).subscribe();
       } else {
 
         if (this.member.agencies[0] === undefined) {
@@ -81,12 +87,13 @@ export class ProjectFormComponent implements OnInit {
         }
 
         newProject.averageRating = null;
+        this.addTag(this.accessibilityValue, 'accessibility');
+        this.addTag(this.challengeValue, 'challenge');
         newProject.tags = this.projectTags;
         newProject.setMembersatNull();
         newProject.setImagesAtNull();
         newProject.setAwardsAtNull();
-        console.log(newProject);
-        this.projectsService.add(newProject).subscribe(res => console.log('add'));
+        this.projectsService.add(newProject).subscribe();
       }
     } else {
       this.form.displayErrors();
@@ -132,7 +139,6 @@ export class ProjectFormComponent implements OnInit {
         this.projectTags.push(tag);
       }
     }
-    console.log(this.projectTags);
   }
 
   getAllTypeTag() {
@@ -165,7 +171,6 @@ export class ProjectFormComponent implements OnInit {
       }
       tag.libelle = event.value;
       this.projectTags.push(tag);
-      console.log(this.projectTags);
     }
     // Reset the input value
     if (event.input) {
@@ -197,5 +202,12 @@ export class ProjectFormComponent implements OnInit {
     this.backTags = this.projectTags.filter(tag => tag.type.libelle === 'back_tech');
     this.cmsTags = this.projectTags.filter(tag => tag.type.libelle === 'cms');
     this.colorTags = this.projectTags.filter(tag => tag.type.libelle === 'color');
+  }
+  onAccessibilityRatingChange($event) {
+    this.accessibilityValue = $event.rating;
+  }
+
+  onChallengeRatingChange($event) {
+      this.challengeValue = $event.rating;
   }
 }

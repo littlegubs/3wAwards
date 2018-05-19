@@ -1,2 +1,7 @@
+$color-negative-rating: rgb(253, 1, 0) !default;
+$color-ok-rating: rgb(254, 138, 1) !default;
+$color-positive-rating: rgb(39, 161, 1) !default;
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~css-star-rating/scss/star-rating';
 @import "sass/main";
