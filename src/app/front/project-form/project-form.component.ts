@@ -33,7 +33,7 @@ export class ProjectFormComponent implements OnInit {
   colorTags: Tag[] = [];
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
-  colors =  ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
+  colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
@@ -65,7 +65,12 @@ export class ProjectFormComponent implements OnInit {
       if (newProject.id) {
         this.projectsService.update(newProject).subscribe(res => console.log('update'));
       } else {
-        this.idAgency = this.member.agencies[0].id;
+
+        if (this.member.agencies[0] === undefined) {
+          this.idClient = this.member.clients[0].id;
+        } else {
+          this.idAgency = this.member.agencies[0].id;
+        }
 
         if (this.idClient !== undefined) {
           newProject.setAgencyAtNull();
@@ -76,7 +81,7 @@ export class ProjectFormComponent implements OnInit {
         }
 
         newProject.averageRating = null;
-        newProject = this.projectTags;
+        newProject.tags = this.projectTags;
         newProject.setMembersatNull();
         newProject.setImagesAtNull();
         newProject.setAwardsAtNull();
@@ -182,12 +187,12 @@ export class ProjectFormComponent implements OnInit {
     this.refreshTagsArray();
   }
 
-  refreshTagsArray () {
+  refreshTagsArray() {
     this.customTags = this.projectTags.filter(tag => tag.type.libelle === 'custom');
     this.styleTags = this.projectTags.filter(tag => tag.type.libelle === 'style');
     this.behaviorTags = this.projectTags.filter(tag => tag.type.libelle === 'behavior');
     this.agencyMissionTags = this.projectTags.filter(tag => tag.type.libelle === 'agency_mission');
-    this.mainFonctionnalityTags =  this.projectTags.filter(tag => tag.type.libelle === 'main_fonctionnality');
+    this.mainFonctionnalityTags = this.projectTags.filter(tag => tag.type.libelle === 'main_fonctionnality');
     this.frontTags = this.projectTags.filter(tag => tag.type.libelle === 'front_tech');
     this.backTags = this.projectTags.filter(tag => tag.type.libelle === 'back_tech');
     this.cmsTags = this.projectTags.filter(tag => tag.type.libelle === 'cms');
