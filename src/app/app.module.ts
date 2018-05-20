@@ -19,7 +19,10 @@ import {
     MatCheckboxModule,
     MatChipsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -69,6 +72,7 @@ import { AddAgencyComponent } from './front/add-agency/add-agency.component';
 import { ProjectFormComponent } from './front/project-form/project-form.component';
 import { FilterComponent } from './front/filter/filter.component';
 import {StarRatingModule} from 'angular-star-rating';
+import { MemberAwardProjectTableComponent } from './front/member-award-project-table/member-award-project-table.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -105,6 +109,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AddAgencyComponent,
     ProjectFormComponent,
     FilterComponent,
+    MemberAwardProjectTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -129,6 +134,9 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MatCheckboxModule,
     MatProgressBarModule,
     MatChipsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatIconModule,
     NgCircleProgressModule.forRoot({}),
     RestangularModule.forRoot([], createRestangularConfigFactory),

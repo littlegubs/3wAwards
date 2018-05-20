@@ -23,7 +23,6 @@ export class MemberProfileComponent implements OnInit {
     this.membersService.get(this.userInfo.id).subscribe(
       res => {
         this.member = res;
-        console.log(this.member);
         this.projectsGotAward = this.awardsByAgency().concat(this.awardsByClient());
       },
       err => {
@@ -87,10 +86,8 @@ export class MemberProfileComponent implements OnInit {
   deleteMember(member: Member) {
        this.membersService.remove(member).subscribe(
            res => {
-               console.log('Sucess');
            },
            err => {
-               console.log('error');
            }
         );
     }
