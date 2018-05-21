@@ -72,6 +72,9 @@ import { AddAgencyComponent } from './front/add-agency/add-agency.component';
 import { ProjectFormComponent } from './front/project-form/project-form.component';
 import { FilterComponent } from './front/filter/filter.component';
 import {StarRatingModule} from 'angular-star-rating';
+import { ClientCardComponent } from './front/client-card/client-card.component';
+import { AgencyCardComponent } from './front/agency-card/agency-card.component';
+import { MemberAwardProjectTableComponent } from './front/member-award-project-table/member-award-project-table.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -109,6 +112,9 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AddAgencyComponent,
     ProjectFormComponent,
     FilterComponent,
+    ClientCardComponent,
+    AgencyCardComponent,
+    MemberAwardProjectTableComponent,
   ],
   imports: [
     BrowserModule,

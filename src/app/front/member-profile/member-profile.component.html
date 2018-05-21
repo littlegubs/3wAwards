@@ -27,28 +27,12 @@
       <app-site-card [projectRatingMemberId]="member.id"></app-site-card>
     </mat-tab>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.ADMINED_CLIENT' | translate">
-      <div *ngFor=" let client of member.clients">
-        <a [routerLink]="['/client/', client.id]">{{client.name}}</a>
-      </div>
+      <app-client-card [clients]="member.clients"></app-client-card>
     </mat-tab>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.ADMINED_AGENCY' | translate">
-      <div *ngFor=" let agency of member.agencies">
-        <a [routerLink]="['/agency/', agency.id]">{{agency.name}}</a>
-      </div>
+      <app-client-card [clients]="member.agencies"></app-client-card>
     </mat-tab>
     <mat-tab [label]="'FRONT.MEMBER_PROFILE.TABS.AWARD' | translate">
-      <!--<div *ngFor="let project of projectsGotAward, let i = index">-->
-        <!--<span *ngIf="i % 2 === 0; else award">-->
-          <!--{{project}}-->
-        <!--</span>-->
-        <!--<ng-template #award>-->
-          <!--<ul *ngFor="let award of project">-->
-            <!--<li>{{award.date | date}}</li>-->
-            <!--<li>{{award.type}}</li>-->
-            <!--<li>{{award.category.libelle}}</li>-->
-          <!--</ul>-->
-        <!--</ng-template>-->
-      <!--</div>-->
       <div class="example-header">
         <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">

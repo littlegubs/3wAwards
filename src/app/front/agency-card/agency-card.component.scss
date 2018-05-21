@@ -1,0 +1,76 @@
+app-client-card {
+    .container-fluid {
+        max-width: 1700px;
+        padding: 0;
+        margin: 0 auto;
+        @media #{$medium-screen} {
+            padding: 0 60px;
+        }
+        & > p {
+            font-size: 18px;
+            color: black;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+    .row {
+        justify-content: center;
+        padding: 0;
+        margin-top: 10px;
+    }
+    mat-card {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 420px;
+        margin-bottom: 50px;
+        color: lightgray;
+        font-family: $mainfont !important;
+        transition: all 0.6s;
+        &:hover {
+            filter: alpha(opacity=30);
+            opacity: 0.7;
+            cursor: pointer;
+        }
+        &-content {
+            height: 65px;
+            font-size: 14px !important;
+        }
+        &-title {
+            font-size: 14px !important;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            font-weight: bold !important;
+            color: #666666;
+        }
+        p {
+            margin-bottom: 0;
+            line-height: 18px;
+        }
+        mat-spinner {
+            margin: auto;
+        }
+
+    }
+    .mat-card {
+        &-image {
+            max-width: 420px;
+            min-height: 300px;
+            max-height: 300px;
+            background-size: cover;
+
+        }
+        &-actions {
+            position: absolute;
+            right: 40px;
+            bottom: 10px;
+            color: #666666;
+        }
+        &-creator {
+            color: #999999;
+            font-weight: bold;
+        }
+        &-date {
+            color: #666666;
+        }
+    }
+}
