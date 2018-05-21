@@ -7,7 +7,7 @@
             <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.GENERAL' | translate}}</p>
             <div class="form-group row">
               <label id="agencyClientLabel" for="agencyClientSelect" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_OR_CLIENT' | translate}} :</label>
-              <div class="col-sm-8">
+              <div class="col-sm-8" *ngIf="member.agencies[0] !== undefined && member.clients[0] !== undefined">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
                         (change)="getTheSelectedValue(agencyClientSelect.value)">
                   <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}</option>
