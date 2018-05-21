@@ -12,7 +12,7 @@ import { Award } from '../Award';
 
 export class ProjectBase {
   public static readonly _resource: string = 'projects';
-  get _resource(): string { return ProjectBase._resource; }
+  get _resource(): string { return ProjectBase._resource; };
 
   projectName: string;
   projectDescription: string;

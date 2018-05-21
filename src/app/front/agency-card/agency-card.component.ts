@@ -8,6 +8,7 @@ import {Agency} from '../../../backend/model/Agency';
 })
 export class AgencyCardComponent implements OnInit {
   @Input() agencies: Agency;
+
   constructor() { }
 
   ngOnInit() {
