@@ -10,7 +10,7 @@ import { MatTableDataSource} from '@angular/material';
   selector: 'app-member-profile',
   templateUrl: './member-profile.component.html',
 })
-export class MemberProfileComponent implements AfterViewInit {
+export class MemberProfileComponent {
     member: Member;
     tokenStorage = localStorage.getItem('user_token');
     userInfo: TokenInterface;
@@ -25,17 +25,12 @@ export class MemberProfileComponent implements AfterViewInit {
                 this.member = res;
                 this.projectsGotAward = this.awardsByAgency().concat(this.awardsByClient());
                 if (this.projectsGotAward.length > 0) {
-                    console.log('datasource');
                     this.dataSource = new MatTableDataSource<Element>(this.fillElement());
                 }
             },
             err => {
             }
         );
-    }
-
-    ngAfterViewInit() {
-
     }
 
 

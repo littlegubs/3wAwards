@@ -1,7 +1,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let agency of agencies">
-      <mat-card class="example-card" [routerLink]="['/project/', agency.id]">
+      <mat-card class="example-card" [routerLink]="['/agency/', agency.id]">
+
         <div *ngIf="agency.image; else noThumbail">
           <div mat-card-image *ngIf="agency.image.path | liip:'card_thumbnail' as cardImage"
                [style.background-image]="'url('+cardImage+')'">
@@ -13,7 +14,7 @@
         <mat-card-content>
           <mat-card-title>{{agency.name}}</mat-card-title>
           <p>
-            <span class="mat-card-creator">{{agency.description}}</span>
+            <span class="mat-card-creator">{{agency.description.slice(0, 50)}}[...]</span>
           </p>
           <p class="mat-card-date">{{agency.creationDate | date}}</p>
         </mat-card-content>
