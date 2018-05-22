@@ -217,6 +217,12 @@
       "CMS": "CMS",
       "ACCESSIBILITY": "Accessibilité",
       "CHALLENGE": "Challenge technique",
+      "CREDIT": "Crédit",
+      "FIRSTNAME": "Prénom",
+      "LASTNAME": "Nom",
+      "FUNCTION" : "Fonction",
+      "ADD_CREDIT": "Ajouter un crédit",
+      "PRPJECT_URL": "Projet url",
       "LABELS": {
         "GENERAL": "Mon projet",
         "IMAGE": "Captures d'écran"

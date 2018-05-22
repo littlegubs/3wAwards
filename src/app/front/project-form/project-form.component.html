@@ -6,11 +6,13 @@
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.GENERAL' | translate}}</p>
             <div class="form-group row">
-              <label id="agencyClientLabel" for="agencyClientSelect" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_OR_CLIENT' | translate}} :</label>
+              <label id="agencyClientLabel" for="agencyClientSelect" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_OR_CLIENT'
+                | translate}} :</label>
               <div class="col-sm-8" *ngIf="member.agencies[0] !== undefined && member.clients[0] !== undefined">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
                         (change)="getTheSelectedValue(agencyClientSelect.value)">
-                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}</option>
+                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}
+                  </option>
                   <option *ngFor="let client of member.clients" [value]="['client', client.id]">{{client.name}}</option>
                 </select>
               </div>
@@ -23,7 +25,8 @@
               <div class="col-sm-8" *ngIf="member.clients[0] === undefined">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
                         (change)="getTheSelectedValue(agencyClientSelect.value)">
-                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}</option>
+                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}
+                  </option>
                 </select>
               </div>
               <label class="col-sm-4 col-form-label" for="projectName">{{'FRONT.FORM_PROJECT.PROJECT_NAME' | translate}}
@@ -33,7 +36,15 @@
                   <input matInput type="text" id="projectName" formControlName="projectName">
                 </mat-form-field>
               </div>
-              <label for="projectDescription" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_DESCRIPTION' | translate}} :</label>
+              <label class="col-sm-4 col-form-label" for="projectUrl">{{'FRONT.FORM_PROJECT.PRPJECT_URL' | translate}}
+                :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="text" id="projectUrl" formControlName="projectUrl">
+                </mat-form-field>
+              </div>
+              <label for="projectDescription" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_DESCRIPTION'
+                | translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
                   <textarea matInput id="projectDescription" formControlName="projectDescription"></textarea>
@@ -131,18 +142,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListBudgetTags>
-                    <mat-chip *ngFor="let budget of budgetTags"
-                              [removable]="true" (remove)="removeTag(budget.libelle)">
-                      {{budget.libelle}}
-                      <mat-icon matChipRemove>x</mat-icon>
-                    </mat-chip>
-                    <input id="budget_fork"
-                           [matChipInputFor]="chipListBudgetTags"
-                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                           [matChipInputAddOnBlur]="addOnBlur"
-                           (matChipInputTokenEnd)="addTags($event, 'budget_fork')"/>
-                  </mat-chip-list>
+                  <input matInput id="budget_fork" #budget_fork (change)="addTag(budget_fork.value, 'budget_fork')"/>
                 </mat-form-field>
               </div>
               <label for="language" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.LANGUAGE' |
@@ -166,18 +166,18 @@
               <label for="colors" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.COLORS' |
                 translate}} :</label>
               <div class="col-sm-8">
-                    <mat-form-field class="full-width colors">
-                      <mat-chip-list #chipListCustomTags>
-                        <mat-chip *ngFor="let color of colorTags"
-                                  [removable]="true" (remove)="removeTag(color.libelle)">
-                          <span class="round-color"  [ngStyle]="{'background-color': color.libelle}"></span>
-                          <mat-icon matChipRemove>x</mat-icon>
-                        </mat-chip>
-                      </mat-chip-list>
-                      <div *ngFor="let color of colors" class="btn btn-tags" (click)="addColors(color, 'color')">
-                        <span [ngStyle]="{'background-color': color}" class="round-color"></span>
-                      </div>
-                    </mat-form-field>
+                <mat-form-field class="full-width colors">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let color of colorTags"
+                              [removable]="true" (remove)="removeTag(color.libelle)">
+                      <span class="round-color" [ngStyle]="{'background-color': color.libelle}"></span>
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                  </mat-chip-list>
+                  <div *ngFor="let color of colors" class="btn btn-tags" (click)="addColors(color, 'color')">
+                    <span [ngStyle]="{'background-color': color}" class="round-color"></span>
+                  </div>
+                </mat-form-field>
               </div>
               <label for="customTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PROJECT_CUSTOM_TAGS' |
                 translate}} :</label>
@@ -237,12 +237,12 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <star-rating
-                        [starType]="'svg'"
-                        speed="noticable"
-                        [rating]="0"
-                        [hoverEnabled]="true"
-                        [numOfStars]="3"
-                        (ratingChange)="onAccessibilityRatingChange($event)">
+                  [starType]="'svg'"
+                  speed="noticable"
+                  [rating]="0"
+                  [hoverEnabled]="true"
+                  [numOfStars]="3"
+                  (ratingChange)="onAccessibilityRatingChange($event)">
                 </star-rating>
               </div>
               <label for="agencyMission" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_MISSION' |
@@ -340,13 +340,40 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <star-rating
-                        [starType]="'svg'"
-                        speed="noticable"
-                        [rating]="0"
-                        [hoverEnabled]="true"
-                        [numOfStars]="5"
-                        (ratingChange)="onChallengeRatingChange($event)">
+                  [starType]="'svg'"
+                  speed="noticable"
+                  [rating]="0"
+                  [hoverEnabled]="true"
+                  [numOfStars]="5"
+                  (ratingChange)="onChallengeRatingChange($event)">
                 </star-rating>
+              </div>
+              <label for="credit" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.CREDIT' |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <label class="col-sm-4 col-form-label" for="firstName">{{'FRONT.FORM_PROJECT.FIRSTNAME' |
+                  translate}} :</label>
+                <input id="firstName" #firstName matInput>
+                <label for="lastName" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.LASTNAME' |
+                  translate}} :</label>
+                <input id="lastName" #lastName matInput>
+                <label for="office" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.FUNCTION' |
+                  translate}} :</label>
+                <input id="office" #office matInput>
+                <button type="button" class="btn btn-main-red-full submit"
+                        (click)="addCredit(firstName.value, lastName.value, office.value)"
+                        (click)="firstName.value= ''"
+                        (click)="lastName.value = ''"
+                        (click)="office.value = ''">
+                  {{'FRONT.FORM_PROJECT.ADD_CREDIT' | translate}}
+                </button>
+                <mat-chip-list #chipListCustomTags>
+                  <mat-chip *ngFor="let credit of credits"
+                            [removable]="true" (remove)="removeCredit(credit)">
+                    {{credit.firstname }} {{credit.lastname}} | {{credit.function}}
+                    <mat-icon matChipRemove>x</mat-icon>
+                  </mat-chip>
+                </mat-chip-list>
               </div>
               <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}}</p>
               <div class="row row-submit">

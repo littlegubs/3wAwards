@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormService, Form} from '../../../backend/forms';
-import {Member, Project, Tag, TypeTag} from '../../../backend/model';
+import {Credit, Member, Project, Tag, TypeTag} from '../../../backend/model';
 import {MembersService, ProjectsService, TypeTagsService} from '../../../backend/services';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
@@ -26,7 +26,6 @@ export class ProjectFormComponent implements OnInit {
   businessTags: Tag[] = [];
   targetTags: Tag[] = [];
   purposeTags: Tag[] = [];
-  budgetTags: Tag[] = [];
   languageTags: Tag[] = [];
   customTags: Tag[] = [];
   styleTags: Tag[] = [];
@@ -37,6 +36,7 @@ export class ProjectFormComponent implements OnInit {
   backTags: Tag[] = [];
   cmsTags: Tag[] = [];
   colorTags: Tag[] = [];
+  credits: Credit[] = [];
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
   colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
@@ -87,12 +87,13 @@ export class ProjectFormComponent implements OnInit {
         }
 
         newProject.averageRating = null;
-        this.addTag(this.accessibilityValue, 'accessibility');
-        this.addTag(this.challengeValue, 'challenge');
+        this.addTag(this.accessibilityValue.toString(), 'accessibility');
+        this.addTag(this.challengeValue.toString(), 'challenge');
         newProject.tags = this.projectTags;
         newProject.setMembersatNull();
         newProject.setImagesAtNull();
         newProject.setAwardsAtNull();
+        newProject.credits = this.credits;
         this.projectsService.add(newProject).subscribe();
       }
     } else {
@@ -202,12 +203,38 @@ export class ProjectFormComponent implements OnInit {
     this.backTags = this.projectTags.filter(tag => tag.type.libelle === 'back_tech');
     this.cmsTags = this.projectTags.filter(tag => tag.type.libelle === 'cms');
     this.colorTags = this.projectTags.filter(tag => tag.type.libelle === 'color');
+    this.siteTypeTags = this.projectTags.filter(tag => tag.type.libelle === 'site_type');
+    this.businessTags = this.projectTags.filter(tag => tag.type.libelle === 'business_sector');
+    this.targetTags = this.projectTags.filter(tag => tag.type.libelle === 'target');
+    this.purposeTags = this.projectTags.filter(tag => tag.type.libelle === 'purpose');
+    this.languageTags = this.projectTags.filter(tag => tag.type.libelle === 'language');
   }
+
   onAccessibilityRatingChange($event) {
     this.accessibilityValue = $event.rating;
   }
 
   onChallengeRatingChange($event) {
-      this.challengeValue = $event.rating;
+    this.challengeValue = $event.rating;
   }
+
+  addCredit(firstName: string, lastName: string, office: string): void {
+    if (firstName !== '' && lastName !== '' && office !== '') {
+      const credit = new Credit();
+      credit.firstname = firstName;
+      credit.lastname = lastName;
+      credit.function = office;
+
+      this.credits.push(credit);
+    }
+  }
+
+  removeCredit(credit: Credit): void {
+    for (let i = 0; i < this.credits.length; i++) {
+      if (this.credits[i] === credit) {
+        this.credits.splice(i, 1);
+      }
+    }
+  }
+
 }
