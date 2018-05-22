@@ -37,9 +37,7 @@ app-project-form {
       padding: 0 15px;
       width: 200px;
       text-align: center;
-    }
-    &.revert {
-      margin-right: 5px;
+      margin: 5px;
     }
   }
   form {
@@ -116,6 +114,21 @@ app-project-form {
             }
           }
         }
+      }
+    }
+    .credits-form{
+      mat-chip-list {
+        width: 100%;
+        @include flex();
+        @include justify-content(center);
+        .mat-chip-list-wrapper {
+          mat-chip {
+            background-color: white;
+          }
+        }
+      }
+      button{
+        margin: 25px auto;
       }
     }
   }
