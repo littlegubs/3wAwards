@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProjectsService} from '../../../backend/services/Projects.service';
 import {Project} from '../../../backend/model/Project';
+import {MatDialog} from '@angular/material';
+import {ProjectFormVoteComponent} from "../project-form-vote/project-form-vote.component";
 
 @Component({
   selector: 'app-project-profile',
@@ -14,7 +16,7 @@ export class ProjectProfileComponent implements OnInit {
     toggleMain = false;
     toggleDev = false;
 
-    constructor(private route: ActivatedRoute, private projectsService: ProjectsService) {
+    constructor(private route: ActivatedRoute, private projectsService: ProjectsService, public dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -26,6 +28,16 @@ export class ProjectProfileComponent implements OnInit {
                 err => {
                 }
             );
+        });
+    }
+
+    openDialog() {
+        const dialogRef = this.dialog.open(ProjectFormVoteComponent, {
+            width: '530px',
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+
         });
     }
 
