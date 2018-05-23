@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule } from '@angular/router';
 import { NbSidebarModule, NbLayoutModule, NbSidebarService } from '@nebular/theme';
 
 @NgModule({
@@ -9,7 +8,7 @@ import { NbSidebarModule, NbLayoutModule, NbSidebarService } from '@nebular/them
     NbLayoutModule,
     NbSidebarModule,
   ],
-  providers: [NbSidebarService], 
+  providers: [NbSidebarService],
 })
 
 export class AdminModule { }
