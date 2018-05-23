@@ -223,6 +223,8 @@
       "FUNCTION" : "Fonction",
       "ADD_CREDIT": "Ajouter un crédit",
       "PRPJECT_URL": "Projet url",
+      "VOTE": "VOTEZ",
+      "TO_VOTE": "VOTER",
       "LABELS": {
         "GENERAL": "Mon projet",
         "IMAGE": "Captures d'écran"

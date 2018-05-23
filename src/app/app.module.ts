@@ -22,6 +22,7 @@ import {
     MatIconModule,
     MatSelectModule,
     MatTableModule,
+    MatSliderModule,
     MatPaginatorModule,
     MatSortModule
 } from '@angular/material';
@@ -78,6 +79,7 @@ import { AgencyCardComponent } from './front/agency-card/agency-card.component';
 import { MemberAwardProjectTableComponent } from './front/member-award-project-table/member-award-project-table.component';
 import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import {RouterModule} from '@angular/router';
+import { ProjectFormVoteComponent } from './front/project-form-vote/project-form-vote.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -119,6 +121,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AgencyCardComponent,
     MemberAwardProjectTableComponent,
     AdminPageComponent,
+    ProjectFormVoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -132,6 +135,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MatProgressSpinnerModule,
     MatTabsModule,
     MatDatepickerModule,
+    MatSliderModule,
     MatNativeDateModule,
     MatRadioModule,
     MatSelectModule,

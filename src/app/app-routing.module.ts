@@ -8,6 +8,7 @@ import {MemberProfileComponent} from './front/member-profile/member-profile.comp
 import {ProjectProfileComponent} from './front/project-profile/project-profile.component';
 import {ProjectFormComponent} from './front/project-form/project-form.component';
 import {AddAgencyComponent} from './front/add-agency/add-agency.component';
+import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path: 'agency/:id', component: AgencyProfileComponent},
     {path: 'client/:id', component: ClientProfileComponent},
     {path: 'project/:id', component: ProjectProfileComponent},
+    {path: 'project/:id/vote', component: ProjectFormVoteComponent},
     {path: 'profile', component: MemberProfileComponent},
     {path: 'project', component: ProjectFormComponent},
     {path: 'addAgency', component: AddAgencyComponent},
