@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NbSidebarModule, NbLayoutModule, NbSidebarService } from '@nebular/theme';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    RouterModule,
-    NbLayoutModule,
-    NbSidebarModule,
+    CommonModule
   ],
-  providers: [NbSidebarService],
+  declarations: []
 })
-
 export class AdminModule { }
