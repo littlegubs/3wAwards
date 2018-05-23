@@ -9,6 +9,7 @@ import {ProjectProfileComponent} from './front/project-profile/project-profile.c
 import {ProjectFormComponent} from './front/project-form/project-form.component';
 import {AddAgencyComponent} from './front/add-agency/add-agency.component';
 
+
 const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'admin', component: AdminPageComponent},
