@@ -378,6 +378,18 @@ app-project-profile{
                 width: 200px;
                 text-align: center;
                 height: 40px;
+                    .btn{
+                        &-project-like:hover{
+                            transition: all 0.3s;
+                            background-color:#7f1d98;
+                            color:white;
+                        }
+                        &-project-vote:hover{
+                            transition: all 0.3s;
+                            background-color:white;
+                            color:#7f1d98;
+                        }
+                    }
             }
 
             &-images {
