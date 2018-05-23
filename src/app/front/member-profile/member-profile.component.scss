@@ -94,6 +94,12 @@ app-member-profile{
             }
         }
     }
+    .table-container{
+        max-height: 700px;
+        overflow-y: auto;
+        margin-bottom: 50px;
+        padding: 0 !important;
+    }
 }
 
 

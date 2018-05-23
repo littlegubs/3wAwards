@@ -15,6 +15,7 @@ export class SiteCardComponent implements OnInit {
   @Input() projectRatingMemberId: number;
   @Input() idMember: number;
 
+
   constructor(private projectsService: ProjectsService, private router: Router) {
   }
 

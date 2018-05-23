@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" *ngFor="let agency of agencies">
+      <mat-card class="example-card" [routerLink]="['/agency/', agency.id]">
+
+        <div *ngIf="agency.image; else noThumbail">
+          <div mat-card-image *ngIf="agency.image.path | liip:'card_thumbnail' as cardImage"
+               [style.background-image]="'url('+cardImage+')'">
+          </div>
+        </div>
+        <ng-template #noThumbail>
+          <div mat-card-image [style.background-image]="'url(http://via.placeholder.com/415x300)'"></div>
+        </ng-template>
+        <mat-card-content>
+          <mat-card-title>{{agency.name}}</mat-card-title>
+          <p>
+            <span class="mat-card-creator">{{agency.description.slice(0, 50)}}[...]</span>
+          </p>
+          <p class="mat-card-date">{{agency.creationDate | date}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

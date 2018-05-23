@@ -4,6 +4,10 @@ html {
   min-height: 100vh;
 }
 
+*:focus{
+  outline: none !important;
+}
+
 body {
   margin: 0 auto;
   position: relative;

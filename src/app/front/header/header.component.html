@@ -21,8 +21,9 @@
         <li *ngIf="isConnected === true" class="nav-item">
           <div class="dropdown">
             <button class="btn btn-main-gray" type="button" id="memberDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img class="radius" [src]="userInfo.icon">{{userInfo.firstName}} {{userInfo.lastName}} <i class="fas fa-angle-down"></i>
-
+              <img *ngIf="userInfo.icon" class="radius" [src]="userInfo.icon">
+              <i *ngIf="!userInfo.icon" class="far fa-user user-actions"></i>
+              {{userInfo.firstName}} {{userInfo.lastName}} <i class="fas fa-angle-down"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="memberDropdown">
               <a class="dropdown-item" [routerLink]="['/profile']">{{'FRONT.HEADER.MEMBER_MENU.PROFILE' | translate}}</a>

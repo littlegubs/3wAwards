@@ -194,13 +194,13 @@
       }
     },
     "FORM_PROJECT": {
-      "PROJECT_NAME": "Nom du Projet",
+      "PROJECT_NAME": "Nom du projet",
       "PROJECT_DESCRIPTION": "Description",
-      "AGENCY_OR_CLIENT": "Agence ou Client",
+      "AGENCY_OR_CLIENT": "Agence ou client",
       "PROJECT_DATE": "Date De Publication",
-      "PROJECT_NOTICABLE_DESCRIPTION": "Point Notable",
-      "BUSINESS_SECTOR": "Secteur D'Activité",
-      "PROJECT_CUSTOM_TAGS": "Tag Libre",
+      "PROJECT_NOTICABLE_DESCRIPTION": "Point notable",
+      "BUSINESS_SECTOR": "Secteur d'activité",
+      "PROJECT_CUSTOM_TAGS": "Tag libre",
       "SITE_TYPE": "Type de site",
       "TARGET": "Cible",
       "PURPOSE": "Objet",
@@ -210,14 +210,23 @@
       "COLORS": "Couleurs dominantes",
       "STYLE": "Style",
       "BEHAVIOR": "Comportement",
-      "AGENCY_MISSION": "Missions Confiées à l'Agence",
+      "AGENCY_MISSION": "Missions confiées à l'agence",
       "MAIN_FONCTIONNALITY": "Fonctionalités Clés",
       "FRONT": "Front",
       "BACK": "Back",
       "CMS": "CMS",
       "ACCESSIBILITY": "Accessibilité",
-      "CHALLENGE": "Challenge technique "
-
+      "CHALLENGE": "Challenge technique",
+      "CREDIT": "Crédit",
+      "FIRSTNAME": "Prénom",
+      "LASTNAME": "Nom",
+      "FUNCTION" : "Fonction",
+      "ADD_CREDIT": "Ajouter un crédit",
+      "PRPJECT_URL": "Projet url",
+      "LABELS": {
+        "GENERAL": "Mon projet",
+        "IMAGE": "Captures d'écran"
+      }
     }
   }
 }

@@ -60,7 +60,7 @@ app-header{
             }
 
             @media #{$less-large-screen} {
-                .branding, .branding-pipe-separator {
+                span.branding, .branding-pipe-separator {
                     display: none;
                 }
             }

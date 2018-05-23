@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-form-profile">
-      <form [formGroup]="form.group">
+      <form [formGroup]="form.group" autocomplete="off">
         <div class="row">
           <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
             <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.IDENTITY' | translate}}</p>
@@ -19,11 +19,11 @@
                 <p>{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.REQUIRED' | translate}}</p>
               </div>
               <!-- PSEUDO -->
-              <label for="username" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PSEUDO' |
+              <label for="pseudo" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.PSEUDO' |
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width pseudo">
-                  <input matInput type="text" id="username" formControlName="username">
+                  <input matInput type="text" id="pseudo" formControlName="username">
                   <mat-error>
                     {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ERRORS.REQUIRED' | translate}}
                   </mat-error>

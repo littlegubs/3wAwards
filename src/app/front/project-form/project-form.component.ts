@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormService, Form} from '../../../backend/forms';
-import {Member, Project, Tag, TypeTag} from '../../../backend/model';
+import {Credit, Member, Project, Tag, TypeTag} from '../../../backend/model';
 import {MembersService, ProjectsService, TypeTagsService} from '../../../backend/services';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
@@ -22,6 +22,11 @@ export class ProjectFormComponent implements OnInit {
   challengeValue: string;
   typeTags: TypeTag[] = [];
   projectTags: Tag[] = [];
+  siteTypeTags: Tag[] = [];
+  businessTags: Tag[] = [];
+  targetTags: Tag[] = [];
+  purposeTags: Tag[] = [];
+  languageTags: Tag[] = [];
   customTags: Tag[] = [];
   styleTags: Tag[] = [];
   behaviorTags: Tag[] = [];
@@ -31,9 +36,10 @@ export class ProjectFormComponent implements OnInit {
   backTags: Tag[] = [];
   cmsTags: Tag[] = [];
   colorTags: Tag[] = [];
+  credits: Credit[] = [];
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
-  colors =  ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
+  colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
@@ -63,9 +69,14 @@ export class ProjectFormComponent implements OnInit {
       newProject.setProjectRatingMemberAtNull();
       newProject.status = 'pending';
       if (newProject.id) {
-        this.projectsService.update(newProject).subscribe(res => console.log('update'));
+        this.projectsService.update(newProject).subscribe();
       } else {
-        this.idAgency = this.member.agencies[0].id;
+
+        if (this.member.agencies[0] === undefined) {
+          this.idClient = this.member.clients[0].id;
+        } else {
+          this.idAgency = this.member.agencies[0].id;
+        }
 
         if (this.idClient !== undefined) {
           newProject.setAgencyAtNull();
@@ -76,12 +87,14 @@ export class ProjectFormComponent implements OnInit {
         }
 
         newProject.averageRating = null;
-        newProject.SetMultipletTags(this.projectTags);
+        this.addTag(this.accessibilityValue.toString(), 'accessibility');
+        this.addTag(this.challengeValue.toString(), 'challenge');
+        newProject.tags = this.projectTags;
         newProject.setMembersatNull();
         newProject.setImagesAtNull();
         newProject.setAwardsAtNull();
-        console.log(newProject);
-        this.projectsService.add(newProject).subscribe(res => console.log('add'));
+        newProject.credits = this.credits;
+        this.projectsService.add(newProject).subscribe();
       }
     } else {
       this.form.displayErrors();
@@ -127,7 +140,6 @@ export class ProjectFormComponent implements OnInit {
         this.projectTags.push(tag);
       }
     }
-    console.log(this.projectTags);
   }
 
   getAllTypeTag() {
@@ -160,7 +172,6 @@ export class ProjectFormComponent implements OnInit {
       }
       tag.libelle = event.value;
       this.projectTags.push(tag);
-      console.log(this.projectTags);
     }
     // Reset the input value
     if (event.input) {
@@ -182,15 +193,48 @@ export class ProjectFormComponent implements OnInit {
     this.refreshTagsArray();
   }
 
-  refreshTagsArray () {
+  refreshTagsArray() {
     this.customTags = this.projectTags.filter(tag => tag.type.libelle === 'custom');
     this.styleTags = this.projectTags.filter(tag => tag.type.libelle === 'style');
     this.behaviorTags = this.projectTags.filter(tag => tag.type.libelle === 'behavior');
     this.agencyMissionTags = this.projectTags.filter(tag => tag.type.libelle === 'agency_mission');
-    this.mainFonctionnalityTags =  this.projectTags.filter(tag => tag.type.libelle === 'main_fonctionnality');
+    this.mainFonctionnalityTags = this.projectTags.filter(tag => tag.type.libelle === 'main_fonctionnality');
     this.frontTags = this.projectTags.filter(tag => tag.type.libelle === 'front_tech');
     this.backTags = this.projectTags.filter(tag => tag.type.libelle === 'back_tech');
     this.cmsTags = this.projectTags.filter(tag => tag.type.libelle === 'cms');
     this.colorTags = this.projectTags.filter(tag => tag.type.libelle === 'color');
+    this.siteTypeTags = this.projectTags.filter(tag => tag.type.libelle === 'site_type');
+    this.businessTags = this.projectTags.filter(tag => tag.type.libelle === 'business_sector');
+    this.targetTags = this.projectTags.filter(tag => tag.type.libelle === 'target');
+    this.purposeTags = this.projectTags.filter(tag => tag.type.libelle === 'purpose');
+    this.languageTags = this.projectTags.filter(tag => tag.type.libelle === 'language');
   }
+
+  onAccessibilityRatingChange($event) {
+    this.accessibilityValue = $event.rating;
+  }
+
+  onChallengeRatingChange($event) {
+    this.challengeValue = $event.rating;
+  }
+
+  addCredit(firstName: string, lastName: string, office: string): void {
+    if (firstName !== '' && lastName !== '' && office !== '') {
+      const credit = new Credit();
+      credit.firstname = firstName;
+      credit.lastname = lastName;
+      credit.function = office;
+
+      this.credits.push(credit);
+    }
+  }
+
+  removeCredit(credit: Credit): void {
+    for (let i = 0; i < this.credits.length; i++) {
+      if (this.credits[i] === credit) {
+        this.credits.splice(i, 1);
+      }
+    }
+  }
+
 }

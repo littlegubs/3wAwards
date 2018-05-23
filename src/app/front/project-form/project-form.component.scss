@@ -15,6 +15,7 @@ app-project-form {
   }
   .form-categ {
     font-size: 24px;
+    margin-top: 40px;
   }
 
   .round-color{
@@ -36,9 +37,7 @@ app-project-form {
       padding: 0 15px;
       width: 200px;
       text-align: center;
-    }
-    &.revert {
-      margin-right: 5px;
+      margin: 5px;
     }
   }
   form {
@@ -55,6 +54,11 @@ app-project-form {
     }
     .form-group {
       & > div {
+        &.row-submit {
+          width: 100%;
+          margin-top: 40px;
+          text-align: center;
+        }
         text-align: left;
         &.form-actions {
           text-align: center;
@@ -76,7 +80,7 @@ app-project-form {
       }
       .mat-form-field-infix {
         border-top: none;
-        input {
+        input, textarea {
           padding: 0 10px;
           &:-webkit-autofill {
             -webkit-box-shadow: 0 0 0 30px white inset;
@@ -89,6 +93,50 @@ app-project-form {
       .mat-form-field-ripple {
         background-color: red;
       }
+      &.colors {
+        >div>div{
+          &:first-child{
+            background-color: transparent;
+            .btn-tags{
+              padding: 2px !important;
+            }
+          }
+          mat-chip-list {
+            &.mat-chip-list{
+              .mat-chip-list-wrapper{
+                margin-bottom: 5px;
+                mat-chip{
+                  box-shadow: none !important;
+                  padding: 2px !important;
+                  margin: 0 0 4px 0 !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .credits-form{
+      mat-chip-list {
+        width: 100%;
+        @include flex();
+        @include justify-content(center);
+        .mat-chip-list-wrapper {
+          mat-chip {
+            background-color: white;
+          }
+        }
+      }
+      button{
+        margin: 25px auto;
+      }
+    }
+  }
+  star-rating {
+    .rating {
+      @include justify-content(left !important);
+      margin-top: 5px;
+      margin-bottom: 0;
     }
   }
 }

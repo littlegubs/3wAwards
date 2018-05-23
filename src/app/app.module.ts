@@ -19,7 +19,10 @@ import {
     MatCheckboxModule,
     MatChipsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -68,6 +71,11 @@ import { ProjectProfileComponent } from './front/project-profile/project-profile
 import { AddAgencyComponent } from './front/add-agency/add-agency.component';
 import { ProjectFormComponent } from './front/project-form/project-form.component';
 import { FilterComponent } from './front/filter/filter.component';
+import {StarRatingModule} from 'angular-star-rating';
+import { ClientCardComponent } from './front/client-card/client-card.component';
+import { AgencyCardComponent } from './front/agency-card/agency-card.component';
+import { MemberAwardProjectTableComponent } from './front/member-award-project-table/member-award-project-table.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -104,6 +112,9 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AddAgencyComponent,
     ProjectFormComponent,
     FilterComponent,
+    ClientCardComponent,
+    AgencyCardComponent,
+    MemberAwardProjectTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -128,6 +139,9 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MatCheckboxModule,
     MatProgressBarModule,
     MatChipsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatIconModule,
     NgCircleProgressModule.forRoot({}),
     RestangularModule.forRoot([], createRestangularConfigFactory),
@@ -137,7 +151,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    StarRatingModule.forRoot()
   ],
   entryComponents: [
     ConnectionDialogComponent,
