@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-project-form-vote',
@@ -27,7 +28,11 @@ export class ProjectFormVoteComponent implements OnInit {
 
   private _tickInterval = 1;
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<ProjectFormVoteComponent>) { }
+
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 
   ngOnInit() {
   }

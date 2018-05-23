@@ -54,6 +54,9 @@ app-project-form-vote {
                     text-align: center;
                 }
                 text-align: left;
+                @media #{$mobile} {
+                    text-align: center;
+                }
                 &.form-actions {
                     text-align: center;
                 }
@@ -62,6 +65,10 @@ app-project-form-vote {
     }
     mat-slider{
         min-width: 300px !important;
+        transition: all 0.5s ease;
+        @media #{$mobile} {
+            min-width: 200px !important;
+        }
         margin-bottom: 5px;
         &.originality{
             .mat-slider-track-fill, .mat-slider-thumb, .mat-slider-thumb-label {

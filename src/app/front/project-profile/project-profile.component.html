@@ -648,7 +648,7 @@
         <i class="far fa-heart"></i>
       </div>
       <div class="btn btn-project-vote">
-        <span [routerLink]="['/project/', project.id, 'vote']">{{'FRONT.FORM_PROJECT.VOTE' | translate}}</span>
+        <span (click)="openDialog()">{{'FRONT.FORM_PROJECT.VOTE' | translate}}</span>
       </div>
 
     </div>
