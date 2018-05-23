@@ -4,7 +4,6 @@ import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {BootstrapModule} from './bootstrap.module';
-import {NbThemeModule, NbSidebarModule, NbLayoutModule, NbSidebarService} from '@nebular/theme';
 import {
     MatButtonModule,
     MatDialogModule,
@@ -76,8 +75,6 @@ import {StarRatingModule} from 'angular-star-rating';
 import { ClientCardComponent } from './front/client-card/client-card.component';
 import { AgencyCardComponent } from './front/agency-card/agency-card.component';
 import { MemberAwardProjectTableComponent } from './front/member-award-project-table/member-award-project-table.component';
-import { AdminPageComponent } from './admin/admin-page/admin-page.component';
-import {RouterModule} from '@angular/router';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -118,7 +115,6 @@ export function createRestangularConfigFactory(RestangularProvider) {
     ClientCardComponent,
     AgencyCardComponent,
     MemberAwardProjectTableComponent,
-    AdminPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -156,18 +152,13 @@ export function createRestangularConfigFactory(RestangularProvider) {
         deps: [HttpClient]
       }
     }),
-    StarRatingModule.forRoot(),
-    NbThemeModule.forRoot({ name: 'default' }),
-      RouterModule,
-      NbLayoutModule,
-      NbSidebarModule,
+    StarRatingModule.forRoot()
   ],
   entryComponents: [
     ConnectionDialogComponent,
     RegistrationDialogComponent
   ],
   providers: [
-      NbSidebarService,
     AgenciesService,
     AwardsService,
     CategoriesService,
