@@ -388,7 +388,23 @@
               </button>
             </div>
             <div class="form-group row">
-              <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}}</p>
+              <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}} <i class="fas fa-plus-circle add-image"></i></p>
+              <mat-grid-list cols="2" rowHeight="300px" class="images-grid" >
+                <mat-grid-tile
+                        *ngFor="let tile of tiles, let i = index"
+                        [colspan]="tile.cols"
+                        [rowspan]="tile.rows">
+                  <span class="legend"> Cette image sera utilisée pour la thumbnail de votre projet </span>
+                  <div *ngIf="tile[i] > 0; else noThumbnail">
+                    <!--<img *ngIf="client.image.path | liip:'card_thumbnail' as projectImage" [src]="'url('+projectImage+')'"/>-->
+                  </div>
+                  <ng-template #noThumbnail>
+                    <img [src]="'http://via.placeholder.com/1140x850)'"/>
+                  </ng-template>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </div>
+            <div class="form-group row">
               <div class="row row-submit">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                   <div class="form-group row">

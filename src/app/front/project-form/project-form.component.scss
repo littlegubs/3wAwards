@@ -16,6 +16,10 @@ app-project-form {
   .form-categ {
     font-size: 24px;
     margin-top: 40px;
+    .add-image{
+      color: green;
+      cursor: pointer;
+    }
   }
 
   .round-color{
@@ -129,6 +133,53 @@ app-project-form {
       }
       button{
         margin: 25px auto;
+      }
+    }
+    mat-grid-list {
+      &.images-grid {
+        width: 100% !important;
+        > div{
+          mat-grid-tile{
+            img{
+              object-fit: cover;
+              position: absolute;
+              z-index: 1;
+            }
+            &:first-child {
+              .legend {
+                position: absolute;
+                left: 0;
+                top: 0;
+                padding: 15px;
+                background-color: rgba(0, 0, 0, 0.70);
+                color: white;
+                font-weight: bold;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+                z-index: 2;
+              }
+            }
+            &:not(:first-child) {
+              height: 300px;
+              .legend{
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      &:hover{
+        &.images-grid {
+          > div {
+            mat-grid-tile {
+              &:first-child {
+                .legend {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
