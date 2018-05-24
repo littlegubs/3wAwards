@@ -23,8 +23,12 @@ import { Project } from '../model/Project';
 import { ProjectValidators } from './ProjectValidators';
 import { Rating } from '../model/Rating';
 import { RatingValidators } from './RatingValidators';
+import { SiteType } from '../model/SiteType';
+import { SiteTypeValidators } from './SiteTypeValidators';
 import { Tag } from '../model/Tag';
 import { TagValidators } from './TagValidators';
+import { Target } from '../model/Target';
+import { TargetValidators } from './TargetValidators';
 import { TypeAgency } from '../model/TypeAgency';
 import { TypeAgencyValidators } from './TypeAgencyValidators';
 import { TypeTag } from '../model/TypeTag';
@@ -52,7 +56,9 @@ export class FormGroupValidationMatcherBase {
     this.items[ProjectRatingMember._resource] = {itemClass: ProjectRatingMember, validator: ProjectRatingMemberValidators};
     this.items[Project._resource] = {itemClass: Project, validator: ProjectValidators};
     this.items[Rating._resource] = {itemClass: Rating, validator: RatingValidators};
+    this.items[SiteType._resource] = {itemClass: SiteType, validator: SiteTypeValidators};
     this.items[Tag._resource] = {itemClass: Tag, validator: TagValidators};
+    this.items[Target._resource] = {itemClass: Target, validator: TargetValidators};
     this.items[TypeAgency._resource] = {itemClass: TypeAgency, validator: TypeAgencyValidators};
     this.items[TypeTag._resource] = {itemClass: TypeTag, validator: TypeTagValidators};
   }

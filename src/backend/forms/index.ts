@@ -15,7 +15,9 @@ import { MemberValidators } from './MemberValidators';
 import { ProjectRatingMemberValidators } from './ProjectRatingMemberValidators';
 import { ProjectValidators } from './ProjectValidators';
 import { RatingValidators } from './RatingValidators';
+import { SiteTypeValidators } from './SiteTypeValidators';
 import { TagValidators } from './TagValidators';
+import { TargetValidators } from './TargetValidators';
 import { TypeAgencyValidators } from './TypeAgencyValidators';
 import { TypeTagValidators } from './TypeTagValidators';
 
@@ -36,7 +38,9 @@ export {
   ProjectRatingMemberValidators,
   ProjectValidators,
   RatingValidators,
+  SiteTypeValidators,
   TagValidators,
+  TargetValidators,
   TypeAgencyValidators,
   TypeTagValidators,
 }

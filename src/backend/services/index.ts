@@ -10,7 +10,9 @@ import { MembersService } from './Members.service';
 import { ProjectRatingMembersService } from './ProjectRatingMembers.service';
 import { ProjectsService } from './Projects.service';
 import { RatingsService } from './Ratings.service';
+import { SiteTypesService } from './SiteTypes.service';
 import { TagsService } from './Tags.service';
+import { TargetsService } from './Targets.service';
 import { TypeAgenciesService } from './TypeAgencies.service';
 import { TypeTagsService } from './TypeTags.service';
 
@@ -26,7 +28,9 @@ export {
   ProjectRatingMembersService,
   ProjectsService,
   RatingsService,
+  SiteTypesService,
   TagsService,
+  TargetsService,
   TypeAgenciesService,
   TypeTagsService,
 }

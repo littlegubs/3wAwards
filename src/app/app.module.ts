@@ -6,25 +6,25 @@ import {AppRoutingModule} from './app-routing.module';
 import {BootstrapModule} from './bootstrap.module';
 import {NbThemeModule, NbSidebarModule, NbLayoutModule, NbSidebarService} from '@nebular/theme';
 import {
-    MatButtonModule,
-    MatDialogModule,
-    MatSlideToggleModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatTabsModule,
-    MatRadioModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatProgressBarModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatIconModule,
-    MatSelectModule,
-    MatTableModule,
-    MatSliderModule,
-    MatPaginatorModule,
-    MatSortModule
+  MatButtonModule,
+  MatDialogModule,
+  MatSlideToggleModule,
+  MatCardModule,
+  MatProgressSpinnerModule,
+  MatTabsModule,
+  MatRadioModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatIconModule,
+  MatSelectModule,
+  MatTableModule,
+  MatSliderModule,
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -61,25 +61,27 @@ import {
   TagsService,
   TypeAgenciesService,
   TypeTagsService,
+  TargetsService,
+  SiteTypesService
 } from '../backend/services';
 import {LiipPipe} from './liip.pipe';
 import {GlobalsService} from './globals.service';
-import { ClientProfileComponent } from './front/client-profile/client-profile.component';
-import { MemberProfileComponent } from './front/member-profile/member-profile.component';
-import { MemberFormProfileComponent } from './front/member-form-profile/member-form-profile.component';
+import {ClientProfileComponent} from './front/client-profile/client-profile.component';
+import {MemberProfileComponent} from './front/member-profile/member-profile.component';
+import {MemberFormProfileComponent} from './front/member-form-profile/member-form-profile.component';
 import {FormService} from '../backend/forms';
 import {TagsFilterPipe} from './tags-filter.pipe';
-import { ProjectProfileComponent } from './front/project-profile/project-profile.component';
-import { AddAgencyComponent } from './front/add-agency/add-agency.component';
-import { ProjectFormComponent } from './front/project-form/project-form.component';
-import { FilterComponent } from './front/filter/filter.component';
+import {ProjectProfileComponent} from './front/project-profile/project-profile.component';
+import {AddAgencyComponent} from './front/add-agency/add-agency.component';
+import {ProjectFormComponent} from './front/project-form/project-form.component';
+import {FilterComponent} from './front/filter/filter.component';
 import {StarRatingModule} from 'angular-star-rating';
-import { ClientCardComponent } from './front/client-card/client-card.component';
-import { AgencyCardComponent } from './front/agency-card/agency-card.component';
-import { MemberAwardProjectTableComponent } from './front/member-award-project-table/member-award-project-table.component';
-import { AdminPageComponent } from './admin/admin-page/admin-page.component';
+import {ClientCardComponent} from './front/client-card/client-card.component';
+import {AgencyCardComponent} from './front/agency-card/agency-card.component';
+import {MemberAwardProjectTableComponent} from './front/member-award-project-table/member-award-project-table.component';
+import {AdminPageComponent} from './admin/admin-page/admin-page.component';
 import {RouterModule} from '@angular/router';
-import { ProjectFormVoteComponent } from './front/project-form-vote/project-form-vote.component';
+import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -161,17 +163,17 @@ export function createRestangularConfigFactory(RestangularProvider) {
       }
     }),
     StarRatingModule.forRoot(),
-    NbThemeModule.forRoot({ name: 'default' }),
-      RouterModule,
-      NbLayoutModule,
-      NbSidebarModule,
+    NbThemeModule.forRoot({name: 'default'}),
+    RouterModule,
+    NbLayoutModule,
+    NbSidebarModule,
   ],
   entryComponents: [
     ConnectionDialogComponent,
     RegistrationDialogComponent
   ],
   providers: [
-      NbSidebarService,
+    NbSidebarService,
     AgenciesService,
     AwardsService,
     CategoriesService,
@@ -184,6 +186,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     ProjectsService,
     RatingsService,
     TagsService,
+    TargetsService,
+    SiteTypesService,
     TypeAgenciesService,
     TypeTagsService,
     AuthService,
