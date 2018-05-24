@@ -27,6 +27,32 @@
             <i class="fas fa-eye"></i> 22
             <i class="fas fa-heart"></i> 40
           </div>
+          <div class="awards-medals-list">
+            <div [ngClass]="{'is-awarded': project.awards.length > 0}" *ngFor="let award of (project.awards | slice : - 3);">
+              <i class="fas fa-trophy day"
+                 *ngIf="award.type === 'day'"
+                 [matTooltip]="'Jour - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
+              </i>
+              <i class="fas fa-trophy week"
+                 *ngIf="award.type === 'week'"
+                 [matTooltip]="'Semaine - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
+
+              </i>
+              <i class="fas fa-trophy month"
+                 *ngIf="award.type === 'month'"
+                 [matTooltip]="'Mois - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
+
+              </i>
+              <i class="fas fa-trophy jury"
+                 *ngIf="award.type === 'jury'"
+                 [matTooltip]="'Jury - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
+              </i>
+              <i class="fas fa-trophy year"
+                 *ngIf="award.type === 'year'"
+                 [matTooltip]="'Année - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
+              </i>
+            </div>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
