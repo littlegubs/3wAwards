@@ -8,7 +8,8 @@ import { Award } from '../../../backend/model';
 })
 export class SliderComponent implements OnInit {
   awards: Award[] = [];
-  constructor(private awardsService: AwardsService) { }
+  constructor(private awardsService: AwardsService) {
+  }
 
   ngOnInit() {
     this.awardsService.getAllByFilter('type', 'day', 1).subscribe(
