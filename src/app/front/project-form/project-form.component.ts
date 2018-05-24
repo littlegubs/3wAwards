@@ -107,14 +107,21 @@ export class ProjectFormComponent implements OnInit {
           newProject.setAgency(this.idAgency);
         }
 
-        newProject.averageRating = null;
-        newProject.averageOriginalityRatings = 0;
-        newProject.averageReadabilityRatings = 0;
-        newProject.averageErgonomicRatings = 0;
-        newProject.averageInteractivityRatings = 0;
-        newProject.averageQualityContentRatings = 0;
-        newProject.averageWeatlhFunctionalityRatings = 0;
-        newProject.averageReactivityRatings = 0;
+        newProject.averageRating = 0;
+        newProject.averageOriginalityRatingsJudge = 0;
+        newProject.averageOriginalityRatingsMember = 0;
+        newProject.averageReadabilityRatingsJudge = 0;
+        newProject.averageReadabilityRatingsMember = 0;
+        newProject.averageErgonomicRatingsJudge = 0;
+        newProject.averageErgonomicRatingsMember = 0;
+        newProject.averageInteractivityRatingsJudge = 0;
+        newProject.averageInteractivityRatingsMember = 0;
+        newProject.averageQualityContentRatingsJudge = 0;
+        newProject.averageQualityContentRatingsMember = 0;
+        newProject.averageWeatlhFunctionalityRatingsJudge = 0;
+        newProject.averageWeatlhFunctionalityRatingsMember = 0;
+        newProject.averageReactivityRatingsMember = 0;
+        newProject.averageReactivityRatingsJudge = 0;
         newProject.averageUsersRatings = 0;
         newProject.averageJudgeRatings = 0;
         if (this.accessibilityValue !== undefined) {
