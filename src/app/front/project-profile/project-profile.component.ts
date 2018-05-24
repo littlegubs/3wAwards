@@ -4,6 +4,7 @@ import {ProjectsService} from '../../../backend/services/Projects.service';
 import {Project} from '../../../backend/model/Project';
 import {MatDialog} from '@angular/material';
 import {ProjectFormVoteComponent} from "../project-form-vote/project-form-vote.component";
+import {number} from 'ng2-validation/dist/number';
 
 @Component({
   selector: 'app-project-profile',
