@@ -36,7 +36,7 @@
                                     [renderOnClick]="false"
                             ></circle-progress>
                             <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.JURY' | translate}}</span>
-                            <span class="daily-marks-circle-mark"><b>{{award.project.averageJudgeRatings/10}}</b></span>
+                            <span class="daily-marks-circle-mark firstLetterBold">{{award.project.averageJudgeRatings/10}}</span>
                         </div>
                         <div class="daily-marks-circle">
                             <circle-progress
@@ -58,7 +58,7 @@
                                     [renderOnClick]="false"
                             ></circle-progress>
                             <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.MEMBER' | translate}}</span>
-                            <span class="daily-marks-circle-mark"><b>{{award.project.averageUsersRatings/10}}</b></span>
+                            <span class="daily-marks-circle-mark firstLetterBold">{{award.project.averageUsersRatings/10 }}</span>
                         </div>
                         <div class="daily-marks-circle">
                             <circle-progress
@@ -80,7 +80,7 @@
                                     [renderOnClick]="false"
                             ></circle-progress>
                             <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.FINAL' | translate}}</span>
-                            <span class="daily-marks-circle-mark"><b>{{award.project.averageRating/10}}</b></span>
+                            <span class="daily-marks-circle-mark firstLetterBold">{{award.project.averageRating/10}}</span>
                         </div>
                     </div>
                     <div class="daily-actions">

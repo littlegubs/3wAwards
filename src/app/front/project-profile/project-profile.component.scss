@@ -1,4 +1,7 @@
 app-project-profile{
+    .firstLetterBold::first-letter {
+        font-weight: bold;
+    }
     .container-fluid{
         margin: 0 auto;
         padding: 0;
