@@ -18,6 +18,15 @@ export class ProjectBase {
   projectDescription: string;
   publicationDate: Date;
   averageRating: number;
+  averageOriginalityRatings: number;
+  averageReadabilityRatings: number;
+  averageErgonomicRatings: number;
+  averageInteractivityRatings: number;
+  averageQualityContentRatings: number;
+  averageWeatlhFunctionalityRatings: number;
+  averageReactivityRatings: number;
+  averageUsersRatings: number;
+  averageJudgeRatings: number;
   noticableDescription: string;
   status: string;
   projectRatingMember: ProjectRatingMember;

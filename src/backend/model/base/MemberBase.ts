@@ -24,23 +24,18 @@ export class MemberBase {
   function: string;
   newsletter: boolean;
   optIn: boolean;
-  projectRatingMember: ProjectRatingMember;
+  projectRatingMember: ProjectRatingMember[];
   clients: Client;
   agencies: Agency;
   profilePicture: Image;
+  username: string;
+  email: string;
   isJudge: boolean;
 
   setFavoriteProjects(id: number): MemberBase {
     this.favoriteProjects = new Project();
     this.favoriteProjects.id = id;
     this.favoriteProjects['@id'] = '/projects/' + id;
-    return this;
-  }
-
-  setProjectRatingMember(id: number): MemberBase {
-    this.projectRatingMember = new ProjectRatingMember();
-    this.projectRatingMember.id = id;
-    this.projectRatingMember['@id'] = '/project_rating_members/' + id;
     return this;
   }
 

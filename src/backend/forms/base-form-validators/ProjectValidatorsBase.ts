@@ -11,6 +11,15 @@ export class ProjectValidatorsBase extends FormGroupValidators {
     projectDescription = null;
     publicationDate = [CustomValidators.date];
     averageRating = [CustomValidators.number];
+    averageOriginalityRatings = [CustomValidators.number];
+    averageReadabilityRatings = [CustomValidators.number];
+    averageErgonomicRatings = [CustomValidators.number];
+    averageInteractivityRatings = [CustomValidators.number];
+    averageQualityContentRatings = [CustomValidators.number];
+    averageWeatlhFunctionalityRatings = [CustomValidators.number];
+    averageReactivityRatings = [CustomValidators.number];
+    averageUsersRatings = [CustomValidators.number];
+    averageJudgeRatings = [CustomValidators.number];
     noticableDescription = null;
     status = null;
     projectRatingMember = [AppValidators.item];
