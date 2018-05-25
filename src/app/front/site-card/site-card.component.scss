@@ -16,7 +16,7 @@ app-site-card{
     .row{
         justify-content: center;
         padding:0;
-        margin-top: 10px;
+        margin-top: 30px;
     }
     mat-card{
         margin-left: auto;
@@ -71,6 +71,28 @@ app-site-card{
         }
         &-date {
             color: #666666;
+        }
+    }
+    .awards-medals-list{
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        display: flex;
+        flex-direction: column;
+        .is-awarded {
+            font-size: 27px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 25px;
+            border: 2px solid gray;
+            width: 50px;
+            margin-bottom: 15px;
+            background-color: white;
+            height: 50px;
+            img {
+                width: 35px;
+                margin-bottom: 6px;
+            }
         }
     }
 }

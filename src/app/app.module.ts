@@ -6,25 +6,26 @@ import {AppRoutingModule} from './app-routing.module';
 import {BootstrapModule} from './bootstrap.module';
 import {NbThemeModule, NbSidebarModule, NbLayoutModule, NbSidebarService} from '@nebular/theme';
 import {
-  MatButtonModule,
-  MatDialogModule,
-  MatSlideToggleModule,
-  MatCardModule,
-  MatProgressSpinnerModule,
-  MatTabsModule,
-  MatRadioModule,
-  MatInputModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatProgressBarModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatIconModule,
-  MatSelectModule,
-  MatTableModule,
-  MatSliderModule,
-  MatPaginatorModule,
-  MatSortModule
+    MatButtonModule,
+    MatDialogModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
+    MatRadioModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatIconModule,
+    MatSelectModule,
+    MatTableModule,
+    MatTooltipModule,
+    MatSliderModule,
+    MatPaginatorModule,
+    MatSortModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -144,6 +145,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
+    MatTooltipModule,
     MatCardModule,
     MatInputModule,
     MatCheckboxModule,
