@@ -1,4 +1,4 @@
-<div class="container" *ngIf="member && typeTags; else loading">
+<div class="container" *ngIf="member && typeTags && siteTypes && targets; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-project">
       <form [formGroup]="form.group" (submit)="commitProject()" autocomplete="off">
@@ -66,23 +66,13 @@
                   <textarea id="noticableDescription" matInput formControlName="noticableDescription"></textarea>
                 </mat-form-field>
               </div>
-              <label for="siteType" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.SITE_TYPE' |
+              <label for="siteType" class="col-sm-4 col-form-label margin">{{'FRONT.FORM_PROJECT.SITE_TYPE' |
                 translate}} :</label>
               <div class="col-sm-8">
-                <mat-form-field class="full-width">
-                  <mat-chip-list #chipListSiteTypeTags>
-                    <mat-chip *ngFor="let site_type of siteTypeTags"
-                              [removable]="true" (remove)="removeTag(site_type.libelle)">
-                      {{site_type.libelle}}
-                      <mat-icon matChipRemove>x</mat-icon>
-                    </mat-chip>
-                    <input id="siteType"
-                           [matChipInputFor]="chipListSiteTypeTags"
-                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                           [matChipInputAddOnBlur]="addOnBlur"
-                           (matChipInputTokenEnd)="addTags($event, 'site_type')"/>
-                  </mat-chip-list>
-                </mat-form-field>
+                <select id="siteType" class="form-control margin" #siteType (change)="getSiteType(siteType.value)">
+                  <option *ngFor="let siteType of siteTypes" [value]="siteType.id">{{siteType.libelle}}
+                  </option>
+                </select>
               </div>
               <label for="businessSector" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BUSINESS_SECTOR' |
                 translate}} :</label>
@@ -102,23 +92,13 @@
                   </mat-chip-list>
                 </mat-form-field>
               </div>
-              <label for="target" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.TARGET' |
+              <label for="target" class="col-sm-4 col-form-label margin">{{'FRONT.FORM_PROJECT.TARGET' |
                 translate}} :</label>
               <div class="col-sm-8">
-                <mat-form-field class="full-width">
-                  <mat-chip-list #chipListTargetTags>
-                    <mat-chip *ngFor="let target of targetTags"
-                              [removable]="true" (remove)="removeTag(target.libelle)">
-                      {{target.libelle}}
-                      <mat-icon matChipRemove>x</mat-icon>
-                    </mat-chip>
-                    <input id="target"
-                           [matChipInputFor]="chipListTargetTags"
-                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                           [matChipInputAddOnBlur]="addOnBlur"
-                           (matChipInputTokenEnd)="addTags($event, 'target')"/>
-                  </mat-chip-list>
-                </mat-form-field>
+                <select id="target" class="form-control margin" #target (change)="getTarget(target.value)">
+                  <option *ngFor="let target of targets" [value]="target.id">{{target.libelle}}
+                  </option>
+                </select>
               </div>
               <label for="purpose" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.PURPOSE' |
                 translate}} :</label>

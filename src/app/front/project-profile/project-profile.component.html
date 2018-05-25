@@ -1,6 +1,9 @@
 <div class="container-fluid" *ngIf="project; else loading">
   <div class="row project-image slide">
-    <img class="d-block img-fluid" [src]="project.images[0].path |liip:'slider_thumbnail'" alt="First slide">
+    <img class="d-block img-fluid" *ngIf="project.images[0] !== undefined; else noImg" [src]="project.images[0].path |liip:'slider_thumbnail'" alt="First slide">
+    <ng-template #noImg>
+      <img  src="http://via.placeholder.com/1780x700)" class="d-block img-fluid">
+    </ng-template>
     <div class="daily-date">
       <span class="date-slider"> {{project.publicationDate | date}} </span>
     </div>
@@ -104,17 +107,17 @@
     <div class="row project-general-tags">
         <div class="col-lg-12">
           <div class="common-tags">
-            <div class="common-tags-details" *ngIf="project.tags |filter:'site_type'">
+            <div class="common-tags-details" *ngIf="project.siteType">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.SITE_TYPE' | translate}}</p>
-              <span *ngFor="let tag of project.tags |filter:'site_type'"> {{tag.libelle}}</span>
+              <span> {{project.siteType.libelle}}</span>
             </div>
             <div class="common-tags-details" *ngIf="project.tags |filter:'business_sector'">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.BUSINESS_SECTOR' | translate}}</p>
               <span *ngFor="let tag of project.tags |filter:'business_sector'"> {{tag.libelle}}</span>
             </div>
-            <div class="common-tags-details" *ngIf="project.tags |filter:'target'">
+            <div class="common-tags-details" *ngIf="project.target">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.TARGET' | translate}}</p>
-              <span *ngFor="let tag of project.tags |filter:'target'"> {{tag.libelle}}</span>
+              <span> {{project.target.libelle}}</span>
             </div>
           </div>
           <div class="common-tags">

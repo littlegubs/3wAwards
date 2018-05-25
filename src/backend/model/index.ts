@@ -8,7 +8,9 @@ import { Member } from './Member';
 import { ProjectRatingMember } from './ProjectRatingMember';
 import { Project } from './Project';
 import { Rating } from './Rating';
+import { SiteType } from './SiteType';
 import { Tag } from './Tag';
+import { Target } from './Target';
 import { TypeAgency } from './TypeAgency';
 import { TypeTag } from './TypeTag';
 
@@ -24,7 +26,9 @@ export {
   ProjectRatingMember,
   Project,
   Rating,
+  SiteType,
   Tag,
+  Target,
   TypeAgency,
   TypeTag,
 }

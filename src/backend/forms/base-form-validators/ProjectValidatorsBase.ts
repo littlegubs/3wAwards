@@ -32,6 +32,8 @@ export class ProjectValidatorsBase extends FormGroupValidators {
     projectRatingMember = [AppValidators.item];
     client = [AppValidators.item];
     agency = [AppValidators.item];
+    target = [AppValidators.item];
+    siteType = [AppValidators.item];
     tags = [AppValidators.item];
     credits = [AppValidators.item];
     members = [AppValidators.item];

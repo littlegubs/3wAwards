@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormService, Form} from '../../../backend/forms';
-import {Credit, Member, Project, Tag, TypeTag} from '../../../backend/model';
-import {MembersService, ProjectsService, TypeTagsService} from '../../../backend/services';
+import {Credit, Member, Project, Tag, TypeTag, Target, SiteType} from '../../../backend/model';
+import {MembersService, ProjectsService, TypeTagsService, TargetsService, SiteTypesService} from '../../../backend/services';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -37,13 +37,18 @@ export class ProjectFormComponent implements OnInit {
   cmsTags: Tag[] = [];
   colorTags: Tag[] = [];
   credits: Credit[] = [];
+  targets: Target[] = [];
+  siteTypes: SiteType[] = [];
+  idTarget: number;
+  idSiteType: number;
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
   colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
-              private authService: AuthService, private typeTagsService: TypeTagsService) {
+              private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
+              private  siteTypesService: SiteTypesService) {
   }
 
   ngOnInit() {
@@ -51,6 +56,22 @@ export class ProjectFormComponent implements OnInit {
     this.membersService.get(this.userInfo.id).subscribe(
       res => {
         this.member = res;
+      },
+      err => {
+      }
+    );
+    this.targetsService.getAll().subscribe(
+      res => {
+        this.targets = res;
+        console.log(this.targets);
+      },
+      err => {
+      }
+    );
+    this.siteTypesService.getAll().subscribe(
+      res => {
+        this.siteTypes = res;
+        console.log(this.siteTypes);
       },
       err => {
       }
@@ -67,7 +88,7 @@ export class ProjectFormComponent implements OnInit {
     if (this.form.group.dirty && this.form.group.valid) {
       const newProject = this.form.get();
       newProject.setProjectRatingMemberAtNull();
-      newProject.status = 'pending';
+      newProject.status = 'accepted';
       if (newProject.id) {
         this.projectsService.update(newProject).subscribe();
       } else {
@@ -86,14 +107,46 @@ export class ProjectFormComponent implements OnInit {
           newProject.setAgency(this.idAgency);
         }
 
-        newProject.averageRating = null;
-        this.addTag(this.accessibilityValue.toString(), 'accessibility');
-        this.addTag(this.challengeValue.toString(), 'challenge');
+        newProject.averageRating = 0;
+        newProject.averageOriginalityRatingsJudge = 0;
+        newProject.averageOriginalityRatingsMember = 0;
+        newProject.averageReadabilityRatingsJudge = 0;
+        newProject.averageReadabilityRatingsMember = 0;
+        newProject.averageErgonomicRatingsJudge = 0;
+        newProject.averageErgonomicRatingsMember = 0;
+        newProject.averageInteractivityRatingsJudge = 0;
+        newProject.averageInteractivityRatingsMember = 0;
+        newProject.averageQualityContentRatingsJudge = 0;
+        newProject.averageQualityContentRatingsMember = 0;
+        newProject.averageWeatlhFunctionalityRatingsJudge = 0;
+        newProject.averageWeatlhFunctionalityRatingsMember = 0;
+        newProject.averageReactivityRatingsMember = 0;
+        newProject.averageReactivityRatingsJudge = 0;
+        newProject.averageUsersRatings = 0;
+        newProject.averageJudgeRatings = 0;
+        if (this.accessibilityValue !== undefined) {
+          this.addTag(this.accessibilityValue.toString(), 'accessibility');
+        }
+
+        if (this.challengeValue !== undefined) {
+          this.addTag(this.challengeValue.toString(), 'challenge');
+        }
         newProject.tags = this.projectTags;
         newProject.setMembersatNull();
         newProject.setImagesAtNull();
         newProject.setAwardsAtNull();
         newProject.credits = this.credits;
+
+        if (this.idSiteType === undefined) {
+          newProject.setSiteType(this.siteTypes[0].id);
+        } else {
+          newProject.setSiteType(this.idSiteType);
+        }
+        if (this.idTarget === undefined) {
+          newProject.setTarget(this.targets[0].id);
+        } else {
+          newProject.setTarget(this.idTarget);
+        }
         this.projectsService.add(newProject).subscribe();
       }
     } else {
@@ -110,6 +163,14 @@ export class ProjectFormComponent implements OnInit {
       this.idClient = array[1];
       this.idAgency = undefined;
     }
+  }
+
+  getTarget(value): void {
+    this.idTarget = value;
+  }
+
+  getSiteType(value): void {
+    this.idSiteType = value;
   }
 
   addTag(value: string, type: string): void {

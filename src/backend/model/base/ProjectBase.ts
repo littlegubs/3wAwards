@@ -4,6 +4,8 @@
 import { ProjectRatingMember } from '../ProjectRatingMember';
 import { Client } from '../Client';
 import { Agency } from '../Agency';
+import { Target } from '../Target';
+import { SiteType } from '../SiteType';
 import { Tag } from '../Tag';
 import { Credit } from '../Credit';
 import { Member } from '../Member';
@@ -39,6 +41,8 @@ export class ProjectBase {
   projectRatingMember: ProjectRatingMember;
   client: Client;
   agency: Agency;
+  target: Target;
+  siteType: SiteType;
   tags: Tag[];
   credits: Credit[];
   members: Member;
@@ -64,6 +68,20 @@ export class ProjectBase {
     this.agency = new Agency();
     this.agency.id = id;
     this.agency['@id'] = '/agencies/' + id;
+    return this;
+  }
+
+  setTarget(id: number): ProjectBase {
+    this.target = new Target();
+    this.target.id = id;
+    this.target['@id'] = '/targets/' + id;
+    return this;
+  }
+
+  setSiteType(id: number): ProjectBase {
+    this.siteType = new SiteType();
+    this.siteType.id = id;
+    this.siteType['@id'] = '/site_types/' + id;
     return this;
   }
 
