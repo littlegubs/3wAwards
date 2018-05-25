@@ -10,6 +10,7 @@
               <div class="col-sm-8">
                 <mat-slider
                         class="originality"
+                        [value]="userOriginalityVote"
                         [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"
@@ -24,6 +25,7 @@
               <div class="col-sm-8">
                 <mat-slider
                         class="graphism"
+                        [value]="userGraphismVote"
                         [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"
@@ -38,6 +40,7 @@
               <div class="col-sm-8">
                 <mat-slider
                         class="navigation"
+                        [value]="userNavigationVote"
                         [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"
@@ -52,6 +55,7 @@
               <div class="col-sm-8">
                 <mat-slider
                         class="interactivity"
+                        [value]="userInteractivityVote"
                         [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"
@@ -66,6 +70,7 @@
               <div class="col-sm-8">
                 <mat-slider
                         class="content-quality"
+                        [value]="userContentQualityVote"
                         [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"
@@ -79,7 +84,8 @@
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.FONCTIONNALITY' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
-                        class="fonctionnality"
+                        class="functionnality"
+                        [value]="userFunctionnalityVote"
                         [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"
@@ -94,6 +100,7 @@
               <div class="col-sm-8">
                 <mat-slider
                         class="reactivity"
+                        [value]="userReactivityyVote"
                         [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"

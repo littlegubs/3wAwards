@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import * as moment from 'moment';
 import {FormGroup} from '@angular/forms';
 import * as jwtdecode from 'jwt-decode';
+import {Restangular} from 'ngx-restangular';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +13,7 @@ export class AuthService {
   // temporary variable for the dev
   localUrl = 'http://127.0.0.1:8000/';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private restangular: Restangular) {
   }
   private subjectConnected = new Subject<any>();
   private subjectToken = new Subject<any>();
@@ -72,6 +73,7 @@ export class AuthService {
     const userToken = JSON.parse(JSON.stringify(authResult));
     localStorage.setItem('user_token', userToken.token);
     localStorage.setItem('expires_at', JSON.stringify(expireAR.valueOf()));
+    this.restangular.provider.setDefaultHeaders({'Authorization': 'Bearer ' + localStorage.getItem('user_token')});
   }
 
   logout() {
