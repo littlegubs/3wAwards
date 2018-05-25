@@ -43,6 +43,12 @@ export class ProjectFormComponent implements OnInit {
   idSiteType: number;
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
+    tiles = [
+        {text: 'One', cols: 2, rows: 2, color: 'lightblue'},
+        {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
+        {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+        {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
+    ];
   colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 

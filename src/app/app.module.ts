@@ -23,6 +23,7 @@ import {
     MatSelectModule,
     MatTableModule,
     MatTooltipModule,
+    MatGridListModule,
     MatSliderModule,
     MatPaginatorModule,
     MatSortModule
@@ -140,6 +141,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MatDatepickerModule,
     MatSliderModule,
     MatNativeDateModule,
+    MatGridListModule,
     MatRadioModule,
     MatSelectModule,
     BrowserAnimationsModule,
