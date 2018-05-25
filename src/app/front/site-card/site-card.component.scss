@@ -89,22 +89,9 @@ app-site-card{
             margin-bottom: 15px;
             background-color: white;
             height: 50px;
-            i {
-                &.day {
-                    color: #c2916b;
-                }
-                &.week {
-                    color: #bcbdc0;
-                }
-                &.month {
-                    color: #f9a51b;
-                }
-                &.jury {
-                    color: #ed1d23;
-                }
-                &.year {
-                    color: #ed1d23;
-                }
+            img {
+                width: 35px;
+                margin-bottom: 6px;
             }
         }
     }

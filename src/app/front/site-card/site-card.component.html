@@ -29,28 +29,22 @@
           </div>
           <div class="awards-medals-list">
             <div [ngClass]="{'is-awarded': project.awards.length > 0}" *ngFor="let award of (project.awards | slice : - 3);">
-              <i class="fas fa-trophy day"
-                 *ngIf="award.type === 'day'"
-                 [matTooltip]="'Jour - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
-              </i>
-              <i class="fas fa-trophy week"
-                 *ngIf="award.type === 'week'"
-                 [matTooltip]="'Semaine - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
-
-              </i>
-              <i class="fas fa-trophy month"
-                 *ngIf="award.type === 'month'"
-                 [matTooltip]="'Mois - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
-
-              </i>
-              <i class="fas fa-trophy jury"
-                 *ngIf="award.type === 'jury'"
-                 [matTooltip]="'Jury - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
-              </i>
-              <i class="fas fa-trophy year"
-                 *ngIf="award.type === 'year'"
-                 [matTooltip]="'Année - ' + (award.date |date) + ' | ' + (award.category.libelle)" [matTooltipPosition]="positionTooltip">
-              </i>
+              <img src="../../../assets/images/awards-bronze.svg" class="day"
+                   *ngIf="award.type === 'day'"
+                   [matTooltip]="'Jour - ' + (award.date | date) + ' | ' + (award.category.libelle)"
+                   [matTooltipPosition]="positionTooltip"/>
+              <img src="../../../assets/images/awards-silver.svg" class="day"
+                   *ngIf="award.type === 'week'"
+                   [matTooltip]="'Semaine - ' + (award.date | date) + ' | ' + (award.category.libelle)"
+                   [matTooltipPosition]="positionTooltip"/>
+              <img src="../../../assets/images/awards-gold.svg" class="day"
+                   *ngIf="award.type === 'month'"
+                   [matTooltip]="'Mois - ' + (award.date | date) + ' | ' + (award.category.libelle)"
+                   [matTooltipPosition]="positionTooltip"/>
+              <img src="../../../assets/images/awards-red.svg" class="day"
+                   *ngIf="award.type === 'jury' || award.type === 'year'"
+                   [matTooltip]="'Jury - ' + (award.date | date) + ' | ' + (award.category.libelle)"
+                   [matTooltipPosition]="positionTooltip"/>
             </div>
           </div>
         </mat-card-content>
