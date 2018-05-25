@@ -11,7 +11,9 @@ app-slider{
       padding: 0;
     }
   }
-
+  .firstLetterBold::first-letter{
+    font-weight: bold;
+  }
   .carousel-indicators li {
     border-radius: 10px;
     margin: 1px 3px;

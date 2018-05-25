@@ -28,11 +28,11 @@
                   [subtitle]="''"
                   [animationDuration]="1500"
                   [showUnits]="false"
-                  [percent]="55"
+                  [percent]=project.averageJudgeRatings
                   [renderOnClick]="false"
           ></circle-progress>
           <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.JURY' | translate}}</span>
-          <span class="daily-marks-circle-mark"><b>5</b>,5</span>
+          <span class="daily-marks-circle-mark firstLetterBold">{{project.averageJudgeRatings/10}}</span>
         </div>
         <div class="daily-marks-circle">
           <circle-progress
@@ -50,11 +50,11 @@
                   [subtitle]="''"
                   [animationDuration]="2500"
                   [showUnits]="false"
-                  [percent]="90"
+                  [percent]=project.averageUsersRatings
                   [renderOnClick]="false"
           ></circle-progress>
           <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.MEMBER' | translate}}</span>
-          <span class="daily-marks-circle-mark"><b>9</b>,0</span>
+          <span class="daily-marks-circle-mark firstLetterBold">{{project.averageUsersRatings / 10}}</span>
         </div>
         <div class="daily-marks-circle">
           <circle-progress
@@ -72,11 +72,11 @@
                   [subtitle]="''"
                   [animationDuration]="3500"
                   [showUnits]="false"
-                  [percent]="85.5"
+                  [percent]=project.averageRating
                   [renderOnClick]="false"
           ></circle-progress>
           <span class="daily-marks-circle-type">{{'FRONT.SLIDER.MARK_TYPE.FINAL' | translate}}</span>
-          <span class="daily-marks-circle-mark"><b>8</b>,5</span>
+          <span class="daily-marks-circle-mark firstLetterBold">{{project.averageRating / 10}}</span>
         </div>
       </div>
       <div class="daily-actions">
@@ -290,10 +290,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageOriginalityRatingsJudge
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageOriginalityRatingsJudge/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.ORIGINALITY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -312,10 +312,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageReadabilityRatingsJudge
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageReadabilityRatingsJudge/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.GRAPHISM' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -334,10 +334,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageErgonomicRatingsJudge
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageErgonomicRatingsJudge/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.ERGONOMY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -356,10 +356,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageInteractivityRatingsJudge
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageInteractivityRatingsJudge/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.INTERACTIVITY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -378,10 +378,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageQualityContentRatingsJudge
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageQualityContentRatingsJudge/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.QUALITY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -400,10 +400,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageWeatlhFunctionalityRatingsJudge
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageWeatlhFunctionalityRatingsJudge/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.FONCTIONNALITY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -422,10 +422,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageReactivityRatingsJudge
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageReactivityRatingsJudge/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.REACTIVITY' | translate}}</span>
           </div>
         </div>
@@ -448,10 +448,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageJudgeRatings
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageJudgeRatings/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.AVERAGE' | translate}}</span>
           </div>
         </div>
@@ -476,10 +476,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageOriginalityRatingsMember
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageOriginalityRatingsMember/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.ORIGINALITY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -498,10 +498,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageReadabilityRatingsMember
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageReadabilityRatingsMember/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.GRAPHISM' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -520,10 +520,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageErgonomicRatingsMember
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageErgonomicRatingsMember/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.ERGONOMY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -542,10 +542,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageInteractivityRatingsMember
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageInteractivityRatingsMember/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.INTERACTIVITY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -564,10 +564,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageQualityContentRatingsMember
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageQualityContentRatingsMember/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.QUALITY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -586,10 +586,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageWeatlhFunctionalityRatingsMember
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageWeatlhFunctionalityRatingsMember/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.FONCTIONNALITY' | translate}}</span>
           </div>
           <div class="col-sm-6 col-md-4 col-lg-5 col-xl-2 project-marks-circle">
@@ -608,10 +608,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageReactivityRatingsMember
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageReactivityRatingsMember/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.REACTIVITY' | translate}}</span>
           </div>
         </div>
@@ -634,10 +634,10 @@
                     [subtitle]="''"
                     [animationDuration]="1500"
                     [showUnits]="false"
-                    [percent]="55"
+                    [percent]=project.averageUsersRatings
                     [renderOnClick]="false"
             ></circle-progress>
-            <span class="project-marks-circle-mark"><b>5</b>,5</span>
+            <span class="project-marks-circle-mark firstLetterBold">{{project.averageUsersRatings/10}}</span>
             <span class="project-marks-circle-type">{{'FRONT.PROJECT_PROFILE.MARKS.AVERAGE' | translate}}</span>
           </div>
         </div>

@@ -22,6 +22,7 @@ import {
     MatIconModule,
     MatSelectModule,
     MatTableModule,
+    MatTooltipModule,
     MatSliderModule,
     MatPaginatorModule,
     MatSortModule
@@ -142,6 +143,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
+    MatTooltipModule,
     MatCardModule,
     MatInputModule,
     MatCheckboxModule,

@@ -14,7 +14,7 @@ export class SiteCardComponent implements OnInit {
   @Input() nameAgency: string;
   @Input() projectRatingMemberId: number;
   @Input() idMember: number;
-
+  positionTooltip = 'right';
 
   constructor(private projectsService: ProjectsService, private router: Router) {
   }
