@@ -20,7 +20,7 @@ const routes: Routes = [
     {path: 'project/:id/vote', component: ProjectFormVoteComponent},
     {path: 'profile', component: MemberProfileComponent},
     {path: 'project', component: ProjectFormComponent},
-    {path: 'addAgency', component: AddAgencyComponent},
+    {path: 'agency', component: AddAgencyComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 

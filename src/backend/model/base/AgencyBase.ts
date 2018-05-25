@@ -28,7 +28,7 @@ export class AgencyBase {
   typeAgency: TypeAgency;
   member: Member;
   projects: Project;
-  tags: Tag;
+  tags: Tag[];
   image: Image;
 
   setTypeAgency(id: number): AgencyBase {
@@ -49,13 +49,6 @@ export class AgencyBase {
     this.projects = new Project();
     this.projects.id = id;
     this.projects['@id'] = '/projects/' + id;
-    return this;
-  }
-
-  setTags(id: number): AgencyBase {
-    this.tags = new Tag();
-    this.tags.id = id;
-    this.tags['@id'] = '/tags/' + id;
     return this;
   }
 
