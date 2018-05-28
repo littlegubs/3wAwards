@@ -6,6 +6,7 @@ import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
@@ -16,6 +17,7 @@ export class ProjectFormComponent implements OnInit {
   tokenStorage = localStorage.getItem('user_token');
   userInfo: TokenInterface;
   member: Member;
+  project: Project;
   idAgency: number;
   idClient: number;
   accessibilityValue: string;
@@ -36,6 +38,7 @@ export class ProjectFormComponent implements OnInit {
   backTags: Tag[] = [];
   cmsTags: Tag[] = [];
   colorTags: Tag[] = [];
+  budgetFork: Tag[] = [];
   credits: Credit[] = [];
   targets: Target[] = [];
   siteTypes: SiteType[] = [];
@@ -54,7 +57,7 @@ export class ProjectFormComponent implements OnInit {
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
-              private  siteTypesService: SiteTypesService) {
+              private  siteTypesService: SiteTypesService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -69,7 +72,6 @@ export class ProjectFormComponent implements OnInit {
     this.targetsService.getAll().subscribe(
       res => {
         this.targets = res;
-        console.log(this.targets);
       },
       err => {
       }
@@ -77,13 +79,27 @@ export class ProjectFormComponent implements OnInit {
     this.siteTypesService.getAll().subscribe(
       res => {
         this.siteTypes = res;
-        console.log(this.siteTypes);
       },
       err => {
       }
     );
     this.getAllTypeTag();
     this.createNewProject();
+    this.route.params.subscribe(params => {
+      this.projectsService.get(params.id).subscribe(
+        res => {
+          this.project = res;
+          console.log(this.project);
+          this.form = this.formService.makeForm<Project>(this.project);
+          this.projectTags = this.project.tags;
+          this.credits = this.project.credits;
+          this.refreshTagsArray();
+          console.log(this.budgetFork);
+        },
+        err => {
+        }
+      );
+    });
   }
 
   createNewProject(): void {
@@ -275,6 +291,7 @@ export class ProjectFormComponent implements OnInit {
     this.targetTags = this.projectTags.filter(tag => tag.type.libelle === 'target');
     this.purposeTags = this.projectTags.filter(tag => tag.type.libelle === 'purpose');
     this.languageTags = this.projectTags.filter(tag => tag.type.libelle === 'language');
+    this.budgetFork = this.projectTags.filter(tag => tag.type.libelle === 'budget_fork');
   }
 
   onAccessibilityRatingChange($event) {

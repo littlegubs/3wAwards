@@ -17,6 +17,7 @@ const routes: Routes = [
     {path: 'agency/:id', component: AgencyProfileComponent},
     {path: 'client/:id', component: ClientProfileComponent},
     {path: 'project/:id', component: ProjectProfileComponent},
+    {path: 'updateProject/:id', component: ProjectFormComponent},
     {path: 'project/:id/vote', component: ProjectFormVoteComponent},
     {path: 'profile', component: MemberProfileComponent},
     {path: 'project', component: ProjectFormComponent},
