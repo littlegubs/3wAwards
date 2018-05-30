@@ -1,4 +1,4 @@
-<div class="container" *ngIf="member && typeTags && siteTypes && targets; else loading">
+<div class="container" *ngIf="member && typeTags && siteTypes && targets && project; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-project">
       <form [formGroup]="form.group" (submit)="commitProject()" autocomplete="off">
@@ -11,21 +11,21 @@
               <div class="col-sm-8" *ngIf="member.agencies[0] !== undefined && member.clients[0] !== undefined">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
                         (change)="getTheSelectedValue(agencyClientSelect.value)">
-                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}
+                  <option *ngFor="let agency of member.agencies" [selected]="agency.name == agencyOrClientName" [value]="['agency', agency.id]">{{agency.name}}
                   </option>
-                  <option *ngFor="let client of member.clients" [value]="['client', client.id]">{{client.name}}</option>
+                  <option *ngFor="let client of member.clients" [selected]="client.name == agencyOrClientName" [value]="['client', client.id]">{{client.name}}</option>
                 </select>
               </div>
               <div class="col-sm-8" *ngIf="member.agencies[0] == undefined">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
                         (change)="getTheSelectedValue(agencyClientSelect.value)">
-                  <option *ngFor="let client of member.clients" [value]="['client', client.id]">{{client.name}}</option>
+                  <option *ngFor="let client of member.clients" [selected]="client.name == agencyOrClientName" [value]="['client', client.id]">{{client.name}}</option>
                 </select>
               </div>
               <div class="col-sm-8" *ngIf="member.clients[0] === undefined">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
                         (change)="getTheSelectedValue(agencyClientSelect.value)">
-                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}
+                  <option *ngFor="let agency of member.agencies" [selected]="agency.name == agencyOrClientName" [value]="['agency', agency.id]">{{agency.name}}
                   </option>
                 </select>
               </div>
@@ -70,7 +70,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <select id="siteType" class="form-control margin" #siteType (change)="getSiteType(siteType.value)">
-                  <option *ngFor="let siteType of siteTypes" [value]="siteType.id">{{siteType.libelle}}
+                  <option *ngFor="let siteType of siteTypes" [selected]="siteType.libelle == project.siteType.libelle" [value]="siteType.id">{{siteType.libelle}}
                   </option>
                 </select>
               </div>
@@ -78,7 +78,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListBusinessTags>
+                  <mat-chip-list #chipListBusinessTags *ngIf="businessTags">
                     <mat-chip *ngFor="let budget of businessTags"
                               [removable]="true" (remove)="removeTag(budget.libelle)">
                       {{budget.libelle}}
@@ -96,7 +96,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <select id="target" class="form-control margin" #target (change)="getTarget(target.value)">
-                  <option *ngFor="let target of targets" [value]="target.id">{{target.libelle}}
+                  <option *ngFor="let target of targets" [selected]="target.libelle == project.target.libelle" [value]="target.id">{{target.libelle}}
                   </option>
                 </select>
               </div>
@@ -104,7 +104,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListPurposeTags>
+                  <mat-chip-list #chipListPurposeTags *ngIf="purposeTags">
                     <mat-chip *ngFor="let purpose of purposeTags"
                               [removable]="true" (remove)="removeTag(purpose.libelle)">
                       {{purpose.libelle}}
@@ -121,15 +121,15 @@
               <label for="budget_fork" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.BUDGET_FORK' |
                 translate}} :</label>
               <div class="col-sm-8">
-                <mat-form-field class="full-width">
-                  <input  matInput id="budget_fork" #budget_fork  (change)="addTag(budget_fork.value, 'budget_fork')"/>
+                <mat-form-field class="full-width" *ngIf="budgetFork">
+                  <input  matInput id="budget_fork" #budget_fork [value]="budgetFork[0].libelle"  (change)="addTag(budget_fork.value, 'budget_fork')"/>
                 </mat-form-field>
               </div>
               <label for="language" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.LANGUAGE' |
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListLanguageTags>
+                  <mat-chip-list #chipListLanguageTags *ngIf="languageTags">
                     <mat-chip *ngFor="let language of languageTags"
                               [removable]="true" (remove)="removeTag(language.libelle)">
                       {{language.libelle}}
@@ -147,7 +147,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width colors">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCustomTags *ngIf="colorTags">
                     <mat-chip *ngFor="let color of colorTags"
                               [removable]="true" (remove)="removeTag(color.libelle)">
                       <span class="round-color" [ngStyle]="{'background-color': color.libelle}"></span>
@@ -163,7 +163,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCustomTags *ngIf="customTags">
                     <mat-chip *ngFor="let custom of customTags"
                               [removable]="true" (remove)="removeTag(custom.libelle)">
                       {{custom.libelle}}
@@ -181,7 +181,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCustomTags *ngIf="styleTags">
                     <mat-chip *ngFor="let style of styleTags"
                               [removable]="true" (remove)="removeTag(style.libelle)">
                       {{style.libelle}}
@@ -199,7 +199,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCustomTags *ngIf="behaviorTags">
                     <mat-chip *ngFor="let behavior of behaviorTags"
                               [removable]="true" (remove)="removeTag(behavior.libelle)">
                       {{behavior.libelle}}
@@ -229,7 +229,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCustomTags *ngIf="agencyMissionTags">
                     <mat-chip *ngFor="let agencyMission of agencyMissionTags"
                               [removable]="true" (remove)="removeTag(agencyMission.libelle)">
                       {{agencyMission.libelle}}
@@ -248,7 +248,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCustomTags *ngIf="mainFonctionnalityTags">
                     <mat-chip *ngFor="let mainFonctionnality of mainFonctionnalityTags"
                               [removable]="true" (remove)="removeTag(mainFonctionnality.libelle)">
                       {{mainFonctionnality.libelle}}
@@ -266,7 +266,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCustomTags *ngIf="frontTags">
                     <mat-chip *ngFor="let front of frontTags"
                               [removable]="true" (remove)="removeTag(front.libelle)">
                       {{front.libelle}}
@@ -284,7 +284,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCustomTags *ngIf="backTags">
                     <mat-chip *ngFor="let back of backTags"
                               [removable]="true" (remove)="removeTag(back.libelle)">
                       {{back.libelle}}
@@ -302,7 +302,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCustomTags *ngIf="cmsTags">
                     <mat-chip *ngFor="let cms of cmsTags"
                               [removable]="true" (remove)="removeTag(cms.libelle)">
                       {{cms.libelle}}
@@ -329,7 +329,7 @@
                 </star-rating>
               </div>
             </div>
-              <p class="form-categ">{{'FRONT.FORM_PROJECT.CREDIT' | translate}}</p>
+            <p class="form-categ">{{'FRONT.FORM_PROJECT.CREDIT' | translate}}</p>
             <div class="form-group row credits-form">
               <label for="firstName" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.FIRSTNAME' | translate}}
                 :</label>
@@ -371,9 +371,9 @@
               <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}} <i class="fas fa-plus-circle add-image"></i></p>
               <mat-grid-list cols="2" rowHeight="300px" class="images-grid" >
                 <mat-grid-tile
-                        *ngFor="let tile of tiles, let i = index"
-                        [colspan]="tile.cols"
-                        [rowspan]="tile.rows">
+                  *ngFor="let tile of tiles, let i = index"
+                  [colspan]="tile.cols"
+                  [rowspan]="tile.rows">
                   <span class="legend"> Cette image sera utilisée pour la thumbnail de votre projet </span>
                   <div *ngIf="tile[i] > 0; else noThumbnail">
                     <!--<img *ngIf="client.image.path | liip:'card_thumbnail' as projectImage" [src]="'url('+projectImage+')'"/>-->
