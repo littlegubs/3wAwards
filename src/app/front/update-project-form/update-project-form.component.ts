@@ -102,7 +102,6 @@ export class UpdateProjectFormComponent implements OnInit {
           this.projectTags = this.project.tags;
           this.credits = this.project.credits;
           this.refreshTagsArray();
-          console.log(this.challenge[0]);
         },
         err => {
         }
@@ -117,6 +116,7 @@ export class UpdateProjectFormComponent implements OnInit {
   commitProject(): void {
     if (this.form.group.dirty && this.form.group.valid) {
       const newProject = this.form.get();
+      newProject.projectRatingMember = Object.values(this.project.projectRatingMember).map(projectRatingMember => projectRatingMember['@id']);
       if (newProject.id) {
         newProject.setImagesAtNull();
         console.log(newProject);
