@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="typeAgencies && typeTags; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-profile">
       <form [formGroup]="form.group" (submit)="commitAgency()" autocomplete="off">
@@ -102,6 +102,20 @@
                   <input matInput id="tva" formControlName="tva">
                 </mat-form-field>
               </div>
+              <!-- Effectifs -->
+              <label for="effectif" class="col-sm-4 col-form-label">Effectif</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #effectif matInput id="effectif" (change)="addTag(effectif.value, 'agency_effectif')">
+                </mat-form-field>
+              </div>
+              <!-- Status -->
+              <label for="status" class="col-sm-4 col-form-label">status</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #status matInput id="status" (change)="addTag(status.value, 'agency_status')">
+                </mat-form-field>
+              </div>
               <!-- duns -->
               <label for="duns" class="col-sm-4 col-form-label">duns</label>
               <div class="col-sm-8">
@@ -154,3 +168,6 @@
     </div>
   </div>
 </div>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
