@@ -6,42 +6,60 @@ import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {MatChipInputEvent} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-    selector: 'app-add-agency',
-    templateUrl: './add-agency.component.html',
+    selector: 'app-update-form-agency',
+    templateUrl: './update-form-agency.component.html',
+    styleUrls: ['./update-form-agency.component.scss']
 })
-export class AddAgencyComponent implements OnInit {
+export class UpdateFormAgencyComponent implements OnInit {
     agencies: Array<Agency> = [];
     form: Form<Agency>;
     tokenStorage = localStorage.getItem('user_token');
     userInfo: TokenInterface;
     member: Member;
+    agency: Agency;
     typeTags: TypeTag[] = [];
     typeAgencies: TypeAgency[] = [];
     agencyTags: Tag[] = [];
+    statusTags: Tag[] = [];
+    effectifTags: Tag[] = [];
     idTypeAgency: number;
     customTags: Tag[] = [];
     addOnBlur = true;
     separatorKeysCodes = [ENTER, COMMA];
 
     constructor(private agenciesService: AgenciesService, private formService: FormService, private typeTagService: TypeTagsService,
-                private membersService: MembersService, private authService: AuthService, private  typeAgenciesService: TypeAgenciesService) {
+                private membersService: MembersService, private authService: AuthService, private  typeAgenciesService: TypeAgenciesService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-        this.userInfo = this.authService.getUserInfo(this.tokenStorage);
-        this.getAllTypeTag();
         // initialize the form with a whole new Agency
-        this.createNewAgency();
         this.typeAgenciesService.getAll().subscribe(
             res => {
                 this.typeAgencies = res;
-                console.log(this.typeAgencies);
             },
             err => {
             }
         );
+        this.userInfo = this.authService.getUserInfo(this.tokenStorage);
+        this.getAllTypeTag();
+        this.createNewAgency();
+        this.route.params.subscribe(params => {
+            this.agenciesService.get(params.id).subscribe(
+                res => {
+                    this.agency = res;
+                    this.form = this.formService.makeForm<Agency>(this.agency);
+                    this.agencyTags = this.agency.tags;
+                    this.refreshTagsArray();
+                    console.log(this.agency.tags);
+                    console.log(this.agencyTags);
+                },
+                err => {
+                }
+            );
+        });
     }
 
     createNewAgency(): void {
@@ -52,23 +70,12 @@ export class AddAgencyComponent implements OnInit {
         if (this.form.group.dirty && this.form.group.valid) {
             const newAgency = this.form.get();
             if (newAgency.id) {
+                newAgency.tags = this.agencyTags;
                 this.agenciesService.update(newAgency).subscribe(agency => console.log('yeah!'));
             } else {
-                newAgency.setProjectsatNull();
-                newAgency.tags = this.agencyTags;
-                newAgency.image = null;
-                if (this.idTypeAgency === undefined) {
-                    console.log(this.typeAgencies[0].id);
-                    newAgency.setTypeAgency(this.typeAgencies[0].id);
-                }
-                newAgency.setTypeAgency(this.idTypeAgency);
-                newAgency.setMember(this.userInfo.id);
-                console.log(newAgency);
-                this.agenciesService.add(newAgency).subscribe(agency => console.log('add'));
+                // force invalid inputs state to display errors
+                this.form.displayErrors();
             }
-        } else {
-            // force invalid inputs state to display errors
-            this.form.displayErrors();
         }
     }
 
@@ -76,6 +83,7 @@ export class AddAgencyComponent implements OnInit {
         this.typeTagService.getAll().subscribe(
             res => {
                 this.typeTags = res;
+                console.log(this.typeTags);
             },
             err => {
             }
@@ -107,6 +115,7 @@ export class AddAgencyComponent implements OnInit {
     }
 
     addTag(value: string, type: string): void {
+        console.log(value);
         if (value === '') {
             for (let i = 0; i < this.agencyTags.length; i++) {
                 if (this.agencyTags[i].type.libelle === type) {
@@ -132,6 +141,7 @@ export class AddAgencyComponent implements OnInit {
                 }
                 tag.libelle = value;
                 this.agencyTags.push(tag);
+                console.log(this.typeTags);
             }
         }
 
@@ -139,6 +149,9 @@ export class AddAgencyComponent implements OnInit {
 
     refreshTagsArray() {
         this.customTags = this.agencyTags.filter(tag => tag.type.libelle === 'custom');
+        this.statusTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_status');
+        this.effectifTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_effectif');
+
     }
 
     removeTag(value: string): void {

@@ -1,0 +1,180 @@
+<div class="container" *ngIf="agency && typeTags; else loading">
+  <div class="row">
+    <div class="col-sm-12 col-form-profile">
+      <form [formGroup]="form.group" (submit)="commitAgency()" autocomplete="off">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
+            <p class="form-categ">{{'FRONT.MEMBER_PROFILE.FORM.LABEL.IDENTITY' | translate}}</p>
+            <div class="form-group row">
+              <!-- NAME -->
+              <label for="name" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.FIRSTNAME'
+                |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput type="text" id="name" formControlName="name">
+                </mat-form-field>
+              </div>
+              <!-- COUNTRY -->
+              <label for="country" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.COUNTRY'
+                | translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="country" formControlName="country">
+                </mat-form-field>
+              </div>
+              <!-- ADDRESS -->
+              <label for="address" class="col-sm-4 col-form-label">ADDRESS</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="address" formControlName="address">
+                </mat-form-field>
+              </div>
+              <!-- ADDRESS COMPLEMENT -->
+              <label for="addressComplement" class="col-sm-4 col-form-label">ADDRESS COMPLEMENT</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="addressComplement" formControlName="addressComplement">
+                </mat-form-field>
+              </div>
+              <!-- ZIPCODE -->
+              <label for="zipCode" class="col-sm-4 col-form-label">Code postal</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="zipCode" formControlName="zipcode">
+                </mat-form-field>
+              </div>
+              <!-- PHONE -->
+              <label for="phone" class="col-sm-4 col-form-label">phone</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="phone" formControlName="phone">
+                </mat-form-field>
+              </div>
+              <!-- FAX -->
+              <label for="fax" class="col-sm-4 col-form-label">fax</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="fax" formControlName="city">
+                </mat-form-field>
+              </div>
+              <!-- CITY -->
+              <label for="city" class="col-sm-4 col-form-label">ville</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="city" formControlName="city">
+                </mat-form-field>
+              </div>
+              <!-- PRESENTATION -->
+              <label for="description" class="col-sm-4 col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.SUMMARY'
+                |
+                translate}} :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <textarea matInput id="description" formControlName="description"></textarea>
+                </mat-form-field>
+              </div>
+              <!-- INTERNAL NOTICE -->
+              <label for="internalNotice" class="col-sm-4 col-form-label">internal notice</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <textarea matInput id="internalNotice" formControlName="internalNotice"></textarea>
+                </mat-form-field>
+              </div>
+              <!-- DATE CREATION -->
+              <label for="dateCrea" class="col-sm-4 col-form-label">Date création</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="dateCrea" [matDatepicker]="picker"
+                         formControlName="creationDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <!-- WEBSITE URL -->
+              <label for="websiteUrl" class="col-sm-4 col-form-label">url</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="websiteUrl" formControlName="websiteUrl">
+                </mat-form-field>
+              </div>
+              <!-- TVA -->
+              <label for="tva" class="col-sm-4 col-form-label">tva</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="tva" formControlName="tva">
+                </mat-form-field>
+              </div>
+              <!-- Effectifs -->
+              <label for="effectif" class="col-sm-4 col-form-label">Effectif</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #effectif matInput id="effectif"
+                         (change)="addTag(effectif.value, 'agency_effectif')" [value]="effectifTags[0].libelle">
+                </mat-form-field>
+              </div>
+              <!-- Status -->
+              <label for="status" class="col-sm-4 col-form-label">status</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #status matInput id="status"
+                         (change)="addTag(status.value, 'agency_status')" [value]="statusTags[0].libelle">
+                </mat-form-field>
+              </div>
+              <!-- duns -->
+              <label for="duns" class="col-sm-4 col-form-label">duns</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="duns" formControlName="duns">
+                </mat-form-field>
+              </div>
+              <label for="typeAgency" class="col-sm-4 col-form-label">typeAgency</label>
+              <div class="col-sm-8">
+                <select id="typeAgency" class="form-control" #typeAgency
+                        (change)="getTypeAgencies(typeAgency.value)">
+                  <option *ngFor="let typeAgency of typeAgencies" [value]="typeAgency.id">
+                    {{typeAgency.libelle}}
+                  </option>
+                </select>
+              </div>
+              <label for="customTags" class="col-sm-4 col-form-label">Custom Tag</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <mat-chip-list #chipListCustomTags>
+                    <mat-chip *ngFor="let custom of customTags"
+                              [removable]="true" (remove)="removeTag(custom.libelle)">
+                      {{custom.libelle}}
+                      <mat-icon matChipRemove>x</mat-icon>
+                    </mat-chip>
+                    <input id="customTags"
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'custom')"/>
+                  </mat-chip-list>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group row">
+              <div class="col-sm-12 form-actions">
+                <button type="reset" class="btn btn-main-white-full revert">
+                  {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.REVERT' | translate}}
+                </button>
+                <button type="submit" class="btn btn-main-red-full submit">
+                  {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.SUBMIT' | translate}}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
