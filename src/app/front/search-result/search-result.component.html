@@ -1,0 +1,60 @@
+<div class="container-fluid" *ngIf="projects; else loading">
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12" *ngFor="let project of projects">
+            <mat-card class="example-card" [routerLink]="['/project/', project.id]">
+                <div *ngIf="project.images[0]; else noThumbail">
+                    <div mat-card-image *ngIf="project.images[0].path | liip:'card_thumbnail' as cardImage"
+                         [style.background-image]="'url('+cardImage+')'">
+                    </div>
+                </div>
+                <ng-template #noThumbail>
+                    <div mat-card-image [style.background-image]="'url(http://via.placeholder.com/415x300)'"></div>
+                </ng-template>
+                <mat-card-content>
+                    <mat-card-title>{{project.projectName}}</mat-card-title>
+                    <p *ngIf="project.agency === null">par
+                        <span class="mat-card-creator">{{project.client.name}}</span>
+                        |
+                        <span class="mat-card-country">{{project.client.country}}</span>
+                    </p>
+                    <p *ngIf="project.client === null">par
+                        <span class="mat-card-creator">{{project.agency.name}}</span>
+                        |
+                        <span class="mat-card-country">{{project.agency.country}}</span>
+                    </p>
+                    <p class="mat-card-date">{{project.publicationDate | date}}</p>
+                    <div class="mat-card-actions">
+                        <i class="fas fa-eye"></i> 22
+                        <i class="fas fa-heart"></i> 40
+                    </div>
+                    <div class="awards-medals-list">
+                        <div [ngClass]="{'is-awarded': project.awards.length > 0}"
+                             *ngFor="let award of (project.awards | slice : - 3);">
+                            <img src="assets/images/awards-bronze.svg" class="day"
+                                 *ngIf="award.type === 'day'"
+                                 [matTooltip]="'Jour - ' + (award.date | date) + ' | ' + (award.category.libelle)"
+                                 [matTooltipPosition]="positionTooltip"/>
+                            <img src="assets/images/awards-silver.svg" class="day"
+                                 *ngIf="award.type === 'week'"
+                                 [matTooltip]="'Semaine - ' + (award.date | date) + ' | ' + (award.category.libelle)"
+                                 [matTooltipPosition]="positionTooltip"/>
+                            <img src="assets/images/awards-gold.svg" class="day"
+                                 *ngIf="award.type === 'month'"
+                                 [matTooltip]="'Mois - ' + (award.date | date) + ' | ' + (award.category.libelle)"
+                                 [matTooltipPosition]="positionTooltip"/>
+                            <img src="assets/images/awards-red.svg" class="day"
+                                 *ngIf="award.type === 'jury' || award.type === 'year'"
+                                 [matTooltip]="'Jury - ' + (award.date | date) + ' | ' + (award.category.libelle)"
+                                 [matTooltipPosition]="positionTooltip"/>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #loading>
+    <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
