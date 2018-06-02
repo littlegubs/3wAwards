@@ -1,7 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Project} from '../../../backend/model/Project';
 import {ProjectsService} from '../../../backend/services/Projects.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-search-result',
@@ -36,7 +36,6 @@ export class SearchResultComponent implements OnInit {
           err => {
           }
       );
-
   }
 
 }
