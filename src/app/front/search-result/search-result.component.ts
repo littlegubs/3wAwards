@@ -13,6 +13,7 @@ export class SearchResultComponent implements OnInit {
   projects: Project[];
   routeSub: any;
   positionTooltip = 'right';
+  project = new Project();
 
   constructor(private projectsService: ProjectsService, private route: ActivatedRoute) {
       this.routeSub = this.route.params.subscribe(params => {
@@ -21,8 +22,8 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit() {
-      const filterType = 'project.' + this.searchInput;
-      this.projectsService.getAllByFilter(filterType, this.searchInput, 1).subscribe(
+      const filterValue = 'project.' + this.searchInput;
+      this.projectsService.getAll().subscribe(
           res => {
               this.projects = res;
           },
