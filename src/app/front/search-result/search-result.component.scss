@@ -17,6 +17,9 @@ app-search-result {
         justify-content: center;
         padding: 0;
         margin-top: 30px;
+        .noResult{
+            min-height: calc(100vh - 520px);
+        }
     }
     mat-card {
         margin-left: auto;

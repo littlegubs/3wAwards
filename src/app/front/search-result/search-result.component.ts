@@ -11,9 +11,9 @@ export class SearchResultComponent implements OnInit {
 
   searchInput: string;
   projects: Project[];
+  resProjects = [];
   routeSub: any;
   positionTooltip = 'right';
-  project = new Project();
 
   constructor(private projectsService: ProjectsService, private route: ActivatedRoute) {
       this.routeSub = this.route.params.subscribe(params => {
@@ -22,14 +22,21 @@ export class SearchResultComponent implements OnInit {
   }
 
   ngOnInit() {
-      const filterValue = 'project.' + this.searchInput;
-      this.projectsService.getAll().subscribe(
+      this.projectsService.getAllByFilter('status', 'accepted', 1).subscribe(
           res => {
               this.projects = res;
+              for (let project of this.projects) {
+                  if (project.projectName.toLowerCase().trim().replace(/%20/g, '')
+                      === this.searchInput.toLowerCase().trim().replace(/%20/g, '')) {
+                      this.resProjects.push(project);
+                  }
+              }
+              console.log(this.resProjects);
           },
           err => {
           }
       );
+
   }
 
 }
