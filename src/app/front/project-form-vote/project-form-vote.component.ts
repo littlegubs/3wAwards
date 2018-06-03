@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ProjectRatingMember} from '../../../backend/model';
 import {Category} from '../../category.enum';
+import {ProjectRatingMembersService} from '../../../backend/services';
 
 @Component({
   selector: 'app-project-form-vote',
@@ -35,30 +36,33 @@ export class ProjectFormVoteComponent implements OnInit {
   get tickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
   }
-
-  set tickInterval(v) {
-    this._tickInterval = Number(v);
-  }
-
   private _tickInterval = 1;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-              public dialogRef: MatDialogRef<ProjectFormVoteComponent>) {
+              public dialogRef: MatDialogRef<ProjectFormVoteComponent>, private projectRatingMemberService: ProjectRatingMembersService) {
       this.ratingsForProject = data.member.projectRatingMember.filter(
         projectRatingMemberToFind => projectRatingMemberToFind.project.id === data.project.id);
-      this.userOriginalityVote = this.retrieveRatingsValue(Category.originality);
-      this.userGraphismVote = this.retrieveRatingsValue(Category.graphism);
-      this.userNavigationVote = this.retrieveRatingsValue(Category.navigation);
-      this.userInteractivityVote = this.retrieveRatingsValue(Category.interactivity);
-      this.userContentQualityVote = this.retrieveRatingsValue(Category.contentQuality);
-      this.userFunctionnalityVote = this.retrieveRatingsValue(Category.functionnality);
-      this.userReactivityyVote = this.retrieveRatingsValue(Category.reactivity);
+    if (this.ratingsForProject !== undefined) {
+        this.userOriginalityVote = this.retrieveRatingsValue(Category.originality);
+        this.userGraphismVote = this.retrieveRatingsValue(Category.graphism);
+        this.userNavigationVote = this.retrieveRatingsValue(Category.navigation);
+        this.userInteractivityVote = this.retrieveRatingsValue(Category.interactivity);
+        this.userContentQualityVote = this.retrieveRatingsValue(Category.contentQuality);
+        this.userFunctionnalityVote = this.retrieveRatingsValue(Category.functionnality);
+        this.userReactivityyVote = this.retrieveRatingsValue(Category.reactivity);
+      }
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  sendVote() {
+    if (this.ratingsForProject === undefined) {
+      for (const category in Category) {
+        console.log(category, Category[category])
+        const projectRatingMember = new ProjectRatingMember();
+        projectRatingMember.setMember(this.data.member.id);
+        projectRatingMember.setProject(this.data.project.id);
+      }
+    }
   }
-
 
   ngOnInit() {
   }

@@ -9,106 +9,115 @@
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.ORIGINALITY' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
-                        class="originality"
-                        [value]="userOriginalityVote"
-                        [disabled]="disabled"
-                        [invert]="invert"
-                        [max]="max"
-                        [min]="min"
-                        [step]="step"
-                        [thumb-label]="thumbLabel"
-                        [tick-interval]="tickInterval"
-                        [vertical]="vertical">
+                  class="originality"
+                  [value]="userOriginalityVote"
+                  [disabled]="disabled"
+                  [invert]="invert"
+                  [max]="max"
+                  [min]="min"
+                  [step]="step"
+                  [thumb-label]="thumbLabel"
+                  [tick-interval]="tickInterval"
+                  [vertical]="vertical"
+                  (change)="userOriginalityVote = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.GRAPHISM' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
-                        class="graphism"
-                        [value]="userGraphismVote"
-                        [disabled]="disabled"
-                        [invert]="invert"
-                        [max]="max"
-                        [min]="min"
-                        [step]="step"
-                        [thumb-label]="thumbLabel"
-                        [tick-interval]="tickInterval"
-                        [vertical]="vertical">
+                  class="graphism"
+                  [value]="userGraphismVote"
+                  [disabled]="disabled"
+                  [invert]="invert"
+                  [max]="max"
+                  [min]="min"
+                  [step]="step"
+                  [thumb-label]="thumbLabel"
+                  [tick-interval]="tickInterval"
+                  [vertical]="vertical"
+                  (change)="userGraphismVote = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.ERGONOMY' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
-                        class="navigation"
-                        [value]="userNavigationVote"
-                        [disabled]="disabled"
-                        [invert]="invert"
-                        [max]="max"
-                        [min]="min"
-                        [step]="step"
-                        [thumb-label]="thumbLabel"
-                        [tick-interval]="tickInterval"
-                        [vertical]="vertical">
+                  class="navigation"
+                  [value]="userNavigationVote"
+                  [disabled]="disabled"
+                  [invert]="invert"
+                  [max]="max"
+                  [min]="min"
+                  [step]="step"
+                  [thumb-label]="thumbLabel"
+                  [tick-interval]="tickInterval"
+                  [vertical]="vertical"
+                  (change)="userNavigationVote = $event.value">
                 </mat-slider>
               </div>
-              <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.INTERACTIVITY' | translate}} :</label>
+              <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.INTERACTIVITY' | translate}}
+                :</label>
               <div class="col-sm-8">
                 <mat-slider
-                        class="interactivity"
-                        [value]="userInteractivityVote"
-                        [disabled]="disabled"
-                        [invert]="invert"
-                        [max]="max"
-                        [min]="min"
-                        [step]="step"
-                        [thumb-label]="thumbLabel"
-                        [tick-interval]="tickInterval"
-                        [vertical]="vertical">
+                  class="interactivity"
+                  [value]="userInteractivityVote"
+                  [disabled]="disabled"
+                  [invert]="invert"
+                  [max]="max"
+                  [min]="min"
+                  [step]="step"
+                  [thumb-label]="thumbLabel"
+                  [tick-interval]="tickInterval"
+                  [vertical]="vertical"
+                  (change)="userInteractivityVote = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.QUALITY' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
-                        class="content-quality"
-                        [value]="userContentQualityVote"
-                        [disabled]="disabled"
-                        [invert]="invert"
-                        [max]="max"
-                        [min]="min"
-                        [step]="step"
-                        [thumb-label]="thumbLabel"
-                        [tick-interval]="tickInterval"
-                        [vertical]="vertical">
+                  class="content-quality"
+                  [value]="userContentQualityVote"
+                  [disabled]="disabled"
+                  [invert]="invert"
+                  [max]="max"
+                  [min]="min"
+                  [step]="step"
+                  [thumb-label]="thumbLabel"
+                  [tick-interval]="tickInterval"
+                  [vertical]="vertical"
+                  (change)="userContentQualityVote = $event.value">
                 </mat-slider>
               </div>
-              <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.FONCTIONNALITY' | translate}} :</label>
+              <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.FONCTIONNALITY' | translate}}
+                :</label>
               <div class="col-sm-8">
                 <mat-slider
-                        class="functionnality"
-                        [value]="userFunctionnalityVote"
-                        [disabled]="disabled"
-                        [invert]="invert"
-                        [max]="max"
-                        [min]="min"
-                        [step]="step"
-                        [thumb-label]="thumbLabel"
-                        [tick-interval]="tickInterval"
-                        [vertical]="vertical">
+                  class="functionnality"
+                  [value]="userFunctionnalityVote"
+                  [disabled]="disabled"
+                  [invert]="invert"
+                  [max]="max"
+                  [min]="min"
+                  [step]="step"
+                  [thumb-label]="thumbLabel"
+                  [tick-interval]="tickInterval"
+                  [vertical]="vertical"
+                (change)="userFunctionnalityVote = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.REACTIVITY' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
-                        class="reactivity"
-                        [value]="userReactivityyVote"
-                        [disabled]="disabled"
-                        [invert]="invert"
-                        [max]="max"
-                        [min]="min"
-                        [step]="step"
-                        [thumb-label]="thumbLabel"
-                        [tick-interval]="tickInterval"
-                        [vertical]="vertical">
+                  class="reactivity"
+                  [value]="userReactivityyVote"
+                  [disabled]="disabled"
+                  [invert]="invert"
+                  [max]="max"
+                  [min]="min"
+                  [step]="step"
+                  [thumb-label]="thumbLabel"
+                  [tick-interval]="tickInterval"
+                  [vertical]="vertical"
+                  (change)="userReactivityyVote = $event.value">
                 </mat-slider>
               </div>
             </div>
@@ -117,7 +126,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                   <div class="form-group row">
                     <div class="col-sm-12 form-actions">
-                      <button type="submit" class="btn btn-main-red-full submit">
+                      <button type="submit" class="btn btn-main-red-full submit" (click)="sendVote()">
                         {{'FRONT.FORM_PROJECT.TO_VOTE' | translate}}
                       </button>
                     </div>
