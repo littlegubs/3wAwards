@@ -25,7 +25,6 @@ export class ProjectProfileComponent implements OnInit {
   toggleMain = false;
   toggleDev = false;
   member: Member;
-  savedVoteEdition;
 
   constructor(private route: ActivatedRoute, private projectsService: ProjectsService, public dialog: MatDialog,
               private membersService: MembersService, private authService: AuthService, private http: HttpClient) {
@@ -56,13 +55,11 @@ export class ProjectProfileComponent implements OnInit {
       dialogRef = this.dialog.open(ProjectFormVoteComponent, {
         data: {
           member: this.member,
-          project: this.project,
-          savedVoteEdition: this.savedVoteEdition
+          project: this.project
         },
         width: '530px',
       });
       dialogRef.afterClosed().subscribe(result => {
-        this.savedVoteEdition = result;
       });
     } else {
       dialogRef = this.dialog.open(ConnectionDialogComponent);
