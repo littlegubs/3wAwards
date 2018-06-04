@@ -1,4 +1,4 @@
-export enum Category {
+export enum CategoryEnum {
   originality = 'originality',
   graphism = 'graphism',
   navigation = 'navigation',

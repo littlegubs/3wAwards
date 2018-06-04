@@ -10,7 +10,7 @@
               <div class="col-sm-8">
                 <mat-slider
                   class="originality"
-                  [value]="userOriginalityVote"
+                  [value]="votes[categoryEnum.originality]"
                   [disabled]="disabled"
                   [invert]="invert"
                   [max]="max"
@@ -19,14 +19,14 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="userOriginalityVote = $event.value">
+                  (change)="votes[categoryEnum.originality] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.GRAPHISM' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
                   class="graphism"
-                  [value]="userGraphismVote"
+                  [value]="votes[categoryEnum.graphism]"
                   [disabled]="disabled"
                   [invert]="invert"
                   [max]="max"
@@ -35,14 +35,14 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="userGraphismVote = $event.value">
+                  (change)="votes[categoryEnum.graphism] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.ERGONOMY' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
                   class="navigation"
-                  [value]="userNavigationVote"
+                  [value]="votes[categoryEnum.navigation]"
                   [disabled]="disabled"
                   [invert]="invert"
                   [max]="max"
@@ -51,7 +51,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="userNavigationVote = $event.value">
+                  (change)="votes[categoryEnum.navigation] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.INTERACTIVITY' | translate}}
@@ -59,7 +59,7 @@
               <div class="col-sm-8">
                 <mat-slider
                   class="interactivity"
-                  [value]="userInteractivityVote"
+                  [value]="votes[categoryEnum.interactivity]"
                   [disabled]="disabled"
                   [invert]="invert"
                   [max]="max"
@@ -68,14 +68,14 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="userInteractivityVote = $event.value">
+                  (change)="votes[categoryEnum.interactivity] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.QUALITY' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
                   class="content-quality"
-                  [value]="userContentQualityVote"
+                  [value]="votes[categoryEnum.contentQuality]"
                   [disabled]="disabled"
                   [invert]="invert"
                   [max]="max"
@@ -84,7 +84,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="userContentQualityVote = $event.value">
+                  (change)="votes[categoryEnum.contentQuality] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.FONCTIONNALITY' | translate}}
@@ -92,7 +92,7 @@
               <div class="col-sm-8">
                 <mat-slider
                   class="functionnality"
-                  [value]="userFunctionnalityVote"
+                  [value]="votes[categoryEnum.functionnality]"
                   [disabled]="disabled"
                   [invert]="invert"
                   [max]="max"
@@ -101,14 +101,14 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                (change)="userFunctionnalityVote = $event.value">
+                (change)="votes[categoryEnum.functionnality] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.REACTIVITY' | translate}} :</label>
               <div class="col-sm-8">
                 <mat-slider
                   class="reactivity"
-                  [value]="userReactivityyVote"
+                  [value]="votes[categoryEnum.reactivity]"
                   [disabled]="disabled"
                   [invert]="invert"
                   [max]="max"
@@ -117,7 +117,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="userReactivityyVote = $event.value">
+                  (change)="votes[categoryEnum.reactivity] = $event.value">
                 </mat-slider>
               </div>
             </div>
