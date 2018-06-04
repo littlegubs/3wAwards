@@ -249,7 +249,9 @@
       "STATUS":"Statut",
       "DUNS":"Duns",
       "TYPE_AGENCY":"Type d'agence",
-      "CUSTOM_TAG":"Tags personnalisés"
+      "CUSTOM_TAG":"Tags personnalisés",
+      "CANCEL":"Annuler",
+      "SAVE":"Enregistrer"
 
     }
   }
