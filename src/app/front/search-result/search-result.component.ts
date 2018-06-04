@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Project} from '../../../backend/model/Project';
 import {ProjectsService} from '../../../backend/services/Projects.service';
 import {ActivatedRoute} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
 
 @Component({
   selector: 'app-search-result',
@@ -15,27 +17,21 @@ export class SearchResultComponent implements OnInit {
   routeSub: any;
   positionTooltip = 'right';
 
-  constructor(private projectsService: ProjectsService, private route: ActivatedRoute) {
-      this.routeSub = this.route.params.subscribe(params => {
-          this.searchInput = params['searchValue'];
-      });
+  constructor(private projectsService: ProjectsService, private route: ActivatedRoute, private http: HttpClient,
+              private globalsService: GlobalsService) {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.searchInput = params['searchValue'];
+    });
   }
 
   ngOnInit() {
-      this.projectsService.getAllByFilter('status', 'accepted', 1).subscribe(
-          res => {
-              this.projects = res;
-              for (let project of this.projects) {
-                  if (project.projectName.toLowerCase().trim().replace(/%20/g, '')
-                      === this.searchInput.toLowerCase().trim().replace(/%20/g, '')) {
-                      this.resProjects.push(project);
-                  }
-              }
-              console.log(this.resProjects);
-          },
-          err => {
-          }
-      );
+    this.http.get(this.globalsService.acceptedProjectUrl + '&projectName=' + this.searchInput).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+      }
+    );
   }
 
 }
