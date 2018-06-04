@@ -132,7 +132,7 @@
               <div class="col-sm-8">
                 <select id="typeAgency" class="form-control" #typeAgency
                         (change)="getTypeAgencies(typeAgency.value)">
-                  <option *ngFor="let typeAgency of typeAgencies" [value]="typeAgency.id">
+                  <option *ngFor="let typeAgency of typeAgencies" [value]="typeAgency.id" [selected]="typeAgency.libelle == agency.typeAgency.libelle">
                     {{typeAgency.libelle}}
                   </option>
                 </select>

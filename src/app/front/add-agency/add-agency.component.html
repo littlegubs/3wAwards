@@ -1,4 +1,4 @@
-<div class="container" *ngIf="typeAgencies && typeTags; else loading">
+<div class="container" *ngIf="typeTags; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-profile">
       <form [formGroup]="form.group" (submit)="commitAgency()" autocomplete="off">
