@@ -93,7 +93,7 @@ export class ProjectFormComponent implements OnInit {
   commitProject(): void {
     if (this.form.group.dirty && this.form.group.valid) {
       const newProject = this.form.get();
-      newProject.setProjectRatingMemberAtNull();
+      newProject.projectRatingMember = [];
       newProject.status = 'accepted';
       if (newProject.id) {
         this.projectsService.update(newProject).subscribe();

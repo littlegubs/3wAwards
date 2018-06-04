@@ -120,6 +120,7 @@ export class UpdateProjectFormComponent implements OnInit {
       if (newProject.id) {
         newProject.setImagesAtNull();
         console.log(newProject);
+        newProject.tags = this.projectTags;
         this.projectsService.update(newProject).subscribe();
       } else {
         this.form.displayErrors();
