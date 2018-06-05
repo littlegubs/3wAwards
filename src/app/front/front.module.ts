@@ -38,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FrontComponent } from './front.component';
 
 @NgModule({
   imports: [
@@ -84,7 +85,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MemberAwardProjectTableComponent,
     ProjectFormVoteComponent,
     LiipPipe,
-    TagsFilterPipe
+    TagsFilterPipe,
+    FrontComponent
   ]
 })
 export class FrontModule { }
