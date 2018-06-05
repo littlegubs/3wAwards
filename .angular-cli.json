@@ -20,7 +20,6 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/@nebular/theme/styles/prebuilt/default.css",
         "styles.scss"
       ],
       "scripts": [

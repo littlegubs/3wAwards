@@ -1,4 +1,3 @@
-import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './front/home/home.component';
@@ -13,7 +12,6 @@ import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-v
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'admin', component: AdminPageComponent},
     {path: 'agency/:id', component: AgencyProfileComponent},
     {path: 'client/:id', component: ClientProfileComponent},
     {path: 'project/:id', component: ProjectProfileComponent},
