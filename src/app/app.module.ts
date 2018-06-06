@@ -31,6 +31,8 @@ import {FormService} from '../backend/forms';
 import {RouterModule} from '@angular/router';
 import {FrontModule} from './front/front.module';
 import {AdminModule} from './admin/admin.module';
+import { Error404Component } from './error404/error404.component';
+import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 
 export function createRestangularConfigFactory(RestangularProvider) {
   if (localStorage.getItem('user_token') !== null) {
@@ -42,6 +44,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
 @NgModule({
   declarations: [
     AppComponent,
+    Error404Component,
+    AdminMenuComponent,
   ],
   imports: [
     BrowserModule,

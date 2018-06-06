@@ -8,6 +8,7 @@ import {ProjectProfileComponent} from './project-profile/project-profile.compone
 import {ProjectFormComponent} from './project-form/project-form.component';
 import {AddAgencyComponent} from './add-agency/add-agency.component';
 import {ProjectFormVoteComponent} from './project-form-vote/project-form-vote.component';
+import {Error404Component} from '../error404/error404.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: 'profile', component: MemberProfileComponent},
     {path: 'project', component: ProjectFormComponent},
     {path: 'addAgency', component: AddAgencyComponent},
+    {path: '404', component: Error404Component},
 ];
 
 @NgModule({

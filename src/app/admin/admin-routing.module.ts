@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {MenuComponent} from './menu/menu.component';
+import {AdminMenuComponent} from './admin-menu/admin-menu.component';
+import {Error404Component} from '../error404/error404.component';
 
 
 const routes: Routes = [
-  {path: 'admin', component: MenuComponent},
-
+    {path: 'admin', component: AdminMenuComponent},
+    {path: '404', component: Error404Component},
+    {path: '**', redirectTo: '404'}
 ];
 
 @NgModule({
