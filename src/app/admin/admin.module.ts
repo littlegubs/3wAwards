@@ -1,16 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {SharedModule} from '../shared.module';
-import {StarRatingModule} from 'angular-star-rating';
-import {NgCircleProgressModule} from 'ng-circle-progress';
+import { MenuComponent } from './menu/menu.component';
+import {AdminRoutingModule} from './admin-routing.module';
+import {AdminComponent} from './admin.Component';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    NgCircleProgressModule.forRoot({}),
-    StarRatingModule.forRoot(),
+    AdminRoutingModule,
   ],
-  declarations: []
+  declarations: [
+    MenuComponent,
+    AdminComponent
+  ]
 })
-export class AdminModule { }
+export class AdminModule {
+}

@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
-import {SharedModule} from '../shared.module';
+import {RouterModule, Routes} from '@angular/router';
+import {MenuComponent} from './menu/menu.component';
+
+
+const routes: Routes = [
+  {path: 'admin', component: MenuComponent},
+
+];
 
 @NgModule({
-  imports: [
-    SharedModule
-  ],
-  declarations: []
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AdminRoutingModule { }

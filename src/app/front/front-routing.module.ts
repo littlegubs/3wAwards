@@ -19,7 +19,6 @@ const routes: Routes = [
     {path: 'profile', component: MemberProfileComponent},
     {path: 'project', component: ProjectFormComponent},
     {path: 'addAgency', component: AddAgencyComponent},
-    {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 
 @NgModule({

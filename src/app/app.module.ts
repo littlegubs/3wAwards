@@ -30,6 +30,7 @@ import {GlobalsService} from './globals.service';
 import {FormService} from '../backend/forms';
 import {RouterModule} from '@angular/router';
 import {FrontModule} from './front/front.module';
+import {AdminModule} from './admin/admin.module';
 
 export function createRestangularConfigFactory(RestangularProvider) {
   if (localStorage.getItem('user_token') !== null) {
@@ -50,6 +51,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     RestangularModule.forRoot([], createRestangularConfigFactory),
     RouterModule,
     FrontModule,
+    AdminModule,
     AppRoutingModule
   ],
   providers: [
