@@ -32,6 +32,8 @@ import {ClientCardComponent} from './client-card/client-card.component';
 import {AgencyCardComponent} from './agency-card/agency-card.component';
 import {MemberAwardProjectTableComponent} from './member-award-project-table/member-award-project-table.component';
 import {ProjectFormVoteComponent} from './project-form-vote/project-form-vote.component';
+import {UpdateProjectFormComponent} from './update-project-form/update-project-form.component';
+import {SearchResultComponent} from './search-result/search-result.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -86,7 +88,9 @@ import { FrontComponent } from './front.component';
     ProjectFormVoteComponent,
     LiipPipe,
     TagsFilterPipe,
-    FrontComponent
+    FrontComponent,
+    UpdateProjectFormComponent,
+    SearchResultComponent,
   ]
 })
 export class FrontModule { }
