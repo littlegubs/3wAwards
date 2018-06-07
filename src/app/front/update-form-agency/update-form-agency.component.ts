@@ -31,7 +31,8 @@ export class UpdateFormAgencyComponent implements OnInit {
     separatorKeysCodes = [ENTER, COMMA];
 
     constructor(private agenciesService: AgenciesService, private formService: FormService, private typeTagService: TypeTagsService,
-                private membersService: MembersService, private authService: AuthService, private  typeAgenciesService: TypeAgenciesService, private route: ActivatedRoute) {
+                private membersService: MembersService, private authService: AuthService,
+                private  typeAgenciesService: TypeAgenciesService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {

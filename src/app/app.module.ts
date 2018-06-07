@@ -86,6 +86,7 @@ import {RouterModule} from '@angular/router';
 import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
 import { UpdateFormAgencyComponent } from './front/update-form-agency/update-form-agency.component';
 import { AddClientComponent } from './front/add-client/add-client.component';
+import { UpdateClientComponent } from './front/update-client/update-client.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -130,6 +131,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     ProjectFormVoteComponent,
     UpdateFormAgencyComponent,
     AddClientComponent,
+    UpdateClientComponent,
   ],
   imports: [
     BrowserModule,

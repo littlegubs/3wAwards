@@ -11,6 +11,7 @@ import {AddAgencyComponent} from './front/add-agency/add-agency.component';
 import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
 import {UpdateFormAgencyComponent} from './front/update-form-agency/update-form-agency.component';
 import { AddClientComponent } from './front/add-client/add-client.component';
+import {UpdateClientComponent} from './front/update-client/update-client.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
     {path: 'project', component: ProjectFormComponent},
     {path: 'agency', component: AddAgencyComponent},
     {path: 'updateAgency/:id', component: UpdateFormAgencyComponent},
+    {path: 'updateClient/:id', component: UpdateClientComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 

@@ -70,7 +70,8 @@
                 </mat-form-field>
               </div>
               <!-- INTERNAL NOTICE -->
-              <label for="internalNotice" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.INTERNAL_NOTICE' | translate}}</label>
+              <label for="internalNotice" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.INTERNAL_NOTICE'
+                | translate}}</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
                   <textarea matInput id="internalNotice" formControlName="internalNotice"></textarea>
@@ -80,7 +81,8 @@
               <label for="dateCrea" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.CREATION_DATE' | translate}}</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <input matInput id="dateCrea" [matDatepicker]="picker" formControlName="creationDate">
+                  <input matInput id="dateCrea" [matDatepicker]="picker"
+                         formControlName="creationDate">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -116,10 +118,10 @@
                       <mat-icon matChipRemove>x</mat-icon>
                     </mat-chip>
                     <input id="customTags"
-                          [matChipInputFor]="chipListCustomTags"
-                          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                          [matChipInputAddOnBlur]="addOnBlur"
-                          (matChipInputTokenEnd)="addTags($event, 'custom')"/>
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'custom')"/>
                   </mat-chip-list>
                 </mat-form-field>
               </div>
