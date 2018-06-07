@@ -45,7 +45,6 @@ export function createRestangularConfigFactory(RestangularProvider) {
   declarations: [
     AppComponent,
     Error404Component,
-    AdminMenuComponent,
   ],
   imports: [
     BrowserModule,

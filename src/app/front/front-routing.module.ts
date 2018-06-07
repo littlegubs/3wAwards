@@ -9,18 +9,21 @@ import {ProjectFormComponent} from './project-form/project-form.component';
 import {AddAgencyComponent} from './add-agency/add-agency.component';
 import {ProjectFormVoteComponent} from './project-form-vote/project-form-vote.component';
 import {Error404Component} from '../error404/error404.component';
+import {FrontComponent} from './front.component';
 
 
 const routes: Routes = [
-    {path: '', component: HomeComponent},
-    {path: 'agency/:id', component: AgencyProfileComponent},
-    {path: 'client/:id', component: ClientProfileComponent},
-    {path: 'project/:id', component: ProjectProfileComponent},
-    {path: 'project/:id/vote', component: ProjectFormVoteComponent},
-    {path: 'profile', component: MemberProfileComponent},
-    {path: 'project', component: ProjectFormComponent},
-    {path: 'addAgency', component: AddAgencyComponent},
-    {path: '404', component: Error404Component},
+    {path: '', component: FrontComponent ,
+    children: [
+      {path: '', component: HomeComponent},
+      {path: 'agency/:id', component: AgencyProfileComponent},
+      {path: 'client/:id', component: ClientProfileComponent},
+      {path: 'project/:id', component: ProjectProfileComponent},
+      {path: 'project/:id/vote', component: ProjectFormVoteComponent},
+      {path: 'profile', component: MemberProfileComponent},
+      {path: 'project', component: ProjectFormComponent},
+      {path: 'addAgency', component: AddAgencyComponent},
+    ]},
 ];
 
 @NgModule({
