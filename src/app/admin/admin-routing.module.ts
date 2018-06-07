@@ -10,7 +10,9 @@ const routes: Routes = [
     {path: 'admin', component: AdminComponent,
       children: [
         {path: '', component: AdminDashboardComponent}
-      ] }
+      ] },
+    {path: '404', component: Error404Component},
+    {path: '**', redirectTo: '404'}
 ];
 
 @NgModule({
