@@ -84,6 +84,7 @@ import {MemberAwardProjectTableComponent} from './front/member-award-project-tab
 import {AdminPageComponent} from './admin/admin-page/admin-page.component';
 import {RouterModule} from '@angular/router';
 import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
+import { SearchResultComponent } from './front/search-result/search-result.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -126,6 +127,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MemberAwardProjectTableComponent,
     AdminPageComponent,
     ProjectFormVoteComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
