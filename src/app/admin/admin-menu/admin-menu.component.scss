@@ -1,0 +1,39 @@
+app-admin-menu{
+    h1 {
+        margin: 0 -10px;
+        padding: 0 10px;
+        line-height: 88px;
+        background-color: #2b2b2b;
+        &:after {
+            content: '';
+            width: 200px;
+            border-bottom: 2px solid #4b4c4c;
+            height: 2px;
+            display: block;
+            position: relative;
+            margin: 0 auto;
+            left: -10px;
+        }
+    }
+    .admin-menu {
+        > p {
+            margin: 0 -10px;
+            padding: 20px 10px;
+            transition: background 0.5s ease;
+            &:after {
+                content: '';
+                width: 200px;
+                border-bottom: 2px solid #4b4c4c;
+                height: 2px;
+                display: block;
+                position: relative;
+                bottom: -20px;
+                margin: 0 auto;
+                left: -10px;
+            }
+            &:hover{
+                background: #2b2b2b;
+            }
+        }
+    }
+}
