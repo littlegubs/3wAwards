@@ -156,7 +156,8 @@
       },
       "MEMBER_MENU": {
         "DISCONNECTION": "Déconnexion",
-        "PROFILE": "Mon Profil"
+        "PROFILE": "Mon Profil",
+        "My_Project": "Mes Projets"
       },
       "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
       "SWITCH_NAME": "FILTRES",

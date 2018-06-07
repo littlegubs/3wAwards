@@ -27,7 +27,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="memberDropdown">
               <a class="dropdown-item" [routerLink]="['/profile']">{{'FRONT.HEADER.MEMBER_MENU.PROFILE' | translate}}</a>
-              <a class="dropdown-item" href="#">tes2</a>
+              <a class="dropdown-item" [routerLink]="['/myProject']" >{{'FRONT.HEADER.MEMBER_MENU.My_Project' | translate}}</a>
               <a (click)="Disconnection()" class="dropdown-item" href="#">{{'FRONT.HEADER.MEMBER_MENU.DISCONNECTION' | translate}}</a>
             </div>
           </div>
