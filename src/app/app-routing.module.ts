@@ -9,7 +9,8 @@ import {ProjectProfileComponent} from './front/project-profile/project-profile.c
 import {ProjectFormComponent} from './front/project-form/project-form.component';
 import {AddAgencyComponent} from './front/add-agency/add-agency.component';
 import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
-import {UpdateProjectFormComponent} from "./front/update-project-form/update-project-form.component";
+import {UpdateProjectFormComponent} from './front/update-project-form/update-project-form.component';
+import {SearchResultComponent} from './front/search-result/search-result.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
     {path: 'profile', component: MemberProfileComponent},
     {path: 'project', component: ProjectFormComponent},
     {path: 'addAgency', component: AddAgencyComponent},
+    {path: 'search/:searchValue', component: SearchResultComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'},
 ];
 

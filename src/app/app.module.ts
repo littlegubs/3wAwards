@@ -85,6 +85,7 @@ import {AdminPageComponent} from './admin/admin-page/admin-page.component';
 import {RouterModule} from '@angular/router';
 import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
 import { UpdateProjectFormComponent } from './front/update-project-form/update-project-form.component';
+import { SearchResultComponent } from './front/search-result/search-result.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -128,6 +129,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AdminPageComponent,
     ProjectFormVoteComponent,
     UpdateProjectFormComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

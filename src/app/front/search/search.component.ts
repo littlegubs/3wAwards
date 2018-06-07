@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -7,8 +8,9 @@ import {Component, OnInit} from '@angular/core';
 export class SearchComponent implements OnInit {
   isActive = false;
   isFilterActive = false;
+  value = '';
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -16,6 +18,13 @@ export class SearchComponent implements OnInit {
 
   showFilter() {
     this.isFilterActive = !this.isFilterActive;
+  }
+
+  onEnter(value: string) {
+    this.value = value;
+    if (this.value !== null || this.value !== '') {
+        this.router.navigate(['search/' + this.value]);
+    }
   }
 
 }

@@ -1,5 +1,5 @@
-app-site-card{
-    .container-fluid{
+app-search-result {
+    .container-fluid {
         max-width: 1700px;
         padding: 0;
         margin: 0 auto;
@@ -13,12 +13,15 @@ app-site-card{
             font-weight: bold;
         }
     }
-    .row{
+    .row {
         justify-content: center;
-        padding:0;
+        padding: 0;
         margin-top: 30px;
+        .noResult{
+            min-height: calc(100vh - 520px);
+        }
     }
-    mat-card{
+    mat-card {
         margin-left: auto;
         margin-right: auto;
         max-width: 420px;
@@ -31,7 +34,7 @@ app-site-card{
             opacity: 0.7;
             cursor: pointer;
         }
-        &-content{
+        &-content {
             height: 65px;
             font-size: 14px !important;
             @media #{$medium-screen} {
@@ -44,23 +47,23 @@ app-site-card{
             margin-bottom: 10px;
             text-transform: uppercase;
             font-weight: bold !important;
-            color:#666666;
+            color: #666666;
             @media #{$medium-screen} {
                 font-size: 12px !important;
                 width: 75%;
                 margin-bottom: 5px !important;
             }
         }
-        p{
+        p {
             margin-bottom: 0;
             line-height: 18px;
         }
         mat-spinner {
-          margin: auto;
+            margin: auto;
         }
 
     }
-    .mat-card{
+    .mat-card {
         &-image {
             max-width: 420px;
             min-height: 300px;
@@ -84,7 +87,7 @@ app-site-card{
                 display: none;
             }
         }
-        &-creator{
+        &-creator {
             color: #999999;
             font-weight: bold;
         }
@@ -93,7 +96,7 @@ app-site-card{
         }
 
     }
-    .awards-medals-list{
+    .awards-medals-list {
         position: absolute;
         bottom: 65px;
         right: 10px;
