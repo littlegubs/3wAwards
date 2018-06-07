@@ -10,12 +10,6 @@ import {Award} from './Award';
 export class Project extends ProjectBase {
   id: number;
 
-  setProjectRatingMemberAtNull(): Project {
-    this.projectRatingMember = new ProjectRatingMember();
-    this.projectRatingMember['@id'] = [];
-    return this;
-  }
-
   setMembersatNull(): Project {
     this.members = new Member();
     this.members['@id'] = [];

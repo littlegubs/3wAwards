@@ -230,5 +230,9 @@
         "IMAGE": "Captures d'écran"
       }
     }
+  },
+  "ERROR": {
+    "BUTTON": "Retour",
+    "404": "Cette page n'existe pas"
   }
 }
