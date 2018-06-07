@@ -9,6 +9,7 @@ import {ProjectProfileComponent} from './front/project-profile/project-profile.c
 import {ProjectFormComponent} from './front/project-form/project-form.component';
 import {AddAgencyComponent} from './front/add-agency/add-agency.component';
 import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
+import {UpdateProjectFormComponent} from './front/update-project-form/update-project-form.component';
 import {SearchResultComponent} from './front/search-result/search-result.component';
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
     {path: 'agency/:id', component: AgencyProfileComponent},
     {path: 'client/:id', component: ClientProfileComponent},
     {path: 'project/:id', component: ProjectProfileComponent},
+    {path: 'updateProject/:id', component: UpdateProjectFormComponent},
     {path: 'project/:id/vote', component: ProjectFormVoteComponent},
     {path: 'profile', component: MemberProfileComponent},
     {path: 'project', component: ProjectFormComponent},

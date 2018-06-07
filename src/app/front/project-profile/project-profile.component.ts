@@ -10,7 +10,6 @@ import {TokenInterface} from '../../tokenInterface';
 import {Member} from '../../../backend/model';
 import {ConnectionDialogComponent} from '../connection-dialog/connection-dialog.component';
 import {HttpClient} from '@angular/common/http';
-import {number} from 'ng2-validation/dist/number';
 
 @Component({
   selector: 'app-project-profile',

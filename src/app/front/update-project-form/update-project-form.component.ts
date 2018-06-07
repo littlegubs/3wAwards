@@ -6,12 +6,13 @@ import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-project-form',
-  templateUrl: './project-form.component.html',
+  selector: 'app-update-project-form',
+  templateUrl: './update-project-form.component.html',
 })
-export class ProjectFormComponent implements OnInit {
+export class UpdateProjectFormComponent implements OnInit {
   form: Form<Project>;
   tokenStorage = localStorage.getItem('user_token');
   userInfo: TokenInterface;
@@ -23,6 +24,8 @@ export class ProjectFormComponent implements OnInit {
   challengeValue: string;
   typeTags: TypeTag[] = [];
   projectTags: Tag[] = [];
+  accessibility: Tag[] = [];
+  challenge: Tag[] = [];
   siteTypeTags: Tag[] = [];
   businessTags: Tag[] = [];
   targetTags: Tag[] = [];
@@ -44,19 +47,20 @@ export class ProjectFormComponent implements OnInit {
   idTarget: number;
   idSiteType: number;
   addOnBlur = true;
+  agencyOrClientName: string;
   separatorKeysCodes = [ENTER, COMMA];
-    tiles = [
-        {text: 'One', cols: 2, rows: 2, color: 'lightblue'},
-        {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
-        {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-        {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-    ];
+  tiles = [
+    {text: 'One', cols: 2, rows: 2, color: 'lightblue'},
+    {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
+    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
+  ];
   colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
-              private  siteTypesService: SiteTypesService) {
+              private  siteTypesService: SiteTypesService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -84,6 +88,25 @@ export class ProjectFormComponent implements OnInit {
     );
     this.getAllTypeTag();
     this.createNewProject();
+    this.route.params.subscribe(params => {
+      this.projectsService.get(params.id).subscribe(
+        res => {
+          this.project = res;
+          console.log(this.project);
+          if (this.project.agency === null) {
+            this.agencyOrClientName = this.project.client.name;
+          } else {
+            this.agencyOrClientName = this.project.agency.name;
+          }
+          this.form = this.formService.makeForm<Project>(this.project);
+          this.projectTags = this.project.tags;
+          this.credits = this.project.credits;
+          this.refreshTagsArray();
+        },
+        err => {
+        }
+      );
+    });
   }
 
   createNewProject(): void {
@@ -93,70 +116,15 @@ export class ProjectFormComponent implements OnInit {
   commitProject(): void {
     if (this.form.group.dirty && this.form.group.valid) {
       const newProject = this.form.get();
-      newProject.projectRatingMember = [];
-      newProject.status = 'accepted';
+      newProject.projectRatingMember = Object.values(this.project.projectRatingMember).map(projectRatingMember => projectRatingMember['@id']);
       if (newProject.id) {
+        newProject.setImagesAtNull();
+        console.log(newProject);
+        newProject.tags = this.projectTags;
         this.projectsService.update(newProject).subscribe();
       } else {
-
-        if (this.member.agencies[0] === undefined) {
-          this.idClient = this.member.clients[0].id;
-        } else {
-          this.idAgency = this.member.agencies[0].id;
-        }
-
-        if (this.idClient !== undefined) {
-          newProject.setAgencyAtNull();
-          newProject.setClient(this.idClient);
-        } else {
-          newProject.setClientAtNull();
-          newProject.setAgency(this.idAgency);
-        }
-
-        newProject.averageRating = 0;
-        newProject.averageOriginalityRatingsJudge = 0;
-        newProject.averageOriginalityRatingsMember = 0;
-        newProject.averageReadabilityRatingsJudge = 0;
-        newProject.averageReadabilityRatingsMember = 0;
-        newProject.averageErgonomicRatingsJudge = 0;
-        newProject.averageErgonomicRatingsMember = 0;
-        newProject.averageInteractivityRatingsJudge = 0;
-        newProject.averageInteractivityRatingsMember = 0;
-        newProject.averageQualityContentRatingsJudge = 0;
-        newProject.averageQualityContentRatingsMember = 0;
-        newProject.averageWeatlhFunctionalityRatingsJudge = 0;
-        newProject.averageWeatlhFunctionalityRatingsMember = 0;
-        newProject.averageReactivityRatingsMember = 0;
-        newProject.averageReactivityRatingsJudge = 0;
-        newProject.averageUsersRatings = 0;
-        newProject.averageJudgeRatings = 0;
-        if (this.accessibilityValue !== undefined) {
-          this.addTag(this.accessibilityValue.toString(), 'accessibility');
-        }
-
-        if (this.challengeValue !== undefined) {
-          this.addTag(this.challengeValue.toString(), 'challenge');
-        }
-        newProject.tags = this.projectTags;
-        newProject.setMembersatNull();
-        newProject.setImagesAtNull();
-        newProject.setAwardsAtNull();
-        newProject.credits = this.credits;
-
-        if (this.idSiteType === undefined) {
-          newProject.setSiteType(this.siteTypes[0].id);
-        } else {
-          newProject.setSiteType(this.idSiteType);
-        }
-        if (this.idTarget === undefined) {
-          newProject.setTarget(this.targets[0].id);
-        } else {
-          newProject.setTarget(this.idTarget);
-        }
-        this.projectsService.add(newProject).subscribe();
+        this.form.displayErrors();
       }
-    } else {
-      this.form.displayErrors();
     }
   }
 
@@ -276,6 +244,8 @@ export class ProjectFormComponent implements OnInit {
     this.purposeTags = this.projectTags.filter(tag => tag.type.libelle === 'purpose');
     this.languageTags = this.projectTags.filter(tag => tag.type.libelle === 'language');
     this.budgetFork = this.projectTags.filter(tag => tag.type.libelle === 'budget_fork');
+    this.challenge =  this.projectTags.filter(tag => tag.type.libelle === 'challenge');
+    this.accessibility =  this.projectTags.filter(tag => tag.type.libelle === 'accessibility');
   }
 
   onAccessibilityRatingChange($event) {
@@ -304,5 +274,4 @@ export class ProjectFormComponent implements OnInit {
       }
     }
   }
-
 }

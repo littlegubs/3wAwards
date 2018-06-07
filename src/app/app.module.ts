@@ -84,6 +84,7 @@ import {MemberAwardProjectTableComponent} from './front/member-award-project-tab
 import {AdminPageComponent} from './admin/admin-page/admin-page.component';
 import {RouterModule} from '@angular/router';
 import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
+import { UpdateProjectFormComponent } from './front/update-project-form/update-project-form.component';
 import { SearchResultComponent } from './front/search-result/search-result.component';
 
 
@@ -127,7 +128,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     MemberAwardProjectTableComponent,
     AdminPageComponent,
     ProjectFormVoteComponent,
-    SearchResultComponent,
+    UpdateProjectFormComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -199,6 +201,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AuthService,
     GlobalsService,
     MatNativeDateModule,
+    TagsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

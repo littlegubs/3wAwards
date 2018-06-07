@@ -1,4 +1,4 @@
-<div class="container" *ngIf="member && typeTags && siteTypes && targets; else loading">
+<div class="container" *ngIf="member && typeTags && siteTypes && targets && project; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-project">
       <form [formGroup]="form.group" (submit)="commitProject()" autocomplete="off">
@@ -11,21 +11,27 @@
               <div class="col-sm-8" *ngIf="member.agencies[0] !== undefined && member.clients[0] !== undefined">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
                         (change)="getTheSelectedValue(agencyClientSelect.value)">
-                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}
+                  <option *ngFor="let agency of member.agencies" [selected]="agency.name == agencyOrClientName"
+                          [value]="['agency', agency.id]">{{agency.name}}
                   </option>
-                  <option *ngFor="let client of member.clients" [value]="['client', client.id]">{{client.name}}</option>
+                  <option *ngFor="let client of member.clients" [selected]="client.name == agencyOrClientName"
+                          [value]="['client', client.id]">{{client.name}}
+                  </option>
                 </select>
               </div>
               <div class="col-sm-8" *ngIf="member.agencies[0] == undefined">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
                         (change)="getTheSelectedValue(agencyClientSelect.value)">
-                  <option *ngFor="let client of member.clients" [value]="['client', client.id]">{{client.name}}</option>
+                  <option *ngFor="let client of member.clients" [selected]="client.name == agencyOrClientName"
+                          [value]="['client', client.id]">{{client.name}}
+                  </option>
                 </select>
               </div>
               <div class="col-sm-8" *ngIf="member.clients[0] === undefined">
                 <select id="agencyClientSelect" class="form-control" #agencyClientSelect
                         (change)="getTheSelectedValue(agencyClientSelect.value)">
-                  <option *ngFor="let agency of member.agencies" [value]="['agency', agency.id]">{{agency.name}}
+                  <option *ngFor="let agency of member.agencies" [selected]="agency.name == agencyOrClientName"
+                          [value]="['agency', agency.id]">{{agency.name}}
                   </option>
                 </select>
               </div>
@@ -70,7 +76,8 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <select id="siteType" class="form-control margin" #siteType (change)="getSiteType(siteType.value)">
-                  <option *ngFor="let siteType of siteTypes" [value]="siteType.id">{{siteType.libelle}}
+                  <option *ngFor="let siteType of siteTypes" [selected]="siteType.libelle == project.siteType.libelle"
+                          [value]="siteType.id">{{siteType.libelle}}
                   </option>
                 </select>
               </div>
@@ -96,7 +103,8 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <select id="target" class="form-control margin" #target (change)="getTarget(target.value)">
-                  <option *ngFor="let target of targets" [value]="target.id">{{target.libelle}}
+                  <option *ngFor="let target of targets" [selected]="target.libelle == project.target.libelle"
+                          [value]="target.id">{{target.libelle}}
                   </option>
                 </select>
               </div>
@@ -122,7 +130,8 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <input  matInput id="budget_fork" #budget_fork  (change)="addTag(budget_fork.value, 'budget_fork')"/>
+                  <input matInput id="budget_fork" #budget_fork [value]="budgetFork[0].libelle"
+                         (change)="addTag(budget_fork.value, 'budget_fork')"/>
                 </mat-form-field>
               </div>
               <label for="language" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.LANGUAGE' |
@@ -216,14 +225,14 @@
               <label for="accessibility" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.ACCESSIBILITY' |
                 translate}} :</label>
               <div class="col-sm-8">
-                <star-rating
-                  [starType]="'svg'"
-                  speed="noticable"
-                  [rating]="0"
-                  [hoverEnabled]="true"
-                  [numOfStars]="3"
-                  (ratingChange)="onAccessibilityRatingChange($event)">
-                </star-rating>
+                    <star-rating
+                      [starType]="'svg'"
+                      speed="noticable"
+                      [rating]="accessibility[0].libelle"
+                      [hoverEnabled]="true"
+                      [numOfStars]="3"
+                      (ratingChange)="onAccessibilityRatingChange($event)">
+                    </star-rating>
               </div>
               <label for="agencyMission" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.AGENCY_MISSION' |
                 translate}} :</label>
@@ -298,18 +307,18 @@
                   </mat-chip-list>
                 </mat-form-field>
               </div>
-              <label for="CmsTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.CMS' |
+              <label for="cmsTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.CMS' |
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <mat-chip-list #chipListCustomTags>
+                  <mat-chip-list #chipListCmsTags>
                     <mat-chip *ngFor="let cms of cmsTags"
                               [removable]="true" (remove)="removeTag(cms.libelle)">
                       {{cms.libelle}}
                       <mat-icon matChipRemove>x</mat-icon>
                     </mat-chip>
-                    <input id="CmsTags"
-                           [matChipInputFor]="chipListCustomTags"
+                    <input id="cmsTags"
+                           [matChipInputFor]="chipListCmsTags"
                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                            [matChipInputAddOnBlur]="addOnBlur"
                            (matChipInputTokenEnd)="addTags($event, 'cms')"/>
@@ -320,16 +329,16 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <star-rating
-                  [starType]="'svg'"
-                  speed="noticable"
-                  [rating]="0"
-                  [hoverEnabled]="true"
-                  [numOfStars]="5"
-                  (ratingChange)="onChallengeRatingChange($event)">
+                             [starType]="'svg'"
+                             speed="noticable"
+                             [rating]="challenge[0].libelle"
+                             [hoverEnabled]="true"
+                             [numOfStars]="5"
+                             (ratingChange)="onChallengeRatingChange($event)">
                 </star-rating>
               </div>
             </div>
-              <p class="form-categ">{{'FRONT.FORM_PROJECT.CREDIT' | translate}}</p>
+            <p class="form-categ">{{'FRONT.FORM_PROJECT.CREDIT' | translate}}</p>
             <div class="form-group row credits-form">
               <label for="firstName" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.FIRSTNAME' | translate}}
                 :</label>
@@ -368,12 +377,13 @@
               </button>
             </div>
             <div class="form-group row">
-              <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}} <i class="fas fa-plus-circle add-image"></i></p>
-              <mat-grid-list cols="2" rowHeight="300px" class="images-grid" >
+              <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}} <i
+                class="fas fa-plus-circle add-image"></i></p>
+              <mat-grid-list cols="2" rowHeight="300px" class="images-grid">
                 <mat-grid-tile
-                        *ngFor="let tile of tiles, let i = index"
-                        [colspan]="tile.cols"
-                        [rowspan]="tile.rows">
+                  *ngFor="let tile of tiles, let i = index"
+                  [colspan]="tile.cols"
+                  [rowspan]="tile.rows">
                   <span class="legend"> Cette image sera utilisée pour la thumbnail de votre projet </span>
                   <div *ngIf="tile[i] > 0; else noThumbnail">
                     <!--<img *ngIf="client.image.path | liip:'card_thumbnail' as projectImage" [src]="'url('+projectImage+')'"/>-->
