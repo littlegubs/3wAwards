@@ -10,6 +10,8 @@ import {AddAgencyComponent} from './add-agency/add-agency.component';
 import {ProjectFormVoteComponent} from './project-form-vote/project-form-vote.component';
 import {Error404Component} from '../error404/error404.component';
 import {FrontComponent} from './front.component';
+import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency.component';
+import {UpdateProjectFormComponent} from './update-project-form/update-project-form.component';
 
 
 const routes: Routes = [
@@ -22,7 +24,9 @@ const routes: Routes = [
       {path: 'project/:id/vote', component: ProjectFormVoteComponent},
       {path: 'profile', component: MemberProfileComponent},
       {path: 'project', component: ProjectFormComponent},
-      {path: 'addAgency', component: AddAgencyComponent},
+      {path: 'agency', component: AddAgencyComponent},
+      {path: 'update-agency/:id', component: UpdateFormAgencyComponent},
+      {path: 'update-project/:id', component: UpdateProjectFormComponent},
     ]},
 ];
 

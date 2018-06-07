@@ -41,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FrontComponent } from './front.component';
+import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency.component';
 
 @NgModule({
   imports: [
@@ -91,6 +92,8 @@ import { FrontComponent } from './front.component';
     FrontComponent,
     UpdateProjectFormComponent,
     SearchResultComponent,
+    UpdateFormAgencyComponent,
+    AddAgencyComponent,
   ]
 })
 export class FrontModule { }
