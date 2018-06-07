@@ -236,6 +236,9 @@ th {
   padding: 0;
 }
 
+mat-progress-bar{
+  margin-bottom: calc(100vh - 495px);
+}
 
 @import '~@angular/material/theming';
 

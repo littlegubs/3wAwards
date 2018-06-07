@@ -48,6 +48,9 @@ app-search{
             left: 0;
             top: 90px;
             z-index: 9999;
+            @media #{$smallest-screen} {
+                top: 185px;
+            }
         }
         &:not(.show) {
             app-filter{

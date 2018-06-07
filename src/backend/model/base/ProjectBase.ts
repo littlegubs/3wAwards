@@ -38,7 +38,7 @@ export class ProjectBase {
   averageJudgeRatings: number;
   noticableDescription: string;
   status: string;
-  projectRatingMember: ProjectRatingMember;
+  projectRatingMember: ProjectRatingMember[];
   client: Client;
   agency: Agency;
   target: Target;
@@ -49,13 +49,6 @@ export class ProjectBase {
   images: Image;
   awards: Award;
   projectUrl: string;
-
-  setProjectRatingMember(id: number): ProjectBase {
-    this.projectRatingMember = new ProjectRatingMember();
-    this.projectRatingMember.id = id;
-    this.projectRatingMember['@id'] = '/project_rating_members/' + id;
-    return this;
-  }
 
   setClient(id: number): ProjectBase {
     this.client = new Client();
