@@ -1,9 +1,19 @@
 <h1>Menu</h1>
 <div class="admin-menu">
-  <p [routerLink]="['/admin']"><i class="fas fa-tachometer-alt"></i> Dashboard </p>
-  <p [routerLink]="['projects']"><i class="fas fa-code"></i> Projets</p>
-  <p><i class="fas fa-cogs"></i> Paramètres </p>
-  <p [routerLink]="['members']"><i class="far fa-address-book"></i> Membres </p>
-  <p><i class="fas fa-users"></i> Jury </p>
-  <p><i class="fas fa-trophy"></i> Award </p>
+  <div><p [routerLink]="['/admin']"><i class="fas fa-tachometer-alt"></i> Dashboard </p></div>
+  <div><p [routerLink]="['projects']"><i class="fas fa-code"></i> Projets</p></div>
+  <div><p><i class="fas fa-cogs"></i> Paramètres </p></div>
+  <div><p [routerLink]="['members']"><i class="far fa-address-book"></i> Membres </p></div>
+  <div><p><i class="fas fa-users"></i> Jury </p></div>
+  <div>
+    <p (click)="isClicked = !isClicked">
+      <i class="fas fa-trophy"></i>
+      Award
+      <i class="fas fa-chevron-down" *ngIf="isClicked === false"></i>
+      <i class="fas fa-chevron-up" *ngIf="isClicked === true"></i>
+    </p>
+    <div class="dropdown-custom" [ngClass]="{'clicked': isClicked }">
+      <p>Ajouter</p>
+    </div>
+  </div>
 </div>

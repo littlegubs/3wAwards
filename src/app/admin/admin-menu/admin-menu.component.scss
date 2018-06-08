@@ -16,24 +16,42 @@ app-admin-menu{
         }
     }
     .admin-menu {
-        > p {
-            margin: 0 -10px;
-            padding: 20px 10px;
-            transition: background 0.5s ease;
-            cursor: pointer;
-            &:after {
-                content: '';
-                width: 200px;
-                border-bottom: 2px solid #4b4c4c;
-                height: 2px;
-                display: block;
-                position: relative;
-                bottom: -20px;
-                margin: 0 auto;
-                left: -10px;
+        > div, .dropdown-custom {
+            > p {
+                margin: 0 -10px;
+                padding: 20px 10px;
+                transition: background 0.5s ease;
+                cursor: pointer;
+                &:after {
+                    content: '';
+                    width: 200px;
+                    border-bottom: 2px solid #4b4c4c;
+                    height: 2px;
+                    display: block;
+                    position: relative;
+                    bottom: -20px;
+                    margin: 0 auto;
+                    left: -10px;
+                }
+                &:hover {
+                    background: #2b2b2b;
+                }
+                i{
+                    &.fa-chevron-down, &.fa-chevron-up{
+                        float: right;
+                        padding-top: 5px;
+                        padding-right: 5px;
+                    }
+                }
             }
-            &:hover{
-                background: #2b2b2b;
+            .dropdown-custom{
+                display: none;
+                &.clicked{
+                    display: block;
+                }
+                > p{
+                    padding-left: 10px;
+                }
             }
         }
     }
