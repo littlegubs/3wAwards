@@ -6,8 +6,7 @@ import {GlobalsService} from '../../globals.service';
 
 @Component({
   selector: 'app-table-projects',
-  templateUrl: './table-projects.component.html',
-  styleUrls: ['./table-projects.component.scss']
+  templateUrl: './table-projects.component.html'
 })
 export class TableProjectsComponent implements OnInit {
   projects: Project[];
@@ -27,8 +26,8 @@ export class TableProjectsComponent implements OnInit {
   }
 
   pagination(value: number): void {
+    this.projects = undefined;
     this.pageNumber = this.pageNumber + value;
-    console.log(this.pageNumber);
     this.projectsService.getAll(this.pageNumber).subscribe(
       res => {
         this.projects = res;

@@ -1,53 +1,60 @@
-<table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">Id</th>
-    <th scope="col">Nom du Projet</th>
-    <th scope="col">Agence / Client</th>
-    <th scope="col">Type de site</th>
-    <th scope="col">Url</th>
-    <th scope="col">Statut</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr  *ngFor="let project of projects">
-    <td>{{project.id}}</td>
-    <td>{{project.projectName}}</td>
-    <td *ngIf="project.agency === null">{{project.client.name}}</td>
-    <td *ngIf="project.client === null">{{project.agency.name}}</td>
-    <td>{{project.siteType.libelle}}</td>
-    <td>{{project.projectUrl}}</td>
-    <td *ngIf="project.status === 'accepted'">
-      {{project.status}}
-      <button mat-raised-button color="warn" (click)="updateStatus(project.id, 'refused')">Refuser</button>
-    </td>
-    <td *ngIf="project.status === 'refused'">
-      {{project.status}}
-      <button mat-raised-button color="primary" (click)="updateStatus(project.id, 'accepted')">Accepter</button>
-    </td>
-    <td *ngIf="project.status === 'pending'">
-      <button mat-raised-button color="primary" (click)="updateStatus(project.id, 'accepted')">Accepter</button>
-      {{project.status}}
-      <button mat-raised-button color="warn" (click)="updateStatus(project.id, 'refused')">Refuser</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li *ngIf="pageNumber !== 1" class="page-item" (click)="pagination(-1)">
-      <a class="page-link"  aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <li class="page-item" (click)="pagination(1)">
-      <a class="page-link" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-
+<div class="container-fluid" *ngIf="projects; else loading">
+  <div class="row">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nom du Projet</th>
+          <th scope="col">Agence / Client</th>
+          <th scope="col">Type de site</th>
+          <th scope="col">Url</th>
+          <th scope="col">Statut</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects">
+          <td>{{project.projectName}}</td>
+          <td *ngIf="project.agency === null">{{project.client.name}}</td>
+          <td *ngIf="project.client === null">{{project.agency.name}}</td>
+          <td>{{project.siteType.libelle}}</td>
+          <td id="url">{{project.projectUrl}}</td>
+          <td> {{project.status}}</td>
+          <td *ngIf="project.status === 'accepted'" class="actions">
+            <button mat-raised-button disabled="disabled" (click)="updateStatus(project.id, 'accepted')">Accepter</button>
+            <button mat-raised-button color="warn" (click)="updateStatus(project.id, 'refused')">Refuser</button>
+          </td>
+          <td *ngIf="project.status === 'refused'" class="actions">
+            <button mat-raised-button color="primary" (click)="updateStatus(project.id, 'accepted')">Accepter</button>
+            <button mat-raised-button disabled="disabled" (click)="updateStatus(project.id, 'refused')">Refuser</button>
+          </td>
+          <td *ngIf="project.status === 'pending'" class="actions">
+            <button mat-raised-button color="primary" (click)="updateStatus(project.id, 'accepted')">Accepter</button>
+            <button mat-raised-button color="warn" (click)="updateStatus(project.id, 'refused')">Refuser</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row paginator" *ngIf="projects.length > 12">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li>Projets : {{projects.length}} | Page : {{pageNumber}}/{{projects.pagination.last}}</li>
+        <li *ngIf="pageNumber !== 1" class="page-item" (click)="pagination(-1)">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item" (click)="pagination(1)">
+          <a class="page-link" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>

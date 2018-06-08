@@ -5,13 +5,14 @@ app-admin{
         background-color: #303030 !important;
         color: white !important;
         padding: 0 10px 25px 10px;
+        overflow-y: hidden;
         &-content {
             padding: 25px 25px 0 25px !important;
             background-color: #e2e2e2 !important;
             min-height: 100vh;
             .admin{
                 &-header {
-                    margin: -25px -25px 0px -25px;
+                    margin: -25px -25px 25px -25px;
                     padding: 20px 25px;
                     background-color: white;
                     img {
@@ -25,6 +26,11 @@ app-admin{
                     right: 50px;
                     top: 33px;
                 }
+            }
+            mat-progress-bar{
+                margin-top: -25px !important;
+                margin-left: -25px !important;
+                width: calc(100% + 50px) !important;
             }
         }
     }
