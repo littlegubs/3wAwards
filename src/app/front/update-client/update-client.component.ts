@@ -20,7 +20,7 @@ export class UpdateClientComponent implements OnInit {
     userInfo: TokenInterface;
     member: Member;
     typeTags: TypeTag[] = [];
-    tags: Tag;
+    tags: Tag[] = [];
     clientTags: Tag[] = [];
     idTypeClient: number;
     customTags: Tag[] = [];

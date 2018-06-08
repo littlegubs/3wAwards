@@ -1,7 +1,7 @@
 <div class="container" *ngIf="agency && typeTags; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-profile">
-      <form [formGroup]="form.group" (submit)="commitAgency()" autocomplete="off">
+      <form [formGroup]="form.group" autocomplete="off">
         <div class="row">
           <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
             <p class="form-categ">{{'FRONT.FORM_AGENCY.IDENTITY' | translate}} :</p>
@@ -152,6 +152,17 @@
             </div>
           </div>
         </div>
+        <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
+          <div class="form-group row upload-profile-pic">
+            <p class="col-form-label">Photo / Avatar</p>
+            <img class="profile-pic"
+                 [src]="url ? url : 'assets/imgs/user_placeholder.png'">
+            <i class="far fa-trash-alt"></i>
+            <input type="file" name="file" id="file" class="inputfile" (change)="fileUpload($event)"/>
+            <label for="file">UPLOAD</label>
+            <i class="fas fa-info-circle"></i>
+          </div>
+        </div>
         <div class="row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <div class="form-group row">
@@ -159,7 +170,7 @@
                 <button type="reset" class="btn btn-main-white-full revert">
                   {{'FRONT.FORM_AGENCY.CANCEL' | translate}}
                 </button>
-                <button type="submit" class="btn btn-main-red-full submit">
+                <button type="button" class="btn btn-main-red-full submit" (click)="commitAgency()">
                   {{'FRONT.FORM_AGENCY.SAVE' | translate}}
                 </button>
               </div>

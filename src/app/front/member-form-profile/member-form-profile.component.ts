@@ -17,7 +17,6 @@ export class MemberFormProfileComponent implements OnInit {
   form: Form<Member>;
   addOnBlur = true;
   file: File;
-  fileReader: FileReader;
   url;
   // EVENTS_KEYBORDS
   separatorKeysCodes = [ENTER, COMMA];

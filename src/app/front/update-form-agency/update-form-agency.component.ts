@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {MembersService, AgenciesService, TypeTagsService, TypeAgenciesService} from '../../../backend/services';
-import {Agency, Member, TypeTag, Tag, TypeAgency} from '../../../backend/model';
+import {Agency, Member, TypeTag, Tag, TypeAgency, Image} from '../../../backend/model';
 import {FormService, Form} from '../../../backend/forms';
 import {MatChipInputEvent} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
 
 @Component({
   selector: 'app-update-form-agency',
@@ -24,9 +26,12 @@ export class UpdateFormAgencyComponent implements OnInit {
   customTags: Tag[] = [];
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
+  file: File;
+  url;
 
   constructor(private agenciesService: AgenciesService, private formService: FormService, private typeTagService: TypeTagsService,
-              private membersService: MembersService, private  typeAgenciesService: TypeAgenciesService, private route: ActivatedRoute) {
+              private membersService: MembersService, private  typeAgenciesService: TypeAgenciesService,
+              private route: ActivatedRoute, private http: HttpClient, private globals: GlobalsService, private router: Router) {
   }
 
   ngOnInit() {
@@ -70,10 +75,24 @@ export class UpdateFormAgencyComponent implements OnInit {
   commitAgency(): void {
     if (this.form.group.dirty && this.form.group.valid) {
       const newAgency = this.form.get();
+        newAgency.image = null;
+        if (this.file) {
+            const image = new Image();
+            const formData = new FormData();
+            formData.append('xd', this.file);
+            this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
+                image.path = data;
+                image.libelle = this.file.name;
+                newAgency.image = image;
+            });
+        }
       if (newAgency.id) {
         newAgency.tags = this.agencyTags;
         newAgency.setTypeAgency(this.idTypeAgency);
-        this.agenciesService.update(newAgency).subscribe(agency => console.log('yeah!'));
+        this.agenciesService.update(newAgency).subscribe(agency => {
+            console.log('yeah!');
+            this.router.navigate(['/update-agency/' + agency.id]);
+        });
       } else {
         this.form.displayErrors();
       }
@@ -84,6 +103,17 @@ export class UpdateFormAgencyComponent implements OnInit {
     this.idTypeAgency = value;
   }
 
+    fileUpload($event: any) {
+        const fileList: FileList = $event.target.files;
+        if (fileList.length > 0) {
+            this.file = $event.target.files[0];
+            const fileReader = new FileReader();
+            fileReader.onload = (event: any) => {
+                this.url = event.target.result;
+            };
+            fileReader.readAsDataURL(this.file);
+        }
+    }
   addTags(event: MatChipInputEvent, type: string): void {
     if ((event.value || '').trim()) {
       const tag = new Tag();
