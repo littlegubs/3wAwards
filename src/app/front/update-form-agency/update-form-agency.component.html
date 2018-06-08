@@ -1,4 +1,4 @@
-<div class="container" *ngIf="typeTags; else loading">
+<div class="container" *ngIf="agency && typeTags; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-profile">
       <form [formGroup]="form.group" (submit)="commitAgency()" autocomplete="off">
@@ -80,7 +80,8 @@
               <label for="dateCrea" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.CREATION_DATE' | translate}}</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <input matInput id="dateCrea" [matDatepicker]="picker" formControlName="creationDate">
+                  <input matInput id="dateCrea" [matDatepicker]="picker"
+                         formControlName="creationDate">
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
@@ -103,14 +104,16 @@
               <label for="effectif" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.EFFECTIF' | translate}}</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <input #effectif matInput id="effectif" (change)="addTag(effectif.value, 'agency_effectif')">
+                  <input #effectif matInput id="effectif"
+                         (change)="addTag(effectif.value, 'agency_effectif')" [value]="effectifTags[0].libelle">
                 </mat-form-field>
               </div>
               <!-- Status -->
               <label for="status" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.STATUS' | translate}}</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <input #status matInput id="status" (change)="addTag(status.value, 'agency_status')">
+                  <input #status matInput id="status"
+                         (change)="addTag(status.value, 'agency_status')" [value]="statusTags[0].libelle">
                 </mat-form-field>
               </div>
               <!-- duns -->
@@ -120,11 +123,13 @@
                   <input matInput id="duns" formControlName="duns">
                 </mat-form-field>
               </div>
-              <label for="typeAgency" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.TYPE_AGENCY' | translate}}</label>
+              <label for="typeAgency" class="col-sm-4 col-form-label margin">{{'FRONT.FORM_AGENCY.TYPE_AGENCY' | translate}}</label>
               <div class="col-sm-8">
-                <select id="typeAgency" class="form-control" #typeAgency
+                <select id="typeAgency" class="form-control margin" #typeAgency
                         (change)="getTypeAgencies(typeAgency.value)">
-                  <option *ngFor="let typeAgency of typeAgencies" [value]="typeAgency.id">{{typeAgency.libelle}}</option>
+                  <option *ngFor="let typeAgency of typeAgencies" [value]="typeAgency.id" [selected]="typeAgency.libelle == agency.typeAgency.libelle">
+                    {{typeAgency.libelle}}
+                  </option>
                 </select>
               </div>
               <label for="customTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.CUSTOM_TAG' | translate}}</label>
@@ -137,10 +142,10 @@
                       <mat-icon matChipRemove>x</mat-icon>
                     </mat-chip>
                     <input id="customTags"
-                          [matChipInputFor]="chipListCustomTags"
-                          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                          [matChipInputAddOnBlur]="addOnBlur"
-                          (matChipInputTokenEnd)="addTags($event, 'custom')"/>
+                           [matChipInputFor]="chipListCustomTags"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="addTags($event, 'custom')"/>
                   </mat-chip-list>
                 </mat-form-field>
               </div>

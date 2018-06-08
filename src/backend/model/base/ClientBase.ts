@@ -29,6 +29,7 @@ export class ClientBase {
   image: Image;
   projects: Project;
 
+  
   setTags(id: number): ClientBase {
     this.tags = new Tag();
     this.tags.id = id;

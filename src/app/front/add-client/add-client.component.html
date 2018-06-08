@@ -1,7 +1,7 @@
-<div class="container" *ngIf="typeTags; else loading">
+<div class="container" *ngIf=" clients && typeTags; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-profile">
-      <form [formGroup]="form.group" (submit)="commitAgency()" autocomplete="off">
+      <form [formGroup]="form.group" (submit)="commitClient()" autocomplete="off">
         <div class="row">
           <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
             <p class="form-categ">{{'FRONT.FORM_AGENCY.IDENTITY' | translate}} :</p>
@@ -99,33 +99,12 @@
                   <input matInput id="tva" formControlName="tva">
                 </mat-form-field>
               </div>
-              <!-- Effectifs -->
-              <label for="effectif" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.EFFECTIF' | translate}}</label>
-              <div class="col-sm-8">
-                <mat-form-field class="full-width">
-                  <input #effectif matInput id="effectif" (change)="addTag(effectif.value, 'agency_effectif')">
-                </mat-form-field>
-              </div>
-              <!-- Status -->
-              <label for="status" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.STATUS' | translate}}</label>
-              <div class="col-sm-8">
-                <mat-form-field class="full-width">
-                  <input #status matInput id="status" (change)="addTag(status.value, 'agency_status')">
-                </mat-form-field>
-              </div>
               <!-- duns -->
               <label for="duns" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.DUNS' | translate}}</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
                   <input matInput id="duns" formControlName="duns">
                 </mat-form-field>
-              </div>
-              <label for="typeAgency" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.TYPE_AGENCY' | translate}}</label>
-              <div class="col-sm-8">
-                <select id="typeAgency" class="form-control" #typeAgency
-                        (change)="getTypeAgencies(typeAgency.value)">
-                  <option *ngFor="let typeAgency of typeAgencies" [value]="typeAgency.id">{{typeAgency.libelle}}</option>
-                </select>
               </div>
               <label for="customTags" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.CUSTOM_TAG' | translate}}</label>
               <div class="col-sm-8">
