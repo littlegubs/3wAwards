@@ -1,9 +1,33 @@
-<p class="table-header">Projets récents</p>
+<p class="table-header">Membres récents</p>
 <mat-card class="example-card">
-  <mat-card-content>
-    <p>TABLEAU</p>
+  <mat-card-content *ngIf="members; else loading">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Pays</th>
+        <th scope="col">Site</th>
+        <th scope="col">Juge</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let member of members">
+        <td>{{member.firstName}}</td>
+        <td>{{member.lastName}}</td>
+        <td>{{member.country}}</td>
+        <td *ngIf="member.websiteUrl">{{member.websiteUrl}}</td>
+        <td *ngIf="!member.websiteUrl">/</td>
+        <td *ngIf="member.isJudge">Oui</td>
+        <td *ngIf="!member.isJudge">Non</td>
+      </tr>
+      </tbody>
+    </table>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>Voir plus</button>
+    <button mat-button [routerLink]="['members']">Voir plus</button>
   </mat-card-actions>
 </mat-card>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
