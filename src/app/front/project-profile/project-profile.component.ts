@@ -60,6 +60,7 @@ export class ProjectProfileComponent implements OnInit {
         width: '530px',
       });
       dialogRef.afterClosed().subscribe(result => {
+        console.log(result);
       });
     } else {
       dialogRef = this.dialog.open(ConnectionDialogComponent);

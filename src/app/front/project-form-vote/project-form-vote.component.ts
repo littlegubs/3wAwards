@@ -23,16 +23,10 @@ export class ProjectFormVoteComponent implements OnInit {
 
   ratingsForProject: ProjectRatingMember[];
   categoryEnum = CategoryEnum;
-  userOriginalityVote: number;
-  userGraphismVote: number;
-  userNavigationVote: number;
-  userInteractivityVote: number;
-  userContentQualityVote: number;
-  userFunctionnalityVote: number;
-  userReactivityyVote: number;
   loading = false;
   categories: Category[];
   votes = {};
+  zz = Object.keys(this.votes);
   isVoteJudge = false;
 
   get tickInterval(): number | 'auto' {
@@ -48,19 +42,35 @@ export class ProjectFormVoteComponent implements OnInit {
               private categoryService: CategoriesService) {
     this.categoryService.getAll().subscribe(res => {
       this.categories = res;
+      this.ratingsForProject = data.member.projectRatingMember.filter(
+        projectRatingMemberToFind => projectRatingMemberToFind.project.id === data.project.id);
+      for (const categ of Object.keys(CategoryEnum)) {
+        this.votes[categ] = this.retrieveRatingsValue(CategoryEnum[categ]);
+      }
+      console.log(this.votes);
+      this.zz = Object.keys(this.votes);
+      console.log(this.zz);
     });
-    this.ratingsForProject = data.member.projectRatingMember.filter(
-      projectRatingMemberToFind => projectRatingMemberToFind.project.id === data.project.id);
-    console.log(this.ratingsForProject.length);
-    for (const categ of Object.keys(CategoryEnum)) {
-      this.votes[categ] = this.retrieveRatingsValue(CategoryEnum[categ]);
-    }
   }
 
   sendVote() {
-    for (const categ of Object.keys(CategoryEnum)) {
+    const [last] = Object.keys(CategoryEnum).reverse();
+    Object.keys(CategoryEnum).forEach(categ => {
       this.loading = true;
-      const projectRatingMember = new ProjectRatingMember();
+      console.log(this.votes[categ]);
+      this.projectRatingMemberService[this.ratingsForProject.length === 0 ? 'add' : 'update'](this.votes[categ])
+        .subscribe(() => last === categ && this.dialogRef.close());
+    });
+  }
+
+  ngOnInit() {
+  }
+
+  retrieveRatingsValue(category: string) {
+    let projectRatingMember = this.ratingsForProject.find(
+      projectRatingMemberToFind => projectRatingMemberToFind.rating.category.libelle === category);
+    if (!projectRatingMember) {
+      projectRatingMember = new ProjectRatingMember();
       projectRatingMember.setMember(this.data.member.id);
       projectRatingMember.setProject(this.data.project.id);
       projectRatingMember.isVoteJudge = this.isVoteJudge;
@@ -68,33 +78,19 @@ export class ProjectFormVoteComponent implements OnInit {
 
       let categFound = false;
       let i = 0;
-      let category: Category;
+      let categ: Category;
       while (categFound === false && i < this.categories.length) {
-        if (this.categories[i].libelle === CategoryEnum[categ]) {
+        if (this.categories[i].libelle === category) {
           categFound = true;
-          category = this.categories[i];
+          categ = this.categories[i];
         }
         i++;
       }
       const rating = new Rating();
-      rating.setCategory(category.id);
-      rating.value = this.votes[categ];
+      rating.setCategory(categ.id);
+      rating.value = 0;
       projectRatingMember.rating = rating;
-
-      if (this.ratingsForProject.length === 0) {
-        this.projectRatingMemberService.add(projectRatingMember).subscribe(() => this.loading = false);
-      } else {
-        this.projectRatingMemberService.update(projectRatingMember).subscribe(() => this.loading = false);
-      }
     }
-  }
-
-  ngOnInit() {
-  }
-
-  retrieveRatingsValue(category: string) {
-    const projectRatingMember = this.ratingsForProject.find(
-      projectRatingMemberToFind => projectRatingMemberToFind.rating.category.libelle === category);
-    return projectRatingMember ? projectRatingMember.rating.value : 0;
+    return projectRatingMember;
   }
 }
