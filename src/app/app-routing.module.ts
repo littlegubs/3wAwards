@@ -1,6 +1,6 @@
-import { AdminPageComponent } from './admin/admin-page/admin-page.component';
+import {AdminPageComponent} from './admin/admin-page/admin-page.component';
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './front/home/home.component';
 import {AgencyProfileComponent} from './front/agency-profile/agency-profile.component';
 import {ClientProfileComponent} from './front/client-profile/client-profile.component';

@@ -1,32 +1,31 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {BootstrapModule} from './bootstrap.module';
-import {NbThemeModule, NbSidebarModule, NbLayoutModule, NbSidebarService} from '@nebular/theme';
+import {NbLayoutModule, NbSidebarModule, NbSidebarService, NbThemeModule} from '@nebular/theme';
 import {
-    MatButtonModule,
-    MatDialogModule,
-    MatSlideToggleModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatTabsModule,
-    MatRadioModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatProgressBarModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatIconModule,
-    MatSelectModule,
-    MatTableModule,
-    MatTooltipModule,
-    MatGridListModule,
-    MatSliderModule,
-    MatPaginatorModule,
-    MatSortModule
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatTooltipModule
 } from '@angular/material';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {ConnectionDialogComponent} from './front/connection-dialog/connection-dialog.component';
@@ -40,9 +39,9 @@ import {SearchComponent} from './front/search/search.component';
 import {HomeComponent} from './front/home/home.component';
 import {WebsiteComponent} from './front/website/website.component';
 import {SliderComponent} from './front/slider/slider.component';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {SiteCardComponent} from './front/site-card/site-card.component';
 import {FooterComponent} from './front/footer/footer.component';
 import {HeaderComponent} from './front/header/header.component';
@@ -60,11 +59,11 @@ import {
   ProjectRatingMembersService,
   ProjectsService,
   RatingsService,
+  SiteTypesService,
   TagsService,
-  TypeAgenciesService,
-  TypeTagsService,
   TargetsService,
-  SiteTypesService
+  TypeAgenciesService,
+  TypeTagsService
 } from '../backend/services';
 import {LiipPipe} from './liip.pipe';
 import {GlobalsService} from './globals.service';

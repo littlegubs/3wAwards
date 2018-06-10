@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {MembersService, AgenciesService, TypeTagsService } from '../../../backend/services';
-import { Agency, Member, TypeTag, Tag } from '../../../backend/model';
-import { FormService, Form } from '../../../backend/forms';
+import {Component, OnInit} from '@angular/core';
+import {AgenciesService, MembersService, TypeTagsService} from '../../../backend/services';
+import {Agency, Member, TypeTag} from '../../../backend/model';
+import {Form, FormService} from '../../../backend/forms';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 

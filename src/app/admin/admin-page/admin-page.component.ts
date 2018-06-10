@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router'; 
-import { NbSidebarModule, NbLayoutModule, NbSidebarService } from '@nebular/theme';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-admin-page',

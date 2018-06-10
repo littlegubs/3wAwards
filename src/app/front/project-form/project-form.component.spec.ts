@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProjectFormComponent } from './project-form.component';
+import {ProjectFormComponent} from './project-form.component';
 
 describe('ProjectFormComponent', () => {
   let component: ProjectFormComponent;

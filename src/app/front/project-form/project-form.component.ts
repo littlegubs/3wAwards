@@ -1,7 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {FormService, Form} from '../../../backend/forms';
-import {Credit, Member, Project, Tag, TypeTag, Target, SiteType} from '../../../backend/model';
-import {MembersService, ProjectsService, TypeTagsService, TargetsService, SiteTypesService} from '../../../backend/services';
+import {Form, FormService} from '../../../backend/forms';
+import {Credit, Member, Project, SiteType, Tag, Target, TypeTag} from '../../../backend/model';
+import {
+  MembersService,
+  ProjectsService,
+  SiteTypesService,
+  TargetsService,
+  TypeTagsService
+} from '../../../backend/services';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
