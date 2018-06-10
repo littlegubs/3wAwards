@@ -118,8 +118,8 @@ export class ProjectFormComponent implements OnInit {
         newProject.averageOriginalityRatingsMember = 0;
         newProject.averageReadabilityRatingsJudge = 0;
         newProject.averageReadabilityRatingsMember = 0;
-        newProject.averageErgonomicRatingsJudge = 0;
-        newProject.averageErgonomicRatingsMember = 0;
+        newProject.averageNavigationRatingsJudge = 0;
+        newProject.averageNavigationRatingsMember = 0;
         newProject.averageInteractivityRatingsJudge = 0;
         newProject.averageInteractivityRatingsMember = 0;
         newProject.averageQualityContentRatingsJudge = 0;
