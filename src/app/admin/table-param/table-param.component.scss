@@ -1,0 +1,34 @@
+app-table-param {
+  .container-fluid {
+    .row {
+      overflow-x: auto;
+      table{
+        th{
+          vertical-align: middle;
+          @media #{$mobile} {
+            font-size: 12px;
+          }
+        }
+        tr{
+          background: white;
+          &:not(:last-child){
+            border-bottom: 1px solid gray;
+          }
+        }
+        td{
+          vertical-align: middle;
+          &:not(#url){
+            text-transform: capitalize;
+          }
+        }
+        .green-button {
+          width: 100px;
+          margin: 5px;
+          &.mat-primary{
+            background-color: forestgreen !important;
+          }
+        }
+      }
+    }
+  }
+}

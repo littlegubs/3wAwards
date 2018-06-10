@@ -8,17 +8,15 @@
       <i class="fas fa-bars openSidebarButton" (click)="sidenav.toggle()"></i>
       <a href="/"><img src="assets/imgs/logo.svg" alt="Logo"/></a>
       <div class="dropdown admin-connection">
-        <!--<button class="btn btn-main-gray" type="button" id="memberDropdown" data-toggle="dropdown" aria-haspopup="true"-->
-                <!--aria-expanded="false">-->
-          <!--<img *ngIf="userInfo.icon" class="radius" [src]="userInfo.icon">-->
-          <!--<i *ngIf="!userInfo.icon" class="far fa-user user-actions"></i>-->
-          <!--{{userInfo.firstName}} {{userInfo.lastName}} <i class="fas fa-angle-down"></i>-->
-        <!--</button>-->
-        <!--<div class="dropdown-menu" aria-labelledby="memberDropdown">-->
-          <!--<a class="dropdown-item" [routerLink]="['/profile']"></a>-->
-          <!--<a  class="dropdown-item" href="#"></a>-->
-        <!--</div>-->
-        <p>TeST</p>
+        <button class="btn btn-main-gray" type="button" id="memberDropdown" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+         <img *ngIf="userInfo.icon" class="radius" [src]="userInfo.icon">
+        <i *ngIf="!userInfo.icon" class="far fa-user user-actions"></i>
+         {{userInfo.firstName}} {{userInfo.lastName}} <i class="fas fa-angle-down"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="memberDropdown">
+          <a  class="dropdown-item" href="#" (click)="Disconnection()">Déconnexion</a>
+        </div>
       </div>
     </div>
     <router-outlet></router-outlet>

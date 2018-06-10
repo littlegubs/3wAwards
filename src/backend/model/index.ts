@@ -5,6 +5,7 @@ import { Client } from './Client';
 import { Credit } from './Credit';
 import { Image } from './Image';
 import { Member } from './Member';
+import { Parameter } from './Parameter';
 import { ProjectRatingMember } from './ProjectRatingMember';
 import { Project } from './Project';
 import { Rating } from './Rating';
@@ -23,6 +24,7 @@ export {
   Credit,
   Image,
   Member,
+  Parameter,
   ProjectRatingMember,
   Project,
   Rating,

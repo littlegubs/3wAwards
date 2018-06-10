@@ -21,7 +21,9 @@ import {
   MatGridListModule,
   MatSliderModule,
   MatPaginatorModule,
-  MatSortModule, MatSidenavModule
+  MatSortModule,
+  MatSidenavModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
 
@@ -53,6 +55,7 @@ import {RouterModule} from '@angular/router';
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
+    MatSnackBarModule,
     RouterModule
   ],
   providers: [

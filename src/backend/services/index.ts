@@ -7,6 +7,7 @@ import { ClientsService } from './Clients.service';
 import { CreditsService } from './Credits.service';
 import { ImagesService } from './Images.service';
 import { MembersService } from './Members.service';
+import { ParametersService } from './Parameters.service';
 import { ProjectRatingMembersService } from './ProjectRatingMembers.service';
 import { ProjectsService } from './Projects.service';
 import { RatingsService } from './Ratings.service';
@@ -25,6 +26,7 @@ export {
   CreditsService,
   ImagesService,
   MembersService,
+  ParametersService,
   ProjectRatingMembersService,
   ProjectsService,
   RatingsService,

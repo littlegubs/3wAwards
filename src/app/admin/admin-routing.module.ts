@@ -5,6 +5,7 @@ import {Error404Component} from '../error404/error404.component';
 import {AdminComponent} from './admin.component';
 import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
 import {TableProjectsComponent} from './table-projects/table-projects.component';
+import {TableParamComponent} from './table-param/table-param.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
       children: [
         {path: '', component: AdminDashboardComponent},
         {path: 'projects', component: TableProjectsComponent},
+        {path: 'params', component: TableParamComponent},
       ] },
     {path: '404', component: Error404Component},
     {path: '**', redirectTo: '404'},

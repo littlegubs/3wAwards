@@ -9,9 +9,13 @@ import { TableProjectsComponent } from './table-projects/table-projects.componen
 import {CardRecentProjectComponent} from './card-recent-project/card-recent-project.component';
 import {CardRecentAwardComponent} from './card-recent-award/card-recent-award.component';
 import {CardRecentSubmissionComponent} from './card-recent-submission/card-recent-submission.component';
+import { TableParamComponent } from './table-param/table-param.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     SharedModule,
     AdminRoutingModule,
@@ -23,7 +27,8 @@ import {CardRecentSubmissionComponent} from './card-recent-submission/card-recen
     TableProjectsComponent,
     CardRecentProjectComponent,
     CardRecentAwardComponent,
-    CardRecentSubmissionComponent
+    CardRecentSubmissionComponent,
+    TableParamComponent
   ]
 })
 export class AdminModule {

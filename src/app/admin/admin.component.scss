@@ -25,6 +25,51 @@ app-admin{
                     position: absolute;
                     right: 50px;
                     top: 33px;
+
+                  @media (min-width: 992px) and (max-width: 1300px) {
+                    &.user-actions {
+                      @include flex(column);
+                      text-align: center;
+                      .register, .connect {
+                        display: none;
+                        &.clicked {
+                          display: block;
+                        }
+                      }
+                      i.user-actions{
+                        width: 131px;
+                      }
+                    }
+                    .pipe-separator{
+                      display: none;
+                    }
+                    div.user-actions{
+                      position: absolute;
+                      top: 55px;
+                    }
+                  }
+                  @media #{$mobile} {
+                  &.user-actions {
+                    @include flex(column);
+                    text-align: center;
+                    .register, .connect {
+                      display: none;
+                      &.clicked {
+                        display: block;
+                      }
+                    }
+                    i.user-actions{
+                      width: 131px;
+                    }
+                  }
+                  .pipe-separator{
+                    display: none;
+                  }
+                  div.user-actions{
+                    position: absolute;
+                    top: 55px;
+                  }
+                }
                 }
             }
             mat-progress-bar{

@@ -44,6 +44,11 @@ export class TableProjectsComponent implements OnInit {
     this.http.post(this.globalsService.updateStatus, body).subscribe(
       res => {
         console.log(res);
+        for (const project of this.projects) {
+          if (project.id === projectId) {
+            project.status = status;
+          }
+        }
       },
       err => {
       }
