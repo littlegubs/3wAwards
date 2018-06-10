@@ -22,6 +22,7 @@ export class ProjectFormComponent implements OnInit {
   tokenStorage = localStorage.getItem('user_token');
   userInfo: TokenInterface;
   member: Member;
+  project: Project;
   idAgency: number;
   idClient: number;
   accessibilityValue: string;
@@ -42,6 +43,7 @@ export class ProjectFormComponent implements OnInit {
   backTags: Tag[] = [];
   cmsTags: Tag[] = [];
   colorTags: Tag[] = [];
+  budgetFork: Tag[] = [];
   credits: Credit[] = [];
   targets: Target[] = [];
   siteTypes: SiteType[] = [];
@@ -75,7 +77,6 @@ export class ProjectFormComponent implements OnInit {
     this.targetsService.getAll().subscribe(
       res => {
         this.targets = res;
-        console.log(this.targets);
       },
       err => {
       }
@@ -83,7 +84,6 @@ export class ProjectFormComponent implements OnInit {
     this.siteTypesService.getAll().subscribe(
       res => {
         this.siteTypes = res;
-        console.log(this.siteTypes);
       },
       err => {
       }
@@ -99,7 +99,7 @@ export class ProjectFormComponent implements OnInit {
   commitProject(): void {
     if (this.form.group.dirty && this.form.group.valid) {
       const newProject = this.form.get();
-      newProject.setProjectRatingMemberAtNull();
+      newProject.projectRatingMember = [];
       newProject.status = 'accepted';
       if (newProject.id) {
         this.projectsService.update(newProject).subscribe();
@@ -281,6 +281,7 @@ export class ProjectFormComponent implements OnInit {
     this.targetTags = this.projectTags.filter(tag => tag.type.libelle === 'target');
     this.purposeTags = this.projectTags.filter(tag => tag.type.libelle === 'purpose');
     this.languageTags = this.projectTags.filter(tag => tag.type.libelle === 'language');
+    this.budgetFork = this.projectTags.filter(tag => tag.type.libelle === 'budget_fork');
   }
 
   onAccessibilityRatingChange($event) {

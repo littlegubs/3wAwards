@@ -229,6 +229,34 @@
         "GENERAL": "Mon projet",
         "IMAGE": "Captures d'écran"
       }
+    },
+    "FORM_AGENCY": {
+      "IDENTITY":"Identité",
+      "NAME":"Nom",
+      "COUNTRY":"Pays",
+      "ADDRESS":"Adresse",
+      "ADDRESS_COMPLEMENT":"Complément d'adresse",
+      "ZIPCODE":"Code postal",
+      "PHONE_NUMBER":"Numéro de téléphone",
+      "FAX":"Numéro de fax",
+      "CITY":"Ville",
+      "DESCRIPTION":"Description",
+      "INTERNAL_NOTICE":"Notice interne",
+      "CREATION_DATE":"Date de création",
+      "URL":"Lien vers votre site",
+      "TVA":"Tva",
+      "EFFECTIF":"Effectif",
+      "STATUS":"Statut",
+      "DUNS":"Duns",
+      "TYPE_AGENCY":"Type d'agence",
+      "CUSTOM_TAG":"Tags personnalisés",
+      "CANCEL":"Annuler",
+      "SAVE":"Enregistrer"
+
     }
+  },
+  "ERROR": {
+    "BUTTON": "Retour",
+    "404": "Cette page n'existe pas"
   }
 }
