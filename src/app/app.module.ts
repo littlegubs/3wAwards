@@ -32,7 +32,6 @@ import {RouterModule} from '@angular/router';
 import {FrontModule} from './front/front.module';
 import {AdminModule} from './admin/admin.module';
 import {Error404Component} from './error404/error404.component';
-import {Parameter} from '../backend/model';
 
 export function createRestangularConfigFactory(RestangularProvider) {
   if (localStorage.getItem('user_token') !== null) {
