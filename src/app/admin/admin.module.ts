@@ -11,6 +11,8 @@ import {CardRecentAwardComponent} from './card-recent-award/card-recent-award.co
 import {CardRecentSubmissionComponent} from './card-recent-submission/card-recent-submission.component';
 import { TableParamComponent } from './table-param/table-param.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TableMembersComponent} from './table-members/table-members.component';
+import {TableAwardsComponent} from './table-awards/table-awards.component';
 
 @NgModule({
   imports: [
@@ -25,10 +27,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     AdminDashboardComponent,
     AdminMenuComponent,
     TableProjectsComponent,
+    TableMembersComponent,
     CardRecentProjectComponent,
     CardRecentAwardComponent,
     CardRecentSubmissionComponent,
-    TableParamComponent
+    TableParamComponent,
+    TableAwardsComponent,
   ]
 })
 export class AdminModule {

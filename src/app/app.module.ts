@@ -44,7 +44,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
 @NgModule({
   declarations: [
     AppComponent,
-    Error404Component,
+    Error404Component
   ],
   imports: [
     BrowserModule,

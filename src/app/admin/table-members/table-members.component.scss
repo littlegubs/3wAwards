@@ -1,43 +1,43 @@
-app-table-projects {
+app-table-members {
     .container-fluid {
         .row {
             overflow-x: auto;
-            table{
+            table {
                 @media #{$mobile} {
                     font-size: 12px;
                 }
-                th{
+                th {
                     vertical-align: middle;
                 }
-                tr{
+                tr {
                     background: white;
-                    &:not(:last-child){
+                    &:not(:last-child) {
                         border-bottom: 1px solid gray;
                     }
                 }
-                td{
+                td {
                     vertical-align: middle;
-                    &:not(#url){
+                    &:not(#url) {
                         text-transform: capitalize;
                     }
                 }
-                .actions{
-                    button{
+                .actions {
+                    button {
                         width: 100px;
                         margin: 5px;
-                        &.mat-primary{
+                        &.mat-primary {
                             background-color: forestgreen !important;
                         }
                     }
                 }
             }
-            &.paginator{
-                & > nav{
+            &.paginator {
+                & > nav {
                     width: 100%;
                     ul {
                         &.pagination {
                             float: right;
-                            li:first-child{
+                            li:first-child {
                                 line-height: 40px;
                                 margin-right: 10px;
                             }

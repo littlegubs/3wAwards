@@ -1,9 +1,30 @@
-<p class="table-header">Projets récents</p>
+<p class="table-header">Awards récents</p>
 <mat-card class="example-card">
-  <mat-card-content>
-    <p>TABLEAU</p>
+  <mat-card-content *ngIf="awards; else loading">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nom du Projet</th>
+        <th scope="col" class="agency-client">Agence / Client</th>
+        <th scope="col">Award</th>
+        <th scope="col" class="url">Url</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let award of awards">
+        <td>{{award.project.projectName}}</td>
+        <td *ngIf="award.project.agency === null" class="agency-client">{{award.project.client.name}}</td>
+        <td *ngIf="award.project.client === null" class="agency-client">{{award.project.agency.name}}</td>
+        <td>{{award.type}}</td>
+        <td class="url">{{award.project.projectUrl}}</td>
+      </tr>
+      </tbody>
+    </table>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>Voir plus</button>
+    <button mat-button [routerLink]="['awards']">Voir plus</button>
   </mat-card-actions>
 </mat-card>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>

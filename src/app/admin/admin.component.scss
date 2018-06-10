@@ -10,6 +10,11 @@ app-admin{
             padding: 25px 25px 0 25px !important;
             background-color: #e2e2e2 !important;
             min-height: 100vh;
+            -ms-overflow-style: none; // IE 10+
+            overflow: -moz-scrollbars-none; // Firefox
+            &::-webkit-scrollbar {
+                display: none; // Safari and Chrome
+            }
             .admin{
                 &-header {
                     margin: -25px -25px 25px -25px;
@@ -76,6 +81,10 @@ app-admin{
                 margin-top: -25px !important;
                 margin-left: -25px !important;
                 width: calc(100% + 50px) !important;
+                @media screen and (max-width: 600px) {
+                    margin-left: -16px !important;
+                    width: calc(100% + 32px) !important;
+                }
             }
         }
     }

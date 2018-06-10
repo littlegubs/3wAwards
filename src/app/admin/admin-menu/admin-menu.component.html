@@ -1,8 +1,19 @@
 <h1>Menu</h1>
 <div class="admin-menu">
-  <p [routerLink]="['/admin']"> Dashboard </p>
-  <p [routerLink]="['projects']"> Projets</p>
-  <p [routerLink]="['params']"> Paramètres </p>
-  <p> Item 3 </p>
-  <p> Item 4 </p>
+  <div><p [routerLink]="['/admin']"><i class="fas fa-tachometer-alt"></i> Dashboard </p></div>
+  <div><p [routerLink]="['projects']"><i class="fas fa-code"></i> Projets</p></div>
+  <div><p [routerLink]="['params']"> Paramètres </p></div>
+  <div><p [routerLink]="['members']"><i class="far fa-address-book"></i> Membres </p></div>
+  <div><p><i class="fas fa-users"></i> Jury </p></div>
+  <div (mouseout)="hovered=false" (mouseover)="hovered=true">
+    <p [routerLink]="['awards']">
+      <i class="fas fa-trophy"></i>
+      Award
+      <i class="fas fa-chevron-down" (click)="hovered = !hovered" *ngIf="hovered === false"></i>
+      <i class="fas fa-chevron-up" (click)="hovered = !hovered" *ngIf="hovered === true"></i>
+    </p>
+    <div class="dropdown-custom" [ngClass]="{'hovered': hovered }">
+      <p><i class="fas fa-plus"></i> Ajouter</p>
+    </div>
+  </div>
 </div>
