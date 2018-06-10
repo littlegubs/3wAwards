@@ -7,6 +7,7 @@ import {TableProjectsComponent} from './table-projects/table-projects.component'
 import {TableParamComponent} from './table-param/table-param.component';
 import {TableMembersComponent} from './table-members/table-members.component';
 import {TableAwardsComponent} from './table-awards/table-awards.component';
+import {AwardFormComponent} from './award-form/award-form.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
         {path: 'params', component: TableParamComponent},
         {path: 'members', component: TableMembersComponent},
         {path: 'awards', component: TableAwardsComponent},
+        {path: 'add-award', component: AwardFormComponent}
       ] },
     {path: '404', component: Error404Component},
     {path: '**', redirectTo: '404'},
