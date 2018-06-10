@@ -1,8 +1,15 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Category, ProjectRatingMember, Rating} from '../../../backend/model';
+import {Category, Member, ProjectRatingMember, Rating} from '../../../backend/model';
 import {CategoryEnum} from '../../category.enum';
-import {CategoriesService, ProjectRatingMembersService, RatingsService} from '../../../backend/services';
+import {
+  CategoriesService,
+  MembersService,
+  ProjectRatingMembersService,
+  RatingsService
+} from '../../../backend/services';
+import {TokenInterface} from '../../tokenInterface';
+import {AuthService} from '../../auth.service';
 
 @Component({
   selector: 'app-project-form-vote',
@@ -21,6 +28,8 @@ export class ProjectFormVoteComponent implements OnInit {
   value = 0;
   vertical = false;
 
+  tokenStorage = localStorage.getItem('user_token');
+  userInfo: TokenInterface;
   ratingsForProject: ProjectRatingMember[];
   categoryEnum = CategoryEnum;
   loading = false;
@@ -40,28 +49,40 @@ export class ProjectFormVoteComponent implements OnInit {
               public dialogRef: MatDialogRef<ProjectFormVoteComponent>,
               private projectRatingMemberService: ProjectRatingMembersService,
               private ratingService: RatingsService,
-              private categoryService: CategoriesService) {
-    this.categoryService.getAll().subscribe(res => {
-      this.categories = res;
-      this.ratingsForProject = data.member.projectRatingMember.filter(
-        projectRatingMemberToFind => projectRatingMemberToFind.project.id === data.project.id);
-      for (const categ of Object.keys(CategoryEnum)) {
-        this.votes[categ] = this.retrieveRatingsValue(CategoryEnum[categ]);
-        this.votesEdit[categ] = this.votes[categ].rating.value;
-      }
-      this.votesLength = Object.keys(this.votes);
-    });
+              private categoryService: CategoriesService,
+              private memberService: MembersService,
+              private authService: AuthService) {
+    this.userInfo = this.authService.getUserInfo(this.tokenStorage);
+    this.memberService.get(this.userInfo.id).subscribe(
+      member => {
+        this.categoryService.getAll().subscribe(res => {
+          this.categories = res;
+          this.ratingsForProject = member.projectRatingMember.filter(
+            projectRatingMemberToFind => projectRatingMemberToFind.project.id === data.project.id);
+          for (const categ of Object.keys(CategoryEnum)) {
+            this.votes[categ] = this.retrieveRatingsValue(CategoryEnum[categ]);
+            this.votesEdit[categ] = this.votes[categ].rating.value;
+          }
+          this.votesLength = Object.keys(this.votes);
+        });
+      });
   }
 
   sendVote() {
     const [last] = Object.keys(CategoryEnum).reverse();
     Object.keys(CategoryEnum).forEach(categ => {
       this.loading = true;
-      if (this.votesEdit[categ] !== this.votes[categ].rating.value) {
-        this.votes[categ].rating.value = this.votesEdit[categ];
-        this.ratingService[this.votes[categ].rating.id ? 'update' : 'add'](this.votes[categ].rating).subscribe(() => {
-        this.projectRatingMemberService[this.votes[categ].id ? 'update' : 'add'](this.votes[categ])
-          .subscribe(() => last === categ && this.dialogRef.close());
+      if (this.votes[categ].rating.id) {
+        this.ratingService.update(this.votes[categ].rating).subscribe(() => {
+          if (last === categ) {
+            this.dialogRef.close();
+          }
+        });
+      } else {
+        this.ratingService.add(this.votes[categ].rating).subscribe(rating => {
+          this.votes[categ].rating = rating;
+          this.projectRatingMemberService[this.votes[categ].id ? 'update' : 'add'](this.votes[categ])
+            .subscribe(() => last === categ && this.dialogRef.close());
         });
       }
     });
@@ -98,4 +119,6 @@ export class ProjectFormVoteComponent implements OnInit {
     console.log(projectRatingMember);
     return projectRatingMember;
   }
+
+
 }

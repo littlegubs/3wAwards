@@ -54,7 +54,6 @@ export class ProjectProfileComponent implements OnInit {
     if (this.member) {
       dialogRef = this.dialog.open(ProjectFormVoteComponent, {
         data: {
-          member: this.member,
           project: this.project
         },
         width: '530px',

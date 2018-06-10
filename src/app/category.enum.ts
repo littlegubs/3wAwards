@@ -1,9 +1,9 @@
 export enum CategoryEnum {
   originality = 'originality',
-  graphism = 'graphism',
+  readability = 'readability',
   navigation = 'navigation',
   interactivity = 'interactivity',
   contentQuality = 'content-quality',
-  functionnality = 'functionnality',
+  functionality = 'functionality',
   reactivity = 'reactivity'
 }
