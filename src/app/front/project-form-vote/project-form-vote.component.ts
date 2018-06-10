@@ -26,7 +26,8 @@ export class ProjectFormVoteComponent implements OnInit {
   loading = false;
   categories: Category[];
   votes = {};
-  zz = Object.keys(this.votes);
+  votesEdit = {};
+  votesLength = Object.keys(this.votes);
   isVoteJudge = false;
 
   get tickInterval(): number | 'auto' {
@@ -46,10 +47,9 @@ export class ProjectFormVoteComponent implements OnInit {
         projectRatingMemberToFind => projectRatingMemberToFind.project.id === data.project.id);
       for (const categ of Object.keys(CategoryEnum)) {
         this.votes[categ] = this.retrieveRatingsValue(CategoryEnum[categ]);
+        this.votesEdit[categ] = this.votes[categ].rating.value;
       }
-      console.log(this.votes);
-      this.zz = Object.keys(this.votes);
-      console.log(this.zz);
+      this.votesLength = Object.keys(this.votes);
     });
   }
 
@@ -57,9 +57,13 @@ export class ProjectFormVoteComponent implements OnInit {
     const [last] = Object.keys(CategoryEnum).reverse();
     Object.keys(CategoryEnum).forEach(categ => {
       this.loading = true;
-      console.log(this.votes[categ]);
-      this.projectRatingMemberService[this.ratingsForProject.length === 0 ? 'add' : 'update'](this.votes[categ])
-        .subscribe(() => last === categ && this.dialogRef.close());
+      if (this.votesEdit[categ] !== this.votes[categ].rating.value) {
+        this.votes[categ].rating.value = this.votesEdit[categ];
+        this.ratingService[this.votes[categ].rating.id ? 'update' : 'add'](this.votes[categ].rating).subscribe(() => {
+        this.projectRatingMemberService[this.votes[categ].id ? 'update' : 'add'](this.votes[categ])
+          .subscribe(() => last === categ && this.dialogRef.close());
+        });
+      }
     });
   }
 
@@ -73,7 +77,7 @@ export class ProjectFormVoteComponent implements OnInit {
       projectRatingMember = new ProjectRatingMember();
       projectRatingMember.setMember(this.data.member.id);
       projectRatingMember.setProject(this.data.project.id);
-      projectRatingMember.isVoteJudge = this.isVoteJudge;
+      projectRatingMember.voteJudge = this.isVoteJudge;
       projectRatingMember.date = new Date();
 
       let categFound = false;
@@ -91,6 +95,7 @@ export class ProjectFormVoteComponent implements OnInit {
       rating.value = 0;
       projectRatingMember.rating = rating;
     }
+    console.log(projectRatingMember);
     return projectRatingMember;
   }
 }

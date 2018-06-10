@@ -8,8 +8,8 @@ import { FormGroupValidators } from '../tools/FormGroupValidators';
 
 export class ProjectRatingMemberValidatorsBase extends FormGroupValidators {
     date = [CustomValidators.date];
+    voteJudge = [AppValidators.boolean];
     member = [AppValidators.item];
     project = [AppValidators.item];
     rating = [AppValidators.item];
-    isVoteJudge = [AppValidators.boolean];
 }

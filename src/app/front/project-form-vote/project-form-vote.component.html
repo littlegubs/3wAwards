@@ -1,4 +1,4 @@
-<div class="container" *ngIf="zz.length !== 0">
+<div class="container" *ngIf="votesLength.length !== 0">
   <div class="row">
     <div class="col-sm-12 col-form-project">
       <form autocomplete="off">
@@ -19,7 +19,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="votes[categoryEnum.originality].rating.value = $event.value">
+                  (change)="votesEdit[categoryEnum.originality] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.GRAPHISM' | translate}} :</label>
@@ -35,7 +35,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="votes[categoryEnum.graphism].rating.value = $event.value">
+                  (change)="votesEdit[categoryEnum.graphism] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.ERGONOMY' | translate}} :</label>
@@ -51,7 +51,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="votes[categoryEnum.navigation].rating.value = $event.value">
+                  (change)="votesEdit[categoryEnum.navigation] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.INTERACTIVITY' | translate}}
@@ -68,7 +68,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="votes[categoryEnum.interactivity].rating.value = $event.value">
+                  (change)="votesEdit[categoryEnum.interactivity] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.QUALITY' | translate}} :</label>
@@ -84,7 +84,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="votes['contentQuality'].rating.value = $event.value">
+                  (change)="votesEdit['contentQuality'] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.FONCTIONNALITY' | translate}}
@@ -101,7 +101,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                (change)="votes[categoryEnum.functionnality].rating.value = $event.value">
+                (change)="votesEdit[categoryEnum.functionnality] = $event.value">
                 </mat-slider>
               </div>
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.REACTIVITY' | translate}} :</label>
@@ -117,7 +117,7 @@
                   [thumb-label]="thumbLabel"
                   [tick-interval]="tickInterval"
                   [vertical]="vertical"
-                  (change)="votes[categoryEnum.reactivity].rating.value = $event.value">
+                  (change)="votesEdit[categoryEnum.reactivity] = $event.value">
                 </mat-slider>
               </div>
             </div>
