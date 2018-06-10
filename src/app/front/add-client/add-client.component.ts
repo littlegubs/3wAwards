@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {MembersService, ClientsService, TypeTagsService, TypeAgenciesService} from '../../../backend/services';
-import {Client, Member, TypeTag, Tag} from '../../../backend/model';
-import {FormService, Form} from '../../../backend/forms';
+import {Component, OnInit} from '@angular/core';
+import {ClientsService, MembersService, TypeAgenciesService, TypeTagsService} from '../../../backend/services';
+import {Client, Member, Tag, TypeTag} from '../../../backend/model';
+import {Form, FormService} from '../../../backend/forms';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {MatChipInputEvent} from '@angular/material';

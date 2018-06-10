@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ClientsService, MembersService, TypeTagsService} from '../../../backend/services';
-import {ENTER, COMMA} from '@angular/cdk/keycodes';
-import {Agency, Client, Member, Tag, TypeTag} from '../../../backend/model';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {Client, Member, Tag, TypeTag} from '../../../backend/model';
 import {AuthService} from '../../auth.service';
 import {MatChipInputEvent} from '@angular/material';
 import {TokenInterface} from '../../tokenInterface';
