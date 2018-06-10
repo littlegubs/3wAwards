@@ -60,6 +60,7 @@ export class ProjectProfileComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log(result);
+        this.project.updateRatings(result);
       });
     } else {
       dialogRef = this.dialog.open(ConnectionDialogComponent);

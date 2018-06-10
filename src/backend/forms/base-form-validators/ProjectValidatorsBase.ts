@@ -15,8 +15,8 @@ export class ProjectValidatorsBase extends FormGroupValidators {
     averageOriginalityRatingsMember = [CustomValidators.number];
     averageReadabilityRatingsJudge = [CustomValidators.number];
     averageReadabilityRatingsMember = [CustomValidators.number];
-    averageErgonomicRatingsJudge = [CustomValidators.number];
-    averageErgonomicRatingsMember = [CustomValidators.number];
+    averageNavigationRatingsJudge = [CustomValidators.number];
+    averageNavigationRatingsMember = [CustomValidators.number];
     averageInteractivityRatingsJudge = [CustomValidators.number];
     averageInteractivityRatingsMember = [CustomValidators.number];
     averageQualityContentRatingsJudge = [CustomValidators.number];

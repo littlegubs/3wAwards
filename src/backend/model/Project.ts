@@ -44,4 +44,24 @@ export class Project extends ProjectBase {
     this.agency = null;
     return this;
   }
+
+  updateRatings(array: Array<number>) {
+    this.averageJudgeRatings = array[0];
+    this.averageUsersRatings = array[1];
+    this.averageRating = array[2];
+    this.averageOriginalityRatingsJudge = array[3];
+    this.averageReadabilityRatingsJudge = array[4];
+    this.averageNavigationRatingsJudge = array[5];
+    this.averageInteractivityRatingsJudge = array[6];
+    this.averageQualityContentRatingsJudge = array[7];
+    this.averageWeatlhFunctionalityRatingsJudge = array[8];
+    this.averageReactivityRatingsJudge = array[9];
+    this.averageOriginalityRatingsMember = array[10];
+    this.averageReadabilityRatingsMember = array[11];
+    this.averageNavigationRatingsMember = array[12];
+    this.averageInteractivityRatingsMember = array[13];
+    this.averageQualityContentRatingsMember = array[14];
+    this.averageWeatlhFunctionalityRatingsMember = array[15];
+    this.averageReactivityRatingsMember = array[16];
+  }
 }

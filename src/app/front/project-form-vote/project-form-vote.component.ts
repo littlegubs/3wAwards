@@ -10,6 +10,8 @@ import {
 } from '../../../backend/services';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
 
 @Component({
   selector: 'app-project-form-vote',
@@ -30,6 +32,7 @@ export class ProjectFormVoteComponent implements OnInit {
 
   tokenStorage = localStorage.getItem('user_token');
   userInfo: TokenInterface;
+  member: Member;
   ratingsForProject: ProjectRatingMember[];
   categoryEnum = CategoryEnum;
   loading = false;
@@ -51,13 +54,16 @@ export class ProjectFormVoteComponent implements OnInit {
               private ratingService: RatingsService,
               private categoryService: CategoriesService,
               private memberService: MembersService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private http: HttpClient,
+              private globalService: GlobalsService) {
     this.userInfo = this.authService.getUserInfo(this.tokenStorage);
     this.memberService.get(this.userInfo.id).subscribe(
       member => {
+        this.member = member;
         this.categoryService.getAll().subscribe(res => {
           this.categories = res;
-          this.ratingsForProject = member.projectRatingMember.filter(
+          this.ratingsForProject = this.member.projectRatingMember.filter(
             projectRatingMemberToFind => projectRatingMemberToFind.project.id === data.project.id);
           for (const categ of Object.keys(CategoryEnum)) {
             this.votes[categ] = this.retrieveRatingsValue(CategoryEnum[categ]);
@@ -75,14 +81,18 @@ export class ProjectFormVoteComponent implements OnInit {
       if (this.votes[categ].rating.id) {
         this.ratingService.update(this.votes[categ].rating).subscribe(() => {
           if (last === categ) {
-            this.dialogRef.close();
+            this.http.get(this.globalService.url + 'average/' + this.data.project.id).subscribe(res => this.dialogRef.close(res));
           }
         });
       } else {
         this.ratingService.add(this.votes[categ].rating).subscribe(rating => {
           this.votes[categ].rating = rating;
           this.projectRatingMemberService[this.votes[categ].id ? 'update' : 'add'](this.votes[categ])
-            .subscribe(() => last === categ && this.dialogRef.close());
+            .subscribe(() => {
+              if (last === categ) {
+                this.http.get(this.globalService.url + 'average/' + this.data.project.id).subscribe(res => this.dialogRef.close(res));
+              }
+            });
         });
       }
     });
@@ -96,7 +106,7 @@ export class ProjectFormVoteComponent implements OnInit {
       projectRatingMemberToFind => projectRatingMemberToFind.rating.category.libelle === category);
     if (!projectRatingMember) {
       projectRatingMember = new ProjectRatingMember();
-      projectRatingMember.setMember(this.data.member.id);
+      projectRatingMember.setMember(this.member.id);
       projectRatingMember.setProject(this.data.project.id);
       projectRatingMember.voteJudge = this.isVoteJudge;
       projectRatingMember.date = new Date();
