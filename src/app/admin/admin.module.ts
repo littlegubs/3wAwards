@@ -9,7 +9,8 @@ import { TableProjectsComponent } from './table-projects/table-projects.componen
 import {CardRecentProjectComponent} from './card-recent-project/card-recent-project.component';
 import {CardRecentAwardComponent} from './card-recent-award/card-recent-award.component';
 import {CardRecentSubmissionComponent} from './card-recent-submission/card-recent-submission.component';
-import {TableMembersComponent} from "./table-members/table-members.component";
+import {TableMembersComponent} from './table-members/table-members.component';
+import {TableAwardsComponent} from './table-awards/table-awards.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import {TableMembersComponent} from "./table-members/table-members.component";
     CardRecentProjectComponent,
     CardRecentAwardComponent,
     CardRecentSubmissionComponent,
+    TableAwardsComponent,
   ]
 })
 export class AdminModule {

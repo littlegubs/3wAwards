@@ -6,6 +6,7 @@ import {AdminComponent} from './admin.component';
 import {AdminDashboardComponent} from './admin-dashboard/admin-dashboard.component';
 import {TableProjectsComponent} from './table-projects/table-projects.component';
 import {TableMembersComponent} from "./table-members/table-members.component";
+import {TableAwardsComponent} from "./table-awards/table-awards.component";
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
         {path: '', component: AdminDashboardComponent},
         {path: 'projects', component: TableProjectsComponent},
         {path: 'members', component: TableMembersComponent},
+        {path: 'awards', component: TableAwardsComponent},
       ] },
     {path: '404', component: Error404Component},
     {path: '**', redirectTo: '404'},

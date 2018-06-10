@@ -16,6 +16,7 @@ app-admin-menu{
         }
     }
     .admin-menu {
+        height: calc(100% - 90px);
         > div, .dropdown-custom {
             > p {
                 margin: 0 -10px;
@@ -46,7 +47,7 @@ app-admin-menu{
             }
             .dropdown-custom{
                 display: none;
-                &.clicked{
+                &.hovered{
                     display: block;
                 }
                 > p{

@@ -3,11 +3,11 @@ app-table-projects {
         .row {
             overflow-x: auto;
             table{
+                @media #{$mobile} {
+                    font-size: 12px;
+                }
                 th{
                     vertical-align: middle;
-                    @media #{$mobile} {
-                        font-size: 12px;
-                    }
                 }
                 tr{
                     background: white;

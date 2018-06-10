@@ -5,15 +5,15 @@
   <div><p><i class="fas fa-cogs"></i> Paramètres </p></div>
   <div><p [routerLink]="['members']"><i class="far fa-address-book"></i> Membres </p></div>
   <div><p><i class="fas fa-users"></i> Jury </p></div>
-  <div>
-    <p (click)="isClicked = !isClicked">
+  <div (mouseout)="hovered=false" (mouseover)="hovered=true">
+    <p [routerLink]="['awards']">
       <i class="fas fa-trophy"></i>
       Award
-      <i class="fas fa-chevron-down" *ngIf="isClicked === false"></i>
-      <i class="fas fa-chevron-up" *ngIf="isClicked === true"></i>
+      <i class="fas fa-chevron-down" (click)="hovered = !hovered" *ngIf="hovered === false"></i>
+      <i class="fas fa-chevron-up" (click)="hovered = !hovered" *ngIf="hovered === true"></i>
     </p>
-    <div class="dropdown-custom" [ngClass]="{'clicked': isClicked }">
-      <p>Ajouter</p>
+    <div class="dropdown-custom" [ngClass]="{'hovered': hovered }">
+      <p><i class="fas fa-plus"></i> Ajouter</p>
     </div>
   </div>
 </div>
