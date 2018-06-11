@@ -10,10 +10,10 @@ export class ProjectRatingMemberBase {
   get _resource(): string { return ProjectRatingMemberBase._resource; };
 
   date: Date;
+  voteJudge: boolean;
   member: Member;
   project: Project;
   rating: Rating;
-  isVoteJudge: boolean;
 
   setMember(id: number): ProjectRatingMemberBase {
     this.member = new Member();

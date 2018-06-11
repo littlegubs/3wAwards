@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RegistrationDialogComponent } from './registration-dialog.component';
+import {RegistrationDialogComponent} from './registration-dialog.component';
 
 describe('RegistrationDialogComponent', () => {
   let component: RegistrationDialogComponent;

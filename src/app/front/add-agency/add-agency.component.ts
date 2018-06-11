@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {MembersService, AgenciesService, TypeTagsService, TypeAgenciesService} from '../../../backend/services';
-import {Agency, Member, TypeTag, Tag, TypeAgency} from '../../../backend/model';
-import {FormService, Form} from '../../../backend/forms';
+import {AgenciesService, MembersService, TypeAgenciesService, TypeTagsService} from '../../../backend/services';
+import {Agency, Member, Tag, TypeAgency, TypeTag} from '../../../backend/model';
+import {Form, FormService} from '../../../backend/forms';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {MatChipInputEvent} from '@angular/material';
@@ -86,7 +86,7 @@ export class AddAgencyComponent implements OnInit {
   addTags(event: MatChipInputEvent, type: string): void {
     if ((event.value || '').trim()) {
       const tag = new Tag();
-      for (let typeTag of this.typeTags) {
+      for (const typeTag of this.typeTags) {
         if (typeTag.libelle === type) {
           tag.setType(typeTag.id);
           tag.type.libelle = type;
@@ -121,7 +121,7 @@ export class AddAgencyComponent implements OnInit {
       }
       if (find === false) {
         const tag = new Tag();
-        for (let typeTag of this.typeTags) {
+        for (const typeTag of this.typeTags) {
           if (typeTag.libelle === type) {
             tag.setType(typeTag.id);
             tag.type.libelle = type;

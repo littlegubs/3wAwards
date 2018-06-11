@@ -1,7 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {FormService, Form} from '../../../backend/forms';
-import {Credit, Member, Project, Tag, TypeTag, Target, SiteType} from '../../../backend/model';
-import {MembersService, ProjectsService, TypeTagsService, TargetsService, SiteTypesService} from '../../../backend/services';
+import {Form, FormService} from '../../../backend/forms';
+import {Credit, Member, Project, SiteType, Tag, Target, TypeTag} from '../../../backend/model';
+import {
+  MembersService,
+  ProjectsService,
+  SiteTypesService,
+  TargetsService,
+  TypeTagsService
+} from '../../../backend/services';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -118,8 +124,8 @@ export class ProjectFormComponent implements OnInit {
         newProject.averageOriginalityRatingsMember = 0;
         newProject.averageReadabilityRatingsJudge = 0;
         newProject.averageReadabilityRatingsMember = 0;
-        newProject.averageErgonomicRatingsJudge = 0;
-        newProject.averageErgonomicRatingsMember = 0;
+        newProject.averageNavigationRatingsJudge = 0;
+        newProject.averageNavigationRatingsMember = 0;
         newProject.averageInteractivityRatingsJudge = 0;
         newProject.averageInteractivityRatingsMember = 0;
         newProject.averageQualityContentRatingsJudge = 0;

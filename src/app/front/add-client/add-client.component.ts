@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {MembersService, ClientsService, TypeTagsService, TypeAgenciesService} from '../../../backend/services';
-import {Client, Member, TypeTag, Tag} from '../../../backend/model';
-import {FormService, Form} from '../../../backend/forms';
+import {Component, OnInit} from '@angular/core';
+import {ClientsService, MembersService, TypeAgenciesService, TypeTagsService} from '../../../backend/services';
+import {Client, Member, Tag, TypeTag} from '../../../backend/model';
+import {Form, FormService} from '../../../backend/forms';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {MatChipInputEvent} from '@angular/material';
@@ -25,7 +25,7 @@ export class AddClientComponent implements OnInit {
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
 
-  constructor(private ClientsService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
+  constructor(private clientsService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
               private membersService: MembersService, private authService: AuthService, private  typeAgenciesService: TypeAgenciesService) {
   }
 
@@ -44,14 +44,14 @@ export class AddClientComponent implements OnInit {
       if (this.form.group.dirty && this.form.group.valid) {
           const newClient = this.form.get();
           if (newClient.id) {
-              this.ClientsService.update(newClient).subscribe(client => console.log('yeah!'));
+              this.clientsService.update(newClient).subscribe(client => console.log('yeah!'));
           } else {
               newClient.setProjectsatNull();
-              newClient.tags = this.tags;
+              newClient.tags = this.clientTags ;
               newClient.image = null;
               newClient.setMember(this.userInfo.id);
               console.log(newClient);
-              this.ClientsService.add(newClient).subscribe(client => console.log('add'));
+              this.clientsService.add(newClient).subscribe(client => console.log('add'));
           }
       } else {
           // force invalid inputs state to display errors
@@ -76,7 +76,7 @@ export class AddClientComponent implements OnInit {
   addTags(event: MatChipInputEvent, type: string): void {
       if ((event.value || '').trim()) {
           const tag = new Tag();
-          for (let typeTag of this.typeTags) {
+          for (const typeTag of this.typeTags) {
               if (typeTag.libelle === type) {
                   tag.setType(typeTag.id);
                   tag.type.libelle = type;
@@ -111,7 +111,7 @@ export class AddClientComponent implements OnInit {
           }
           if (find === false) {
               const tag = new Tag();
-              for (let typeTag of this.typeTags) {
+              for (const typeTag of this.typeTags) {
                   if (typeTag.libelle === type) {
                       tag.setType(typeTag.id);
                       tag.type.libelle = type;
