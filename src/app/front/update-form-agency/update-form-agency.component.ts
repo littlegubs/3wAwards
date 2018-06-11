@@ -87,7 +87,7 @@ export class UpdateFormAgencyComponent implements OnInit {
   addTags(event: MatChipInputEvent, type: string): void {
     if ((event.value || '').trim()) {
       const tag = new Tag();
-      for (let typeTag of this.typeTags) {
+      for (const typeTag of this.typeTags) {
         if (typeTag.libelle === type) {
           tag.setType(typeTag.id);
           tag.type.libelle = type;
@@ -123,7 +123,7 @@ export class UpdateFormAgencyComponent implements OnInit {
       }
       if (find === false) {
         const tag = new Tag();
-        for (let typeTag of this.typeTags) {
+        for (const typeTag of this.typeTags) {
           if (typeTag.libelle === type) {
             tag.setType(typeTag.id);
             tag.type.libelle = type;

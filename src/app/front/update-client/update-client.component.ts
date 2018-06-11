@@ -61,7 +61,7 @@ export class UpdateClientComponent implements OnInit {
                 this.clientsService.update(newClient).subscribe(client => console.log('yeah!'));
             } else {
                 newClient.setProjectsatNull();
-                newClient.tags = this.customTags;
+                newClient.tags = this.clientTags;
                 newClient.image = null;
                 newClient.setMember(this.userInfo.id);
                 console.log(newClient);

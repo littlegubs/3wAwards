@@ -25,7 +25,7 @@ export class AddClientComponent implements OnInit {
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
 
-  constructor(private ClientsService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
+  constructor(private clientsService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
               private membersService: MembersService, private authService: AuthService, private  typeAgenciesService: TypeAgenciesService) {
   }
 
@@ -44,14 +44,14 @@ export class AddClientComponent implements OnInit {
       if (this.form.group.dirty && this.form.group.valid) {
           const newClient = this.form.get();
           if (newClient.id) {
-              this.ClientsService.update(newClient).subscribe(client => console.log('yeah!'));
+              this.clientsService.update(newClient).subscribe(client => console.log('yeah!'));
           } else {
               newClient.setProjectsatNull();
               newClient.tags = this.clientTags ;
               newClient.image = null;
               newClient.setMember(this.userInfo.id);
               console.log(newClient);
-              this.ClientsService.add(newClient).subscribe(client => console.log('add'));
+              this.clientsService.add(newClient).subscribe(client => console.log('add'));
           }
       } else {
           // force invalid inputs state to display errors
