@@ -8,26 +8,31 @@ import {MembersService} from '../../../backend/services/Members.service';
   templateUrl: './confirm-dialog.component.html',
 })
 export class ConfirmDialogComponent {
-    member = new Member;
+  member = new Member;
 
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ConfirmDialogComponent>, public snackBar: MatSnackBar, private membersService: MembersService) {
-        this.member = data.member;
-    }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ConfirmDialogComponent>, public snackBar: MatSnackBar, private membersService: MembersService) {
+    this.member = data.member;
+  }
 
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
-    confirmClick(): void {
-        // this.membersService.remove(this.member);
-        this.openSnackBar();
-        this.onNoClick();
-    }
+  confirmClick(): void {
+    this.membersService.remove(this.member).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+      });
+    this.openSnackBar();
+    this.onNoClick();
+  }
 
-    openSnackBar(): void {
-        this.snackBar.open('Utilisateur supprimé', 'Ok', {
-            duration: 2000
-        });
-    }
+  openSnackBar(): void {
+    this.snackBar.open('Utilisateur supprimé', 'Ok', {
+      duration: 2000
+    });
+  }
 
 }

@@ -7,5 +7,6 @@ export class GlobalsService {
   acceptedProjectUrl = this.url + 'projects?status=accepted';
   updateStatus = this.url + 'admin/update-project-status';
   updateParam = this.url + 'admin/update-param';
+  updateJudge = this.url + 'admin/update-jury';
 
 }

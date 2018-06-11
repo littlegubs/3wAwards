@@ -12,6 +12,7 @@ export class MemberValidatorsBase extends FormGroupValidators {
     lastName = null;
     birthday = [CustomValidators.date];
     country = null;
+    isJudge = [AppValidators.boolean];
     tags = [AppValidators.item];
     favoriteProjects = [AppValidators.item];
     presentation = null;
@@ -21,7 +22,7 @@ export class MemberValidatorsBase extends FormGroupValidators {
     optIn = [AppValidators.boolean];
     projectRatingMember = [AppValidators.item];
     clients = [AppValidators.item];
+    requestsJudge = [AppValidators.item];
     agencies = [AppValidators.item];
     profilePicture = [AppValidators.item];
-    isJudge = [AppValidators.boolean];
 }

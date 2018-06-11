@@ -229,6 +229,11 @@
         "GENERAL": "Mon projet",
         "IMAGE": "Captures d'écran"
       }
+    },
+    "REQUEST_JUDGE" : {
+      "SEND_MESSAGE": "Envoyé un message",
+      "SEND": "Envoyer",
+      "MESSAGE": "Message"
     }
   },
   "ERROR": {

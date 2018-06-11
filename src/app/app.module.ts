@@ -24,7 +24,7 @@ import {
   TypeAgenciesService,
   TypeTagsService,
   TargetsService,
-  SiteTypesService, ParametersService
+  SiteTypesService, ParametersService, RequestJudgesService
 } from '../backend/services';
 import {GlobalsService} from './globals.service';
 import {FormService} from '../backend/forms';
@@ -74,6 +74,7 @@ export function createRestangularConfigFactory(RestangularProvider) {
     TypeAgenciesService,
     TypeTagsService,
     AuthService,
+    RequestJudgesService,
     ParametersService,
     GlobalsService,
     {

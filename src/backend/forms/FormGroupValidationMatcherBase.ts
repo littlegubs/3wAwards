@@ -25,6 +25,8 @@ import { Project } from '../model/Project';
 import { ProjectValidators } from './ProjectValidators';
 import { Rating } from '../model/Rating';
 import { RatingValidators } from './RatingValidators';
+import { RequestJudge } from '../model/RequestJudge';
+import { RequestJudgeValidators } from './RequestJudgeValidators';
 import { SiteType } from '../model/SiteType';
 import { SiteTypeValidators } from './SiteTypeValidators';
 import { Tag } from '../model/Tag';
@@ -59,6 +61,7 @@ export class FormGroupValidationMatcherBase {
     this.items[ProjectRatingMember._resource] = {itemClass: ProjectRatingMember, validator: ProjectRatingMemberValidators};
     this.items[Project._resource] = {itemClass: Project, validator: ProjectValidators};
     this.items[Rating._resource] = {itemClass: Rating, validator: RatingValidators};
+    this.items[RequestJudge._resource] = {itemClass: RequestJudge, validator: RequestJudgeValidators};
     this.items[SiteType._resource] = {itemClass: SiteType, validator: SiteTypeValidators};
     this.items[Tag._resource] = {itemClass: Tag, validator: TagValidators};
     this.items[Target._resource] = {itemClass: Target, validator: TargetValidators};

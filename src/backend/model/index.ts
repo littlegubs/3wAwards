@@ -9,6 +9,7 @@ import { Parameter } from './Parameter';
 import { ProjectRatingMember } from './ProjectRatingMember';
 import { Project } from './Project';
 import { Rating } from './Rating';
+import { RequestJudge } from './RequestJudge';
 import { SiteType } from './SiteType';
 import { Tag } from './Tag';
 import { Target } from './Target';
@@ -28,6 +29,7 @@ export {
   ProjectRatingMember,
   Project,
   Rating,
+  RequestJudge,
   SiteType,
   Tag,
   Target,

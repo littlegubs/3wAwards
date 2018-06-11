@@ -1,0 +1,28 @@
+<div class="container-fluid" *ngIf="requestsJudges; else loading">
+  <div class="row">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Message</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let requestJudge of requestsJudges">
+        <td>{{requestJudge.member.firstName}}</td>
+        <td>{{requestJudge.member.lastName}}</td>
+        <td>{{requestJudge.message}}</td>
+        <td class="actions">
+          <button mat-raised-button color="primary" (click)="acceptRequest(requestJudge)">Accepter</button>
+          <button mat-raised-button color="warn" (click)="removeRequest(requestJudge)">Refuser</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>

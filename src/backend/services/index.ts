@@ -11,6 +11,7 @@ import { ParametersService } from './Parameters.service';
 import { ProjectRatingMembersService } from './ProjectRatingMembers.service';
 import { ProjectsService } from './Projects.service';
 import { RatingsService } from './Ratings.service';
+import { RequestJudgesService } from './RequestJudges.service';
 import { SiteTypesService } from './SiteTypes.service';
 import { TagsService } from './Tags.service';
 import { TargetsService } from './Targets.service';
@@ -30,6 +31,7 @@ export {
   ProjectRatingMembersService,
   ProjectsService,
   RatingsService,
+  RequestJudgesService,
   SiteTypesService,
   TagsService,
   TargetsService,

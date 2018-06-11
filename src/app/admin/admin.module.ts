@@ -15,6 +15,7 @@ import {TableMembersComponent} from './table-members/table-members.component';
 import {TableAwardsComponent} from './table-awards/table-awards.component';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 import { AwardFormComponent } from './award-form/award-form.component';
+import { TableJudgeComponent } from './table-judge/table-judge.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { AwardFormComponent } from './award-form/award-form.component';
     TableParamComponent,
     TableAwardsComponent,
     AwardFormComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    TableJudgeComponent
   ],
   entryComponents: [
       ConfirmDialogComponent,

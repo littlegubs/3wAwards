@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Member} from '../../../backend/model/Member';
 import {MembersService} from '../../../backend/services/Members.service';
 import {MatDialog} from '@angular/material';
-import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -40,15 +40,15 @@ export class TableMembersComponent implements OnInit {
     }
 
     openDialog(member: Member) {
-      let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
                 member: member
             },
             width: '530px',
         });
-        // dialogRef.afterClosed().subscribe(result => {
-        //     this.savedVoteEdition = result;
-        // });
+         dialogRef.afterClosed().subscribe(result => {
+           console.log(result);
+         });
     }
 }
 
