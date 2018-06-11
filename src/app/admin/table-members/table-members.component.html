@@ -20,13 +20,8 @@
         <td *ngIf="!member.websiteUrl">/</td>
         <td *ngIf="member.isJudge">Oui</td>
         <td *ngIf="!member.isJudge">Non</td>
-        <td *ngIf="member.isJudge" class="actions">
-          <button mat-raised-button disabled="disabled" (click)="updateJudge(member.id, 1)">Oui</button>
-          <button mat-raised-button color="warn" (click)="updateJudge(member.id, 0)">Non</button>
-        </td>
-        <td *ngIf="!member.isJudge" class="actions">
-          <button mat-raised-button color="primary" (click)="updateJudge(member.id, 1)">Oui</button>
-          <button mat-raised-button disabled="disabled" (click)="updateJudge(member.id, 0)">Non</button>
+        <td class="actions">
+          <button mat-raised-button color="warn" (click)="openDialog(member)">Supprimer</button>
         </td>
       </tr>
       </tbody>

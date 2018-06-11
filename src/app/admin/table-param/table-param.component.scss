@@ -20,6 +20,12 @@ app-table-param {
           &:not(#url){
             text-transform: capitalize;
           }
+          mat-form-field{
+            width: 50%;
+          }
+          .mat-form-field-ripple {
+            background-color: red !important;
+          }
         }
         .green-button {
           width: 100px;
@@ -27,9 +33,6 @@ app-table-param {
           &.mat-primary{
             background-color: forestgreen !important;
           }
-        }
-        .mat-form-field-ripple {
-          background-color: red !important;
         }
       }
     }

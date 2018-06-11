@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Member} from '../../../backend/model/Member';
 import {MembersService} from '../../../backend/services/Members.service';
-import {HttpClient} from '@angular/common/http';
-import {GlobalsService} from '../../globals.service';
+import {MatDialog} from '@angular/material';
+import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
+
 
 @Component({
   selector: 'app-table-members',
@@ -13,7 +14,7 @@ export class TableMembersComponent implements OnInit {
     members: Member[];
     pageNumber = 1;
 
-    constructor(private membersServices: MembersService, private http: HttpClient, private globalsService: GlobalsService) {
+    constructor(private membersServices: MembersService, public dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -38,15 +39,16 @@ export class TableMembersComponent implements OnInit {
         );
     }
 
-    updateJudge(memberId: number, isJudge: string) {
-        const body = new FormData();
-        body.append('id', memberId.toString());
-        body.append('isJudge', isJudge);
-        this.http.post(this.globalsService.updateStatus, body).subscribe(
-            res => {
+    openDialog(member: Member) {
+      let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            data: {
+                member: member
             },
-            err => {
-            }
-        );
+            width: '530px',
+        });
+        // dialogRef.afterClosed().subscribe(result => {
+        //     this.savedVoteEdition = result;
+        // });
     }
 }
+

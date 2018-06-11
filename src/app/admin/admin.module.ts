@@ -13,6 +13,7 @@ import { TableParamComponent } from './table-param/table-param.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableMembersComponent} from './table-members/table-members.component';
 import {TableAwardsComponent} from './table-awards/table-awards.component';
+import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,11 @@ import {TableAwardsComponent} from './table-awards/table-awards.component';
     CardRecentSubmissionComponent,
     TableParamComponent,
     TableAwardsComponent,
-  ]
+    ConfirmDialogComponent
+  ],
+  entryComponents: [
+      ConfirmDialogComponent,
+  ],
 })
 export class AdminModule {
 }
