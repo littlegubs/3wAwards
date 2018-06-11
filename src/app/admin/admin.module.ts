@@ -14,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableMembersComponent} from './table-members/table-members.component';
 import {TableAwardsComponent} from './table-awards/table-awards.component';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
+import { AwardFormComponent } from './award-form/award-form.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component'
     CardRecentSubmissionComponent,
     TableParamComponent,
     TableAwardsComponent,
+    AwardFormComponent,
     ConfirmDialogComponent
   ],
   entryComponents: [
