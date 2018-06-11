@@ -367,15 +367,16 @@
                 {{'FRONT.FORM_PROJECT.ADD_CREDIT' | translate}}
               </button>
             </div>
-            <div class="form-group row">
+            <div class="form-group row"><input type="file" name="file" id="file"
+                                               (change)="fileUpload($event)"/>
               <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}} <i class="fas fa-plus-circle add-image"></i></p>
               <mat-grid-list cols="2" rowHeight="300px" class="images-grid" >
                 <mat-grid-tile
-                        *ngFor="let tile of tiles, let i = index"
-                        [colspan]="tile.cols"
-                        [rowspan]="tile.rows">
+                        *ngFor="let tile of files; first as isFirst"
+                        [colspan]="isFirst ? 2 : 1"
+                        [rowspan]="isFirst ? 2 : 1">
                   <span class="legend"> Cette image sera utilisée pour la thumbnail de votre projet </span>
-                  <div *ngIf="tile[i] > 0; else noThumbnail">
+                  <div *ngIf="tile > 0; else noThumbnail">
                     <!--<img *ngIf="client.image.path | liip:'card_thumbnail' as projectImage" [src]="'url('+projectImage+')'"/>-->
                   </div>
                   <ng-template #noThumbnail>

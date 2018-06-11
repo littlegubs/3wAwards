@@ -50,8 +50,13 @@ export class ProjectFormComponent implements OnInit {
   idTarget: number;
   idSiteType: number;
   addOnBlur = true;
+
+
+  file: File;
+  url;
+
   separatorKeysCodes = [ENTER, COMMA];
-    tiles = [
+    files = [
         {text: 'One', cols: 2, rows: 2, color: 'lightblue'},
         {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
         {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
@@ -203,7 +208,7 @@ export class ProjectFormComponent implements OnInit {
       }
       if (find === false) {
         const tag = new Tag();
-        for (let typeTag of this.typeTags) {
+        for (const typeTag of this.typeTags) {
           if (typeTag.libelle === type) {
             tag.setType(typeTag.id);
             tag.type.libelle = type;
@@ -237,7 +242,7 @@ export class ProjectFormComponent implements OnInit {
   addTags(event: MatChipInputEvent, type: string): void {
     if ((event.value || '').trim()) {
       const tag = new Tag();
-      for (let typeTag of this.typeTags) {
+      for (const typeTag of this.typeTags) {
         if (typeTag.libelle === type) {
           tag.setType(typeTag.id);
           tag.type.libelle = type;
@@ -255,7 +260,7 @@ export class ProjectFormComponent implements OnInit {
 
   addColors(value: string, type: string): void {
     const tag = new Tag();
-    for (let typeTag of this.typeTags) {
+    for (const typeTag of this.typeTags) {
       if (typeTag.libelle === type) {
         tag.setType(typeTag.id);
         tag.type.libelle = type;
@@ -311,4 +316,15 @@ export class ProjectFormComponent implements OnInit {
     }
   }
 
+  fileUpload($event: any) {
+    const fileList: FileList = $event.target.files;
+    if (fileList.length > 0) {
+      this.file = $event.target.files[0];
+      const fileReader = new FileReader();
+      fileReader.onload = (event: any) => {
+        this.url = event.target.result;
+      };
+      fileReader.readAsDataURL(this.file);
+    }
+  }
 }
