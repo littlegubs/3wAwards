@@ -228,7 +228,8 @@
       "LABELS": {
         "GENERAL": "Mon projet",
         "IMAGE": "Captures d'écran"
-      }
+      },
+      "THUMBNAIL": "Cette image sera utilisée pour la thumbnail de votre projet"
     },
     "FORM_AGENCY": {
       "IDENTITY":"Identité",

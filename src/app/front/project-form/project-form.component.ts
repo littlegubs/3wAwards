@@ -51,17 +51,10 @@ export class ProjectFormComponent implements OnInit {
   idSiteType: number;
   addOnBlur = true;
 
-
-  file: File;
-  url;
-
   separatorKeysCodes = [ENTER, COMMA];
-    files = [
-        {text: 'One', cols: 2, rows: 2, color: 'lightblue'},
-        {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
-        {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-        {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-    ];
+  files: File[] = [];
+  url: string[] = [];
+
   colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 
@@ -316,15 +309,16 @@ export class ProjectFormComponent implements OnInit {
     }
   }
 
-  fileUpload($event: any) {
+  fileUpload($event: any, i) {
     const fileList: FileList = $event.target.files;
     if (fileList.length > 0) {
-      this.file = $event.target.files[0];
+      const file: File = $event.target.files[0];
+      this.files[i] = file;
       const fileReader = new FileReader();
       fileReader.onload = (event: any) => {
-        this.url = event.target.result;
+        this.url[i] = event.target.result;
       };
-      fileReader.readAsDataURL(this.file);
+      fileReader.readAsDataURL(file);
     }
   }
 }

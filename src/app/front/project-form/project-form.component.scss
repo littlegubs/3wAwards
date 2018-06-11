@@ -147,8 +147,9 @@ app-project-form {
           mat-grid-tile{
             img{
               object-fit: cover;
-              position: absolute;
               z-index: 1;
+              max-width: 100%;
+              height: auto;
             }
             &:first-child {
               .legend {
@@ -177,6 +178,7 @@ app-project-form {
         &.images-grid {
           > div {
             mat-grid-tile {
+              cursor: pointer;
               &:first-child {
                 .legend {
                   opacity: 1;
