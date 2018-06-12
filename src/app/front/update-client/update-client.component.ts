@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ClientsService, MembersService, TypeTagsService} from '../../../backend/services';
-import {ENTER, COMMA} from '@angular/cdk/keycodes';
-import {Agency, Client, Member, Tag, TypeTag} from '../../../backend/model';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {Client, Member, Tag, TypeTag} from '../../../backend/model';
 import {AuthService} from '../../auth.service';
 import {MatChipInputEvent} from '@angular/material';
 import {TokenInterface} from '../../tokenInterface';
@@ -61,7 +61,7 @@ export class UpdateClientComponent implements OnInit {
                 this.clientsService.update(newClient).subscribe(client => console.log('yeah!'));
             } else {
                 newClient.setProjectsatNull();
-                newClient.tags = this.tags;
+                newClient.tags = this.clientTags;
                 newClient.image = null;
                 newClient.setMember(this.userInfo.id);
                 console.log(newClient);
@@ -90,7 +90,7 @@ export class UpdateClientComponent implements OnInit {
     addTags(event: MatChipInputEvent, type: string): void {
         if ((event.value || '').trim()) {
             const tag = new Tag();
-            for (let typeTag of this.typeTags) {
+            for (const typeTag of this.typeTags) {
                 if (typeTag.libelle === type) {
                     tag.setType(typeTag.id);
                     tag.type.libelle = type;
@@ -125,7 +125,7 @@ export class UpdateClientComponent implements OnInit {
             }
             if (find === false) {
                 const tag = new Tag();
-                for (let typeTag of this.typeTags) {
+                for (const typeTag of this.typeTags) {
                     if (typeTag.libelle === type) {
                         tag.setType(typeTag.id);
                         tag.type.libelle = type;

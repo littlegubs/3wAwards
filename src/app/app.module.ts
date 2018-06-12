@@ -5,7 +5,7 @@ import {BootstrapModule} from './bootstrap.module';
 import {AuthService} from './auth.service';
 import {AuthInterceptor} from './auth.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {RestangularModule} from 'ngx-restangular';
 import {RestangularConfigFactory} from '../backend/services/RestangularConfigFactory';
@@ -20,11 +20,11 @@ import {
   ProjectRatingMembersService,
   ProjectsService,
   RatingsService,
+  SiteTypesService,
   TagsService,
-  TypeAgenciesService,
-  TypeTagsService,
   TargetsService,
-  SiteTypesService
+  TypeAgenciesService,
+  TypeTagsService
 } from '../backend/services';
 import {GlobalsService} from './globals.service';
 import {FormService} from '../backend/forms';

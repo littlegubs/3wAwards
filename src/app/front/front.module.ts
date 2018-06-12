@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {SharedModule} from '../shared.module';
 import {FrontRoutingModule} from './front-routing.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -34,16 +34,15 @@ import {MemberAwardProjectTableComponent} from './member-award-project-table/mem
 import {ProjectFormVoteComponent} from './project-form-vote/project-form-vote.component';
 import {UpdateProjectFormComponent} from './update-project-form/update-project-form.component';
 import {SearchResultComponent} from './search-result/search-result.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FrontComponent} from './front.component';
+import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency.component';
+import {AddClientComponent} from './add-client/add-client.component';
+import {UpdateClientComponent} from './update-client/update-client.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
 }
-
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { FrontComponent } from './front.component';
-import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency.component';
-import {AddClientComponent} from './add-client/add-client.component';
-import {UpdateClientComponent} from './update-client/update-client.component';
 
 @NgModule({
   imports: [

@@ -28,6 +28,8 @@ export class MemberBase {
   clients: Client;
   agencies: Agency;
   profilePicture: Image;
+  username: string;
+  email: string;
   isJudge: boolean;
 
   setFavoriteProjects(id: number): MemberBase {

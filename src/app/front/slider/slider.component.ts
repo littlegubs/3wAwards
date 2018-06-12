@@ -1,6 +1,6 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import { AwardsService } from '../../../backend/services';
-import { Award } from '../../../backend/model';
+import {Component, OnInit} from '@angular/core';
+import {AwardsService} from '../../../backend/services';
+import {Award} from '../../../backend/model';
 
 @Component({
   selector: 'app-slider',

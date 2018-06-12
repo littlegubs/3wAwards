@@ -76,7 +76,7 @@ export class AddClientComponent implements OnInit {
               this.clientService.update(newClient).subscribe(client => console.log('yeah!'));
           } else {
               newClient.setProjectsatNull();
-              newClient.tags = this.tags;
+              newClient.tags = this.clientTags ;
               newClient.image = null;
               newClient.setMember(this.userInfo.id);
               console.log(newClient);
@@ -108,7 +108,7 @@ export class AddClientComponent implements OnInit {
   addTags(event: MatChipInputEvent, type: string): void {
       if ((event.value || '').trim()) {
           const tag = new Tag();
-          for (let typeTag of this.typeTags) {
+          for (const typeTag of this.typeTags) {
               if (typeTag.libelle === type) {
                   tag.setType(typeTag.id);
                   tag.type.libelle = type;
@@ -143,7 +143,7 @@ export class AddClientComponent implements OnInit {
           }
           if (find === false) {
               const tag = new Tag();
-              for (let typeTag of this.typeTags) {
+              for (const typeTag of this.typeTags) {
                   if (typeTag.libelle === type) {
                       tag.setType(typeTag.id);
                       tag.type.libelle = type;
