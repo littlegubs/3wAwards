@@ -12,6 +12,7 @@ import {Error404Component} from '../error404/error404.component';
 import {FrontComponent} from './front.component';
 import {RequestJudge} from '../../backend/model';
 import {RequestJudgeFormComponent} from './request-judge-form/request-judge-form.component';
+import {LoginGuard} from '../login.guard';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
       {path: 'client/:id', component: ClientProfileComponent},
       {path: 'project/:id', component: ProjectProfileComponent},
       {path: 'project/:id/vote', component: ProjectFormVoteComponent},
-      {path: 'profile', component: MemberProfileComponent},
+      {path: 'profile', component: MemberProfileComponent,  canActivate: [LoginGuard]},
       {path: 'project', component: ProjectFormComponent},
       {path: 'addAgency', component: AddAgencyComponent},
       {path: 'request-judge', component: RequestJudgeFormComponent}
