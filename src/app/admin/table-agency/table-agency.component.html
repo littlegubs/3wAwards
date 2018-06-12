@@ -1,0 +1,52 @@
+<div class="container-fluid" *ngIf="agencies; else loading">
+  <div class="row">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Pays</th>
+        <th scope="col">Ville</th>
+        <th scope="col">Type</th>
+        <th scope="col">Site</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let agency of agencies">
+        <td>{{agency.name}}</td>
+        <td>{{agency.country}}</td>
+        <td>{{agency.city}}</td>
+        <td>{{agency.typeAgency.libelle}}</td>
+        <td *ngIf="agency.websiteUrl">{{agency.websiteUrl}}</td>
+        <td *ngIf="!agency.websiteUrl">/</td>
+        <td class="actions">
+          <button mat-raised-button color="warn" (click)="removeAgency(agency)">Supprimer</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row paginator" *ngIf="agencies.length > 12">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li>Agences : {{agencies.length}} | Page : {{pageNumber}}/{{agencies.pagination.last}}</li>
+        <li *ngIf="pageNumber !== 1" class="page-item" (click)="pagination(-1)">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item" (click)="pagination(1)">
+          <a class="page-link" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
