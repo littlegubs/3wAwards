@@ -25,7 +25,7 @@ export class MemberFormComponent {
   }
 
   onSubmit() {
-    this.authService.signUp(this.registrationForm, 'ROLE_ADMIN');
+    this.authService.signUpAdmin(this.registrationForm, 'ROLE_ADMIN');
     this.openSnackBar();
   }
 

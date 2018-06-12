@@ -71,6 +71,20 @@ export class AuthService {
       }));
   }
 
+  signUpAdmin(form: FormGroup, role: string) {
+    const filterKeys = Object.keys(form.value);
+    const body = new FormData();
+    for (let i = 0; i < filterKeys.length; i++) {
+      body.append(filterKeys[i], form.value[filterKeys[i]]);
+    }
+    body.append('role', role);
+    console.log(this.http.post(this.localUrl + 'register', body).subscribe(res => {
+      },
+      err => {
+        console.log(err);
+      }));
+  }
+
   private setTokenInLocalStorage(authResult) {
     const expireAR = moment().add(authResult.expiresIn, 'second');
     const userToken = JSON.parse(JSON.stringify(authResult));
