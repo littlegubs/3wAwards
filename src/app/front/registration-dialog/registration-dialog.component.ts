@@ -25,6 +25,6 @@ export class RegistrationDialogComponent {
   }
 
   onSubmit() {
-    this.authService.signUp(this.registrationForm);
+    this.authService.signUp(this.registrationForm, 'ROLE_USER');
   }
 }

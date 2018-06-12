@@ -18,6 +18,7 @@ import { AwardFormComponent } from './award-form/award-form.component';
 import { TableJudgeComponent } from './table-judge/table-judge.component';
 import { TableAgencyComponent } from './table-agency/table-agency.component';
 import { TableClientComponent } from './table-client/table-client.component';
+import { MemberFormComponent } from './member-form/member-form.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { TableClientComponent } from './table-client/table-client.component';
     ConfirmDialogComponent,
     TableJudgeComponent,
     TableAgencyComponent,
-    TableClientComponent
+    TableClientComponent,
+    MemberFormComponent
   ],
   entryComponents: [
       ConfirmDialogComponent,

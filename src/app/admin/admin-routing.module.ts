@@ -11,6 +11,7 @@ import {AwardFormComponent} from './award-form/award-form.component';
 import {TableJudgeComponent} from './table-judge/table-judge.component';
 import {TableAgencyComponent} from './table-agency/table-agency.component';
 import {TableClientComponent} from './table-client/table-client.component';
+import {MemberFormComponent} from './member-form/member-form.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path: 'judge', component: TableJudgeComponent},
       {path: 'agency', component: TableAgencyComponent},
       {path: 'client', component: TableClientComponent},
+      {path: 'add-member', component: MemberFormComponent},
 
     ]
   },
