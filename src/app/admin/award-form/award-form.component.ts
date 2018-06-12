@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AwardsService, CategoriesService, ProjectsService} from '../../../backend/services';
 import {Award, Category, Project} from '../../../backend/model';
 import {FormService, Form} from '../../../backend/forms';
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-award-form',
@@ -16,7 +17,7 @@ export class AwardFormComponent implements OnInit {
   type: string;
 
   constructor(private categoriesService: CategoriesService, private projectsService: ProjectsService,
-              private formService: FormService, private awardsService: AwardsService) {
+              private formService: FormService, private awardsService: AwardsService, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -63,7 +64,7 @@ export class AwardFormComponent implements OnInit {
       } else {
         newAward.type = this.type;
       }
-      this.awardsService.add(newAward).subscribe(res => console.log('yeah!'));
+      this.awardsService.add(newAward).subscribe(res => this.openSnackBar());
     } else {
       this.form.displayErrors();
     }
@@ -79,6 +80,12 @@ export class AwardFormComponent implements OnInit {
 
   getTypes(value): void {
     this.type = value;
+  }
+
+  openSnackBar(): void {
+      this.snackBar.open('Award attribué', 'Ok', {
+          duration: 2000
+      });
   }
 
 }

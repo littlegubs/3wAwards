@@ -21,12 +21,11 @@ export class ConfirmDialogComponent {
   confirmClick(): void {
     this.membersService.remove(this.member).subscribe(
       res => {
-        console.log(res);
+          this.openSnackBar();
+          this.onNoClick();
       },
       err => {
       });
-    this.openSnackBar();
-    this.onNoClick();
   }
 
   openSnackBar(): void {
