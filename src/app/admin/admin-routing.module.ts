@@ -12,11 +12,12 @@ import {TableJudgeComponent} from './table-judge/table-judge.component';
 import {TableAgencyComponent} from './table-agency/table-agency.component';
 import {TableClientComponent} from './table-client/table-client.component';
 import {MemberFormComponent} from './member-form/member-form.component';
+import {AdminGuard} from '../admin.guard';
 
 
 const routes: Routes = [
   {
-    path: 'admin', component: AdminComponent,
+    path: 'admin', component: AdminComponent, canActivate: [AdminGuard],
     children: [
       {path: '', component: AdminDashboardComponent},
       {path: 'projects', component: TableProjectsComponent},
