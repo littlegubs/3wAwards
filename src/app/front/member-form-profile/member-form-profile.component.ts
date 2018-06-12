@@ -27,7 +27,8 @@ export class MemberFormProfileComponent implements OnInit {
   // INTERRESTS
   interests = [];
 
-  constructor(private formService: FormService, private memberService: MembersService, private tagService: TagsService, private http: HttpClient, private globals: GlobalsService) {
+  constructor(private formService: FormService, private memberService: MembersService, private tagService: TagsService,
+              private http: HttpClient, private globals: GlobalsService) {
   }
 
   ngOnInit() {

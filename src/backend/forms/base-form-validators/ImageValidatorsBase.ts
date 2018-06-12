@@ -8,5 +8,6 @@ import { FormGroupValidators } from '../tools/FormGroupValidators';
 
 export class ImageValidatorsBase extends FormGroupValidators {
     path = null;
+    position = [CustomValidators.digits];
     libelle = null;
 }

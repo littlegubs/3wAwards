@@ -147,7 +147,8 @@ app-update-project-form {
           mat-grid-tile{
             img{
               object-fit: cover;
-              position: absolute;
+              max-width: 100%;
+              height: auto;
               z-index: 1;
             }
             &:first-child {

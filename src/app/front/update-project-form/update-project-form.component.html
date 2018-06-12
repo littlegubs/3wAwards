@@ -381,16 +381,24 @@
                 class="fas fa-plus-circle add-image"></i></p>
               <mat-grid-list cols="2" rowHeight="300px" class="images-grid">
                 <mat-grid-tile
-                  *ngFor="let tile of tiles, let i = index"
-                  [colspan]="tile.cols"
-                  [rowspan]="tile.rows">
-                  <span class="legend"> Cette image sera utilisée pour la thumbnail de votre projet </span>
-                  <div *ngIf="tile[i] > 0; else noThumbnail">
-                    <!--<img *ngIf="client.image.path | liip:'card_thumbnail' as projectImage" [src]="'url('+projectImage+')'"/>-->
+                  *ngFor="let z of [0,0,0,0,0]; first as isFirst; index as i"
+                  [colspan]="isFirst ? 2 : 1"
+                  [rowspan]="isFirst ? 2 : 1">
+                  <span class="legend">{{'FRONT.FORM_PROJECT.THUMBNAIL' | translate}} </span>
+                  <div *ngIf="url[i]; else noThumbnail">
+                    <label [for]="'file-'+ i">
+                      <img *ngIf="projectImages[i]; else clientPath" [src]="url[i] | liip:'project_pictures'">
+                      <ng-template #clientPath>
+                          <img [src]="url[i]">
+                      </ng-template>
+                    </label>
                   </div>
                   <ng-template #noThumbnail>
-                    <img [src]="'http://via.placeholder.com/1140x850)'"/>
+                    <label [for]="'file-'+ i">
+                      <img [src]="'http://via.placeholder.com/1140x850)'">
+                    </label>
                   </ng-template>
+                  <input type="file" name="file" [id]="'file-'+ i" (change)="fileUpload($event, i)" hidden>
                 </mat-grid-tile>
               </mat-grid-list>
             </div>

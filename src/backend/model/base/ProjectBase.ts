@@ -46,7 +46,7 @@ export class ProjectBase {
   tags: Tag[];
   credits: Credit[];
   members: Member;
-  images: Image;
+  images: Image[];
   awards: Award;
   projectUrl: string;
 
@@ -82,13 +82,6 @@ export class ProjectBase {
     this.members = new Member();
     this.members.id = id;
     this.members['@id'] = '/members/' + id;
-    return this;
-  }
-
-  setImages(id: number): ProjectBase {
-    this.images = new Image();
-    this.images.id = id;
-    this.images['@id'] = '/images/' + id;
     return this;
   }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Form, FormService} from '../../../backend/forms';
-import {Credit, Member, Project, SiteType, Tag, Target, TypeTag} from '../../../backend/model';
+import {Credit, Image, Member, Project, SiteType, Tag, Target, TypeTag} from '../../../backend/model';
 import {
   MembersService,
   ProjectsService,
@@ -12,6 +12,8 @@ import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
 
 @Component({
   selector: 'app-project-form',
@@ -54,13 +56,14 @@ export class ProjectFormComponent implements OnInit {
   separatorKeysCodes = [ENTER, COMMA];
   files: File[] = [];
   url: string[] = [];
+  uploadedImages: Image[] = [];
 
   colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
-              private  siteTypesService: SiteTypesService) {
+              private  siteTypesService: SiteTypesService, private http: HttpClient, private globalService: GlobalsService) {
   }
 
   ngOnInit() {
@@ -143,7 +146,6 @@ export class ProjectFormComponent implements OnInit {
         }
         newProject.tags = this.projectTags;
         newProject.setMembersatNull();
-        newProject.setImagesAtNull();
         newProject.setAwardsAtNull();
         newProject.credits = this.credits;
 
@@ -157,7 +159,23 @@ export class ProjectFormComponent implements OnInit {
         } else {
           newProject.setTarget(this.idTarget);
         }
-        this.projectsService.add(newProject).subscribe();
+        this.files.forEach((file, index) => {
+          const formData = new FormData();
+          formData.append('xd', file);
+          this.http.post(this.globalService.url + 'xd', formData).subscribe((data: string) => {
+            const image = new Image();
+            image.libelle = file.name;
+            image.path = data;
+            image.position = index;
+            this.uploadedImages.push(image);
+            if (index === (this.files.length - 1)) {
+              newProject.images = this.uploadedImages;
+              this.projectsService.add(newProject).subscribe();
+            }
+          });
+        });
+
+
       }
     } else {
       this.form.displayErrors();

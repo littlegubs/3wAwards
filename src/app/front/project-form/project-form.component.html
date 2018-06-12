@@ -382,7 +382,7 @@
                   </div>
                   <ng-template #noThumbnail>
                     <label [for]="'file-'+ i">
-                      <img [src]="'http://via.placeholder.com/1140x850)'" layout-fill>
+                      <img [src]="'http://via.placeholder.com/1140x850)'">
                     </label>
                   </ng-template>
                   <input type="file" name="file" [id]="'file-'+ i" (change)="fileUpload($event, i)" hidden>
