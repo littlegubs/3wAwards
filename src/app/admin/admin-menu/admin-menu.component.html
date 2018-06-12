@@ -2,19 +2,31 @@
 <div class="admin-menu">
   <div><p [routerLink]="['/admin']"><i class="fas fa-tachometer-alt"></i> Dashboard </p></div>
   <div><p [routerLink]="['projects']"><i class="fas fa-code"></i> Projets</p></div>
-  <div><p [routerLink]="['agency']">Agency</p></div>
-  <div><p [routerLink]="['client']">Client</p></div>
+  <div><p [routerLink]="['agency']"><i class="fas fa-briefcase"></i> Agency</p></div>
+  <div><p [routerLink]="['client']"><i class="fas fa-address-book"></i> Client</p></div>
   <div><p [routerLink]="['params']"><i class="fas fa-cogs"></i> Paramètres </p></div>
-  <div><p [routerLink]="['members']"><i class="far fa-address-book"></i> Membres </p></div>
-  <div><p [routerLink]="['judge']"><i class="fas fa-users"></i> Jury </p></div>
-  <div (mouseout)="hovered=false" (mouseover)="hovered=true">
+  <div>
+    <p [routerLink]="['judge']"><i class="fas fa-users"></i> Jury </p>
+  </div>
+  <div (mouseout)="hoveredMember = false" (mouseover)="hoveredMember = true">
+    <p [routerLink]="['members']">
+    <i class="far fa-address-book"></i>
+    Membres
+    <i class="fas fa-chevron-down" *ngIf="hoveredMember === false"></i>
+    <i class="fas fa-chevron-up" *ngIf="hoveredMember === true"></i>
+  </p>
+    <div class="dropdown-custom" [ngClass]="{'hovered': hoveredMember }">
+      <p [routerLink]="['add-member']"><i class="fas fa-plus"></i> Ajouter</p>
+    </div>
+  </div>
+  <div (mouseout)="hoveredAward = false" (mouseover)="hoveredAward = true">
     <p [routerLink]="['awards']">
       <i class="fas fa-trophy"></i>
       Award
-      <i class="fas fa-chevron-down" (click)="hovered = !hovered" *ngIf="hovered === false"></i>
-      <i class="fas fa-chevron-up" (click)="hovered = !hovered" *ngIf="hovered === true"></i>
+      <i class="fas fa-chevron-down" *ngIf="hoveredAward === false"></i>
+      <i class="fas fa-chevron-up" *ngIf="hoveredAward === true"></i>
     </p>
-    <div class="dropdown-custom" [ngClass]="{'hovered': hovered }">
+    <div class="dropdown-custom" [ngClass]="{'hovered': hoveredAward }">
       <p [routerLink]="['add-award']"><i class="fas fa-plus"></i> Ajouter</p>
     </div>
   </div>

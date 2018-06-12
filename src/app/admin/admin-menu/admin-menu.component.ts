@@ -5,7 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './admin-menu.component.html',
 })
 export class AdminMenuComponent implements OnInit {
-  hovered = false;
+  hoveredAward = false;
+  hoveredMember = false;
 
   constructor() { }
 
