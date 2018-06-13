@@ -34,7 +34,7 @@ import {AdminModule} from './admin/admin.module';
 import {Error404Component} from './error404/error404.component';
 import {AdminGuard} from './admin.guard';
 import {LoginGuard} from './login.guard';
-import {UpdateProjectGuard} from "./update-project.guard";
+import {UpdateProjectGuard} from './update-project.guard';
 
 export function createRestangularConfigFactory(RestangularProvider) {
   if (localStorage.getItem('user_token') !== null) {

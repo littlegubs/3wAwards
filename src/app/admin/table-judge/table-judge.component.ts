@@ -11,6 +11,7 @@ import {RequestJudge} from '../../../backend/model';
 })
 export class TableJudgeComponent implements OnInit {
   requestsJudges: RequestJudge[];
+  pageNumber = 1;
 
   constructor(private http: HttpClient, private globalsService: GlobalsService, private requestJudgesService: RequestJudgesService) {
   }
@@ -48,6 +49,18 @@ export class TableJudgeComponent implements OnInit {
       },
       err => {
       });
+  }
+
+  pagination(value: number): void {
+      this.requestsJudges = undefined;
+      this.pageNumber = this.pageNumber + value;
+      this.requestJudgesService.getAll(this.pageNumber).subscribe(
+          res => {
+              this.requestsJudges = res;
+          },
+          err => {
+          }
+      );
   }
 
 }

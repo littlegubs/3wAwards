@@ -42,6 +42,9 @@ export function HttpLoaderFactory(http: HttpClient) {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FrontComponent } from './front.component';
 import { RequestJudgeFormComponent } from './request-judge-form/request-judge-form.component';
+import {AgenciesCardsComponent} from "./agencies-cards/agencies-cards.component";
+import {ClientsCardsComponent} from "./clients-cards/clients-cards.component";
+import {AwardsCardsComponent} from "./awards-cards/awards-cards.component";
 
 @NgModule({
   imports: [
@@ -93,6 +96,9 @@ import { RequestJudgeFormComponent } from './request-judge-form/request-judge-fo
     UpdateProjectFormComponent,
     SearchResultComponent,
     RequestJudgeFormComponent,
+    AgenciesCardsComponent,
+    ClientsCardsComponent,
+    AwardsCardsComponent
   ]
 })
 export class FrontModule { }

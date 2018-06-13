@@ -8,7 +8,7 @@ import {Client} from '../../../backend/model';
 })
 export class TableClientComponent implements OnInit {
 
-  pageNumber: number;
+  pageNumber = 1;
   clients: Client[];
 
   constructor(private clientsService: ClientsService) { }

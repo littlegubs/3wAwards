@@ -35,7 +35,7 @@
       </tbody>
     </table>
   </div>
-  <div class="row paginator" *ngIf="projects.length > 12">
+  <div class="row paginator" *ngIf="projects.length >= 12">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li>Projets : {{projects.length}} | Page : {{pageNumber}}/{{projects.pagination.last}}</li>
@@ -45,7 +45,7 @@
             <span class="sr-only">Previous</span>
           </a>
         </li>
-        <li class="page-item" (click)="pagination(1)">
+        <li class="page-item" (click)="pagination(1)" *ngIf="pageNumber != projects.pagination.last">
           <a class="page-link" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
             <span class="sr-only">Next</span>
