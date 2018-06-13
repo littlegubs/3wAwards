@@ -132,7 +132,7 @@
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
                   <mat-chip-list #chipListInterest>
-                    <mat-chip *ngFor="let interest of member.tags |filter:'interests'"
+                    <mat-chip *ngFor="let interest of interests"
                               [removable]="true" (remove)="removeInterest(interest)">
                       {{interest.libelle}}
                       <mat-icon matChipRemove>x</mat-icon>
@@ -217,7 +217,7 @@
           <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
             <div class="form-group row upload-profile-pic">
               <p class="col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.AVATAR' | translate}}</p>
-              <img class="profile-pic" [src]="(url || member.profilePicture) ? (url ? url : member.profilePicture) : 'assets/imgs/user_placeholder.png'">
+              <img class="profile-pic" [src]="(url || member.profilePicture.path) ? (url ? url : member.profilePicture.path | liip:'profile_pic') : 'assets/imgs/user_placeholder.png'">
               <i class="far fa-trash-alt"></i>
               <input type="file" name="file" id="file" class="inputfile" (change)="fileUpload($event)"/>
               <label for="file">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.UPLOAD' | translate}}</label>
