@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Image, Member, Tag} from '../../../backend/model';
+import {Image, Member, Tag, TypeTag} from '../../../backend/model';
 import {Form, FormService} from '../../../backend/forms';
-import {MembersService, TagsService} from '../../../backend/services';
+import {MembersService, TagsService, TypeTagsService} from '../../../backend/services';
 import {MatChipInputEvent} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {HttpClient} from '@angular/common/http';
@@ -20,19 +20,24 @@ export class MemberFormProfileComponent implements OnInit {
   // EVENTS_KEYBORDS
   separatorKeysCodes = [ENTER, COMMA];
 
+  // TYPE TAG
+  typeTags: TypeTag[];
+
   // SKILLS
   skills: Tag[];
 
   // INTERRESTS
-  interests = [];
+  interests: Tag[];
 
-  constructor(private formService: FormService, private memberService: MembersService, private tagService: TagsService, private http: HttpClient, private globals: GlobalsService) {
+  constructor(private formService: FormService, private memberService: MembersService, private tagService: TagsService,
+              private http: HttpClient, private globals: GlobalsService, private typeTagsService: TypeTagsService) {
   }
 
   ngOnInit() {
     this.skills = this.member.tags.filter(tag => tag.type.libelle === 'skills');
     this.interests = this.member.tags.filter(tag => tag.type.libelle === 'interests');
     this.form = this.formService.makeForm<Member>(this.member);
+    this.typeTagsService.getAll().subscribe(res => this.typeTags = res);
   }
 
   addSkill(event: MatChipInputEvent): void {
@@ -42,7 +47,7 @@ export class MemberFormProfileComponent implements OnInit {
 
       const tag = new Tag();
       tag.libelle = event.value;
-      tag.setTypeLibelle('skills');
+      tag.type = this.typeTags.find(type => type.libelle === 'skills');
 
       this.skills.push(tag);
     }
@@ -68,6 +73,8 @@ export class MemberFormProfileComponent implements OnInit {
     // Add our fruit
     if ((value || '').trim()) {
       const tag = new Tag();
+      tag.libelle = event.value;
+      tag.type = this.typeTags.find(type => type.libelle === 'interests');
       this.interests.push(tag);
     }
 
