@@ -81,7 +81,7 @@ export class AddClientComponent implements OnInit {
               console.log(newClient);
               this.clientService.add(newClient).subscribe(client => {
                   console.log('add');
-                  this.route.navigate(['/update-client/' + client.id]);
+                  this.route.navigate(['/client/' + client.id]);
               });
           }
       } else {
