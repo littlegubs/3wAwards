@@ -1,21 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ClientsService, MembersService, TypeTagsService} from '../../../backend/services';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {Client, Member, Tag, TypeTag} from '../../../backend/model';
+import {Client, Image, Member, Tag, TypeTag} from '../../../backend/model';
 import {AuthService} from '../../auth.service';
 import {MatChipInputEvent} from '@angular/material';
 import {TokenInterface} from '../../tokenInterface';
 import {Form, FormService} from '../../../backend/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
 
 @Component({
   selector: 'app-update-client',
   templateUrl: './update-client.component.html'
 })
 export class UpdateClientComponent implements OnInit {
+    @Input() client: Client;
     clients: Array<Client> = [];
     form: Form<Client>;
-    client: Client;
     tokenStorage = localStorage.getItem('user_token');
     userInfo: TokenInterface;
     member: Member;
@@ -26,9 +28,13 @@ export class UpdateClientComponent implements OnInit {
     customTags: Tag[] = [];
     addOnBlur = true;
     separatorKeysCodes = [ENTER, COMMA];
+    file: File;
+    fileReader;
+    url;
 
     constructor(private clientsService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
-                private membersService: MembersService, private authService: AuthService, private route: ActivatedRoute) {
+                private membersService: MembersService, private authService: AuthService, private route: ActivatedRoute,
+                private http: HttpClient, private globals: GlobalsService, private router: Router) {
     }
 
     ngOnInit() {
@@ -55,21 +61,56 @@ export class UpdateClientComponent implements OnInit {
     }
 
     commitClient(): void {
+        console.log('le btn marche');
         if (this.form.group.dirty && this.form.group.valid) {
+            console.log('ca passe');
             const newClient = this.form.get();
-            if (newClient.id) {
-                this.clientsService.update(newClient).subscribe(client => console.log('yeah!'));
-            } else {
-                newClient.setProjectsatNull();
-                newClient.tags = this.clientTags;
-                newClient.image = null;
-                newClient.setMember(this.userInfo.id);
-                console.log(newClient);
-                this.clientsService.add(newClient).subscribe(client => console.log('add'));
-            }
+            console.log(newClient);
+            const promise = new Promise(resolve => {
+                if (this.file) {
+                    const image = new Image();
+                    const formData = new FormData();
+                    formData.append('xd', this.file);
+                    this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
+                        image.path = data;
+                        image.libelle = this.file.name;
+                        newClient.image = image;
+                        resolve();
+                    });
+                } else {
+                    resolve();
+                }
+            });
+            Promise.resolve(promise).then(() => {
+                if (newClient.id) {
+                    this.clientsService.update(newClient).subscribe(client => {
+                        console.log('yeah!');
+                        this.router.navigate(['/client/' + this.client.id]);
+                    });
+                } else {
+                    newClient.setProjectsatNull();
+                    newClient.tags = this.clientTags;
+                    newClient.image = null;
+                    newClient.setMember(this.userInfo.id);
+                    console.log(newClient);
+                    this.clientsService.add(newClient).subscribe(client => console.log('add'));
+                }
+            });
         } else {
             // force invalid inputs state to display errors
             this.form.displayErrors();
+        }
+    }
+
+    fileUpload($event: any) {
+        const fileList: FileList = $event.target.files;
+        if (fileList.length > 0) {
+            this.file = $event.target.files[0];
+            const fileReader = new FileReader();
+            fileReader.onload = (event: any) => {
+                this.url = event.target.result;
+            };
+            fileReader.readAsDataURL(this.file);
         }
     }
 

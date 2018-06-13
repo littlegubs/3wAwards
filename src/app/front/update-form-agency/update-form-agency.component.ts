@@ -76,16 +76,6 @@ export class UpdateFormAgencyComponent implements OnInit {
     if (this.form.group.dirty && this.form.group.valid) {
       const newAgency = this.form.get();
         newAgency.image = null;
-        if (this.file) {
-            const image = new Image();
-            const formData = new FormData();
-            formData.append('xd', this.file);
-            this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
-                image.path = data;
-                image.libelle = this.file.name;
-                newAgency.image = image;
-            });
-        }
       if (newAgency.id) {
         newAgency.tags = this.agencyTags;
         newAgency.setTypeAgency(this.idTypeAgency);
@@ -103,17 +93,6 @@ export class UpdateFormAgencyComponent implements OnInit {
     this.idTypeAgency = value;
   }
 
-    fileUpload($event: any) {
-        const fileList: FileList = $event.target.files;
-        if (fileList.length > 0) {
-            this.file = $event.target.files[0];
-            const fileReader = new FileReader();
-            fileReader.onload = (event: any) => {
-                this.url = event.target.result;
-            };
-            fileReader.readAsDataURL(this.file);
-        }
-    }
   addTags(event: MatChipInputEvent, type: string): void {
     if ((event.value || '').trim()) {
       const tag = new Tag();

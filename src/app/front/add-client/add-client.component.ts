@@ -28,7 +28,6 @@ export class AddClientComponent implements OnInit {
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
   file: File;
-  fileReader: FileReader;
   url;
 
   constructor(private clientService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
