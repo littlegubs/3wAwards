@@ -73,23 +73,51 @@ export class UpdateFormAgencyComponent implements OnInit {
   }
 
   commitAgency(): void {
-    if (this.form.group.dirty && this.form.group.valid) {
-      const newAgency = this.form.get();
-        newAgency.image = null;
-      if (newAgency.id) {
-        newAgency.tags = this.agencyTags;
-        newAgency.setTypeAgency(this.idTypeAgency);
-        this.agenciesService.update(newAgency).subscribe(agency => {
-            console.log('yeah!');
-            this.router.navigate(['/update-agency/' + agency.id]);
-        });
+      if (this.form.group.dirty && this.form.group.valid) {
+          const newAgency = this.form.get();
+          const promise = new Promise(resolve => {
+              if (this.file) {
+                  const image = new Image();
+                  const formData = new FormData();
+                  formData.append('xd', this.file);
+                  this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
+                      image.path = data;
+                      image.libelle = this.file.name;
+                      newAgency.image = image;
+                      resolve();
+                  });
+              } else {
+                  resolve();
+              }
+          });
+          Promise.resolve(promise).then(() => {
+              if (newAgency.id) {
+                  newAgency.tags = this.agencyTags;
+                  newAgency.setTypeAgency(this.idTypeAgency);
+                  this.agenciesService.update(newAgency).subscribe(agency => {
+                      console.log('yeah!');
+                      this.router.navigate(['/update-agency/' + agency.id]);
+                  });
+              }
+          });
       } else {
-        this.form.displayErrors();
+          this.form.displayErrors();
       }
-    }
   }
 
-  getTypeAgencies(value): void {
+  fileUpload($event: any) {
+        const fileList: FileList = $event.target.files;
+        if (fileList.length > 0) {
+            this.file = $event.target.files[0];
+            const fileReader = new FileReader();
+            fileReader.onload = (event: any) => {
+                this.url = event.target.result;
+            };
+            fileReader.readAsDataURL(this.file);
+        }
+  }
+
+    getTypeAgencies(value): void {
     this.idTypeAgency = value;
   }
 
