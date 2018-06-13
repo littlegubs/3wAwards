@@ -15,12 +15,15 @@ import {GlobalsService} from '../../globals.service';
   templateUrl: './update-client.component.html'
 })
 export class UpdateClientComponent implements OnInit {
-    @Input() client: Client;
+    client: Client;
     clients: Array<Client> = [];
     form: Form<Client>;
     tokenStorage = localStorage.getItem('user_token');
     userInfo: TokenInterface;
     member: Member;
+    sectorTags: Tag;
+    sizeTags: Tag;
+    revenueTags: Tag;
     typeTags: TypeTag[] = [];
     tags: Tag[] = [];
     clientTags: Tag[] = [];
@@ -181,6 +184,9 @@ export class UpdateClientComponent implements OnInit {
 
     refreshTagsArray() {
         this.customTags = this.clientTags.filter(tag => tag.type.libelle === 'custom');
+        this.sectorTags = this.clientTags.find(tag => tag.type.libelle === 'client_size');
+        this.sizeTags = this.clientTags.find(tag => tag.type.libelle === 'client_status');
+        this.revenueTags = this.clientTags.find(tag => tag.type.libelle === 'client_revenue');
     }
 
     removeTag(value: string): void {

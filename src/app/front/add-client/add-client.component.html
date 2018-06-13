@@ -99,6 +99,28 @@
                   <input matInput id="tva" formControlName="tva">
                 </mat-form-field>
               </div>
+              <!-- Effectifs -->
+              <label for="size" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.EFFECTIF' | translate}}</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #size matInput id="size" (change)="addTag(size.value, 'client_size')">
+                </mat-form-field>
+              </div>
+              <!-- Secteur -->
+              <label for="sector" class="col-sm-4 col-form-label">Secteur d'activité</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #sector matInput id="sector" (change)="addTag(sector.value, 'client_sector')">
+                </mat-form-field>
+              </div>
+              <!-- Revenue -->
+              <label for="revenue" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.REVENUE' | translate}}</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #revenue matInput id="revenue"
+                         (change)="addTag(revenue.value, 'client_revenue')">
+                </mat-form-field>
+              </div>
               <!-- duns -->
               <label for="duns" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.DUNS' | translate}}</label>
               <div class="col-sm-8">
