@@ -105,7 +105,7 @@
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
                   <input #effectif matInput id="effectif"
-                         (change)="addTag(effectif.value, 'agency_effectif')" [value]="effectifTags[0].libelle">
+                         (change)="addTag(effectif.value, 'agency_effectif')" [value]="effectifTags ? effectifTags.libelle : ''">
                 </mat-form-field>
               </div>
               <!-- Status -->
@@ -113,7 +113,8 @@
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
                   <input #status matInput id="status"
-                         (change)="addTag(status.value, 'agency_status')" [value]="statusTags[0].libelle">
+                         (change)="addTag(status.value, 'agency_status'
+                         )" [value]="statusTags ? statusTags.libelle : ''">
                 </mat-form-field>
               </div>
               <!-- Revenue -->
@@ -121,7 +122,7 @@
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
                   <input #revenue matInput id="revenue"
-                         (change)="addTag(revenue.value, 'revenue_status')" [value]="revenueTags[0].libelle">
+                         (change)="addTag(revenue.value, 'agency_revenue')" [value]="revenueTags ? revenueTags.libelle : ''">
                 </mat-form-field>
               </div>
               <!-- duns -->

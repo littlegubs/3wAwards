@@ -19,10 +19,10 @@ export class UpdateFormAgencyComponent implements OnInit {
   agency: Agency;
   typeTags: TypeTag[] = [];
   typeAgencies: TypeAgency[] = [];
-  revenueTags: Tag[] = [];
+  revenueTags: Tag;
   agencyTags: Tag[] = [];
-  statusTags: Tag[] = [];
-  effectifTags: Tag[] = [];
+  statusTags: Tag;
+  effectifTags: Tag;
   idTypeAgency: number;
   customTags: Tag[] = [];
   addOnBlur = true;
@@ -74,7 +74,7 @@ export class UpdateFormAgencyComponent implements OnInit {
   }
 
   commitAgency(): void {
-      if (this.form.group.dirty && this.form.group.valid) {
+      if (this.form.group.valid) {
           const newAgency = this.form.get();
           const promise = new Promise(resolve => {
               if (this.file) {
@@ -94,7 +94,12 @@ export class UpdateFormAgencyComponent implements OnInit {
           Promise.resolve(promise).then(() => {
               if (newAgency.id) {
                   newAgency.tags = this.agencyTags;
+                if (this.idTypeAgency === undefined) {
+                  console.log(this.typeAgencies[0].id);
+                  newAgency.setTypeAgency(this.typeAgencies[0].id);
+                } else {
                   newAgency.setTypeAgency(this.idTypeAgency);
+                }
                   this.agenciesService.update(newAgency).subscribe(agency => {
                       console.log('yeah!');
                       this.router.navigate(['/update-agency/' + agency.id]);
@@ -143,15 +148,13 @@ export class UpdateFormAgencyComponent implements OnInit {
   }
 
   addTag(value: string, type: string): void {
-    console.log(value);
     if (value === '') {
       for (let i = 0; i < this.agencyTags.length; i++) {
         if (this.agencyTags[i].type.libelle === type) {
           this.agencyTags.splice(i, 1);
         }
       }
-    }
-    if (value !== '') {
+    } else {
       let find = false;
       for (let i = 0; i < this.agencyTags.length; i++) {
         if (this.agencyTags[i].type.libelle === type) {
@@ -160,8 +163,10 @@ export class UpdateFormAgencyComponent implements OnInit {
         }
       }
       if (find === false) {
+        console.log('????');
         const tag = new Tag();
         for (const typeTag of this.typeTags) {
+          console.log(typeTag);
           if (typeTag.libelle === type) {
             tag.setType(typeTag.id);
             tag.type.libelle = type;
@@ -176,10 +181,11 @@ export class UpdateFormAgencyComponent implements OnInit {
   }
 
   refreshTagsArray() {
+    console.log(this.agencyTags);
     this.customTags = this.agencyTags.filter(tag => tag.type.libelle === 'custom');
-    this.statusTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_status');
-    this.effectifTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_effectif');
-    this.revenueTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_revenue');
+    this.statusTags = this.agencyTags.find(tag => tag.type.libelle === 'agency_status');
+    this.effectifTags = this.agencyTags.find(tag => tag.type.libelle === 'agency_effectif');
+    this.revenueTags = this.agencyTags.find(tag => tag.type.libelle === 'agency_revenue');
 
   }
 
