@@ -30,6 +30,13 @@ export class UpdateProjectGuard implements CanActivate {
             }
           }
         }
+        for (const client of this.member.clients) {
+          for (const project of client.projects) {
+            if (project.id === parseInt(next.url[1].path, 10)) {
+              return true;
+            }
+          }
+        }
         this.router.navigate(['**']);
         return false;
       });

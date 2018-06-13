@@ -35,6 +35,8 @@ import {Error404Component} from './error404/error404.component';
 import {AdminGuard} from './admin.guard';
 import {LoginGuard} from './login.guard';
 import {UpdateProjectGuard} from './update-project.guard';
+import {UpdateClientGuard} from "./update-client.guard";
+import {UpdateAgencyGuard} from "./update-agency.guard";
 
 export function createRestangularConfigFactory(RestangularProvider) {
   if (localStorage.getItem('user_token') !== null) {
@@ -82,6 +84,8 @@ export function createRestangularConfigFactory(RestangularProvider) {
     AdminGuard,
     LoginGuard,
     UpdateProjectGuard,
+    UpdateClientGuard,
+    UpdateAgencyGuard,
     GlobalsService,
     {
       provide: HTTP_INTERCEPTORS,
