@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Form, FormService} from '../../../backend/forms';
 import {Credit, Image, Member, Project, SiteType, Tag, Target, TypeTag} from '../../../backend/model';
 import {
+  ImagesService,
   MembersService,
   ProjectsService,
   SiteTypesService,
@@ -67,7 +68,8 @@ export class UpdateProjectFormComponent implements OnInit {
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
-              private  siteTypesService: SiteTypesService, private route: ActivatedRoute, private http: HttpClient, private globalService: GlobalsService) {
+              private  siteTypesService: SiteTypesService, private route: ActivatedRoute, private http: HttpClient,
+              private globalService: GlobalsService, private imageService: ImagesService) {
   }
 
   ngOnInit() {
@@ -125,19 +127,28 @@ export class UpdateProjectFormComponent implements OnInit {
   }
 
   commitProject(): void {
-    console.log(this.form.group.dirty);
-    console.log(this.form.group.valid);
-    if (this.form.group.dirty && this.form.group.valid) {
+    if (this.form.group.valid) {
       const newProject = this.form.get();
       newProject.projectRatingMember = Object.values(this.project.projectRatingMember)
         .map(projectRatingMember => projectRatingMember['@id']);
       console.log(newProject);
       if (newProject.id) {
-        newProject.setImagesAtNull();
-        console.log(newProject);
         newProject.tags = this.projectTags;
-        const promises = [];
+
+        console.log(this.files);
         console.log(this.url);
+        console.log(this.projectImages);
+        // remove all undefined elements
+        for (let i = 0; i < this.url.length; i++) {
+          if (this.url[i] === undefined) {
+            this.url.splice(i,1);
+            this.files.splice(i,1);
+            this.projectImages.splice(i,1);
+            i = -1;
+          }
+        }
+
+        const promises = [];
         this.url.forEach((item, index) => {
           const promise = new Promise(resolve => {
             if (this.projectImages[index] === undefined) {
@@ -152,24 +163,23 @@ export class UpdateProjectFormComponent implements OnInit {
                 resolve();
               });
             } else {
-
+              this.projectImages[index].position = index;
+              this.imageService.update(this.projectImages[index]).subscribe(image => {
+                this.uploadedImages.push(image);
+                resolve();
+              });
             }
           });
           promises.push(promise);
         });
         Promise.all(promises).then(() => {
-          console.log('hello');
+          newProject.images = this.uploadedImages;
+          this.projectsService.update(newProject).subscribe();
         });
-        //this.projectsService.update(newProject).subscribe();
       } else {
         this.form.displayErrors();
       }
     }
-  }
-
-
-  uploadImage(item, index) {
-    return ''
   }
 
   getTheSelectedValue(value): void {
@@ -332,5 +342,14 @@ export class UpdateProjectFormComponent implements OnInit {
       };
       fileReader.readAsDataURL(file);
     }
+  }
+
+  removeFile(index) {
+    this.files[index] = undefined;
+    this.url[index] = undefined;
+    this.projectImages[index] = undefined;
+    console.log(this.files);
+    console.log(this.url);
+    console.log(this.projectImages);
   }
 }

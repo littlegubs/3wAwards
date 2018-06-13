@@ -376,7 +376,7 @@
                         [rowspan]="isFirst ? 2 : 1">
                   <span class="legend">{{'FRONT.FORM_PROJECT.THUMBNAIL' | translate}} </span>
                   <span class="legend-upload">{{'FRONT.FORM_PROJECT.UPLOAD' | translate}}</span>
-                  <span class="legend-drop"><i class="far fa-trash-alt"></i></span>
+                  <span class="legend-drop" (click)="removeFile(i)"><i class="far fa-trash-alt"></i></span>
                   <div *ngIf="files[i]; else noThumbnail">
                     <label [for]="'file-'+ i">
                     <img [src]="url[i]">

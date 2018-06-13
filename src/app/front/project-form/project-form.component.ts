@@ -14,6 +14,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {GlobalsService} from '../../globals.service';
+import {Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
@@ -63,7 +64,8 @@ export class ProjectFormComponent implements OnInit {
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
-              private  siteTypesService: SiteTypesService, private http: HttpClient, private globalService: GlobalsService) {
+              private  siteTypesService: SiteTypesService, private http: HttpClient, private globalService: GlobalsService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -170,7 +172,9 @@ export class ProjectFormComponent implements OnInit {
             this.uploadedImages.push(image);
             if (index === (this.files.length - 1)) {
               newProject.images = this.uploadedImages;
-              this.projectsService.add(newProject).subscribe();
+              this.projectsService.add(newProject).subscribe(project =>
+                this.router.navigate(['/update-project/' + project.id])
+              );
             }
           });
         });
@@ -338,5 +342,10 @@ export class ProjectFormComponent implements OnInit {
       };
       fileReader.readAsDataURL(file);
     }
+  }
+
+  removeFile(index) {
+    this.files[index] = undefined;
+    this.url[index] = undefined;
   }
 }

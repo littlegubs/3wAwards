@@ -377,14 +377,15 @@
               </button>
             </div>
             <div class="form-group row">
-              <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}} <i
-                class="fas fa-plus-circle add-image"></i></p>
+              <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}} </p>
               <mat-grid-list cols="2" rowHeight="300px" class="images-grid">
                 <mat-grid-tile
                   *ngFor="let z of [0,0,0,0,0]; first as isFirst; index as i"
                   [colspan]="isFirst ? 2 : 1"
                   [rowspan]="isFirst ? 2 : 1">
                   <span class="legend">{{'FRONT.FORM_PROJECT.THUMBNAIL' | translate}} </span>
+                  <span class="legend-upload">{{'FRONT.FORM_PROJECT.UPLOAD' | translate}}</span>
+                  <span class="legend-drop" (click)="removeFile(i)"><i class="far fa-trash-alt"></i></span>
                   <div *ngIf="url[i]; else noThumbnail">
                     <label [for]="'file-'+ i">
                       <img *ngIf="projectImages[i]; else clientPath" [src]="url[i] | liip:'project_pictures'">
@@ -398,7 +399,7 @@
                       <img [src]="'http://via.placeholder.com/1140x850)'">
                     </label>
                   </ng-template>
-                  <input type="file" name="file" [id]="'file-'+ i" (change)="fileUpload($event, i)" hidden>
+                  <input type="file" name="file" [id]="'file-'+ i" (change)="fileUpload($event, i)">
                 </mat-grid-tile>
               </mat-grid-list>
             </div>
