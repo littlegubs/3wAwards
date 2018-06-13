@@ -113,6 +113,14 @@
                   <input #status matInput id="status" (change)="addTag(status.value, 'agency_status')">
                 </mat-form-field>
               </div>
+              <!-- Revenue -->
+              <label for="status" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.REVENUE' | translate}}</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #revenue matInput id="revenue"
+                         (change)="addTag(revenue.value, 'revenue_status')">
+                </mat-form-field>
+              </div>
               <!-- duns -->
               <label for="duns" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.DUNS' | translate}}</label>
               <div class="col-sm-8">

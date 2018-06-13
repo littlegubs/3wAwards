@@ -247,6 +247,7 @@
       "TVA":"Tva",
       "EFFECTIF":"Effectif",
       "STATUS":"Statut",
+      "REVENUE":"Chiffre d'affaire",
       "DUNS":"Duns",
       "TYPE_AGENCY":"Type d'agence",
       "CUSTOM_TAG":"Tags personnalisés",

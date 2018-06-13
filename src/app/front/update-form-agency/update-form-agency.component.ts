@@ -19,6 +19,7 @@ export class UpdateFormAgencyComponent implements OnInit {
   agency: Agency;
   typeTags: TypeTag[] = [];
   typeAgencies: TypeAgency[] = [];
+  revenueTags: Tag[] = [];
   agencyTags: Tag[] = [];
   statusTags: Tag[] = [];
   effectifTags: Tag[] = [];
@@ -178,6 +179,7 @@ export class UpdateFormAgencyComponent implements OnInit {
     this.customTags = this.agencyTags.filter(tag => tag.type.libelle === 'custom');
     this.statusTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_status');
     this.effectifTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_effectif');
+    this.revenueTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_revenue');
 
   }
 

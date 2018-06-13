@@ -32,7 +32,8 @@ export class AddAgencyComponent implements OnInit {
 
   constructor(private agenciesService: AgenciesService, private formService: FormService, private typeTagService: TypeTagsService,
               private membersService: MembersService, private authService: AuthService,
-              private  typeAgenciesService: TypeAgenciesService, private http: HttpClient, private globals: GlobalsService, private route: Router) {
+              private  typeAgenciesService: TypeAgenciesService, private http: HttpClient,
+              private globals: GlobalsService, private route: Router) {
   }
 
   ngOnInit() {
