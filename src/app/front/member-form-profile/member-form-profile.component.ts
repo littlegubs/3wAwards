@@ -111,33 +111,32 @@ export class MemberFormProfileComponent implements OnInit {
     updateMember.setAgenciessAtNull();
     updateMember.setProjectRatingMembersAtNull();
     updateMember.seClientsAtNull();
-    updateMember.setAllTags(this.skills.concat(this.interests));
-    const promise = new Promise(resolve => {
-      if (this.file) {
-        const image = new Image();
-        const formData = new FormData();
-        formData.append('xd', this.file);
-        console.log(this.file.name);
-        this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
-          console.log(this.file.name);
-          image.path = data;
-          image.libelle = this.file.name;
-          updateMember.profilePicture = image;
-          resolve();
-        });
-      } else {
-        resolve();
-        updateMember.profilePicture = this.member.profilePicture;
-      }
-    });
-    Promise.resolve(promise).then(() => {
-      if (updateMember.id) {
-        console.log(updateMember.profilePicture);
-        this.memberService.update(updateMember).subscribe(agency => {
-          console.log('yeah!');
-        });
-      }
-    });
+    updateMember.setAllTags(this.skills);
+      const promise = new Promise(resolve => {
+          if (this.file) {
+              const image = new Image();
+              const formData = new FormData();
+              formData.append('xd', this.file);
+              console.log(this.file.name);
+              image.libelle = this.file.name;
+              this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
+                  image.path = data;
+                  image.libelle = this.file.name;
+                  updateMember.profilePicture = image;
+                  resolve();
+              });
+          } else {
+              resolve();
+              updateMember.profilePicture = this.member.profilePicture;
+          }
+      });
+      Promise.resolve(promise).then(() => {
+          if (updateMember.id) {
+              this.memberService.update(updateMember).subscribe(agency => {
+                  console.log('yeah!');
+              });
+          }
+      });
   }
 }
 
