@@ -22,7 +22,7 @@ export class ConfirmDialogComponent {
     this.membersService.remove(this.member).subscribe(
       res => {
           this.openSnackBar();
-          this.onNoClick();
+          this.dialogRef.close(this.member.id);
       },
       err => {
       });
