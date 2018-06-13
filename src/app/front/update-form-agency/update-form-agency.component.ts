@@ -102,7 +102,7 @@ export class UpdateFormAgencyComponent implements OnInit {
                 }
                   this.agenciesService.update(newAgency).subscribe(agency => {
                       console.log('yeah!');
-                      this.router.navigate(['/update-agency/' + agency.id]);
+                      this.router.navigate(['/agency/' + agency.id]);
                   });
               }
           });
