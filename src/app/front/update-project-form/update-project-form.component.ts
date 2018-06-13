@@ -30,8 +30,8 @@ export class UpdateProjectFormComponent implements OnInit {
   challengeValue: string;
   typeTags: TypeTag[] = [];
   projectTags: Tag[] = [];
-  accessibility: Tag[] = [];
-  challenge: Tag[] = [];
+  accessibility: Tag;
+  challenge: Tag;
   siteTypeTags: Tag[] = [];
   businessTags: Tag[] = [];
   targetTags: Tag[] = [];
@@ -46,7 +46,7 @@ export class UpdateProjectFormComponent implements OnInit {
   backTags: Tag[] = [];
   cmsTags: Tag[] = [];
   colorTags: Tag[] = [];
-  budgetFork: Tag[] = [];
+  budgetFork: Tag;
   credits: Credit[] = [];
   targets: Target[] = [];
   siteTypes: SiteType[] = [];
@@ -249,9 +249,9 @@ export class UpdateProjectFormComponent implements OnInit {
     this.targetTags = this.projectTags.filter(tag => tag.type.libelle === 'target');
     this.purposeTags = this.projectTags.filter(tag => tag.type.libelle === 'purpose');
     this.languageTags = this.projectTags.filter(tag => tag.type.libelle === 'language');
-    this.budgetFork = this.projectTags.filter(tag => tag.type.libelle === 'budget_fork');
-    this.challenge =  this.projectTags.filter(tag => tag.type.libelle === 'challenge');
-    this.accessibility =  this.projectTags.filter(tag => tag.type.libelle === 'accessibility');
+    this.budgetFork = this.projectTags.find(tag => tag.type.libelle === 'budget_fork');
+    this.challenge =  this.projectTags.find(tag => tag.type.libelle === 'challenge');
+    this.accessibility =  this.projectTags.find(tag => tag.type.libelle === 'accessibility');
   }
 
   onAccessibilityRatingChange($event) {

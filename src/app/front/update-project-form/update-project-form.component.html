@@ -130,7 +130,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <input matInput id="budget_fork" #budget_fork [value]="budgetFork[0].libelle"
+                  <input matInput id="budget_fork" #budget_fork [value]="budgetFork ? budgetFork.libelle: ''"
                          (change)="addTag(budget_fork.value, 'budget_fork')"/>
                 </mat-form-field>
               </div>
@@ -228,7 +228,7 @@
                     <star-rating
                       [starType]="'svg'"
                       speed="noticable"
-                      [rating]="accessibility[0].libelle"
+                      [rating]=" accessibility ? accessibility.libelle: ''"
                       [hoverEnabled]="true"
                       [numOfStars]="3"
                       (ratingChange)="onAccessibilityRatingChange($event)">
@@ -331,7 +331,7 @@
                 <star-rating
                              [starType]="'svg'"
                              speed="noticable"
-                             [rating]="challenge[0].libelle"
+                             [rating]="challenge ? challenge.libelle: '' "
                              [hoverEnabled]="true"
                              [numOfStars]="5"
                              (ratingChange)="onChallengeRatingChange($event)">
