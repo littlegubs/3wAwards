@@ -34,6 +34,9 @@ import {AdminModule} from './admin/admin.module';
 import {Error404Component} from './error404/error404.component';
 import {AdminGuard} from './admin.guard';
 import {LoginGuard} from './login.guard';
+import { AgenciesCardsComponent } from './front/agencies-cards/agencies-cards.component';
+import { ClientsCardsComponent } from './front/clients-cards/clients-cards.component';
+import { AwardsCardsComponent } from './front/awards-cards/awards-cards.component';
 
 export function createRestangularConfigFactory(RestangularProvider) {
   if (localStorage.getItem('user_token') !== null) {

@@ -147,7 +147,8 @@
           "HOME": "Home",
           "NOMINATE": "Nominés",
           "AWARDS": "Awards",
-          "AGENCY": "Agences",
+          "AGENCIES": "Agences",
+          "CLIENTS": "Clients",
           "JURY": "Jury",
           "BLOG": "Blog",
           "OFFERS": "Jobs",
@@ -163,6 +164,8 @@
       "SIGN_IN": "CONNEXION",
       "SIGN_UP": "INSCRIPTION",
       "WEBSITE_SUBMIT": "SOUMETTRE UN SITE",
+      "CLIENT_SUBMIT": "AJOUTER UN CLIENT",
+      "AGENCY_SUBMIT": "AJOUTER UNE AGENCE",
       "FILTER": {
       }
     },
