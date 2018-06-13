@@ -164,7 +164,7 @@
             <div class="form-group row upload-profile-pic">
               <p class="col-form-label">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.AVATAR' | translate}}</p>
               <img class="profile-pic"
-                   [src]="(url || agency.image) ? (url ? url : agency.image) : 'assets/imgs/user_placeholder.png'">
+                   [src]="(url || agency.image) ? (url ? url : agency.image.path | liip:'profile_pic') : 'assets/imgs/user_placeholder.png'">
               <i class="far fa-trash-alt"></i>
               <input type="file" name="file" id="file" class="inputfile" (change)="fileUpload($event)"/>
               <label for="file">{{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.UPLOAD' | translate}}</label>
