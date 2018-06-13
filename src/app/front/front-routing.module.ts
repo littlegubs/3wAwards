@@ -8,11 +8,11 @@ import {ProjectProfileComponent} from './project-profile/project-profile.compone
 import {ProjectFormComponent} from './project-form/project-form.component';
 import {AddAgencyComponent} from './add-agency/add-agency.component';
 import {ProjectFormVoteComponent} from './project-form-vote/project-form-vote.component';
-import {Error404Component} from '../error404/error404.component';
 import {FrontComponent} from './front.component';
-import {RequestJudge} from '../../backend/model';
 import {RequestJudgeFormComponent} from './request-judge-form/request-judge-form.component';
 import {LoginGuard} from '../login.guard';
+import {UpdateProjectGuard} from '../update-project.guard';
+import {UpdateProjectFormComponent} from './update-project-form/update-project-form.component';
 
 
 const routes: Routes = [
@@ -26,7 +26,8 @@ const routes: Routes = [
       {path: 'profile', component: MemberProfileComponent,  canActivate: [LoginGuard]},
       {path: 'project', component: ProjectFormComponent},
       {path: 'addAgency', component: AddAgencyComponent},
-      {path: 'request-judge', component: RequestJudgeFormComponent}
+      {path: 'request-judge', component: RequestJudgeFormComponent},
+      {path: 'update-project/:id', component: UpdateProjectFormComponent, canActivate: [UpdateProjectGuard] }
     ]},
 ];
 

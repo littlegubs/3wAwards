@@ -27,9 +27,9 @@ export class MemberBase {
   newsletter: boolean;
   optIn: boolean;
   projectRatingMember: ProjectRatingMember[];
-  clients: Client;
+  clients: Client[];
   requestsJudge: RequestJudge;
-  agencies: Agency;
+  agencies: Agency[];
   profilePicture: Image;
 
   setFavoriteProjects(id: number): MemberBase {
@@ -39,24 +39,10 @@ export class MemberBase {
     return this;
   }
 
-  setClients(id: number): MemberBase {
-    this.clients = new Client();
-    this.clients.id = id;
-    this.clients['@id'] = '/clients/' + id;
-    return this;
-  }
-
   setRequestsJudge(id: number): MemberBase {
     this.requestsJudge = new RequestJudge();
     this.requestsJudge.id = id;
     this.requestsJudge['@id'] = '/request_judges/' + id;
-    return this;
-  }
-
-  setAgencies(id: number): MemberBase {
-    this.agencies = new Agency();
-    this.agencies.id = id;
-    this.agencies['@id'] = '/agencies/' + id;
     return this;
   }
 

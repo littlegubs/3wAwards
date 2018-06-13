@@ -27,7 +27,7 @@ export class ClientBase {
   tags: Tag;
   member: Member;
   image: Image;
-  projects: Project;
+  projects: Project[];
 
   setTags(id: number): ClientBase {
     this.tags = new Tag();
@@ -47,13 +47,6 @@ export class ClientBase {
     this.image = new Image();
     this.image.id = id;
     this.image['@id'] = '/images/' + id;
-    return this;
-  }
-
-  setProjects(id: number): ClientBase {
-    this.projects = new Project();
-    this.projects.id = id;
-    this.projects['@id'] = '/projects/' + id;
     return this;
   }
 

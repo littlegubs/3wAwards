@@ -2,9 +2,7 @@ import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {TokenInterface} from './tokenInterface';
-import {MembersService, ProjectsService, SiteTypesService, TargetsService, TypeTagsService} from '../backend/services';
 import {AuthService} from './auth.service';
-import {FormService} from '../backend/forms';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
