@@ -15,7 +15,7 @@ import {GlobalsService} from '../../globals.service';
   templateUrl: './update-client.component.html'
 })
 export class UpdateClientComponent implements OnInit {
-    @Input() client: Client;
+    client: Client;
     clients: Array<Client> = [];
     form: Form<Client>;
     tokenStorage = localStorage.getItem('user_token');
