@@ -161,6 +161,14 @@ export class ProjectFormComponent implements OnInit {
         } else {
           newProject.setTarget(this.idTarget);
         }
+        // remove all undefined elements
+        for (let i = 0; i < this.url.length; i++) {
+          if (this.url[i] === undefined) {
+            this.url.splice(i, 1);
+            this.files.splice(i, 1);
+            i = -1;
+          }
+        }
         this.files.forEach((file, index) => {
           const formData = new FormData();
           formData.append('xd', file);

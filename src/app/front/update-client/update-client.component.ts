@@ -17,6 +17,7 @@ import {GlobalsService} from '../../globals.service';
 export class UpdateClientComponent implements OnInit {
     clients: Array<Client> = [];
     form: Form<Client>;
+    client: Client;
     tokenStorage = localStorage.getItem('user_token');
     userInfo: TokenInterface;
     member: Member;

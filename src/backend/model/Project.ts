@@ -19,12 +19,6 @@ export class Project extends ProjectBase {
     return this;
   }
 
-  setImagesAtNull(): Project {
-    this.images = new Image();
-    this.images['@id'] = [];
-    return this;
-  }
-
   setAwardsAtNull(): Project {
     this.awards = new Award();
     this.awards['@id'] = [];

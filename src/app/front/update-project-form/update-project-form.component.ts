@@ -141,9 +141,9 @@ export class UpdateProjectFormComponent implements OnInit {
         // remove all undefined elements
         for (let i = 0; i < this.url.length; i++) {
           if (this.url[i] === undefined) {
-            this.url.splice(i,1);
-            this.files.splice(i,1);
-            this.projectImages.splice(i,1);
+            this.url.splice(i, 1);
+            this.files.splice(i, 1);
+            this.projectImages.splice(i, 1);
             i = -1;
           }
         }
@@ -298,8 +298,8 @@ export class UpdateProjectFormComponent implements OnInit {
     this.purposeTags = this.projectTags.filter(tag => tag.type.libelle === 'purpose');
     this.languageTags = this.projectTags.filter(tag => tag.type.libelle === 'language');
     this.budgetFork = this.projectTags.find(tag => tag.type.libelle === 'budget_fork');
-    this.challenge =  this.projectTags.find(tag => tag.type.libelle === 'challenge');
-    this.accessibility =  this.projectTags.find(tag => tag.type.libelle === 'accessibility');
+    this.challenge = this.projectTags.find(tag => tag.type.libelle === 'challenge');
+    this.accessibility = this.projectTags.find(tag => tag.type.libelle === 'accessibility');
   }
 
   onAccessibilityRatingChange($event) {
