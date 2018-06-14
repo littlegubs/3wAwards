@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ProjectsService} from '../../../backend/services';
+import {Project} from '../../../backend/model';
 
 @Component({
   selector: 'app-footer',
@@ -6,10 +8,18 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  projects: Project[];
 
-  constructor() { }
+  constructor(private projectsService: ProjectsService) { }
 
   ngOnInit() {
+    this.projectsService.getAllByFilter('status', 'accepted', 1).subscribe(
+      res => {
+        this.projects = res;
+      },
+      err => {
+      }
+    );
   }
 
 }

@@ -30,75 +30,13 @@
                     Derniers sites soumis
                 </div>
                 <div class="sites">
-                    <div class="RecentSite">
+                    <div class="RecentSite" *ngFor="let project of projects; let i=index">
                         <div class="footer-greyText">
-                            28/11/2017
+                            {{project.publicationDate | date}}
                         </div>
                         <a href="" class="footer-siteName">
-                            Nom de site
+                            {{project.projectName}}
                         </a>
-                        <div class="footer-desc">
-                            par Mentalworks |
-                        </div>
-                        <div class="footer-greyText">
-                            France
-                        </div>
-                    </div>
-                    <div class="RecentSite">
-                        <div class="footer-greyText">
-                            28/11/2017
-                        </div>
-                        <a href="" class="footer-siteName">
-                            Nom de site
-                        </a>
-                        <div class="footer-desc">
-                            par Mentalworks |
-                        </div>
-                        <div class="footer-greyText">
-                            France
-                        </div>
-                    </div>
-                    <div class="RecentSite">
-                        <div class="footer-greyText">
-                            28/11/2017
-                        </div>
-                        <a href="" class="footer-siteName">
-                            Nom de site
-                        </a>
-                        <div class="footer-desc">
-                            par Mentalworks |
-                        </div>
-                        <div class="footer-greyText">
-                            France
-                        </div>
-                    </div>
-                    <div class="RecentSite">
-                        <div class="footer-greyText">
-                            28/11/2017
-                        </div>
-                        <a href="" class="footer-siteName">
-                            Nom de site
-                        </a>
-                        <div class="footer-desc">
-                            par Mentalworks |
-                        </div>
-                        <div class="footer-greyText">
-                            France
-                        </div>
-                    </div>
-                    <div class="RecentSite">
-                        <div class="footer-greyText">
-                            28/11/2017
-                        </div>
-                        <a href="" class="footer-siteName">
-                            Nom de site
-                        </a>
-                        <div class="footer-desc">
-                            par Mentalworks |
-                        </div>
-                        <div class="footer-greyText">
-                            France
-                        </div>
                     </div>
                 </div>
             </div>
