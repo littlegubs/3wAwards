@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Image, Member, Tag, TypeTag} from '../../../backend/model';
 import {Form, FormService} from '../../../backend/forms';
 import {MembersService, TagsService, TypeTagsService} from '../../../backend/services';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent, MatSnackBar} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {HttpClient} from '@angular/common/http';
 import {GlobalsService} from '../../globals.service';
@@ -28,9 +28,11 @@ export class MemberFormProfileComponent implements OnInit {
 
   // INTERRESTS
   interests: Tag[];
+  isLoading = false;
 
   constructor(private formService: FormService, private memberService: MembersService, private tagService: TagsService,
-              private http: HttpClient, private globals: GlobalsService, private typeTagsService: TypeTagsService) {
+              private http: HttpClient, private globals: GlobalsService,
+              private typeTagsService: TypeTagsService, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -105,6 +107,7 @@ export class MemberFormProfileComponent implements OnInit {
   }
 
   submitForm() {
+    this.isLoading = true;
     const updateMember = this.form.get();
     updateMember.isJudge = this.member.isJudge;
     updateMember.setFavoriteProjectsAtNull();
@@ -134,8 +137,16 @@ export class MemberFormProfileComponent implements OnInit {
           if (updateMember.id) {
               this.memberService.update(updateMember).subscribe(agency => {
                   console.log('yeah!');
+                  this.isLoading = false;
+                  this.openSnackBar();
               });
           }
       });
   }
+
+    openSnackBar(): void {
+        this.snackBar.open('Membre modifié', 'Ok', {
+            duration: 2000
+        });
+    }
 }

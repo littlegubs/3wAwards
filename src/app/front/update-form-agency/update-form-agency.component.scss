@@ -105,6 +105,8 @@ app-update-form-agency {
         text-align: left;
         &.form-actions {
           text-align: center;
+          @include flex();
+          @include justify-content(center)
         }
       }
     }

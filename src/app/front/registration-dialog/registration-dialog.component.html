@@ -17,9 +17,12 @@
       <label>{{"FRONT.DIALOG.PASSWORD" | translate}}:</label>
       <input type="password" name="password" formControlName="password">
     </div>
-    <button type="submit" class="btn btn-main-red-full">{{"FRONT.DIALOG.BUTTONS.SIGN_UP" | translate}}</button>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-main-red-full">{{"FRONT.DIALOG.BUTTONS.SIGN_UP" | translate}}</button>
+      <mat-progress-spinner color="warn" mode="indeterminate" diameter="40" *ngIf="isLoading === true"></mat-progress-spinner>
+    </div>
   </form>
-  <span>{{"FRONT.DIALOG.Already_Registered" | translate}}<a href="#">{{"FRONT.DIALOG.LOG_IN" | translate}}</a></span>
+  <span class="log-in">{{"FRONT.DIALOG.Already_Registered" | translate}}<a href="#">{{"FRONT.DIALOG.LOG_IN" | translate}}</a></span>
 </div>
 
 

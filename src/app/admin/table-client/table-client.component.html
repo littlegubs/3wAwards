@@ -15,7 +15,7 @@
         <td>{{client.name}}</td>
         <td>{{client.country}}</td>
         <td>{{client.city}}</td>
-        <td *ngIf="client.websiteUrl">{{client.websiteUrl}}</td>
+        <td *ngIf="client.websiteUrl" id="url">{{client.websiteUrl}}</td>
         <td *ngIf="!client.websiteUrl">/</td>
         <td class="actions">
           <button mat-raised-button color="warn" (click)="removeClient(client)">Supprimer</button>

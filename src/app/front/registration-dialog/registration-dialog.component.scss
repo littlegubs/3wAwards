@@ -17,16 +17,29 @@
     }
     .btn {
       margin-top: 15px;
-      margin-right: auto;
-      margin-left: auto;
       display: block;
-
     }
     input {
       border-radius: 30px;
       height: 35px;
       border: 2px solid #E2E2E2;
       padding: 0 10px;
+    }
+    div {
+      &.form-actions {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        mat-progress-spinner {
+          margin-top: 15px;
+        }
+      }
+    }
+    .log-in{
+      margin: 10px auto;
+      display: block;
+      width: 100%;
+      text-align: center;
     }
   }
 }

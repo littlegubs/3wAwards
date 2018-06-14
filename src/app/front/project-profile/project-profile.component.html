@@ -11,8 +11,8 @@
       <div class="daily-site">
         <span class="daily-site-name">{{project.projectName}}</span>
         <br>
-        <span class="daily-site-info" *ngIf="project.agency === null">par <span class="bold">{{project.client.name}}</span> | {{project.client.country}}</span>
-        <span class="daily-site-info" *ngIf="project.client === null">par <span class="bold">{{project.agency.name}}</span> | {{project.agency.country}}  </span>
+        <span class="daily-site-info" *ngIf="project.agency === null && project.client !== null">par <span class="bold">{{project.client.name}}</span> | {{project.client.country}}</span>
+        <span class="daily-site-info" *ngIf="project.client === null && project.agency !== null">par <span class="bold">{{project.agency.name}}</span> | {{project.agency.country}}  </span>
       </div>
       <div class="daily-marks">
         <div class="daily-marks-circle">
@@ -137,8 +137,7 @@
           </div>
           <div class="common-tags">
             <div class="common-tags-details" *ngIf="project.agency">
-              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.REALISED_BY' | translate}}</p>
-              <span>{{project.agency.name}} </span>
+              <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.REALISED_BY' | translate}}</p><span>{{project.agency.name}} </span>
             </div>
             <div class="common-tags-details" *ngIf="project.client">
               <p>{{'FRONT.PROJECT_PROFILE.TAGS.TYPE.CLIENT_NAME' | translate}}</p>

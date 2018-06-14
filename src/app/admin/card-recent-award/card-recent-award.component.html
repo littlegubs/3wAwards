@@ -13,8 +13,11 @@
       <tbody>
       <tr *ngFor="let award of awards">
         <td>{{award.project.projectName}}</td>
-        <td *ngIf="award.project.agency === null" class="agency-client">{{award.project.client.name}}</td>
-        <td *ngIf="award.project.client === null" class="agency-client">{{award.project.agency.name}}</td>
+        <td *ngIf="award.project.agency === null && award.project.client === null; else notUndefined">/</td>
+        <ng-template #notUndefined>
+          <td *ngIf="award.project.agency === null" class="agency-client">{{award.project.client.name}}</td>
+          <td *ngIf="award.project.client === null" class="agency-client">{{award.project.agency.name}}</td>
+        </ng-template>
         <td>{{award.type}}</td>
         <td class="url">{{award.project.projectUrl}}</td>
       </tr>

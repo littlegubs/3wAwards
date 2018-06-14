@@ -3,6 +3,7 @@ import {ProjectsService} from '../../../backend/services';
 import {Project} from '../../../backend/model';
 import {HttpClient} from '@angular/common/http';
 import {GlobalsService} from '../../globals.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-table-projects',
@@ -12,7 +13,7 @@ export class TableProjectsComponent implements OnInit {
   projects: Project[];
   pageNumber = 1;
 
-  constructor(private projectsService: ProjectsService, private http: HttpClient, private globalsService: GlobalsService) {
+  constructor(private projectsService: ProjectsService, private http: HttpClient, private globalsService: GlobalsService, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -43,6 +44,7 @@ export class TableProjectsComponent implements OnInit {
     body.append('status', status);
     this.http.post(this.globalsService.updateStatus, body).subscribe(
       res => {
+        this.openSnackBar();
         console.log(res);
         for (const project of this.projects) {
           if (project.id === projectId) {
@@ -54,4 +56,10 @@ export class TableProjectsComponent implements OnInit {
       }
     );
   }
+
+    openSnackBar(): void {
+        this.snackBar.open('Status modifié', 'Ok', {
+            duration: 2000
+        });
+    }
 }

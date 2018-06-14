@@ -4,7 +4,7 @@ import {Agency, Member, TypeTag, Tag, TypeAgency, Image} from '../../../backend/
 import {FormService, Form} from '../../../backend/forms';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent, MatSnackBar} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {HttpClient} from '@angular/common/http';
 import {GlobalsService} from '../../globals.service';
@@ -33,7 +33,7 @@ export class AddAgencyComponent implements OnInit {
   constructor(private agenciesService: AgenciesService, private formService: FormService, private typeTagService: TypeTagsService,
               private membersService: MembersService, private authService: AuthService,
               private  typeAgenciesService: TypeAgenciesService, private http: HttpClient,
-              private globals: GlobalsService, private route: Router) {
+              private globals: GlobalsService, private route: Router, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -91,6 +91,7 @@ export class AddAgencyComponent implements OnInit {
         console.log(newAgency);
         this.agenciesService.add(newAgency).subscribe(agency => {
               console.log('add');
+              this.openSnackBar();
               this.route.navigate(['/agency/' + agency.id]);
       }
         );
@@ -179,4 +180,10 @@ export class AddAgencyComponent implements OnInit {
     }
     this.refreshTagsArray();
   }
+
+    openSnackBar(): void {
+        this.snackBar.open('Agence ajoutée', 'Ok', {
+            duration: 2000
+        });
+    }
 }

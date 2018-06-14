@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {AuthService} from '../../auth.service';
 import {EmailValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-member-form',

@@ -3,6 +3,7 @@ import {GlobalsService} from '../../globals.service';
 import {HttpClient} from '@angular/common/http';
 import {RequestJudgesService} from '../../../backend/services';
 import {RequestJudge} from '../../../backend/model';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-table-jury',
@@ -13,7 +14,7 @@ export class TableJudgeComponent implements OnInit {
   requestsJudges: RequestJudge[];
   pageNumber = 1;
 
-  constructor(private http: HttpClient, private globalsService: GlobalsService, private requestJudgesService: RequestJudgesService) {
+  constructor(private http: HttpClient, private globalsService: GlobalsService, private requestJudgesService: RequestJudgesService, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class TableJudgeComponent implements OnInit {
     this.http.post(this.globalsService.updateJudge, body).subscribe(
       res => {
         this.removeRequest(requestJudge);
+        this.openSnackBar();
       },
       err => {
       }
@@ -41,6 +43,7 @@ export class TableJudgeComponent implements OnInit {
   removeRequest(requestJudge: RequestJudge): void {
     this.requestJudgesService.remove(requestJudge).subscribe(
       res => {
+          this.openSnackBarRemove();
         for (let i = 0; i < this.requestsJudges.length; i++) {
           if (this.requestsJudges[i].id === requestJudge.id) {
             this.requestsJudges.splice(i, 1);
@@ -63,4 +66,15 @@ export class TableJudgeComponent implements OnInit {
       );
   }
 
+    openSnackBar(): void {
+        this.snackBar.open('Requête acceptée', 'Ok', {
+            duration: 2000
+        });
+    }
+
+    openSnackBarRemove(): void {
+        this.snackBar.open('Requête supprimée', 'Ok', {
+            duration: 2000
+        });
+    }
 }

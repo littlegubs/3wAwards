@@ -10,6 +10,7 @@ import {AuthService} from '../../auth.service';
 export class ConnectionDialogComponent {
 
   loginForm: FormGroup;
+  isLoading = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
@@ -19,6 +20,7 @@ export class ConnectionDialogComponent {
   }
 
   onSubmit() {
+    this.isLoading = true;
     const val = this.loginForm.value;
 
     if (val.mail && val.password) {

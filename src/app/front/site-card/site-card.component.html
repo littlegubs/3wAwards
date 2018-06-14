@@ -12,15 +12,9 @@
         </ng-template>
         <mat-card-content>
           <mat-card-title>{{project.projectName}}</mat-card-title>
-          <p *ngIf="project.agency === null">par
-            <span class="mat-card-creator">{{project.client.name}}</span>
-            |
-            <span class="mat-card-country">{{project.client.country}}</span>
+          <p *ngIf="project.agency === null && project.client !== null"> par <span class="mat-card-creator">{{project.client.name}}</span> | <span class="mat-card-country">{{project.client.country}}</span>
           </p>
-          <p *ngIf="project.client === null">par
-            <span class="mat-card-creator">{{project.agency.name}}</span>
-            |
-            <span class="mat-card-country">{{project.agency.country}}</span>
+          <p *ngIf="project.agency !== null && project.client === null"> par <span class="mat-card-creator">{{project.agency.name}}</span> | <span class="mat-card-country">{{project.agency.country}}</span>
           </p>
           <p class="mat-card-date">{{project.publicationDate | date}}</p>
           <div class="mat-card-actions">
