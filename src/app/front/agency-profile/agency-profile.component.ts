@@ -42,9 +42,6 @@ export class AgencyProfileComponent implements OnInit {
             }
         );
     }
-    gotoAddAgencyForm() {
-        this.router.navigate(['addAgency']);
-    }
     addAgency(agency: Agency) {
         this.agenciesService.add(agency).subscribe(
             res => {

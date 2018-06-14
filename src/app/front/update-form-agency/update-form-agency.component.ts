@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {AgenciesService, MembersService, TypeAgenciesService, TypeTagsService} from '../../../backend/services';
-import {Agency, Member, Tag, TypeAgency, TypeTag} from '../../../backend/model';
-import {Form, FormService} from '../../../backend/forms';
+import {MembersService, AgenciesService, TypeTagsService, TypeAgenciesService} from '../../../backend/services';
+import {Agency, Member, TypeTag, Tag, TypeAgency, Image} from '../../../backend/model';
+import {FormService, Form} from '../../../backend/forms';
 import {MatChipInputEvent} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
 
 @Component({
   selector: 'app-update-form-agency',
@@ -17,16 +19,20 @@ export class UpdateFormAgencyComponent implements OnInit {
   agency: Agency;
   typeTags: TypeTag[] = [];
   typeAgencies: TypeAgency[] = [];
+  revenueTags: Tag;
   agencyTags: Tag[] = [];
-  statusTags: Tag[] = [];
-  effectifTags: Tag[] = [];
+  statusTags: Tag;
+  effectifTags: Tag;
   idTypeAgency: number;
   customTags: Tag[] = [];
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
+  file: File;
+  url;
 
   constructor(private agenciesService: AgenciesService, private formService: FormService, private typeTagService: TypeTagsService,
-              private membersService: MembersService, private  typeAgenciesService: TypeAgenciesService, private route: ActivatedRoute) {
+              private membersService: MembersService, private  typeAgenciesService: TypeAgenciesService,
+              private route: ActivatedRoute, private http: HttpClient, private globals: GlobalsService, private router: Router) {
   }
 
   ngOnInit() {
@@ -68,19 +74,56 @@ export class UpdateFormAgencyComponent implements OnInit {
   }
 
   commitAgency(): void {
-    if (this.form.group.dirty && this.form.group.valid) {
-      const newAgency = this.form.get();
-      if (newAgency.id) {
-        newAgency.tags = this.agencyTags;
-        newAgency.setTypeAgency(this.idTypeAgency);
-        this.agenciesService.update(newAgency).subscribe(agency => console.log('yeah!'));
+      if (this.form.group.valid) {
+          const newAgency = this.form.get();
+          const promise = new Promise(resolve => {
+              if (this.file) {
+                  const image = new Image();
+                  const formData = new FormData();
+                  formData.append('xd', this.file);
+                  this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
+                      image.path = data;
+                      image.libelle = this.file.name;
+                      newAgency.image = image;
+                      resolve();
+                  });
+              } else {
+                  resolve();
+              }
+          });
+          Promise.resolve(promise).then(() => {
+              if (newAgency.id) {
+                  newAgency.tags = this.agencyTags;
+                if (this.idTypeAgency === undefined) {
+                  console.log(this.typeAgencies[0].id);
+                  newAgency.setTypeAgency(this.typeAgencies[0].id);
+                } else {
+                  newAgency.setTypeAgency(this.idTypeAgency);
+                }
+                  this.agenciesService.update(newAgency).subscribe(agency => {
+                      console.log('yeah!');
+                      this.router.navigate(['/agency/' + agency.id]);
+                  });
+              }
+          });
       } else {
-        this.form.displayErrors();
+          this.form.displayErrors();
       }
-    }
   }
 
-  getTypeAgencies(value): void {
+  fileUpload($event: any) {
+        const fileList: FileList = $event.target.files;
+        if (fileList.length > 0) {
+            this.file = $event.target.files[0];
+            const fileReader = new FileReader();
+            fileReader.onload = (event: any) => {
+                this.url = event.target.result;
+            };
+            fileReader.readAsDataURL(this.file);
+        }
+  }
+
+    getTypeAgencies(value): void {
     this.idTypeAgency = value;
   }
 
@@ -105,15 +148,13 @@ export class UpdateFormAgencyComponent implements OnInit {
   }
 
   addTag(value: string, type: string): void {
-    console.log(value);
     if (value === '') {
       for (let i = 0; i < this.agencyTags.length; i++) {
         if (this.agencyTags[i].type.libelle === type) {
           this.agencyTags.splice(i, 1);
         }
       }
-    }
-    if (value !== '') {
+    } else {
       let find = false;
       for (let i = 0; i < this.agencyTags.length; i++) {
         if (this.agencyTags[i].type.libelle === type) {
@@ -122,8 +163,10 @@ export class UpdateFormAgencyComponent implements OnInit {
         }
       }
       if (find === false) {
+        console.log('????');
         const tag = new Tag();
         for (const typeTag of this.typeTags) {
+          console.log(typeTag);
           if (typeTag.libelle === type) {
             tag.setType(typeTag.id);
             tag.type.libelle = type;
@@ -138,9 +181,11 @@ export class UpdateFormAgencyComponent implements OnInit {
   }
 
   refreshTagsArray() {
+    console.log(this.agencyTags);
     this.customTags = this.agencyTags.filter(tag => tag.type.libelle === 'custom');
-    this.statusTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_status');
-    this.effectifTags = this.agencyTags.filter(tag => tag.type.libelle === 'agency_effectif');
+    this.statusTags = this.agencyTags.find(tag => tag.type.libelle === 'agency_status');
+    this.effectifTags = this.agencyTags.find(tag => tag.type.libelle === 'agency_effectif');
+    this.revenueTags = this.agencyTags.find(tag => tag.type.libelle === 'agency_revenue');
 
   }
 

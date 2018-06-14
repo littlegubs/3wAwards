@@ -1,11 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {ClientsService, MembersService, TypeAgenciesService, TypeTagsService} from '../../../backend/services';
-import {Client, Member, Tag, TypeTag} from '../../../backend/model';
-import {Form, FormService} from '../../../backend/forms';
+import { Component, OnInit } from '@angular/core';
+import {MembersService, ClientsService, TypeTagsService, TypeAgenciesService} from '../../../backend/services';
+import {Client, Member, TypeTag, Tag, Image} from '../../../backend/model';
+import {FormService, Form} from '../../../backend/forms';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {MatChipInputEvent} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-client',
@@ -18,15 +21,18 @@ export class AddClientComponent implements OnInit {
   userInfo: TokenInterface;
   member: Member;
   typeTags: TypeTag[] = [];
-  tags: Tag;
+  tags: Tag[] = [];
   clientTags: Tag[] = [];
   idTypeClient: number;
   customTags: Tag[] = [];
   addOnBlur = true;
   separatorKeysCodes = [ENTER, COMMA];
+  file: File;
+  url;
 
-  constructor(private clientsService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
-              private membersService: MembersService, private authService: AuthService, private  typeAgenciesService: TypeAgenciesService) {
+  constructor(private clientService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
+              private membersService: MembersService, private authService: AuthService, private  typeAgenciesService: TypeAgenciesService,
+              private http: HttpClient, private globals: GlobalsService, private route: Router) {
   }
 
   ngOnInit() {
@@ -40,18 +46,43 @@ export class AddClientComponent implements OnInit {
       this.form = this.formService.makeForm<Client>(new Client());
   }
 
+  fileUpload($event: any) {
+        const fileList: FileList = $event.target.files;
+        if (fileList.length > 0) {
+            this.file = $event.target.files[0];
+            const fileReader = new FileReader();
+            fileReader.onload = (event: any) => {
+                this.url = event.target.result;
+            };
+            fileReader.readAsDataURL(this.file);
+        }
+    }
   commitClient(): void {
       if (this.form.group.dirty && this.form.group.valid) {
           const newClient = this.form.get();
+          newClient.image = null;
+          if (this.file) {
+              const image = new Image();
+              const formData = new FormData();
+              formData.append('xd', this.file);
+              this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
+                  image.path = data;
+                  image.libelle = this.file.name;
+                  newClient.image = image;
+              });
+          }
           if (newClient.id) {
-              this.clientsService.update(newClient).subscribe(client => console.log('yeah!'));
+              this.clientService.update(newClient).subscribe(client => console.log('yeah!'));
           } else {
               newClient.projects = [];
               newClient.tags = this.clientTags ;
               newClient.image = null;
               newClient.setMember(this.userInfo.id);
               console.log(newClient);
-              this.clientsService.add(newClient).subscribe(client => console.log('add'));
+              this.clientService.add(newClient).subscribe(client => {
+                  console.log('add');
+                  this.route.navigate(['/client/' + client.id]);
+              });
           }
       } else {
           // force invalid inputs state to display errors

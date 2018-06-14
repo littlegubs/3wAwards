@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {AgenciesService, MembersService, TypeAgenciesService, TypeTagsService} from '../../../backend/services';
-import {Agency, Member, Tag, TypeAgency, TypeTag} from '../../../backend/model';
-import {Form, FormService} from '../../../backend/forms';
+import {MembersService, AgenciesService, TypeTagsService, TypeAgenciesService} from '../../../backend/services';
+import {Agency, Member, TypeTag, Tag, TypeAgency, Image} from '../../../backend/model';
+import {FormService, Form} from '../../../backend/forms';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {MatChipInputEvent} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-agency',
@@ -23,10 +26,14 @@ export class AddAgencyComponent implements OnInit {
   idTypeAgency: number;
   customTags: Tag[] = [];
   addOnBlur = true;
+  file: File;
+  url;
   separatorKeysCodes = [ENTER, COMMA];
 
   constructor(private agenciesService: AgenciesService, private formService: FormService, private typeTagService: TypeTagsService,
-              private membersService: MembersService, private authService: AuthService, private  typeAgenciesService: TypeAgenciesService) {
+              private membersService: MembersService, private authService: AuthService,
+              private  typeAgenciesService: TypeAgenciesService, private http: HttpClient,
+              private globals: GlobalsService, private route: Router) {
   }
 
   ngOnInit() {
@@ -58,31 +65,58 @@ export class AddAgencyComponent implements OnInit {
   commitAgency(): void {
     if (this.form.group.dirty && this.form.group.valid) {
       const newAgency = this.form.get();
+      newAgency.image = null;
+        if (this.file) {
+            const image = new Image();
+            const formData = new FormData();
+            formData.append('xd', this.file);
+            this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
+                image.path = data;
+                image.libelle = this.file.name;
+                newAgency.image = image;
+            });
+        }
       if (newAgency.id) {
         this.agenciesService.update(newAgency).subscribe(agency => console.log('yeah!'));
       } else {
         newAgency.projects = [];
         newAgency.tags = this.agencyTags;
-        newAgency.image = null;
         if (this.idTypeAgency === undefined) {
           console.log(this.typeAgencies[0].id);
           newAgency.setTypeAgency(this.typeAgencies[0].id);
+        } else {
+            newAgency.setTypeAgency(this.idTypeAgency);
         }
-        newAgency.setTypeAgency(this.idTypeAgency);
         newAgency.setMember(this.userInfo.id);
         console.log(newAgency);
-        this.agenciesService.add(newAgency).subscribe(agency => console.log('add'));
+        this.agenciesService.add(newAgency).subscribe(agency => {
+              console.log('add');
+              this.route.navigate(['/agency/' + agency.id]);
+      }
+        );
       }
     } else {
       // force invalid inputs state to display errors
       this.form.displayErrors();
     }
+
   }
 
   getTypeAgencies(value): void {
     this.idTypeAgency = value;
   }
 
+  fileUpload($event: any) {
+    const fileList: FileList = $event.target.files;
+    if (fileList.length > 0) {
+      this.file = $event.target.files[0];
+      const fileReader = new FileReader();
+      fileReader.onload = (event: any) => {
+        this.url = event.target.result;
+        };
+      fileReader.readAsDataURL(this.file);
+        }
+  }
   addTags(event: MatChipInputEvent, type: string): void {
     if ((event.value || '').trim()) {
       const tag = new Tag();
@@ -100,7 +134,6 @@ export class AddAgencyComponent implements OnInit {
       event.input.value = '';
     }
     this.refreshTagsArray();
-    console.log(this.agencyTags);
   }
 
   addTag(value: string, type: string): void {
@@ -129,7 +162,6 @@ export class AddAgencyComponent implements OnInit {
         }
         tag.libelle = value;
         this.agencyTags.push(tag);
-        console.log(this.agencyTags);
       }
     }
 

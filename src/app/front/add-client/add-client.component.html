@@ -1,7 +1,7 @@
 <div class="container" *ngIf=" clients && typeTags; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-profile">
-      <form [formGroup]="form.group" (submit)="commitClient()" autocomplete="off">
+      <form [formGroup]="form.group" autocomplete="off">
         <div class="row">
           <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
             <p class="form-categ">{{'FRONT.FORM_AGENCY.IDENTITY' | translate}} :</p>
@@ -99,6 +99,28 @@
                   <input matInput id="tva" formControlName="tva">
                 </mat-form-field>
               </div>
+              <!-- Effectifs -->
+              <label for="size" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.EFFECTIF' | translate}}</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #size matInput id="size" (change)="addTag(size.value, 'client_size')">
+                </mat-form-field>
+              </div>
+              <!-- Secteur -->
+              <label for="sector" class="col-sm-4 col-form-label">Secteur d'activité</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #sector matInput id="sector" (change)="addTag(sector.value, 'client_sector')">
+                </mat-form-field>
+              </div>
+              <!-- Revenue -->
+              <label for="revenue" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.REVENUE' | translate}}</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input #revenue matInput id="revenue"
+                         (change)="addTag(revenue.value, 'client_revenue')">
+                </mat-form-field>
+              </div>
               <!-- duns -->
               <label for="duns" class="col-sm-4 col-form-label">{{'FRONT.FORM_AGENCY.DUNS' | translate}}</label>
               <div class="col-sm-8">
@@ -125,6 +147,17 @@
               </div>
             </div>
           </div>
+          <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
+            <div class="form-group row upload-profile-pic">
+              <p class="col-form-label">Photo / Avatar</p>
+              <img class="profile-pic"
+                   [src]="url ? url : 'assets/imgs/user_placeholder.png'">
+              <i class="far fa-trash-alt"></i>
+              <input type="file" name="file" id="file" class="inputfile" (change)="fileUpload($event)"/>
+              <label for="file">UPLOAD</label>
+              <i class="fas fa-info-circle"></i>
+            </div>
+          </div>
         </div>
         <div class="row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -133,7 +166,7 @@
                 <button type="reset" class="btn btn-main-white-full revert">
                   {{'FRONT.FORM_AGENCY.CANCEL' | translate}}
                 </button>
-                <button type="submit" class="btn btn-main-red-full submit">
+                <button type="button" class="btn btn-main-red-full submit" (click)="commitClient()">
                   {{'FRONT.FORM_AGENCY.SAVE' | translate}}
                 </button>
               </div>
