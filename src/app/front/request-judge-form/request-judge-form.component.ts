@@ -33,7 +33,6 @@ export class RequestJudgeFormComponent implements OnInit {
       const newRequestJudge = this.form.get();
       newRequestJudge.setMember(this.userInfo.id);
       this.requestJudgesService.add(newRequestJudge).subscribe(res => {
-        console.log('yeah!');
         this.openSnackBar();
       });
     } else {

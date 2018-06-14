@@ -41,7 +41,6 @@ export class AddAgencyComponent implements OnInit {
     this.typeTagService.getAll().subscribe(
       res => {
         this.typeTags = res;
-        console.log(this.typeTags);
       },
       err => {
       }
@@ -51,7 +50,6 @@ export class AddAgencyComponent implements OnInit {
     this.typeAgenciesService.getAll().subscribe(
       res => {
         this.typeAgencies = res;
-        console.log(this.typeAgencies);
       },
       err => {
       }
@@ -77,20 +75,17 @@ export class AddAgencyComponent implements OnInit {
             });
         }
       if (newAgency.id) {
-        this.agenciesService.update(newAgency).subscribe(agency => console.log('yeah!'));
+        this.agenciesService.update(newAgency).subscribe(agency => {});
       } else {
         newAgency.projects = [];
         newAgency.tags = this.agencyTags;
         if (this.idTypeAgency === undefined) {
-          console.log(this.typeAgencies[0].id);
           newAgency.setTypeAgency(this.typeAgencies[0].id);
         } else {
             newAgency.setTypeAgency(this.idTypeAgency);
         }
         newAgency.setMember(this.userInfo.id);
-        console.log(newAgency);
         this.agenciesService.add(newAgency).subscribe(agency => {
-              console.log('add');
               this.openSnackBar();
               this.route.navigate(['/agency/' + agency.id]);
       }

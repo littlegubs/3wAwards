@@ -63,12 +63,11 @@ export class AuthService {
       body.append(filterKeys[i], form.value[filterKeys[i]]);
     }
     body.append('role', role);
-    console.log(this.http.post(this.localUrl + 'register', body).subscribe(res => {
+    this.http.post(this.localUrl + 'register', body).subscribe(res => {
         this.login(form.value['email'], form.value['password']);
       },
       err => {
-        console.log(err);
-      }));
+    });
   }
 
   signUpAdmin(form: FormGroup, role: string) {
@@ -78,11 +77,9 @@ export class AuthService {
       body.append(filterKeys[i], form.value[filterKeys[i]]);
     }
     body.append('role', role);
-    console.log(this.http.post(this.localUrl + 'register', body).subscribe(res => {
+    this.http.post(this.localUrl + 'register', body).subscribe(res => {
       },
-      err => {
-        console.log(err);
-      }));
+      err => {});
   }
 
   private setTokenInLocalStorage(authResult) {

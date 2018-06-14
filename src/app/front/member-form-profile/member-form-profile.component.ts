@@ -120,7 +120,6 @@ export class MemberFormProfileComponent implements OnInit {
               const image = new Image();
               const formData = new FormData();
               formData.append('xd', this.file);
-              console.log(this.file.name);
               image.libelle = this.file.name;
               this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
                   image.path = data;
@@ -136,7 +135,6 @@ export class MemberFormProfileComponent implements OnInit {
       Promise.resolve(promise).then(() => {
           if (updateMember.id) {
               this.memberService.update(updateMember).subscribe(agency => {
-                  console.log('yeah!');
                   this.isLoading = false;
                   this.openSnackBar();
               });
