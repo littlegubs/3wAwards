@@ -78,6 +78,7 @@ export class ProjectFormVoteComponent implements OnInit {
     const [last] = Object.keys(CategoryEnum).reverse();
     Object.keys(CategoryEnum).forEach(categ => {
       this.loading = true;
+      this.votes[categ].voteJudge = this.isVoteJudge;
       if (this.votes[categ].rating.id) {
         this.ratingService.update(this.votes[categ].rating).subscribe(() => {
           if (last === categ) {
@@ -108,7 +109,6 @@ export class ProjectFormVoteComponent implements OnInit {
       projectRatingMember = new ProjectRatingMember();
       projectRatingMember.setMember(this.member.id);
       projectRatingMember.setProject(this.data.project.id);
-      projectRatingMember.voteJudge = this.isVoteJudge;
       projectRatingMember.date = new Date();
 
       let categFound = false;
