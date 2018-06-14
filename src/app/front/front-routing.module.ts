@@ -19,6 +19,8 @@ import {UpdateProjectGuard} from '../update-project.guard';
 import {AwardsCardsComponent} from './awards-cards/awards-cards.component';
 import {AgenciesCardsComponent} from './agencies-cards/agencies-cards.component';
 import {ClientsCardsComponent} from './clients-cards/clients-cards.component';
+import {UpdateAgencyGuard} from '../update-agency.guard';
+import {UpdateClientGuard} from '../update-client.guard';
 
 
 const routes: Routes = [
@@ -36,11 +38,11 @@ const routes: Routes = [
       {path: 'awards', component: AwardsCardsComponent},
       {path: 'request-judge', component: RequestJudgeFormComponent},
       {path: 'update-project/:id', component: UpdateProjectFormComponent, canActivate: [UpdateProjectGuard] },
-      {path: 'agency', component: AddAgencyComponent},
-      {path: 'update-agency/:id', component: UpdateFormAgencyComponent},
-      {path: 'update-project/:id', component: UpdateProjectFormComponent},
+      {path: 'agency', component: AddAgencyComponent, canActivate: [LoginGuard]},
+      {path: 'update-agency/:id', component: UpdateFormAgencyComponent, canActivate: [UpdateAgencyGuard]},
+      {path: 'update-project/:id', component: UpdateProjectFormComponent, canActivate: [UpdateClientGuard]},
       {path: 'update-client/:id', component: UpdateClientComponent},
-      {path: 'client', component: AddClientComponent},
+      {path: 'client', component: AddClientComponent,  canActivate: [LoginGuard]},
     ]},
 ];
 
