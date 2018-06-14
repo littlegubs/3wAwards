@@ -48,6 +48,7 @@ import {ClientsCardsComponent} from './clients-cards/clients-cards.component';
 import {AwardsCardsComponent} from './awards-cards/awards-cards.component';
 import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency.component';
 import {AddClientComponent} from './add-client/add-client.component';
+import {CardProjectMemberComponent} from './card-project-member/card-project-member.component';
 
 @NgModule({
   imports: [
@@ -105,6 +106,7 @@ import {AddClientComponent} from './add-client/add-client.component';
     RequestJudgeFormComponent,
     AgenciesCardsComponent,
     ClientsCardsComponent,
+    CardProjectMemberComponent,
     AwardsCardsComponent
   ]
 })

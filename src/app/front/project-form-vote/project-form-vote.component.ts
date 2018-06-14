@@ -77,28 +77,22 @@ export class ProjectFormVoteComponent implements OnInit {
   }
 
   sendVote() {
+    console.log(this.isVoteJudge);
     this.isLoading = true;
     const [last] = Object.keys(CategoryEnum).reverse();
     Object.keys(CategoryEnum).forEach(categ => {
       this.loading = true;
-      if (this.votes[categ].rating.id) {
-        this.ratingService.update(this.votes[categ].rating).subscribe(() => {
-          if (last === categ) {
-            this.http.get(this.globalService.url + 'average/' + this.data.project.id).subscribe(res => this.dialogRef.close(res));
-          }
-        });
-      } else {
-        this.ratingService.add(this.votes[categ].rating).subscribe(rating => {
-          this.votes[categ].rating = rating;
-          this.projectRatingMemberService[this.votes[categ].id ? 'update' : 'add'](this.votes[categ])
-            .subscribe(() => {
-              if (last === categ) {
-                this.http.get(this.globalService.url + 'average/' + this.data.project.id).subscribe(res => this.dialogRef.close(res));
-              }
+      this.votes[categ].voteJudge = this.isVoteJudge;
+      this.ratingService[this.votes[categ].rating.id ? 'update' : 'add'](this.votes[categ].rating).subscribe(rating => {
+        this.votes[categ].rating = rating;
+        this.projectRatingMemberService[this.votes[categ].id ? 'update' : 'add'](this.votes[categ])
+          .subscribe(() => {
+            if (last === categ) {
+              this.http.get(this.globalService.url + 'average/' + this.data.project.id).subscribe(res => this.dialogRef.close(res));
               this.isLoading = false;
-            });
-        });
-      }
+            }
+          });
+      });
     });
   }
 
@@ -112,7 +106,6 @@ export class ProjectFormVoteComponent implements OnInit {
       projectRatingMember = new ProjectRatingMember();
       projectRatingMember.setMember(this.member.id);
       projectRatingMember.setProject(this.data.project.id);
-      projectRatingMember.voteJudge = this.isVoteJudge;
       projectRatingMember.date = new Date();
 
       let categFound = false;
@@ -133,6 +126,4 @@ export class ProjectFormVoteComponent implements OnInit {
     console.log(projectRatingMember);
     return projectRatingMember;
   }
-
-
 }

@@ -14,7 +14,9 @@ export class MemberAwardProjectTableComponent implements AfterViewInit {
   constructor() { }
 
     ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
+    if (this.dataSource !== undefined) {
+      this.dataSource.paginator = this.paginator;
+    }
     }
 
 }

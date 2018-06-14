@@ -5,17 +5,17 @@
     <img src="assets/imgs/user_placeholder.png" class="rounded-circle profile-image">
   </ng-template>
   <h1 class="profile-name">{{member.firstName}} {{member.lastName}}</h1>
-  <div class="profile-text">
+  <div class="profile-text" *ngIf="member.function || member.country">
     <span class="profile-categ">{{'FRONT.MEMBER_PROFILE.MEMBER' | translate}}</span> | {{member.function}} | {{member.country}}
   </div>
-  <div class="profile-buttons">
+  <div class="profile-buttons" *ngIf="member.websiteUrl">
     <button type="button" class="btn btn-profile-external"><a [href]="member.websiteUrl" target="_blank">{{'FRONT.MEMBER_PROFILE.MAIN.MYSITE_BUTTON'    | translate}}</a></button>
     <button type="button" class="btn btn-profile-external"><i class="fas fa-share-alt"></i></button>
   </div>
-  <div class="profile-desc">
+  <div class="profile-desc" *ngIf="member.presentation">
     <p>{{member.presentation}}</p>
   </div>
-  <div class="profile-tags">
+  <div class="profile-tags" *ngIf="member.tags">
     <button *ngFor="let tag of member.tags" type="button" class="btn btn-tags">{{tag.libelle}}</button>
   </div>
   <mat-tab-group>
