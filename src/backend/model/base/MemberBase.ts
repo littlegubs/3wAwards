@@ -5,6 +5,7 @@ import { Tag } from '../Tag';
 import { Project } from '../Project';
 import { ProjectRatingMember } from '../ProjectRatingMember';
 import { Client } from '../Client';
+import { RequestJudge } from '../RequestJudge';
 import { Agency } from '../Agency';
 import { Image } from '../Image';
 
@@ -17,6 +18,7 @@ export class MemberBase {
   lastName: string;
   birthday: Date;
   country: string;
+  isJudge: boolean;
   tags: Tag[];
   favoriteProjects: Project;
   presentation: string;
@@ -25,10 +27,12 @@ export class MemberBase {
   newsletter: boolean;
   optIn: boolean;
   projectRatingMember: ProjectRatingMember[];
-  clients: Client;
-  agencies: Agency;
+  clients: Client[];
+  requestsJudge: RequestJudge;
+  agencies: Agency[];
   profilePicture: Image;
-  isJudge: boolean;
+  username: string;
+  email: string;
 
   setFavoriteProjects(id: number): MemberBase {
     this.favoriteProjects = new Project();
@@ -37,17 +41,10 @@ export class MemberBase {
     return this;
   }
 
-  setClients(id: number): MemberBase {
-    this.clients = new Client();
-    this.clients.id = id;
-    this.clients['@id'] = '/clients/' + id;
-    return this;
-  }
-
-  setAgencies(id: number): MemberBase {
-    this.agencies = new Agency();
-    this.agencies.id = id;
-    this.agencies['@id'] = '/agencies/' + id;
+  setRequestsJudge(id: number): MemberBase {
+    this.requestsJudge = new RequestJudge();
+    this.requestsJudge.id = id;
+    this.requestsJudge['@id'] = '/request_judges/' + id;
     return this;
   }
 

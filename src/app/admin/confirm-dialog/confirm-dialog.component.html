@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <p>
+      Etes-vous certain de vouloir supprimer cet utilisateur "{{member.lastName}} {{member.firstName}}"?
+    </p>
+  </div>
+  <div class="row">
+    <button mat-raised-button (click)="onNoClick()">Retour</button>
+    <button mat-raised-button color="warn" (click)="confirmClick()">Confirmer</button>
+  </div>
+</div>

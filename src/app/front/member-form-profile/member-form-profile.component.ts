@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Member, Tag} from '../../../backend/model';
+import {Image, Member, Tag, TypeTag} from '../../../backend/model';
 import {Form, FormService} from '../../../backend/forms';
-import {MembersService, TagsService} from '../../../backend/services';
+import {MembersService, TagsService, TypeTagsService} from '../../../backend/services';
 import {MatChipInputEvent} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {HttpClient} from '@angular/common/http';
@@ -16,25 +16,28 @@ export class MemberFormProfileComponent implements OnInit {
   form: Form<Member>;
   addOnBlur = true;
   file: File;
-  fileReader: FileReader;
   url;
   // EVENTS_KEYBORDS
   separatorKeysCodes = [ENTER, COMMA];
+
+  // TYPE TAG
+  typeTags: TypeTag[];
 
   // SKILLS
   skills: Tag[];
 
   // INTERRESTS
-  interests = [];
+  interests: Tag[];
 
   constructor(private formService: FormService, private memberService: MembersService, private tagService: TagsService,
-              private http: HttpClient, private globals: GlobalsService) {
+              private http: HttpClient, private globals: GlobalsService, private typeTagsService: TypeTagsService) {
   }
 
   ngOnInit() {
     this.skills = this.member.tags.filter(tag => tag.type.libelle === 'skills');
     this.interests = this.member.tags.filter(tag => tag.type.libelle === 'interests');
     this.form = this.formService.makeForm<Member>(this.member);
+    this.typeTagsService.getAll().subscribe(res => this.typeTags = res);
   }
 
   addSkill(event: MatChipInputEvent): void {
@@ -44,7 +47,7 @@ export class MemberFormProfileComponent implements OnInit {
 
       const tag = new Tag();
       tag.libelle = event.value;
-      tag.setTypeLibelle('skills');
+      tag.type = this.typeTags.find(type => type.libelle === 'skills');
 
       this.skills.push(tag);
     }
@@ -70,6 +73,8 @@ export class MemberFormProfileComponent implements OnInit {
     // Add our fruit
     if ((value || '').trim()) {
       const tag = new Tag();
+      tag.libelle = event.value;
+      tag.type = this.typeTags.find(type => type.libelle === 'interests');
       this.interests.push(tag);
     }
 
@@ -107,15 +112,30 @@ export class MemberFormProfileComponent implements OnInit {
     updateMember.setProjectRatingMembersAtNull();
     updateMember.seClientsAtNull();
     updateMember.setAllTags(this.skills);
-    if (this.file) {
-      const formData = new FormData();
-      formData.append('xd', this.file);
-      this.http.post(this.globals.url + 'xd', formData).subscribe((data: string ) => {
-        updateMember.profilePicture.path = data;
+      const promise = new Promise(resolve => {
+          if (this.file) {
+              const image = new Image();
+              const formData = new FormData();
+              formData.append('xd', this.file);
+              console.log(this.file.name);
+              image.libelle = this.file.name;
+              this.http.post(this.globals.url + 'xd', formData).subscribe((data: string) => {
+                  image.path = data;
+                  image.libelle = this.file.name;
+                  updateMember.profilePicture = image;
+                  resolve();
+              });
+          } else {
+              updateMember.profilePicture = this.member.profilePicture;
+              resolve();
+          }
       });
-    } else {
-      updateMember.profilePicture = this.member.profilePicture;
-    }
-    this.memberService.update(updateMember);
+      Promise.resolve(promise).then(() => {
+          if (updateMember.id) {
+              this.memberService.update(updateMember).subscribe(agency => {
+                  console.log('yeah!');
+              });
+          }
+      });
   }
 }

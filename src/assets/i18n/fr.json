@@ -163,6 +163,8 @@
       "SIGN_IN": "CONNEXION",
       "SIGN_UP": "INSCRIPTION",
       "WEBSITE_SUBMIT": "SOUMETTRE UN SITE",
+      "CLIENT_SUBMIT": "AJOUTER UN CLIENT",
+      "AGENCY_SUBMIT": "AJOUTER UNE AGENCE",
       "FILTER": {
       }
     },
@@ -249,12 +251,18 @@
       "TVA":"Tva",
       "EFFECTIF":"Effectif",
       "STATUS":"Statut",
+      "REVENUE":"Chiffre d'affaire",
       "DUNS":"Duns",
       "TYPE_AGENCY":"Type d'agence",
       "CUSTOM_TAG":"Tags personnalisés",
       "CANCEL":"Annuler",
       "SAVE":"Enregistrer"
 
+    },
+    "REQUEST_JUDGE" : {
+      "SEND_MESSAGE": "Envoyé un message",
+      "SEND": "Envoyer",
+      "MESSAGE": "Message"
     }
   },
   "ERROR": {

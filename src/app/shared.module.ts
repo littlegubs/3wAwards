@@ -11,18 +11,19 @@ import {
   MatIconModule,
   MatInputModule,
   MatNativeDateModule,
-  MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatRadioModule,
   MatSelectModule,
-  MatSidenavModule,
   MatSliderModule,
   MatSlideToggleModule,
   MatSortModule,
   MatTableModule,
   MatTabsModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatPaginatorModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
 
@@ -54,6 +55,7 @@ import {RouterModule} from '@angular/router';
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
+    MatSnackBarModule,
     RouterModule
   ],
   providers: [

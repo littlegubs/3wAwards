@@ -4,7 +4,7 @@
     <div class="navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link branding " href="#"><img src="assets/imgs/logo.svg" alt="Logo"/> <span class="branding-pipe-separator"> | </span>
+          <a class="nav-link branding " href="/"><img src="assets/imgs/logo.svg" alt="Logo"/> <span class="branding-pipe-separator"> | </span>
             <span class="branding">{{'FRONT.HEADER.BRANDING' | translate}}</span></a>
         </li>
         <li class="nav-item">
@@ -27,7 +27,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="memberDropdown">
               <a class="dropdown-item" [routerLink]="['/profile']">{{'FRONT.HEADER.MEMBER_MENU.PROFILE' | translate}}</a>
-              <a class="dropdown-item" href="#">tes2</a>
+              <a *ngIf="userInfo.roles[0] === 'ROLE_ADMIN'"  class="dropdown-item" [routerLink]="['/admin']" href="">Admin</a>
               <a (click)="Disconnection()" class="dropdown-item" href="#">{{'FRONT.HEADER.MEMBER_MENU.DISCONNECTION' | translate}}</a>
             </div>
           </div>

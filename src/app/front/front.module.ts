@@ -34,15 +34,20 @@ import {MemberAwardProjectTableComponent} from './member-award-project-table/mem
 import {ProjectFormVoteComponent} from './project-form-vote/project-form-vote.component';
 import {UpdateProjectFormComponent} from './update-project-form/update-project-form.component';
 import {SearchResultComponent} from './search-result/search-result.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FrontComponent} from './front.component';
-import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency.component';
-import {AddClientComponent} from './add-client/add-client.component';
 import {UpdateClientComponent} from './update-client/update-client.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
 }
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FrontComponent } from './front.component';
+import { RequestJudgeFormComponent } from './request-judge-form/request-judge-form.component';
+import {AgenciesCardsComponent} from './agencies-cards/agencies-cards.component';
+import {ClientsCardsComponent} from './clients-cards/clients-cards.component';
+import {AwardsCardsComponent} from './awards-cards/awards-cards.component';
+import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency.component';
+import {AddClientComponent} from './add-client/add-client.component';
 
 @NgModule({
   imports: [
@@ -96,7 +101,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     UpdateFormAgencyComponent,
     AddAgencyComponent,
     AddClientComponent,
-    UpdateClientComponent
+    UpdateClientComponent,
+    RequestJudgeFormComponent,
+    AgenciesCardsComponent,
+    ClientsCardsComponent,
+    AwardsCardsComponent
   ]
 })
 export class FrontModule { }
