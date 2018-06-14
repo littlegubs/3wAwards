@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Form, FormService} from '../../../backend/forms';
-import {Credit, Member, Project, SiteType, Tag, Target, TypeTag} from '../../../backend/model';
+import {Credit, Image, Member, Project, SiteType, Tag, Target, TypeTag} from '../../../backend/model';
 import {
+  ImagesService,
   MembersService,
   ProjectsService,
   SiteTypesService,
@@ -13,6 +14,8 @@ import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
 
 @Component({
   selector: 'app-update-project-form',
@@ -55,18 +58,18 @@ export class UpdateProjectFormComponent implements OnInit {
   addOnBlur = true;
   agencyOrClientName: string;
   separatorKeysCodes = [ENTER, COMMA];
-  tiles = [
-    {text: 'One', cols: 2, rows: 2, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-  ];
+  files: File[] = [];
+  url: string[] = [];
+  projectImages: Image[] = [];
+  uploadedImages: Image[] = [];
+
   colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
-              private  siteTypesService: SiteTypesService, private route: ActivatedRoute) {
+              private  siteTypesService: SiteTypesService, private route: ActivatedRoute, private http: HttpClient,
+              private globalService: GlobalsService, private imageService: ImagesService) {
   }
 
   ngOnInit() {
@@ -107,6 +110,10 @@ export class UpdateProjectFormComponent implements OnInit {
           this.form = this.formService.makeForm<Project>(this.project);
           this.projectTags = this.project.tags;
           this.credits = this.project.credits;
+          this.project.images.forEach((image, index) => {
+            this.projectImages[index] = image;
+            this.url[index] = image.path;
+          });
           this.refreshTagsArray();
         },
         err => {
@@ -120,14 +127,55 @@ export class UpdateProjectFormComponent implements OnInit {
   }
 
   commitProject(): void {
-    if (this.form.group.dirty && this.form.group.valid) {
+    if (this.form.group.valid) {
       const newProject = this.form.get();
-      newProject.projectRatingMember = Object.values(this.project.projectRatingMember).map(projectRatingMember => projectRatingMember['@id']);
+      newProject.projectRatingMember = Object.values(this.project.projectRatingMember)
+        .map(projectRatingMember => projectRatingMember['@id']);
+      console.log(newProject);
       if (newProject.id) {
-        newProject.setImagesAtNull();
-        console.log(newProject);
         newProject.tags = this.projectTags;
-        this.projectsService.update(newProject).subscribe();
+
+        console.log(this.files);
+        console.log(this.url);
+        console.log(this.projectImages);
+        // remove all undefined elements
+        for (let i = 0; i < this.url.length; i++) {
+          if (this.url[i] === undefined) {
+            this.url.splice(i, 1);
+            this.files.splice(i, 1);
+            this.projectImages.splice(i, 1);
+            i = -1;
+          }
+        }
+
+        const promises = [];
+        this.url.forEach((item, index) => {
+          const promise = new Promise(resolve => {
+            if (this.projectImages[index] === undefined) {
+              const formData = new FormData();
+              formData.append('xd', this.files[index]);
+              this.http.post(this.globalService.url + 'xd', formData).subscribe((data: string) => {
+                const image = new Image();
+                image.libelle = this.files[index].name;
+                image.position = index;
+                image.path = data;
+                this.uploadedImages.push(image);
+                resolve();
+              });
+            } else {
+              this.projectImages[index].position = index;
+              this.imageService.update(this.projectImages[index]).subscribe(image => {
+                this.uploadedImages.push(image);
+                resolve();
+              });
+            }
+          });
+          promises.push(promise);
+        });
+        Promise.all(promises).then(() => {
+          newProject.images = this.uploadedImages;
+          this.projectsService.update(newProject).subscribe();
+        });
       } else {
         this.form.displayErrors();
       }
@@ -171,7 +219,7 @@ export class UpdateProjectFormComponent implements OnInit {
       }
       if (find === false) {
         const tag = new Tag();
-        for (let typeTag of this.typeTags) {
+        for (const typeTag of this.typeTags) {
           if (typeTag.libelle === type) {
             tag.setType(typeTag.id);
             tag.type.libelle = type;
@@ -205,7 +253,7 @@ export class UpdateProjectFormComponent implements OnInit {
   addTags(event: MatChipInputEvent, type: string): void {
     if ((event.value || '').trim()) {
       const tag = new Tag();
-      for (let typeTag of this.typeTags) {
+      for (const typeTag of this.typeTags) {
         if (typeTag.libelle === type) {
           tag.setType(typeTag.id);
           tag.type.libelle = type;
@@ -223,7 +271,7 @@ export class UpdateProjectFormComponent implements OnInit {
 
   addColors(value: string, type: string): void {
     const tag = new Tag();
-    for (let typeTag of this.typeTags) {
+    for (const typeTag of this.typeTags) {
       if (typeTag.libelle === type) {
         tag.setType(typeTag.id);
         tag.type.libelle = type;
@@ -250,8 +298,8 @@ export class UpdateProjectFormComponent implements OnInit {
     this.purposeTags = this.projectTags.filter(tag => tag.type.libelle === 'purpose');
     this.languageTags = this.projectTags.filter(tag => tag.type.libelle === 'language');
     this.budgetFork = this.projectTags.find(tag => tag.type.libelle === 'budget_fork');
-    this.challenge =  this.projectTags.find(tag => tag.type.libelle === 'challenge');
-    this.accessibility =  this.projectTags.find(tag => tag.type.libelle === 'accessibility');
+    this.challenge = this.projectTags.find(tag => tag.type.libelle === 'challenge');
+    this.accessibility = this.projectTags.find(tag => tag.type.libelle === 'accessibility');
   }
 
   onAccessibilityRatingChange($event) {
@@ -279,5 +327,29 @@ export class UpdateProjectFormComponent implements OnInit {
         this.credits.splice(i, 1);
       }
     }
+  }
+
+  fileUpload($event: any, i) {
+    const fileList: FileList = $event.target.files;
+    if (fileList.length > 0) {
+      this.projectImages[i] = undefined;
+      console.log(this.projectImages);
+      const file: File = $event.target.files[0];
+      this.files[i] = file;
+      const fileReader = new FileReader();
+      fileReader.onload = (event: any) => {
+        this.url[i] = event.target.result;
+      };
+      fileReader.readAsDataURL(file);
+    }
+  }
+
+  removeFile(index) {
+    this.files[index] = undefined;
+    this.url[index] = undefined;
+    this.projectImages[index] = undefined;
+    console.log(this.files);
+    console.log(this.url);
+    console.log(this.projectImages);
   }
 }

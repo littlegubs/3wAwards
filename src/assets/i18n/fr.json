@@ -225,12 +225,14 @@
       "FUNCTION" : "Fonction",
       "ADD_CREDIT": "Ajouter un crédit",
       "PRPJECT_URL": "Projet url",
+      "UPLOAD": "Cliquez pour choisir un fichier...",
       "VOTE": "VOTEZ",
       "TO_VOTE": "VOTER",
       "LABELS": {
         "GENERAL": "Mon projet",
         "IMAGE": "Captures d'écran"
-      }
+      },
+      "THUMBNAIL": "Cette image sera utilisée pour la thumbnail de votre projet"
     },
     "FORM_AGENCY": {
       "IDENTITY":"Identité",

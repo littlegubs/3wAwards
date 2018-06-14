@@ -7,6 +7,7 @@ export class ImageBase {
   get _resource(): string { return ImageBase._resource; };
 
   path: string;
+  position: number;
   libelle: string;
 
 }

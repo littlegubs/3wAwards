@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Form, FormService} from '../../../backend/forms';
-import {Credit, Member, Project, SiteType, Tag, Target, TypeTag} from '../../../backend/model';
+import {Credit, Image, Member, Project, SiteType, Tag, Target, TypeTag} from '../../../backend/model';
 import {
   MembersService,
   ProjectsService,
@@ -12,6 +12,9 @@ import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
+import {Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
@@ -50,19 +53,19 @@ export class ProjectFormComponent implements OnInit {
   idTarget: number;
   idSiteType: number;
   addOnBlur = true;
+
   separatorKeysCodes = [ENTER, COMMA];
-    tiles = [
-        {text: 'One', cols: 2, rows: 2, color: 'lightblue'},
-        {text: 'Two', cols: 1, rows: 1, color: 'lightgreen'},
-        {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-        {text: 'Four', cols: 1, rows: 1, color: '#DDBDF1'},
-    ];
+  files: File[] = [];
+  url: string[] = [];
+  uploadedImages: Image[] = [];
+
   colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
 
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
-              private  siteTypesService: SiteTypesService) {
+              private  siteTypesService: SiteTypesService, private http: HttpClient, private globalService: GlobalsService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -145,7 +148,6 @@ export class ProjectFormComponent implements OnInit {
         }
         newProject.tags = this.projectTags;
         newProject.setMembersatNull();
-        newProject.setImagesAtNull();
         newProject.setAwardsAtNull();
         newProject.credits = this.credits;
 
@@ -159,7 +161,33 @@ export class ProjectFormComponent implements OnInit {
         } else {
           newProject.setTarget(this.idTarget);
         }
-        this.projectsService.add(newProject).subscribe();
+        // remove all undefined elements
+        for (let i = 0; i < this.url.length; i++) {
+          if (this.url[i] === undefined) {
+            this.url.splice(i, 1);
+            this.files.splice(i, 1);
+            i = -1;
+          }
+        }
+        this.files.forEach((file, index) => {
+          const formData = new FormData();
+          formData.append('xd', file);
+          this.http.post(this.globalService.url + 'xd', formData).subscribe((data: string) => {
+            const image = new Image();
+            image.libelle = file.name;
+            image.path = data;
+            image.position = index;
+            this.uploadedImages.push(image);
+            if (index === (this.files.length - 1)) {
+              newProject.images = this.uploadedImages;
+              this.projectsService.add(newProject).subscribe(project =>
+                this.router.navigate(['/update-project/' + project.id])
+              );
+            }
+          });
+        });
+
+
       }
     } else {
       this.form.displayErrors();
@@ -203,7 +231,7 @@ export class ProjectFormComponent implements OnInit {
       }
       if (find === false) {
         const tag = new Tag();
-        for (let typeTag of this.typeTags) {
+        for (const typeTag of this.typeTags) {
           if (typeTag.libelle === type) {
             tag.setType(typeTag.id);
             tag.type.libelle = type;
@@ -237,7 +265,7 @@ export class ProjectFormComponent implements OnInit {
   addTags(event: MatChipInputEvent, type: string): void {
     if ((event.value || '').trim()) {
       const tag = new Tag();
-      for (let typeTag of this.typeTags) {
+      for (const typeTag of this.typeTags) {
         if (typeTag.libelle === type) {
           tag.setType(typeTag.id);
           tag.type.libelle = type;
@@ -255,7 +283,7 @@ export class ProjectFormComponent implements OnInit {
 
   addColors(value: string, type: string): void {
     const tag = new Tag();
-    for (let typeTag of this.typeTags) {
+    for (const typeTag of this.typeTags) {
       if (typeTag.libelle === type) {
         tag.setType(typeTag.id);
         tag.type.libelle = type;
@@ -311,4 +339,21 @@ export class ProjectFormComponent implements OnInit {
     }
   }
 
+  fileUpload($event: any, i) {
+    const fileList: FileList = $event.target.files;
+    if (fileList.length > 0) {
+      const file: File = $event.target.files[0];
+      this.files[i] = file;
+      const fileReader = new FileReader();
+      fileReader.onload = (event: any) => {
+        this.url[i] = event.target.result;
+      };
+      fileReader.readAsDataURL(file);
+    }
+  }
+
+  removeFile(index) {
+    this.files[index] = undefined;
+    this.url[index] = undefined;
+  }
 }
