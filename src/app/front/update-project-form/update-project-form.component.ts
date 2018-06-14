@@ -12,7 +12,7 @@ import {
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent, MatSnackBar} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {GlobalsService} from '../../globals.service';
@@ -62,6 +62,7 @@ export class UpdateProjectFormComponent implements OnInit {
   url: string[] = [];
   projectImages: Image[] = [];
   uploadedImages: Image[] = [];
+  isLoading = false;
 
   colors = ['#ffffff', '#000000', '#999999', '#FD0100', '#FE8A01', '#FFDC02', '#80D300', '#27A101', '#00B09C', '#1888DA', '#00568D',
     '#0E00C6', '#6500C9', '#8F01C9', '#8F02C5', '#D40280'];
@@ -69,7 +70,7 @@ export class UpdateProjectFormComponent implements OnInit {
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
               private  siteTypesService: SiteTypesService, private route: ActivatedRoute, private http: HttpClient,
-              private globalService: GlobalsService, private imageService: ImagesService) {
+              private globalService: GlobalsService, private imageService: ImagesService, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -127,6 +128,7 @@ export class UpdateProjectFormComponent implements OnInit {
   }
 
   commitProject(): void {
+    this.isLoading = true;
     if (this.form.group.valid) {
       const newProject = this.form.get();
       newProject.projectRatingMember = Object.values(this.project.projectRatingMember)
@@ -174,7 +176,7 @@ export class UpdateProjectFormComponent implements OnInit {
         });
         Promise.all(promises).then(() => {
           newProject.images = this.uploadedImages;
-          this.projectsService.update(newProject).subscribe();
+          this.projectsService.update(newProject).subscribe(() => {this.isLoading = false; this.openSnackBar(); } );
         });
       } else {
         this.form.displayErrors();
@@ -352,4 +354,10 @@ export class UpdateProjectFormComponent implements OnInit {
     console.log(this.url);
     console.log(this.projectImages);
   }
+
+    openSnackBar(): void {
+        this.snackBar.open('Projet modifié', 'Ok', {
+            duration: 2000
+        });
+    }
 }

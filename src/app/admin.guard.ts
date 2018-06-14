@@ -16,11 +16,15 @@ export class AdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    this.userInfo = this.authService.getUserInfo(this.tokenStorage);
-    if (this.userInfo.roles[0] === 'ROLE_ADMIN') {
-      return true;
+    if (this.tokenStorage !== null) {
+        this.userInfo = this.authService.getUserInfo(this.tokenStorage);
+        if (this.userInfo.roles[0] === 'ROLE_ADMIN') {
+            return true;
+        } else {
+            this.router.navigate(['**']);
+        }
     } else {
-      this.router.navigate(['**']);
+        this.router.navigate(['**']);
     }
   }
 }

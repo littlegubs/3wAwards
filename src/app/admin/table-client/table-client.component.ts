@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientsService} from '../../../backend/services';
 import {Client} from '../../../backend/model';
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-table-client',
@@ -11,7 +12,7 @@ export class TableClientComponent implements OnInit {
   pageNumber = 1;
   clients: Client[];
 
-  constructor(private clientsService: ClientsService) { }
+  constructor(private clientsService: ClientsService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.clientsService.getAll(this.pageNumber).subscribe(
@@ -38,6 +39,7 @@ export class TableClientComponent implements OnInit {
   removeClient(client: Client): void {
     this.clientsService.remove(client).subscribe(
       res => {
+        this.openSnackBar();
         for (let i = 0; i < this.clients.length; i++) {
           if (this.clients[i].id === client.id) {
             this.clients.splice(i, 1);
@@ -48,5 +50,11 @@ export class TableClientComponent implements OnInit {
       }
     );
   }
+
+    openSnackBar(): void {
+        this.snackBar.open('Client supprimé', 'Ok', {
+            duration: 2000
+        });
+    }
 
 }

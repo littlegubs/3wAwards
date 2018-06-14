@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MembersService, AgenciesService, TypeTagsService, TypeAgenciesService} from '../../../backend/services';
 import {Agency, Member, TypeTag, Tag, TypeAgency, Image} from '../../../backend/model';
 import {FormService, Form} from '../../../backend/forms';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent, MatSnackBar} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
@@ -29,10 +29,11 @@ export class UpdateFormAgencyComponent implements OnInit {
   separatorKeysCodes = [ENTER, COMMA];
   file: File;
   url;
+  isLoading = false;
 
   constructor(private agenciesService: AgenciesService, private formService: FormService, private typeTagService: TypeTagsService,
               private membersService: MembersService, private  typeAgenciesService: TypeAgenciesService,
-              private route: ActivatedRoute, private http: HttpClient, private globals: GlobalsService, private router: Router) {
+              private route: ActivatedRoute, private http: HttpClient, private globals: GlobalsService, private router: Router, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -74,6 +75,7 @@ export class UpdateFormAgencyComponent implements OnInit {
   }
 
   commitAgency(): void {
+      this.isLoading = true;
       if (this.form.group.valid) {
           const newAgency = this.form.get();
           const promise = new Promise(resolve => {
@@ -102,6 +104,7 @@ export class UpdateFormAgencyComponent implements OnInit {
                 }
                   this.agenciesService.update(newAgency).subscribe(agency => {
                       console.log('yeah!');
+                      this.openSnackBar();
                       this.router.navigate(['/agency/' + agency.id]);
                   });
               }
@@ -197,4 +200,10 @@ export class UpdateFormAgencyComponent implements OnInit {
     }
     this.refreshTagsArray();
   }
+
+    openSnackBar(): void {
+        this.snackBar.open('Agence modifiée', 'Ok', {
+            duration: 2000
+        });
+    }
 }

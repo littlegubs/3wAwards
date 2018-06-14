@@ -17,7 +17,7 @@
         <td>{{agency.country}}</td>
         <td>{{agency.city}}</td>
         <td>{{agency.typeAgency.libelle}}</td>
-        <td *ngIf="agency.websiteUrl">{{agency.websiteUrl}}</td>
+        <td *ngIf="agency.websiteUrl" id="url">{{agency.websiteUrl}}</td>
         <td *ngIf="!agency.websiteUrl">/</td>
         <td class="actions">
           <button mat-raised-button color="warn" (click)="removeAgency(agency)">Supprimer</button>

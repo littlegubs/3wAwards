@@ -182,6 +182,7 @@
                 <button type="button" class="btn btn-main-red-full" (click)="commitAgency()">
                   {{'FRONT.FORM_AGENCY.SAVE' | translate}}
                 </button>
+                <mat-progress-spinner color="warn" mode="indeterminate" diameter="40" *ngIf="isLoading === true"></mat-progress-spinner>
               </div>
             </div>
           </div>

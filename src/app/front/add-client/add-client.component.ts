@@ -4,7 +4,7 @@ import {Client, Member, TypeTag, Tag, Image} from '../../../backend/model';
 import {FormService, Form} from '../../../backend/forms';
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent, MatSnackBar} from '@angular/material';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {HttpClient} from '@angular/common/http';
 import {GlobalsService} from '../../globals.service';
@@ -32,7 +32,7 @@ export class AddClientComponent implements OnInit {
 
   constructor(private clientService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
               private membersService: MembersService, private authService: AuthService, private  typeAgenciesService: TypeAgenciesService,
-              private http: HttpClient, private globals: GlobalsService, private route: Router) {
+              private http: HttpClient, private globals: GlobalsService, private route: Router, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -81,6 +81,7 @@ export class AddClientComponent implements OnInit {
               console.log(newClient);
               this.clientService.add(newClient).subscribe(client => {
                   console.log('add');
+                  this.openSnackBar();
                   this.route.navigate(['/client/' + client.id]);
               });
           }
@@ -167,4 +168,10 @@ export class AddClientComponent implements OnInit {
       }
       this.refreshTagsArray();
   }
+
+    openSnackBar(): void {
+        this.snackBar.open('Client ajouté', 'Ok', {
+            duration: 2000
+        });
+    }
 }

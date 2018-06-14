@@ -235,6 +235,7 @@
                 <button type="button" class="btn btn-main-red-full" (click)="submitForm()">
                   {{'FRONT.MEMBER_PROFILE.FORM.COMPONENTS.ACTIONS.SUBMIT' | translate}}
                 </button>
+                <mat-progress-spinner color="warn" mode="indeterminate" diameter="40" *ngIf="isLoading === true"></mat-progress-spinner>
               </div>
             </div>
           </div>

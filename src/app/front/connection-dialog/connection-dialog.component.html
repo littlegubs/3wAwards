@@ -9,7 +9,10 @@
       <label>{{"FRONT.DIALOG.PASSWORD" | translate}}:</label>
       <input name="password" type="password" formControlName="password">
     </div>
-    <button type="submit" class="btn btn-main-red-full">{{"FRONT.DIALOG.BUTTONS.LOG_IN" | translate}}</button>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-main-red-full">{{"FRONT.DIALOG.BUTTONS.LOG_IN" | translate}}</button>
+      <mat-progress-spinner color="warn" mode="indeterminate" diameter="40" *ngIf="isLoading === true"></mat-progress-spinner>
+    </div>
   </form>
 </div>
 

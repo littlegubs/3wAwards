@@ -3,7 +3,7 @@ import {ClientsService, MembersService, TypeTagsService} from '../../../backend/
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {Client, Image, Member, Tag, TypeTag} from '../../../backend/model';
 import {AuthService} from '../../auth.service';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent, MatSnackBar} from '@angular/material';
 import {TokenInterface} from '../../tokenInterface';
 import {Form, FormService} from '../../../backend/forms';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -34,10 +34,11 @@ export class UpdateClientComponent implements OnInit {
     file: File;
     fileReader;
     url;
+    isLoading = false;
 
     constructor(private clientsService: ClientsService, private formService: FormService, private typeTagService: TypeTagsService,
                 private membersService: MembersService, private authService: AuthService, private route: ActivatedRoute,
-                private http: HttpClient, private globals: GlobalsService, private router: Router) {
+                private http: HttpClient, private globals: GlobalsService, private router: Router, public snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
@@ -64,6 +65,7 @@ export class UpdateClientComponent implements OnInit {
     }
 
     commitClient(): void {
+        this.isLoading = true;
         if (this.form.group.dirty && this.form.group.valid) {
             const newClient = this.form.get();
             console.log(newClient);
@@ -94,7 +96,11 @@ export class UpdateClientComponent implements OnInit {
                     newClient.image = null;
                     newClient.setMember(this.userInfo.id);
                     console.log(newClient);
-                    this.clientsService.add(newClient).subscribe(client => console.log('add'));
+                    this.clientsService.add(newClient).subscribe(client => {
+                        console.log('add');
+                        this.isLoading = false;
+                        this.openSnackBar();
+                    });
                 }
             });
         } else {
@@ -194,5 +200,11 @@ export class UpdateClientComponent implements OnInit {
             }
         }
         this.refreshTagsArray();
+    }
+
+    openSnackBar(): void {
+        this.snackBar.open('Client modifié', 'Ok', {
+            duration: 2000
+        });
     }
 }

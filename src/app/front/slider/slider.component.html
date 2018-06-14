@@ -12,8 +12,8 @@
                     <div class="daily-site">
                       <span class="daily-site-name">{{award.project.projectName}}</span>
                       <br>
-                      <span class="daily-site-info" *ngIf="award.project.agency === null">par <span class="bold">{{award.project.client.name}}</span> | {{award.project.client.country}} </span>
-                      <span class="daily-site-info" *ngIf="award.project.client === null">par <span class="bold">{{award.project.agency.name}}</span> | {{award.project.agency.country}}  </span>
+                      <span class="daily-site-info" *ngIf="award.project.agency === null && award.project.client !== null">par <span class="bold">{{award.project.client.name}}</span> | {{award.project.client.country}}</span>
+                      <span class="daily-site-info" *ngIf="award.project.client === null && award.project.agency !== null">par <span class="bold">{{award.project.agency.name}}</span> | {{award.project.agency.country}}  </span>
                     </div>
                     <div class="daily-marks">
                         <div class="daily-marks-circle">

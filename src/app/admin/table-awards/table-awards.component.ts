@@ -18,6 +18,7 @@ export class TableAwardsComponent implements OnInit {
         this.awardsService.getAll(this.pageNumber).subscribe(
             res => {
                 this.awards = res;
+                console.log(this.awards[3].project.client);
             },
             err => {
             }

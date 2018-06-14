@@ -44,7 +44,7 @@ export class TableParamComponent implements OnInit {
 
   openSnackBar(libelle: string) {
     const message = 'Paramètre ' + libelle + ' modifié';
-    this.snackBar.open(message,  '', {
+    this.snackBar.open(message,  'Ok', {
       duration: 2000
     });
   }

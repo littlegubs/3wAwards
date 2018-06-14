@@ -14,8 +14,11 @@
       <tbody>
       <tr *ngFor="let project of projects">
         <td>{{project.projectName}}</td>
-        <td *ngIf="project.agency === null" class="agency-client">{{project.client.name}}</td>
-        <td *ngIf="project.client === null" class="agency-client">{{project.agency.name}}</td>
+        <td *ngIf="project.agency === null && project.client === null; else notUndefined">/</td>
+        <ng-template #notUndefined>
+          <td *ngIf="project.agency === null" class="agency-client">{{project.client.name}}</td>
+          <td *ngIf="project.client === null" class="agency-client">{{project.agency.name}}</td>
+        </ng-template>
         <td class="site-type">{{project.siteType.libelle}}</td>
         <td class="url">{{project.projectUrl}}</td>
         <td> {{project.status}}</td>

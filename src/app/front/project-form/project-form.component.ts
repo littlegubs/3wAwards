@@ -11,7 +11,7 @@ import {
 import {TokenInterface} from '../../tokenInterface';
 import {AuthService} from '../../auth.service';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent, MatSnackBar} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {GlobalsService} from '../../globals.service';
 import {Route, Router} from '@angular/router';
@@ -53,6 +53,7 @@ export class ProjectFormComponent implements OnInit {
   idTarget: number;
   idSiteType: number;
   addOnBlur = true;
+  isLoading = false;
 
   separatorKeysCodes = [ENTER, COMMA];
   files: File[] = [];
@@ -65,7 +66,7 @@ export class ProjectFormComponent implements OnInit {
   constructor(private projectsService: ProjectsService, private membersService: MembersService, private formService: FormService,
               private authService: AuthService, private typeTagsService: TypeTagsService, private targetsService: TargetsService,
               private  siteTypesService: SiteTypesService, private http: HttpClient, private globalService: GlobalsService,
-              private router: Router) {
+              private router: Router, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -100,6 +101,7 @@ export class ProjectFormComponent implements OnInit {
   }
 
   commitProject(): void {
+    this.isLoading = true;
     if (this.form.group.dirty && this.form.group.valid) {
       const newProject = this.form.get();
       newProject.projectRatingMember = [];
@@ -180,9 +182,10 @@ export class ProjectFormComponent implements OnInit {
             this.uploadedImages.push(image);
             if (index === (this.files.length - 1)) {
               newProject.images = this.uploadedImages;
-              this.projectsService.add(newProject).subscribe(project =>
-                this.router.navigate(['/update-project/' + project.id])
-              );
+              this.projectsService.add(newProject).subscribe(project => {
+                  this.openSnackBar();
+                  this.router.navigate(['/update-project/' + project.id]);
+              });
             }
           });
         });
@@ -356,4 +359,10 @@ export class ProjectFormComponent implements OnInit {
     this.files[index] = undefined;
     this.url[index] = undefined;
   }
+
+    openSnackBar(): void {
+        this.snackBar.open('Projet créé', 'Ok', {
+            duration: 2000
+        });
+    }
 }

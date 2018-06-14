@@ -40,6 +40,8 @@ app-member-form-profile{
                 text-align: left;
                 &.form-actions {
                     text-align: center;
+                    @include flex();
+                    @include justify-content(center)
                 }
             }
         }

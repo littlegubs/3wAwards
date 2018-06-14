@@ -4,6 +4,7 @@ import {RequestJudgesService} from '../../../backend/services';
 import {Award, RequestJudge} from '../../../backend/model';
 import {AuthService} from '../../auth.service';
 import {TokenInterface} from '../../tokenInterface';
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-request-judge-form',
@@ -15,7 +16,7 @@ export class RequestJudgeFormComponent implements OnInit {
   tokenStorage = localStorage.getItem('user_token');
   userInfo: TokenInterface;
 
-  constructor(private formService: FormService, private requestJudgesService: RequestJudgesService, private authService: AuthService) {
+  constructor(private formService: FormService, private requestJudgesService: RequestJudgesService, private authService: AuthService, public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -31,10 +32,19 @@ export class RequestJudgeFormComponent implements OnInit {
     if (this.form.group.dirty && this.form.group.valid) {
       const newRequestJudge = this.form.get();
       newRequestJudge.setMember(this.userInfo.id);
-      this.requestJudgesService.add(newRequestJudge).subscribe(res => console.log('yeah!'));
+      this.requestJudgesService.add(newRequestJudge).subscribe(res => {
+        console.log('yeah!');
+        this.openSnackBar();
+      });
     } else {
       this.form.displayErrors();
     }
   }
+
+    openSnackBar(): void {
+        this.snackBar.open('Requête soumise', 'Ok', {
+            duration: 2000
+        });
+    }
 
 }

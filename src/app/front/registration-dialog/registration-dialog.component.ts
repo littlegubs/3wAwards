@@ -11,6 +11,7 @@ import {MatDialog} from '@angular/material';
 export class RegistrationDialogComponent {
 
   registrationForm: FormGroup;
+  isLoading = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private dialog: MatDialog) {
     this.registrationForm = this.fb.group({
@@ -25,6 +26,7 @@ export class RegistrationDialogComponent {
   }
 
   onSubmit() {
+    this.isLoading = true;
     this.authService.signUp(this.registrationForm, 'ROLE_USER');
   }
 }

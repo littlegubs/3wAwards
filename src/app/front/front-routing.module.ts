@@ -19,6 +19,7 @@ import {UpdateProjectGuard} from '../update-project.guard';
 import {AwardsCardsComponent} from './awards-cards/awards-cards.component';
 import {AgenciesCardsComponent} from './agencies-cards/agencies-cards.component';
 import {ClientsCardsComponent} from './clients-cards/clients-cards.component';
+import {SearchResultComponent} from './search-result/search-result.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
       {path: 'update-agency/:id', component: UpdateFormAgencyComponent},
       {path: 'update-project/:id', component: UpdateProjectFormComponent},
       {path: 'update-client/:id', component: UpdateClientComponent},
+      {path: 'search/:searchValue', component: SearchResultComponent},
       {path: 'client', component: AddClientComponent},
     ]},
 ];
