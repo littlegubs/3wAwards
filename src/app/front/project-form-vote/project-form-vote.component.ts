@@ -42,6 +42,8 @@ export class ProjectFormVoteComponent implements OnInit {
   votesLength = Object.keys(this.votes);
   isVoteJudge = false;
 
+  isLoading = false;
+
   get tickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
   }
@@ -75,6 +77,7 @@ export class ProjectFormVoteComponent implements OnInit {
   }
 
   sendVote() {
+    this.isLoading = true;
     const [last] = Object.keys(CategoryEnum).reverse();
     Object.keys(CategoryEnum).forEach(categ => {
       this.loading = true;
@@ -92,6 +95,7 @@ export class ProjectFormVoteComponent implements OnInit {
               if (last === categ) {
                 this.http.get(this.globalService.url + 'average/' + this.data.project.id).subscribe(res => this.dialogRef.close(res));
               }
+              this.isLoading = false;
             });
         });
       }

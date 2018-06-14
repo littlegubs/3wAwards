@@ -137,7 +137,8 @@
         "QUALITY": "Qualité des contenus",
         "FONCTIONNALITY": "Richesse fonctionnelle",
         "REACTIVITY": "Réactivité, vitesse",
-        "AVERAGE": "Moyenne"
+        "AVERAGE_JURY": "Moyenne Jury",
+        "AVERAGE_MEMBER": "Moyenne membres"
       }
     },
     "HEADER": {
@@ -228,6 +229,7 @@
       "UPLOAD": "Cliquez pour choisir un fichier...",
       "VOTE": "VOTEZ",
       "TO_VOTE": "VOTER",
+      "VOTE_AS_JUDGE": "Vote jury",
       "LABELS": {
         "GENERAL": "Mon projet",
         "IMAGE": "Captures d'écran"
