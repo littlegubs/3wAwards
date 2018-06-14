@@ -40,8 +40,7 @@ const routes: Routes = [
       {path: 'update-project/:id', component: UpdateProjectFormComponent, canActivate: [UpdateProjectGuard] },
       {path: 'agency', component: AddAgencyComponent, canActivate: [LoginGuard]},
       {path: 'update-agency/:id', component: UpdateFormAgencyComponent, canActivate: [UpdateAgencyGuard]},
-      {path: 'update-project/:id', component: UpdateProjectFormComponent, canActivate: [UpdateClientGuard]},
-      {path: 'update-client/:id', component: UpdateClientComponent},
+      {path: 'update-client/:id', component: UpdateClientComponent, canActivate: [UpdateClientGuard]},
       {path: 'client', component: AddClientComponent,  canActivate: [LoginGuard]},
     ]},
 ];

@@ -18,7 +18,6 @@ export class UpdateClientComponent implements OnInit {
     clients: Array<Client> = [];
     client: Client;
     form: Form<Client>;
-    client: Client;
     tokenStorage = localStorage.getItem('user_token');
     userInfo: TokenInterface;
     member: Member;
