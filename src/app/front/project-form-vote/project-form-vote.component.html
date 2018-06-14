@@ -1,10 +1,13 @@
-<div class="container" *ngIf="votesLength.length !== 0">
+<div class="container" *ngIf="votesLength.length !== 0; else loading">
   <div class="row">
     <div class="col-sm-12 col-form-project">
       <form autocomplete="off">
         <div class="row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-            <p class="form-categ">{{'FRONT.FORM_PROJECT.TO_VOTE' | translate}}</p>
+            <div class="vote-header">
+              <p class="form-categ">{{'FRONT.FORM_PROJECT.TO_VOTE' | translate}}</p>
+              <mat-slide-toggle *ngIf="member.isJudge" (change)="isVoteJudge = $event.checked">{{'FRONT.FORM_PROJECT.VOTE_AS_JUDGE' | translate}}</mat-slide-toggle>
+            </div>
             <div class="form-group row">
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.ORIGINALITY' | translate}} :</label>
               <div class="col-sm-8">
@@ -121,15 +124,14 @@
                 </mat-slider>
               </div>
             </div>
-            <div class="form-group row">
-              <div class="row row-submit">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                  <div class="form-group row">
-                    <div class="col-sm-12 form-actions">
-                      <button type="submit" class="btn btn-main-red-full submit" (click)="sendVote()">
-                        {{'FRONT.FORM_PROJECT.TO_VOTE' | translate}}
-                      </button>
-                    </div>
+            <div class="form-group row row-submit">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group row">
+                  <div class="col-sm-12 form-actions">
+                    <button type="submit" class="btn btn-main-red-full submit" (click)="sendVote()">
+                      {{'FRONT.FORM_PROJECT.TO_VOTE' | translate}}
+                    </button>
+                    <mat-progress-spinner color="warn" mode="indeterminate" diameter="40" *ngIf="isLoading === true"></mat-progress-spinner>
                   </div>
                 </div>
               </div>
@@ -140,6 +142,6 @@
     </div>
   </div>
 </div>
-<ng-template #loading>
-  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+<ng-template #loading >
+  <mat-progress-spinner color="warn" mode="indeterminate" class="template-loader"></mat-progress-spinner>
 </ng-template>

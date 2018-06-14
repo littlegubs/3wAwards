@@ -4,9 +4,24 @@ app-project-form-vote {
     .col-form-project {
         text-align: left;
     }
-    .form-categ {
-        font-size: 24px;
+    .vote-header{
+        display: flex;
+        justify-content: space-between;
         margin-top: 40px;
+        .form-categ {
+            font-size: 24px;
+        }
+        mat-slide-toggle{
+            height: 32px;
+            .mat-slide-toggle{
+                &-bar{
+                    margin-left: 10px;
+                }
+                &-label{
+                    @include flex-direction(row-reverse)
+                }
+            }
+        }
     }
 
     .round-color {
@@ -59,6 +74,8 @@ app-project-form-vote {
                 }
                 &.form-actions {
                     text-align: center;
+                    @include flex();
+                    @include justify-content(center)
                 }
             }
         }
@@ -105,5 +122,8 @@ app-project-form-vote {
                 background-color: #009999 !important;
             }
         }
+    }
+    .template-loader{
+        margin: 0 auto;
     }
 }
