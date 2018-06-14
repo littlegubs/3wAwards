@@ -121,9 +121,9 @@ export class MemberProfileComponent {
 
 }
 
-    export interface Element {
-        name: string;
-        date: string;
-        type: string;
-        libelle: string;
-    }
+export interface Element {
+    name: string;
+    date: string;
+    type: string;
+    libelle: string;
+}

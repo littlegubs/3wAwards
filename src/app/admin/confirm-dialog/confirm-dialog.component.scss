@@ -1,0 +1,9 @@
+app-confirm-dialog{
+    .container{
+        .row{
+           &:last-child{
+               justify-content: space-around;
+           }
+        }
+    }
+}

@@ -22,9 +22,11 @@ import {
   RatingsService,
   SiteTypesService,
   TagsService,
-  TargetsService,
   TypeAgenciesService,
-  TypeTagsService
+  TypeTagsService,
+  TargetsService,
+  ParametersService,
+  RequestJudgesService
 } from '../backend/services';
 import {GlobalsService} from './globals.service';
 import {FormService} from '../backend/forms';
@@ -32,6 +34,11 @@ import {RouterModule} from '@angular/router';
 import {FrontModule} from './front/front.module';
 import {AdminModule} from './admin/admin.module';
 import {Error404Component} from './error404/error404.component';
+import {AdminGuard} from './admin.guard';
+import {LoginGuard} from './login.guard';
+import {UpdateProjectGuard} from './update-project.guard';
+import {UpdateClientGuard} from './update-client.guard';
+import {UpdateAgencyGuard} from './update-agency.guard';
 
 export function createRestangularConfigFactory(RestangularProvider) {
   if (localStorage.getItem('user_token') !== null) {
@@ -74,6 +81,13 @@ export function createRestangularConfigFactory(RestangularProvider) {
     TypeAgenciesService,
     TypeTagsService,
     AuthService,
+    RequestJudgesService,
+    ParametersService,
+    AdminGuard,
+    LoginGuard,
+    UpdateProjectGuard,
+    UpdateClientGuard,
+    UpdateAgencyGuard,
     GlobalsService,
     {
       provide: HTTP_INTERCEPTORS,

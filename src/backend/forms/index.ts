@@ -12,9 +12,11 @@ import { ClientValidators } from './ClientValidators';
 import { CreditValidators } from './CreditValidators';
 import { ImageValidators } from './ImageValidators';
 import { MemberValidators } from './MemberValidators';
+import { ParameterValidators } from './ParameterValidators';
 import { ProjectRatingMemberValidators } from './ProjectRatingMemberValidators';
 import { ProjectValidators } from './ProjectValidators';
 import { RatingValidators } from './RatingValidators';
+import { RequestJudgeValidators } from './RequestJudgeValidators';
 import { SiteTypeValidators } from './SiteTypeValidators';
 import { TagValidators } from './TagValidators';
 import { TargetValidators } from './TargetValidators';
@@ -35,9 +37,11 @@ export {
   CreditValidators,
   ImageValidators,
   MemberValidators,
+  ParameterValidators,
   ProjectRatingMemberValidators,
   ProjectValidators,
   RatingValidators,
+  RequestJudgeValidators,
   SiteTypeValidators,
   TagValidators,
   TargetValidators,

@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {AgencyProfileComponent} from './agency-profile/agency-profile.component';
 import {ClientProfileComponent} from './client-profile/client-profile.component';
@@ -13,6 +13,12 @@ import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency
 import {UpdateProjectFormComponent} from './update-project-form/update-project-form.component';
 import {UpdateClientComponent} from './update-client/update-client.component';
 import {AddClientComponent} from './add-client/add-client.component';
+import {RequestJudgeFormComponent} from './request-judge-form/request-judge-form.component';
+import {LoginGuard} from '../login.guard';
+import {UpdateProjectGuard} from '../update-project.guard';
+import {AwardsCardsComponent} from './awards-cards/awards-cards.component';
+import {AgenciesCardsComponent} from './agencies-cards/agencies-cards.component';
+import {ClientsCardsComponent} from './clients-cards/clients-cards.component';
 
 
 const routes: Routes = [
@@ -23,8 +29,13 @@ const routes: Routes = [
       {path: 'client/:id', component: ClientProfileComponent},
       {path: 'project/:id', component: ProjectProfileComponent},
       {path: 'project/:id/vote', component: ProjectFormVoteComponent},
-      {path: 'profile', component: MemberProfileComponent},
+      {path: 'profile', component: MemberProfileComponent,  canActivate: [LoginGuard]},
       {path: 'project', component: ProjectFormComponent},
+      {path: 'agencies', component: AgenciesCardsComponent},
+      {path: 'clients', component: ClientsCardsComponent},
+      {path: 'awards', component: AwardsCardsComponent},
+      {path: 'request-judge', component: RequestJudgeFormComponent},
+      {path: 'update-project/:id', component: UpdateProjectFormComponent, canActivate: [UpdateProjectGuard] },
       {path: 'agency', component: AddAgencyComponent},
       {path: 'update-agency/:id', component: UpdateFormAgencyComponent},
       {path: 'update-project/:id', component: UpdateProjectFormComponent},
