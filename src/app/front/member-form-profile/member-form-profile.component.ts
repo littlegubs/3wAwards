@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Member, Tag} from '../../../backend/model';
-import {Form} from '../../../backend/forms';
-import {FormService} from '../../../backend/forms';
+import {Form, FormService} from '../../../backend/forms';
 import {MembersService, TagsService} from '../../../backend/services';
 import {MatChipInputEvent} from '@angular/material';
-import {ENTER, COMMA} from '@angular/cdk/keycodes';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {HttpClient} from '@angular/common/http';
 import {GlobalsService} from '../../globals.service';
 

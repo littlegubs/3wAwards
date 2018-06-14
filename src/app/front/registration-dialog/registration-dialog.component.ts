@@ -1,7 +1,7 @@
-import { Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {EmailValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../auth.service';
-import {MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-registration-dialog',

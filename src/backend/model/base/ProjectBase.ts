@@ -24,8 +24,8 @@ export class ProjectBase {
   averageOriginalityRatingsMember: number;
   averageReadabilityRatingsJudge: number;
   averageReadabilityRatingsMember: number;
-  averageErgonomicRatingsJudge: number;
-  averageErgonomicRatingsMember: number;
+  averageNavigationRatingsJudge: number;
+  averageNavigationRatingsMember: number;
   averageInteractivityRatingsJudge: number;
   averageInteractivityRatingsMember: number;
   averageQualityContentRatingsJudge: number;

@@ -25,4 +25,6 @@ export class MemberValidatorsBase extends FormGroupValidators {
     requestsJudge = [AppValidators.item];
     agencies = [AppValidators.item];
     profilePicture = [AppValidators.item];
+    username = null;
+    email = null;
 }

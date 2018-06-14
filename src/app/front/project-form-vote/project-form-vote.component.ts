@@ -1,7 +1,17 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {ProjectRatingMember} from '../../../backend/model';
-import {Category} from '../../category.enum';
+import {Category, Member, ProjectRatingMember, Rating} from '../../../backend/model';
+import {CategoryEnum} from '../../category.enum';
+import {
+  CategoriesService,
+  MembersService,
+  ProjectRatingMembersService,
+  RatingsService
+} from '../../../backend/services';
+import {TokenInterface} from '../../tokenInterface';
+import {AuthService} from '../../auth.service';
+import {HttpClient} from '@angular/common/http';
+import {GlobalsService} from '../../globals.service';
 
 @Component({
   selector: 'app-project-form-vote',
@@ -20,75 +30,105 @@ export class ProjectFormVoteComponent implements OnInit {
   value = 0;
   vertical = false;
 
+  tokenStorage = localStorage.getItem('user_token');
+  userInfo: TokenInterface;
+  member: Member;
   ratingsForProject: ProjectRatingMember[];
-
-  userOriginalityVote: number;
-  userGraphismVote: number;
-  userNavigationVote: number;
-  userInteractivityVote: number;
-  userContentQualityVote: number;
-  userFunctionnalityVote: number;
-  userReactivityyVote: number;
-
-  savedVoteEdition;
+  categoryEnum = CategoryEnum;
+  loading = false;
+  categories: Category[];
+  votes = {};
+  votesEdit = {};
+  votesLength = Object.keys(this.votes);
+  isVoteJudge = false;
 
   get tickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
   }
 
-  set tickInterval(v) {
-    this._tickInterval = Number(v);
-  }
-
   private _tickInterval = 1;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-              public dialogRef: MatDialogRef<ProjectFormVoteComponent>) {
-    if (data.savedVoteEdition !== undefined) {
-      this.userOriginalityVote = data.savedVoteEdition[0];
-      this.userGraphismVote = data.savedVoteEdition[1];
-      this.userNavigationVote = data.savedVoteEdition[2];
-      this.userInteractivityVote = data.savedVoteEdition[3];
-      this.userContentQualityVote = data.savedVoteEdition[4];
-      this.userFunctionnalityVote = data.savedVoteEdition[5];
-      this.userReactivityyVote = data.savedVoteEdition[6];
-    } else {
-      this.ratingsForProject = data.member.projectRatingMember.filter(
-        projectRatingMemberToFind => projectRatingMemberToFind.project.id === data.project.id);
-      this.userOriginalityVote = this.retrieveRatingsValue(Category.originality);
-      this.userGraphismVote = this.retrieveRatingsValue(Category.graphism);
-      this.userNavigationVote = this.retrieveRatingsValue(Category.navigation);
-      this.userInteractivityVote = this.retrieveRatingsValue(Category.interactivity);
-      this.userContentQualityVote = this.retrieveRatingsValue(Category.contentQuality);
-      this.userFunctionnalityVote = this.retrieveRatingsValue(Category.functionnality);
-      this.userReactivityyVote = this.retrieveRatingsValue(Category.reactivity);
-    }
-    this.dialogRef.backdropClick().subscribe(() => {
-      this.savedVoteEdition = [
-        this.userOriginalityVote,
-        this.userGraphismVote,
-        this.userNavigationVote,
-        this.userInteractivityVote,
-        this.userContentQualityVote,
-        this.userFunctionnalityVote,
-        this.userReactivityyVote
-      ];
-      console.log(this.savedVoteEdition);
-      this.dialogRef.close(this.savedVoteEdition);
+              public dialogRef: MatDialogRef<ProjectFormVoteComponent>,
+              private projectRatingMemberService: ProjectRatingMembersService,
+              private ratingService: RatingsService,
+              private categoryService: CategoriesService,
+              private memberService: MembersService,
+              private authService: AuthService,
+              private http: HttpClient,
+              private globalService: GlobalsService) {
+    this.userInfo = this.authService.getUserInfo(this.tokenStorage);
+    this.memberService.get(this.userInfo.id).subscribe(
+      member => {
+        this.member = member;
+        this.categoryService.getAll().subscribe(res => {
+          this.categories = res;
+          this.ratingsForProject = this.member.projectRatingMember.filter(
+            projectRatingMemberToFind => projectRatingMemberToFind.project.id === data.project.id);
+          for (const categ of Object.keys(CategoryEnum)) {
+            this.votes[categ] = this.retrieveRatingsValue(CategoryEnum[categ]);
+            this.votesEdit[categ] = this.votes[categ].rating.value;
+          }
+          this.votesLength = Object.keys(this.votes);
+        });
+      });
+  }
+
+  sendVote() {
+    const [last] = Object.keys(CategoryEnum).reverse();
+    Object.keys(CategoryEnum).forEach(categ => {
+      this.loading = true;
+      if (this.votes[categ].rating.id) {
+        this.ratingService.update(this.votes[categ].rating).subscribe(() => {
+          if (last === categ) {
+            this.http.get(this.globalService.url + 'average/' + this.data.project.id).subscribe(res => this.dialogRef.close(res));
+          }
+        });
+      } else {
+        this.ratingService.add(this.votes[categ].rating).subscribe(rating => {
+          this.votes[categ].rating = rating;
+          this.projectRatingMemberService[this.votes[categ].id ? 'update' : 'add'](this.votes[categ])
+            .subscribe(() => {
+              if (last === categ) {
+                this.http.get(this.globalService.url + 'average/' + this.data.project.id).subscribe(res => this.dialogRef.close(res));
+              }
+            });
+        });
+      }
     });
   }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 
   ngOnInit() {
   }
 
   retrieveRatingsValue(category: string) {
-    const projectRatingMember = this.ratingsForProject.find(
+    let projectRatingMember = this.ratingsForProject.find(
       projectRatingMemberToFind => projectRatingMemberToFind.rating.category.libelle === category);
-    return projectRatingMember ? projectRatingMember.rating.value : 0;
+    if (!projectRatingMember) {
+      projectRatingMember = new ProjectRatingMember();
+      projectRatingMember.setMember(this.member.id);
+      projectRatingMember.setProject(this.data.project.id);
+      projectRatingMember.voteJudge = this.isVoteJudge;
+      projectRatingMember.date = new Date();
+
+      let categFound = false;
+      let i = 0;
+      let categ: Category;
+      while (categFound === false && i < this.categories.length) {
+        if (this.categories[i].libelle === category) {
+          categFound = true;
+          categ = this.categories[i];
+        }
+        i++;
+      }
+      const rating = new Rating();
+      rating.setCategory(categ.id);
+      rating.value = 0;
+      projectRatingMember.rating = rating;
+    }
+    console.log(projectRatingMember);
+    return projectRatingMember;
   }
+
+
 }

@@ -1,29 +1,29 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {
   MatButtonModule,
-  MatDialogModule,
-  MatSlideToggleModule,
   MatCardModule,
-  MatProgressSpinnerModule,
-  MatTabsModule,
-  MatRadioModule,
-  MatInputModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MatProgressBarModule,
   MatCheckboxModule,
   MatChipsModule,
-  MatIconModule,
-  MatSelectModule,
-  MatTableModule,
-  MatTooltipModule,
+  MatDatepickerModule,
+  MatDialogModule,
   MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSelectModule,
   MatSliderModule,
-  MatPaginatorModule,
+  MatSlideToggleModule,
   MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatTooltipModule,
   MatSidenavModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatPaginatorModule
 } from '@angular/material';
 import {RouterModule} from '@angular/router';
 

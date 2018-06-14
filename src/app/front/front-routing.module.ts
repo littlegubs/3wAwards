@@ -9,10 +9,13 @@ import {ProjectFormComponent} from './project-form/project-form.component';
 import {AddAgencyComponent} from './add-agency/add-agency.component';
 import {ProjectFormVoteComponent} from './project-form-vote/project-form-vote.component';
 import {FrontComponent} from './front.component';
+import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency.component';
+import {UpdateProjectFormComponent} from './update-project-form/update-project-form.component';
+import {UpdateClientComponent} from './update-client/update-client.component';
+import {AddClientComponent} from './add-client/add-client.component';
 import {RequestJudgeFormComponent} from './request-judge-form/request-judge-form.component';
 import {LoginGuard} from '../login.guard';
 import {UpdateProjectGuard} from '../update-project.guard';
-import {UpdateProjectFormComponent} from './update-project-form/update-project-form.component';
 import {AwardsCardsComponent} from './awards-cards/awards-cards.component';
 import {AgenciesCardsComponent} from './agencies-cards/agencies-cards.component';
 import {ClientsCardsComponent} from './clients-cards/clients-cards.component';
@@ -31,9 +34,13 @@ const routes: Routes = [
       {path: 'agencies', component: AgenciesCardsComponent},
       {path: 'clients', component: ClientsCardsComponent},
       {path: 'awards', component: AwardsCardsComponent},
-      {path: 'addAgency', component: AddAgencyComponent},
       {path: 'request-judge', component: RequestJudgeFormComponent},
-      {path: 'update-project/:id', component: UpdateProjectFormComponent, canActivate: [UpdateProjectGuard] }
+      {path: 'update-project/:id', component: UpdateProjectFormComponent, canActivate: [UpdateProjectGuard] },
+      {path: 'agency', component: AddAgencyComponent},
+      {path: 'update-agency/:id', component: UpdateFormAgencyComponent},
+      {path: 'update-project/:id', component: UpdateProjectFormComponent},
+      {path: 'update-client/:id', component: UpdateClientComponent},
+      {path: 'client', component: AddClientComponent},
     ]},
 ];
 

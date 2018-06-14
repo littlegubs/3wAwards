@@ -1,4 +1,4 @@
-import { LiipPipe } from './liip.pipe';
+import {LiipPipe} from './liip.pipe';
 
 describe('LiipPipe', () => {
   it('create an instance', () => {

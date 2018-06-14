@@ -31,6 +31,8 @@ export class MemberBase {
   requestsJudge: RequestJudge;
   agencies: Agency[];
   profilePicture: Image;
+  username: string;
+  email: string;
 
   setFavoriteProjects(id: number): MemberBase {
     this.favoriteProjects = new Project();

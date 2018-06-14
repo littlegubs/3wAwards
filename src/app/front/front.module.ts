@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {SharedModule} from '../shared.module';
 import {FrontRoutingModule} from './front-routing.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -34,6 +34,7 @@ import {MemberAwardProjectTableComponent} from './member-award-project-table/mem
 import {ProjectFormVoteComponent} from './project-form-vote/project-form-vote.component';
 import {UpdateProjectFormComponent} from './update-project-form/update-project-form.component';
 import {SearchResultComponent} from './search-result/search-result.component';
+import {UpdateClientComponent} from './update-client/update-client.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, '../../assets/i18n/', '.json');
@@ -42,9 +43,11 @@ export function HttpLoaderFactory(http: HttpClient) {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FrontComponent } from './front.component';
 import { RequestJudgeFormComponent } from './request-judge-form/request-judge-form.component';
-import {AgenciesCardsComponent} from "./agencies-cards/agencies-cards.component";
-import {ClientsCardsComponent} from "./clients-cards/clients-cards.component";
-import {AwardsCardsComponent} from "./awards-cards/awards-cards.component";
+import {AgenciesCardsComponent} from './agencies-cards/agencies-cards.component';
+import {ClientsCardsComponent} from './clients-cards/clients-cards.component';
+import {AwardsCardsComponent} from './awards-cards/awards-cards.component';
+import {UpdateFormAgencyComponent} from './update-form-agency/update-form-agency.component';
+import {AddClientComponent} from './add-client/add-client.component';
 
 @NgModule({
   imports: [
@@ -95,6 +98,10 @@ import {AwardsCardsComponent} from "./awards-cards/awards-cards.component";
     FrontComponent,
     UpdateProjectFormComponent,
     SearchResultComponent,
+    UpdateFormAgencyComponent,
+    AddAgencyComponent,
+    AddClientComponent,
+    UpdateClientComponent,
     RequestJudgeFormComponent,
     AgenciesCardsComponent,
     ClientsCardsComponent,
