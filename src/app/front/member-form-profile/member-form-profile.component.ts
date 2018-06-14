@@ -126,8 +126,8 @@ export class MemberFormProfileComponent implements OnInit {
                   resolve();
               });
           } else {
-              resolve();
               updateMember.profilePicture = this.member.profilePicture;
+              resolve();
           }
       });
       Promise.resolve(promise).then(() => {
