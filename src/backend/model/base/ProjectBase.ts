@@ -24,8 +24,8 @@ export class ProjectBase {
   averageOriginalityRatingsMember: number;
   averageReadabilityRatingsJudge: number;
   averageReadabilityRatingsMember: number;
-  averageErgonomicRatingsJudge: number;
-  averageErgonomicRatingsMember: number;
+  averageNavigationRatingsJudge: number;
+  averageNavigationRatingsMember: number;
   averageInteractivityRatingsJudge: number;
   averageInteractivityRatingsMember: number;
   averageQualityContentRatingsJudge: number;
@@ -38,7 +38,7 @@ export class ProjectBase {
   averageJudgeRatings: number;
   noticableDescription: string;
   status: string;
-  projectRatingMember: ProjectRatingMember;
+  projectRatingMember: ProjectRatingMember[];
   client: Client;
   agency: Agency;
   target: Target;
@@ -46,16 +46,9 @@ export class ProjectBase {
   tags: Tag[];
   credits: Credit[];
   members: Member;
-  images: Image;
+  images: Image[];
   awards: Award;
   projectUrl: string;
-
-  setProjectRatingMember(id: number): ProjectBase {
-    this.projectRatingMember = new ProjectRatingMember();
-    this.projectRatingMember.id = id;
-    this.projectRatingMember['@id'] = '/project_rating_members/' + id;
-    return this;
-  }
 
   setClient(id: number): ProjectBase {
     this.client = new Client();
@@ -89,13 +82,6 @@ export class ProjectBase {
     this.members = new Member();
     this.members.id = id;
     this.members['@id'] = '/members/' + id;
-    return this;
-  }
-
-  setImages(id: number): ProjectBase {
-    this.images = new Image();
-    this.images.id = id;
-    this.images['@id'] = '/images/' + id;
     return this;
   }
 

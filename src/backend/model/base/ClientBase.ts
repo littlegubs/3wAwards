@@ -24,17 +24,10 @@ export class ClientBase {
   websiteUrl: string;
   tva: string;
   duns: string;
-  tags: Tag;
+  tags: Tag[];
   member: Member;
   image: Image;
-  projects: Project;
-
-  setTags(id: number): ClientBase {
-    this.tags = new Tag();
-    this.tags.id = id;
-    this.tags['@id'] = '/tags/' + id;
-    return this;
-  }
+  projects: Project[];
 
   setMember(id: number): ClientBase {
     this.member = new Member();
@@ -47,13 +40,6 @@ export class ClientBase {
     this.image = new Image();
     this.image.id = id;
     this.image['@id'] = '/images/' + id;
-    return this;
-  }
-
-  setProjects(id: number): ClientBase {
-    this.projects = new Project();
-    this.projects.id = id;
-    this.projects['@id'] = '/projects/' + id;
     return this;
   }
 

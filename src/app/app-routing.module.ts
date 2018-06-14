@@ -1,35 +1,15 @@
-import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {HomeComponent} from './front/home/home.component';
-import {AgencyProfileComponent} from './front/agency-profile/agency-profile.component';
-import {ClientProfileComponent} from './front/client-profile/client-profile.component';
-import {MemberProfileComponent} from './front/member-profile/member-profile.component';
-import {ProjectProfileComponent} from './front/project-profile/project-profile.component';
-import {ProjectFormComponent} from './front/project-form/project-form.component';
-import {AddAgencyComponent} from './front/add-agency/add-agency.component';
-import {ProjectFormVoteComponent} from './front/project-form-vote/project-form-vote.component';
-import {CardProjectMemberComponent} from './front/card-project-member/card-project-member.component';
-
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
-    {path: '', component: HomeComponent},
-    {path: 'admin', component: AdminPageComponent},
-    {path: 'agency/:id', component: AgencyProfileComponent},
-    {path: 'client/:id', component: ClientProfileComponent},
-    {path: 'project/:id', component: ProjectProfileComponent},
-    {path: 'updateProject/:id', component: ProjectFormComponent},
-    {path: 'project/:id/vote', component: ProjectFormVoteComponent},
-    {path: 'profile', component: MemberProfileComponent},
-    {path: 'project', component: ProjectFormComponent},
-    {path: 'addAgency', component: AddAgencyComponent},
-    {path: 'myProject', component: CardProjectMemberComponent},
-    {path: '**', redirectTo: '', pathMatch: 'full'},
+  {path: '', loadChildren: 'app/front/front.module#FrontModule'},
+  {path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'},
+  {path: '**', redirectTo: '404'}
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

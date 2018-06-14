@@ -1,7 +1,7 @@
-import { Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {EmailValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../auth.service';
-import {MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-registration-dialog',
@@ -25,6 +25,6 @@ export class RegistrationDialogComponent {
   }
 
   onSubmit() {
-    this.authService.signUp(this.registrationForm);
+    this.authService.signUp(this.registrationForm, 'ROLE_USER');
   }
 }

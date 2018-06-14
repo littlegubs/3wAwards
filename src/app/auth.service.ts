@@ -1,4 +1,4 @@
-import {Injectable, EventEmitter} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
@@ -15,6 +15,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private restangular: Restangular) {
   }
+
   private subjectConnected = new Subject<any>();
   private subjectToken = new Subject<any>();
   isConnected = new EventEmitter<boolean>();
@@ -28,11 +29,13 @@ export class AuthService {
   getIsConnected(): Observable<any> {
     return this.subjectConnected.asObservable();
   }
+
   sendToken(token: string) {
     this.subjectToken.next(token);
     this.token.emit(token);
   }
-  gettoken(): Observable<any>  {
+
+  gettoken(): Observable<any> {
     return this.subjectToken.asObservable();
   }
 
@@ -53,15 +56,29 @@ export class AuthService {
     );
   }
 
-  signUp(form: FormGroup) {
-
+  signUp(form: FormGroup, role: string) {
     const filterKeys = Object.keys(form.value);
     const body = new FormData();
     for (let i = 0; i < filterKeys.length; i++) {
       body.append(filterKeys[i], form.value[filterKeys[i]]);
     }
+    body.append('role', role);
     console.log(this.http.post(this.localUrl + 'register', body).subscribe(res => {
         this.login(form.value['email'], form.value['password']);
+      },
+      err => {
+        console.log(err);
+      }));
+  }
+
+  signUpAdmin(form: FormGroup, role: string) {
+    const filterKeys = Object.keys(form.value);
+    const body = new FormData();
+    for (let i = 0; i < filterKeys.length; i++) {
+      body.append(filterKeys[i], form.value[filterKeys[i]]);
+    }
+    body.append('role', role);
+    console.log(this.http.post(this.localUrl + 'register', body).subscribe(res => {
       },
       err => {
         console.log(err);

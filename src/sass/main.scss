@@ -23,6 +23,34 @@
 @import "../app/front/project-form/project-form.component";
 @import "../app/front/client-card/client-card.component";
 @import "../app/front/agency-card/agency-card.component";
+@import "../app/front/agencies-cards/agencies-cards.component";
+@import "../app/front/clients-cards/clients-cards.component";
+@import "../app/front/awards-cards/awards-cards.component";
+@import "../app/front/search-result/search-result.component";
 @import "../app/front/project-form-vote/project-form-vote.component";
 @import "../app/front/card-project-member/card-project-member.component";
+@import "../app/front/update-project-form/update-project-form.component";
+@import "../app/error404/error404.component";
+@import "../app/front/add-agency/add-agency.component";
+@import "../app/front/update-form-agency/update-form-agency.component";
+@import "../app/front/add-client/add-client.component";
+@import "../app/front/update-client/update-client.component";
+@import "../app/front/request-judge-form/request-judge-form.component";
+
+// Admin SCSS
+@import "../app/admin/admin.component";
+@import "../app/admin/admin-menu/admin-menu.component";
+@import "../app/admin/table-projects/table-projects.component";
+@import "../app/admin/table-members/table-members.component";
+@import "../app/admin/table-awards/table-awards.component";
+@import "../app/admin/admin-dashboard/admin-dashboard.component";
+@import "../app/admin/card-recent-project/card-recent-project.component";
+@import "../app/admin/card-recent-award/card-recent-award.component";
+@import "../app/admin/card-recent-submission/card-recent-submission.component";
+@import "../app/admin/table-param/table-param.component";
+@import "../app/admin/confirm-dialog/confirm-dialog.component";
+@import "../app/admin/award-form/award-form.component";
+@import "../app/admin/table-agency/table-agency.component";
+@import "../app/admin/table-client/table-client.component";
+@import "../app/admin/member-form/member-form.component";
 

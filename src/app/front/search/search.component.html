@@ -1,6 +1,6 @@
 <mat-slide-toggle (click)="showFilter()" [ngClass]="{'show': isActive }" >{{'FRONT.HEADER.SWITCH_NAME' | translate}}</mat-slide-toggle>
 <div class="input-group mb-3">
-  <input type="text" placeholder="{{'FRONT.COMMON.SEARCH' | translate}}" [ngClass]="{'show': isActive }">
+  <input type="text" #search placeholder="{{'FRONT.COMMON.SEARCH' | translate}}" [ngClass]="{'show': isActive }" (keyup.enter)="onEnter(search.value)">
   <i class="fas fa-search" (click)="isActive = !isActive;"></i>
 </div>
 

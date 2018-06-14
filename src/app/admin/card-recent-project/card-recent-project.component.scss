@@ -1,0 +1,22 @@
+app-card-recent-project {
+    .table-header {
+        margin: 0;
+        padding: 10px 20px;
+        background-color: #2b2b2b;
+        color: white;
+    }
+    table{
+        transition: all 0.4s ease;
+        @media screen and (max-width: 1270px) {
+            font-size: 12px;
+            .site-type, .agency-client{
+                display: none;
+            }
+        }
+        @media #{$mobile} {
+            .url{
+                display: none;
+            }
+        }
+    }
+}

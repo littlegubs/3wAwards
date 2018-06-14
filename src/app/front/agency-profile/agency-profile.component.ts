@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Agency, Client} from '../../../backend/model';
+import {Component, OnInit} from '@angular/core';
+import {Agency} from '../../../backend/model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AgenciesService} from '../../../backend/services';
 
@@ -41,9 +41,6 @@ export class AgencyProfileComponent implements OnInit {
                 console.log('error');
             }
         );
-    }
-    gotoAddAgencyForm() {
-        this.router.navigate(['addAgency']);
     }
     addAgency(agency: Agency) {
         this.agenciesService.add(agency).subscribe(

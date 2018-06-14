@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-form-request-judge">
+      <form [formGroup]="form.group" (submit)="commitRequestJudge()">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
+            <p class="form-categ">{{'FRONT.REQUEST_JUDGE.SEND_MESSAGE' | translate}}</p>
+            <div class="form-group row">
+              <label for="message" class="col-sm-4 col-form-label">{{'FRONT.REQUEST_JUDGE.MESSAGE' | translate}}
+                :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <textarea id="message" matInput formControlName="message"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="row row-submit">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group row">
+                <div class="col-sm-12 form-actions">
+                  <button type="submit" class="btn btn-main-red-full submit">{{'FRONT.REQUEST_JUDGE.SEND' | translate}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>

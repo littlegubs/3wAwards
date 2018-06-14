@@ -122,7 +122,7 @@
                 translate}} :</label>
               <div class="col-sm-8">
                 <mat-form-field class="full-width">
-                  <input *ngIf="budgetFork[0].libelle" matInput id="budget_fork" #budget_fork  (change)="addTag(budget_fork.value, 'budget_fork')"/>
+                  <input  matInput id="budget_fork" #budget_fork  (change)="addTag(budget_fork.value, 'budget_fork')"/>
                 </mat-form-field>
               </div>
               <label for="language" class="col-sm-4 col-form-label">{{'FRONT.FORM_PROJECT.LANGUAGE' |
@@ -368,19 +368,26 @@
               </button>
             </div>
             <div class="form-group row">
-              <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}} <i class="fas fa-plus-circle add-image"></i></p>
+              <p class="form-categ">{{'FRONT.FORM_PROJECT.LABELS.IMAGE' | translate}}</p>
               <mat-grid-list cols="2" rowHeight="300px" class="images-grid" >
                 <mat-grid-tile
-                        *ngFor="let tile of tiles, let i = index"
-                        [colspan]="tile.cols"
-                        [rowspan]="tile.rows">
-                  <span class="legend"> Cette image sera utilisée pour la thumbnail de votre projet </span>
-                  <div *ngIf="tile[i] > 0; else noThumbnail">
-                    <!--<img *ngIf="client.image.path | liip:'card_thumbnail' as projectImage" [src]="'url('+projectImage+')'"/>-->
+                        *ngFor="let z of [0,0,0,0,0,0,0]; first as isFirst; index as i"
+                        [colspan]="isFirst ? 2 : 1"
+                        [rowspan]="isFirst ? 2 : 1">
+                  <span class="legend">{{'FRONT.FORM_PROJECT.THUMBNAIL' | translate}} </span>
+                  <span class="legend-upload">{{'FRONT.FORM_PROJECT.UPLOAD' | translate}}</span>
+                  <span class="legend-drop" (click)="removeFile(i)"><i class="far fa-trash-alt"></i></span>
+                  <div *ngIf="files[i]; else noThumbnail">
+                    <label [for]="'file-'+ i">
+                    <img [src]="url[i]">
+                    </label>
                   </div>
                   <ng-template #noThumbnail>
-                    <img [src]="'http://via.placeholder.com/1140x850)'"/>
+                    <label [for]="'file-'+ i">
+                      <img [src]="'http://via.placeholder.com/1140x850)'">
+                    </label>
                   </ng-template>
+                  <input type="file" name="file" [id]="'file-'+ i" (change)="fileUpload($event, i)">
                 </mat-grid-tile>
               </mat-grid-list>
             </div>

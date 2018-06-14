@@ -1,0 +1,11 @@
+app-admin-dashboard{
+    .admin-dashboard{
+        min-height: calc(100vh - 88px);
+        padding: 20px 0;
+        .row {
+            & > div {
+                margin: 20px 0;
+            }
+        }
+    }
+}

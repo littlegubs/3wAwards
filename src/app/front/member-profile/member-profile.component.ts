@@ -1,10 +1,10 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MembersService} from '../../../backend/services';
-import {Agency, Member} from '../../../backend/model';
+import {Member} from '../../../backend/model';
 import {AuthService} from '../../auth.service';
 import {TokenInterface} from '../../tokenInterface';
-import { MatTableDataSource} from '@angular/material';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-member-profile',
@@ -121,9 +121,9 @@ export class MemberProfileComponent {
 
 }
 
-    export interface Element {
-        name: string;
-        date: string;
-        type: string;
-        libelle: string;
-    }
+export interface Element {
+    name: string;
+    date: string;
+    type: string;
+    libelle: string;
+}
