@@ -137,7 +137,8 @@
         "QUALITY": "Qualité des contenus",
         "FONCTIONNALITY": "Richesse fonctionnelle",
         "REACTIVITY": "Réactivité, vitesse",
-        "AVERAGE": "Moyenne"
+        "AVERAGE_JURY": "Moyenne Jury",
+        "AVERAGE_MEMBER": "Moyenne membres"
       }
     },
     "HEADER": {
@@ -147,7 +148,8 @@
           "HOME": "Home",
           "NOMINATE": "Nominés",
           "AWARDS": "Awards",
-          "AGENCY": "Agences",
+          "AGENCIES": "Agences",
+          "CLIENTS": "Clients",
           "JURY": "Jury",
           "BLOG": "Blog",
           "OFFERS": "Jobs",
@@ -156,13 +158,16 @@
       },
       "MEMBER_MENU": {
         "DISCONNECTION": "Déconnexion",
-        "PROFILE": "Mon Profil"
+        "PROFILE": "Mon Profil",
+        "My_Project": "Mes Projets"
       },
       "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
       "SWITCH_NAME": "FILTRES",
       "SIGN_IN": "CONNEXION",
       "SIGN_UP": "INSCRIPTION",
       "WEBSITE_SUBMIT": "SOUMETTRE UN SITE",
+      "CLIENT_SUBMIT": "AJOUTER UN CLIENT",
+      "AGENCY_SUBMIT": "AJOUTER UNE AGENCE",
       "FILTER": {
       }
     },
@@ -223,12 +228,49 @@
       "FUNCTION" : "Fonction",
       "ADD_CREDIT": "Ajouter un crédit",
       "PRPJECT_URL": "Projet url",
+      "UPLOAD": "Cliquez pour choisir un fichier...",
       "VOTE": "VOTEZ",
       "TO_VOTE": "VOTER",
+      "VOTE_AS_JUDGE": "Vote jury",
       "LABELS": {
         "GENERAL": "Mon projet",
         "IMAGE": "Captures d'écran"
-      }
+      },
+      "THUMBNAIL": "Cette image sera utilisée pour la thumbnail de votre projet"
+    },
+    "FORM_AGENCY": {
+      "IDENTITY":"Identité",
+      "NAME":"Nom",
+      "COUNTRY":"Pays",
+      "ADDRESS":"Adresse",
+      "ADDRESS_COMPLEMENT":"Complément d'adresse",
+      "ZIPCODE":"Code postal",
+      "PHONE_NUMBER":"Numéro de téléphone",
+      "FAX":"Numéro de fax",
+      "CITY":"Ville",
+      "DESCRIPTION":"Description",
+      "INTERNAL_NOTICE":"Notice interne",
+      "CREATION_DATE":"Date de création",
+      "URL":"Lien vers votre site",
+      "TVA":"Tva",
+      "EFFECTIF":"Effectif",
+      "STATUS":"Statut",
+      "REVENUE":"Chiffre d'affaire",
+      "DUNS":"Duns",
+      "TYPE_AGENCY":"Type d'agence",
+      "CUSTOM_TAG":"Tags personnalisés",
+      "CANCEL":"Annuler",
+      "SAVE":"Enregistrer"
+
+    },
+    "REQUEST_JUDGE" : {
+      "SEND_MESSAGE": "Envoyé un message",
+      "SEND": "Envoyer",
+      "MESSAGE": "Message"
     }
+  },
+  "ERROR": {
+    "BUTTON": "Retour",
+    "404": "Cette page n'existe pas"
   }
 }
