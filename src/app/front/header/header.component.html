@@ -27,6 +27,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="memberDropdown">
               <a class="dropdown-item" [routerLink]="['/profile']">{{'FRONT.HEADER.MEMBER_MENU.PROFILE' | translate}}</a>
+              <a class="dropdown-item" [routerLink]="['/myProject']" >{{'FRONT.HEADER.MEMBER_MENU.My_Project' | translate}}</a>
               <a *ngIf="userInfo.roles[0] === 'ROLE_ADMIN'"  class="dropdown-item" [routerLink]="['/admin']" href="">Admin</a>
               <a (click)="Disconnection()" class="dropdown-item" href="#">{{'FRONT.HEADER.MEMBER_MENU.DISCONNECTION' | translate}}</a>
             </div>

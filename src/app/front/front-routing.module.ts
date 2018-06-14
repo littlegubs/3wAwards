@@ -21,6 +21,7 @@ import {AgenciesCardsComponent} from './agencies-cards/agencies-cards.component'
 import {ClientsCardsComponent} from './clients-cards/clients-cards.component';
 import {UpdateAgencyGuard} from '../update-agency.guard';
 import {UpdateClientGuard} from '../update-client.guard';
+import {CardProjectMemberComponent} from './card-project-member/card-project-member.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,7 @@ const routes: Routes = [
       {path: 'update-project/:id', component: UpdateProjectFormComponent, canActivate: [UpdateClientGuard]},
       {path: 'update-client/:id', component: UpdateClientComponent},
       {path: 'client', component: AddClientComponent,  canActivate: [LoginGuard]},
+      {path: 'myProject', component: CardProjectMemberComponent,  canActivate: [LoginGuard]},
     ]},
 ];
 
