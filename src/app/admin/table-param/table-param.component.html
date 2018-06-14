@@ -1,0 +1,32 @@
+<div class="container-fluid" *ngIf="params; else loading">
+  <div class="row">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Libelle</th>
+        <th scope="col">Valeur</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let param of params">
+        <td>{{param.libelle}}</td>
+        <td>
+          <mat-form-field>
+            <input #paramInput matInput [value]="param.value">
+          </mat-form-field>
+        </td>
+        <td><button class="green-button" mat-raised-button color="primary" (click)="updateParam(param.libelle, paramInput.value)">Valider</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
+
+
+
+
+

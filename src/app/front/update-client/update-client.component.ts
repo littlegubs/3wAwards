@@ -15,7 +15,6 @@ import {GlobalsService} from '../../globals.service';
   templateUrl: './update-client.component.html'
 })
 export class UpdateClientComponent implements OnInit {
-    client: Client;
     clients: Array<Client> = [];
     form: Form<Client>;
     tokenStorage = localStorage.getItem('user_token');
@@ -64,9 +63,7 @@ export class UpdateClientComponent implements OnInit {
     }
 
     commitClient(): void {
-        console.log('le btn marche');
         if (this.form.group.dirty && this.form.group.valid) {
-            console.log('ca passe');
             const newClient = this.form.get();
             console.log(newClient);
             const promise = new Promise(resolve => {
@@ -91,7 +88,7 @@ export class UpdateClientComponent implements OnInit {
                         this.router.navigate(['/client/' + this.client.id]);
                     });
                 } else {
-                    newClient.setProjectsatNull();
+                    newClient.projects = [];
                     newClient.tags = this.clientTags;
                     newClient.image = null;
                     newClient.setMember(this.userInfo.id);

@@ -79,7 +79,7 @@ export class AddAgencyComponent implements OnInit {
       if (newAgency.id) {
         this.agenciesService.update(newAgency).subscribe(agency => console.log('yeah!'));
       } else {
-        newAgency.setProjectsatNull();
+        newAgency.projects = [];
         newAgency.tags = this.agencyTags;
         if (this.idTypeAgency === undefined) {
           console.log(this.typeAgencies[0].id);

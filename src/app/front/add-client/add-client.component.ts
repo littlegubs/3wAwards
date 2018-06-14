@@ -74,7 +74,7 @@ export class AddClientComponent implements OnInit {
           if (newClient.id) {
               this.clientService.update(newClient).subscribe(client => console.log('yeah!'));
           } else {
-              newClient.setProjectsatNull();
+              newClient.projects = [];
               newClient.tags = this.clientTags ;
               newClient.image = null;
               newClient.setMember(this.userInfo.id);

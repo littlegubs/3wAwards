@@ -1,0 +1,32 @@
+<p class="table-header">Projets récents</p>
+<mat-card class="example-card">
+  <mat-card-content *ngIf="projects; else loading">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nom du Projet</th>
+        <th scope="col" class="agency-client">Agence / Client</th>
+        <th scope="col" class="site-type">Type de site</th>
+        <th scope="col" class="url">Url</th>
+        <th scope="col">Statut</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let project of projects">
+        <td>{{project.projectName}}</td>
+        <td *ngIf="project.agency === null" class="agency-client">{{project.client.name}}</td>
+        <td *ngIf="project.client === null" class="agency-client">{{project.agency.name}}</td>
+        <td class="site-type">{{project.siteType.libelle}}</td>
+        <td class="url">{{project.projectUrl}}</td>
+        <td> {{project.status}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [routerLink]="['projects']">Voir plus</button>
+  </mat-card-actions>
+</mat-card>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>

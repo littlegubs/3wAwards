@@ -1,0 +1,49 @@
+<div class="container-fluid" *ngIf="awards; else loading">
+  <div class="row">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nom du Projet</th>
+        <th scope="col" class="agency-client">Agence / Client</th>
+        <th scope="col">Award</th>
+        <th scope="col" class="url">Url</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let award of awards">
+        <td>{{award.project.projectName}}</td>
+        <td *ngIf="award.project.agency === null" class="agency-client">{{award.project.client.name}}</td>
+        <td *ngIf="award.project.client === null" class="agency-client">{{award.project.agency.name}}</td>
+        <td>{{award.type}}</td>
+        <td id="url">{{award.project.projectUrl}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row paginator" *ngIf="awards.length >= 12">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li>Awards : {{awards.length}} | Page : {{pageNumber}}/{{awards.pagination.last}}</li>
+        <li *ngIf="pageNumber !== 1" class="page-item" (click)="pagination(-1)">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item" (click)="pagination(1)" *ngIf="pageNumber != awards.pagination.last">
+          <a class="page-link" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+
+
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>

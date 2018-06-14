@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-form-member">
+      <form (submit)="onSubmit()" [formGroup]="registrationForm">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
+            <p class="form-categ">Ajouter un membre admin</p>
+            <div class="form-group row">
+              <label for="firstName" class="col-sm-4 col-form-label margin">Prénom</label>
+              <div class="col-sm-8">
+                <mat-form-field>
+                  <input matInput id="firstName" name="firstName" formControlName="firstName">
+                </mat-form-field>
+              </div>
+              <label for="name" class="col-sm-4 col-form-label margin">Nom</label>
+              <div class="col-sm-8">
+                <mat-form-field>
+                  <input matInput id="name" name="name" formControlName="name">
+                </mat-form-field>
+              </div>
+              <label for="email" class="col-sm-4 col-form-label margin">Email</label>
+              <div class="col-sm-8">
+                <mat-form-field>
+                  <input matInput id="email" name="email" formControlName="email">
+                </mat-form-field>
+              </div>
+              <label for="password" class="col-sm-4 col-form-label margin">Mot de passe </label>
+              <div class="col-sm-8">
+                <mat-form-field>
+                  <input matInput type="password" id="password" name="password" formControlName="password">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="row row-submit">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group row">
+                <div class="col-sm-12 form-actions">
+                  <button type="submit" class="btn btn-main-red-full submit">Valider</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

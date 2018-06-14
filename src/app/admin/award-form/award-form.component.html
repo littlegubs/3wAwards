@@ -1,0 +1,59 @@
+<div class="container" *ngIf="projects && categories; else loading">
+  <div class="row">
+    <div class="col-sm-12 col-form-award">
+      <form [formGroup]="form.group" (submit)="commitAward()">
+        <div class="row">
+          <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12">
+            <p class="form-categ">Ajouter un award</p>
+            <div class="form-group row">
+              <label for="projects" class="col-sm-4 col-form-label margin">Projets</label>
+              <div class="col-sm-8">
+                <select id="projects" class="form-control margin" #project (change)="getProject(project.value)">
+                  <option *ngFor="let project of projects" [value]="project.id">{{project.projectName}}
+                  </option>
+                </select>
+              </div>
+              <label for="categories" class="col-sm-4 col-form-label margin">Catégorie</label>
+              <div class="col-sm-8">
+                <select id="categories" class="form-control margin" #category (change)="getCategory(category.value)">
+                  <option *ngFor="let category of categories" [value]="category.id">{{category.libelle}}
+                  </option>
+                </select>
+              </div>
+              <label for="date" class="col-sm-4 col-form-label">Date :</label>
+              <div class="col-sm-8">
+                <mat-form-field class="full-width">
+                  <input matInput id="date" formControlName="date" [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <label for="types" class="col-sm-4 col-form-label margin">Types</label>
+              <div class="col-sm-8">
+                <select id="types" class="form-control margin" #type (change)="getTypes(type.value)">
+                  <option value="day">Jour</option>
+                  <option value="week">Semaine</option>
+                  <option value="monk">Mois</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="row row-submit">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group row">
+                <div class="col-sm-12 form-actions">
+                  <button type="submit" class="btn btn-main-red-full submit">Valider</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
