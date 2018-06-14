@@ -6,7 +6,7 @@
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <div class="vote-header">
               <p class="form-categ">{{'FRONT.FORM_PROJECT.TO_VOTE' | translate}}</p>
-              <mat-slide-toggle>{{'FRONT.FORM_PROJECT.VOTE_AS_JUDGE' | translate}}</mat-slide-toggle>
+              <mat-slide-toggle *ngIf="member.isJudge" (change)="isVoteJudge = $event.checked">{{'FRONT.FORM_PROJECT.VOTE_AS_JUDGE' | translate}}</mat-slide-toggle>
             </div>
             <div class="form-group row">
               <label class="col-sm-4 col-form-label">{{'FRONT.PROJECT_PROFILE.MARKS.ORIGINALITY' | translate}} :</label>
