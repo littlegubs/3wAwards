@@ -72,7 +72,7 @@ export class AddClientComponent implements OnInit {
               });
           }
           if (newClient.id) {
-              this.clientService.update(newClient).subscribe(client => {});
+              this.clientService.update(newClient);
           } else {
               newClient.projects = [];
               newClient.tags = this.clientTags ;
