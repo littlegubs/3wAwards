@@ -1,5 +1,5 @@
 <div class="container-fluid" *ngIf="requestsJudges; else loading">
-  <div class="row">
+  <div class="row" *ngIf="requestsJudges.length > 0; else noResult">
     <table class="table">
       <thead class="thead-dark">
       <tr>
@@ -44,4 +44,7 @@
 </div>
 <ng-template #loading>
   <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+</ng-template>
+<ng-template #noResult>
+  <h1 class="text-center">Pas de résultats</h1>
 </ng-template>

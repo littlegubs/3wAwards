@@ -159,7 +159,8 @@
       "MEMBER_MENU": {
         "DISCONNECTION": "Déconnexion",
         "PROFILE": "Mon Profil",
-        "My_Project": "Mes Projets"
+        "MY_PROJECT": "Mes Projets",
+        "REQUEST_JUDGE": "Être jury"
       },
       "BRANDING": "LES MEILLEURS SITES DU WEB DANS CHAQUE CATEGORIE",
       "SWITCH_NAME": "FILTRES",

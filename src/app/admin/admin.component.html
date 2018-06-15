@@ -6,7 +6,7 @@
   <mat-sidenav-content>
     <div class="admin-header">
       <i class="fas fa-bars openSidebarButton" (click)="sidenav.toggle()"></i>
-      <a href="/"><img src="assets/imgs/logo.svg" alt="Logo"/></a>
+      <a [routerLink]="['/']"><img src="assets/imgs/logo.svg" alt="Logo"/></a>
       <div class="dropdown admin-connection">
         <button class="btn btn-main-gray" type="button" id="memberDropdown" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
