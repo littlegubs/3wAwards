@@ -75,7 +75,7 @@ export class AddAgencyComponent implements OnInit {
             });
         }
       if (newAgency.id) {
-        this.agenciesService.update(newAgency).subscribe(agency => {});
+        this.agenciesService.update(newAgency);
       } else {
         newAgency.projects = [];
         newAgency.tags = this.agencyTags;
