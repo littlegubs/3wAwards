@@ -12,16 +12,21 @@
         </ng-template>
         <mat-card-content>
           <mat-card-title>{{award.project.projectName}}</mat-card-title>
-          <p class="mat-card-creator">{{award.project.projectName.slice(0, 50)}}[...]</p>
+          <p *ngIf="award.project.agency === null && award.project.client !== null"> par <span class="mat-card-creator">{{award.project.client.name}}</span>
+            | <span class="mat-card-country">{{award.project.client.country}}</span>
+          </p>
+          <p *ngIf="award.project.agency !== null && award.project.client === null"> par <span class="mat-card-creator">{{award.project.agency.name}}</span>
+            | <span class="mat-card-country">{{award.project.agency.country}}</span>
+          </p>
           <p class="mat-card-date">{{award.project.publicationDate | date}}</p>
         </mat-card-content>
       </mat-card>
     </div>
   </div>
-  <div class="row paginator" *ngIf="awards.length >= 12">
+  <div class="row paginator" *ngIf="awards.length >= 12 || pageNumber === awards.pagination.last">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li>Projets récompensés : {{awards.length}} | Page : {{pageNumber}}/{{awards.pagination.last}}</li>
+        <li>Awards : {{awards.pagination.totalItems}} | Page : {{pageNumber}}/{{awards.pagination.last}}</li>
         <li *ngIf="pageNumber !== 1" class="page-item" (click)="pagination(-1)">
           <a class="page-link" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>

@@ -22,6 +22,7 @@
               <div class="form-group row">
                 <div class="col-sm-12 form-actions">
                   <button type="submit" class="btn btn-main-red-full submit">{{'FRONT.REQUEST_JUDGE.SEND' | translate}}</button>
+                  <mat-progress-spinner color="warn" mode="indeterminate" diameter="40" *ngIf="isLoading === true"></mat-progress-spinner>
                 </div>
               </div>
             </div>

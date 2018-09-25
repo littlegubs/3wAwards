@@ -34,21 +34,17 @@ export class AgencyProfileComponent implements OnInit {
     deleteAgency(agency: Agency) {
         this.agenciesService.remove(agency).subscribe(
             res => {
-                console.log('Sucess');
                 this.router.navigate(['profile']);
             },
             err => {
-                console.log('error');
             }
         );
     }
     addAgency(agency: Agency) {
         this.agenciesService.add(agency).subscribe(
             res => {
-                console.log('success');
             },
             err => {
-                console.log('error');
             }
         );
     }

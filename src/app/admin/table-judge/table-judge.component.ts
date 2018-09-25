@@ -8,7 +8,6 @@ import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-table-jury',
   templateUrl: './table-judge.component.html',
-  styleUrls: ['./table-judge.component.scss']
 })
 export class TableJudgeComponent implements OnInit {
   requestsJudges: RequestJudge[];

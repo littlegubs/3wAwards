@@ -29,7 +29,6 @@ export class ProjectProfileComponent implements OnInit {
               private membersService: MembersService, private authService: AuthService, private http: HttpClient) {
     this.authService.gettoken().subscribe(res => {
       this.tokenStorage = res;
-      console.log(this.tokenStorage);
       this.retrieveMember();
     });
     this.retrieveMember();
@@ -49,7 +48,6 @@ export class ProjectProfileComponent implements OnInit {
 
   openDialog() {
     let dialogRef;
-    console.log(this.member);
     if (this.member) {
       dialogRef = this.dialog.open(ProjectFormVoteComponent, {
         data: {
@@ -58,7 +56,6 @@ export class ProjectProfileComponent implements OnInit {
         width: '530px',
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log(result);
         this.project.updateRatings(result);
       });
     } else {
@@ -67,7 +64,6 @@ export class ProjectProfileComponent implements OnInit {
   }
 
   retrieveMember() {
-    console.log(this.tokenStorage);
     if (this.tokenStorage) {
       this.userInfo = this.authService.getUserInfo(this.tokenStorage);
       this.membersService.get(this.userInfo.id).subscribe(res => {

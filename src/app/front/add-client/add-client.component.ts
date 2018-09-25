@@ -72,15 +72,13 @@ export class AddClientComponent implements OnInit {
               });
           }
           if (newClient.id) {
-              this.clientService.update(newClient).subscribe(client => console.log('yeah!'));
+              this.clientService.update(newClient);
           } else {
               newClient.projects = [];
               newClient.tags = this.clientTags ;
               newClient.image = null;
               newClient.setMember(this.userInfo.id);
-              console.log(newClient);
               this.clientService.add(newClient).subscribe(client => {
-                  console.log('add');
                   this.openSnackBar();
                   this.route.navigate(['/client/' + client.id]);
               });
@@ -122,7 +120,6 @@ export class AddClientComponent implements OnInit {
           event.input.value = '';
       }
       this.refreshTagsArray();
-      console.log(this.typeTags);
   }
 
   addTag(value: string, type: string): void {

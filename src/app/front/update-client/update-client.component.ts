@@ -68,7 +68,6 @@ export class UpdateClientComponent implements OnInit {
         this.isLoading = true;
         if (this.form.group.dirty && this.form.group.valid) {
             const newClient = this.form.get();
-            console.log(newClient);
             const promise = new Promise(resolve => {
                 if (this.file) {
                     const image = new Image();
@@ -87,7 +86,6 @@ export class UpdateClientComponent implements OnInit {
             Promise.resolve(promise).then(() => {
                 if (newClient.id) {
                     this.clientsService.update(newClient).subscribe(client => {
-                        console.log('yeah!');
                         this.router.navigate(['/client/' + this.client.id]);
                     });
                 } else {
@@ -95,9 +93,7 @@ export class UpdateClientComponent implements OnInit {
                     newClient.tags = this.clientTags;
                     newClient.image = null;
                     newClient.setMember(this.userInfo.id);
-                    console.log(newClient);
                     this.clientsService.add(newClient).subscribe(client => {
-                        console.log('add');
                         this.isLoading = false;
                         this.openSnackBar();
                     });
@@ -152,7 +148,6 @@ export class UpdateClientComponent implements OnInit {
             event.input.value = '';
         }
         this.refreshTagsArray();
-        console.log(this.typeTags);
     }
 
     addTag(value: string, type: string): void {

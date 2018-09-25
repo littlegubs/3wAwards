@@ -77,7 +77,6 @@ export class ProjectFormVoteComponent implements OnInit {
   }
 
   sendVote() {
-    console.log(this.isVoteJudge);
     this.isLoading = true;
     const [last] = Object.keys(CategoryEnum).reverse();
     Object.keys(CategoryEnum).forEach(categ => {
@@ -123,7 +122,6 @@ export class ProjectFormVoteComponent implements OnInit {
       rating.value = 0;
       projectRatingMember.rating = rating;
     }
-    console.log(projectRatingMember);
     return projectRatingMember;
   }
 }

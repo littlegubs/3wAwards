@@ -102,7 +102,6 @@ export class UpdateProjectFormComponent implements OnInit {
       this.projectsService.get(params.id).subscribe(
         res => {
           this.project = res;
-          console.log(this.project);
           if (this.project.agency === null) {
             this.agencyOrClientName = this.project.client.name;
           } else {
@@ -133,13 +132,8 @@ export class UpdateProjectFormComponent implements OnInit {
       const newProject = this.form.get();
       newProject.projectRatingMember = Object.values(this.project.projectRatingMember)
         .map(projectRatingMember => projectRatingMember['@id']);
-      console.log(newProject);
       if (newProject.id) {
         newProject.tags = this.projectTags;
-
-        console.log(this.files);
-        console.log(this.url);
-        console.log(this.projectImages);
         // remove all undefined elements
         for (let i = 0; i < this.url.length; i++) {
           if (this.url[i] === undefined) {
@@ -335,7 +329,6 @@ export class UpdateProjectFormComponent implements OnInit {
     const fileList: FileList = $event.target.files;
     if (fileList.length > 0) {
       this.projectImages[i] = undefined;
-      console.log(this.projectImages);
       const file: File = $event.target.files[0];
       this.files[i] = file;
       const fileReader = new FileReader();
@@ -350,9 +343,6 @@ export class UpdateProjectFormComponent implements OnInit {
     this.files[index] = undefined;
     this.url[index] = undefined;
     this.projectImages[index] = undefined;
-    console.log(this.files);
-    console.log(this.url);
-    console.log(this.projectImages);
   }
 
     openSnackBar(): void {

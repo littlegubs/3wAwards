@@ -24,7 +24,6 @@ export class AwardFormComponent implements OnInit {
     this.categoriesService.getAll().subscribe(
       res => {
         this.categories = res;
-        console.log(this.categories);
       },
       err => {
 
@@ -33,7 +32,6 @@ export class AwardFormComponent implements OnInit {
     this.projectsService.getAll().subscribe(
       res => {
         this.projects = res;
-        console.log(this.projects);
       },
       err => {
 

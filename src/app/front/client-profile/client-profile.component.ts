@@ -36,11 +36,9 @@ export class ClientProfileComponent implements OnInit {
   deleteClient(client: Client) {
     this.clientsService.remove(client).subscribe(
       res => {
-        console.log('Sucess');
         this.router.navigate(['profile']);
       },
       err => {
-        console.log('error');
       }
     );
   }
@@ -48,10 +46,8 @@ export class ClientProfileComponent implements OnInit {
   addClient(client: Client) {
       this.clientsService.add(client).subscribe(
           res => {
-              console.log('success');
           },
           err => {
-              console.log('error');
           }
       );
   }

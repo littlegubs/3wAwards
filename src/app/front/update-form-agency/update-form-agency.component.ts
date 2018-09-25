@@ -48,7 +48,6 @@ export class UpdateFormAgencyComponent implements OnInit {
     this.typeTagService.getAll().subscribe(
       res => {
         this.typeTags = res;
-        console.log(this.typeTags);
       },
       err => {
       }
@@ -61,8 +60,6 @@ export class UpdateFormAgencyComponent implements OnInit {
           this.form = this.formService.makeForm<Agency>(this.agency);
           this.agencyTags = this.agency.tags;
           this.refreshTagsArray();
-          console.log(this.agency.tags);
-          console.log(this.agencyTags);
         },
         err => {
         }
@@ -97,13 +94,11 @@ export class UpdateFormAgencyComponent implements OnInit {
               if (newAgency.id) {
                   newAgency.tags = this.agencyTags;
                 if (this.idTypeAgency === undefined) {
-                  console.log(this.typeAgencies[0].id);
                   newAgency.setTypeAgency(this.typeAgencies[0].id);
                 } else {
                   newAgency.setTypeAgency(this.idTypeAgency);
                 }
                   this.agenciesService.update(newAgency).subscribe(agency => {
-                      console.log('yeah!');
                       this.openSnackBar();
                       this.router.navigate(['/agency/' + agency.id]);
                   });
@@ -147,7 +142,6 @@ export class UpdateFormAgencyComponent implements OnInit {
       event.input.value = '';
     }
     this.refreshTagsArray();
-    console.log(this.agencyTags);
   }
 
   addTag(value: string, type: string): void {
@@ -166,10 +160,8 @@ export class UpdateFormAgencyComponent implements OnInit {
         }
       }
       if (find === false) {
-        console.log('????');
         const tag = new Tag();
         for (const typeTag of this.typeTags) {
-          console.log(typeTag);
           if (typeTag.libelle === type) {
             tag.setType(typeTag.id);
             tag.type.libelle = type;
@@ -177,14 +169,12 @@ export class UpdateFormAgencyComponent implements OnInit {
         }
         tag.libelle = value;
         this.agencyTags.push(tag);
-        console.log(this.agencyTags);
       }
     }
 
   }
 
   refreshTagsArray() {
-    console.log(this.agencyTags);
     this.customTags = this.agencyTags.filter(tag => tag.type.libelle === 'custom');
     this.statusTags = this.agencyTags.find(tag => tag.type.libelle === 'agency_status');
     this.effectifTags = this.agencyTags.find(tag => tag.type.libelle === 'agency_effectif');
